@@ -1,13 +1,12 @@
-export async function fetchUsers() {
+export async function usersFetch() {
   try {
-    const response = await fetch(
+    const response = fetch(
       `https://striveschool-api.herokuapp.com/api/profile/`,
       {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmM0YzY0Y2VkMjY2ODAwMTcwZWEzZGUiLCJpYXQiOjE2MDY3MzEzNDAsImV4cCI6MTYwNzk0MDk0MH0.CJ45vua2bICnWfXr96UZGghLe4icYacvwAYqOb0WlIk",
+          Authorization: process.env.REACT_TOKEN,
         },
       }
     );
