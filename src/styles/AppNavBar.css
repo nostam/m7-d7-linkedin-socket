@@ -1,0 +1,41 @@
+.navbarContent {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  white-space: nowrap;
+  justify-content: center;
+  margin: auto;
+}
+.navbarBrand {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  white-space: nowrap;
+}
+.navSearch {
+  margin-right: auto;
+  margin-left: 0;
+  padding: 0;
+  max-width: 230px;
+}
+.navCol {
+  padding: 0;
+  text-align: center;
+  /* width: 56px; */
+  margin: auto 4px;
+}
+.navIcon {
+  color: grey;
+  font-size: 24px;
+}
+.navIconText {
+  font-size: 10px;
+  color: grey;
+  overflow: hidden;
+  white-space: nowrap;
+}
+@media screen and (min-width: 1200px) {
+  .navbarContent {
+    min-width: 1200px;
+  }
+}
