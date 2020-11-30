@@ -1,13 +1,11 @@
 import React from "react";
 import {
-  Container,
   Form,
   FormControl,
   Navbar,
   Nav,
   InputGroup,
   Col,
-  Row,
 } from "react-bootstrap";
 import { withRouter, Link, NavLink } from "react-router-dom";
 import { IconContext } from "react-icons";
@@ -30,7 +28,7 @@ class AppNavBar extends React.Component {
           <Navbar.Brand
             as={Link}
             to="/"
-            className="navbarBrand mr-1 d-flex nowrap"
+            className="navbarBrand d-flex nowrap mr-2"
           >
             <IconContext.Provider
               value={{
@@ -49,7 +47,7 @@ class AppNavBar extends React.Component {
                 <InputGroup.Text>
                   <IconContext.Provider
                     value={{
-                      size: "1rem",
+                      size: "15",
                       className: "SearchIcon",
                       color: "grey",
                       backgroundColor: "#60627c",
@@ -63,61 +61,62 @@ class AppNavBar extends React.Component {
                 value={this.props.query}
                 type="text"
                 placeholder="Search"
-                className="mr-sm-2"
+                className=""
                 onChange={(e) => this.props.searchHandler(e)}
               />
             </InputGroup>
           </Form>
-          <Nav.Link className="px-1">
-            <Col className="navCol">
-              <FaHome className="navIcon" />
-              <span className="d-none d-lg-block navIconText">Home</span>
-            </Col>
-          </Nav.Link>
-          <Nav.Link className="px-1">
-            <Col className="navCol">
-              <BsPeopleFill className="navIcon" />
-              <span className="d-none d-lg-block navIconText">My Network</span>
-            </Col>
-          </Nav.Link>
-          <Nav.Link className="px-1">
-            <Col className="navCol">
-              <GiHandBag className="navIcon" />{" "}
-              <span className="d-none d-lg-block navIconText">Jobs</span>
-            </Col>
-          </Nav.Link>
-          <Nav.Link className="px-1">
-            <Col className="navCol">
-              <RiMessage2Fill className="navIcon" />
-              <span className="d-none d-lg-block navIconText">Messaging</span>
-            </Col>
-          </Nav.Link>
-          <Nav.Link className="px-1">
-            <Col className="navCol">
-              <FaBell className="navIcon" />
-              <span className="d-none d-lg-block navIconText">
-                Notifications
-              </span>
-            </Col>
-          </Nav.Link>
-          <Nav.Link className="px-1">
-            <Col className="navCol">
-              <FaUserCircle className="navIcon" />
-              <span className="d-none d-lg-block navIconText">Me</span>
-            </Col>
-          </Nav.Link>{" "}
-          <Nav.Link className="px-1">
-            <Col className="navCol">
-              <BsGrid3X3Gap className="navIcon" />
-              <span className="d-none d-lg-block navIconText">Work</span>
-            </Col>
-          </Nav.Link>
-          <Nav.Link className="px-1">
-            <Col className="navCol">
-              <BsCollectionPlay className="navIcon" />
-              <span className="d-none d-lg-block navIconText">Learning</span>
-            </Col>
-          </Nav.Link>
+          <div className="ml-auto mr-0 d-flex row justify-content-end">
+            <Nav.Link className="navLinkCol">
+              <Col className="navCol">
+                <FaHome className="navIcon" />
+                <span className="navIconText">Home</span>
+              </Col>
+            </Nav.Link>
+            <Nav.Link className="navLinkCol">
+              <Col className="navCol">
+                <BsPeopleFill className="navIcon" />
+                <span className="navIconText">My Network</span>
+              </Col>
+            </Nav.Link>
+            <Nav.Link className="navLinkCol">
+              <Col className="navCol">
+                <GiHandBag className="navIcon" />{" "}
+                <span className="navIconText">Jobs</span>
+              </Col>
+            </Nav.Link>
+            <Nav.Link className="navLinkCol">
+              <Col className="navCol">
+                <RiMessage2Fill className="navIcon" />
+                <span className="navIconText">Messaging</span>
+              </Col>
+            </Nav.Link>
+            <Nav.Link className="navLinkCol">
+              <Col className="navCol">
+                <FaBell className="navIcon" />
+                <span className="navIconText">Notifications</span>
+              </Col>
+            </Nav.Link>
+            <Nav.Link className="navLinkCol">
+              <Col className="navCol">
+                <FaUserCircle className="navIcon" />
+                <span className="navIconText">Me</span>
+              </Col>
+            </Nav.Link>
+            <div class="vl"></div>
+            <Nav.Link className="navLinkCol">
+              <Col className="navCol">
+                <BsGrid3X3Gap className="navIcon" />
+                <span className="navIconText">Work</span>
+              </Col>
+            </Nav.Link>
+            <Nav.Link className="navLinkCol">
+              <Col className="navCol">
+                <BsCollectionPlay className="navIcon" />
+                <span className="navIconText">Learning</span>
+              </Col>
+            </Nav.Link>
+          </div>
         </div>
       </Navbar>
     );

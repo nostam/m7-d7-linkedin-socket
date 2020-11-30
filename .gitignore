@@ -13,6 +13,7 @@
 
 # misc
 .DS_Store
+.env
 .eslintcache
 .env.local
 .env.development.local
