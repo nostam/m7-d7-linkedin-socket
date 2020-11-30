@@ -1,12 +1,16 @@
+.navbarContent {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  white-space: nowrap;
+  justify-content: center;
+  margin: auto;
+}
 .navbarBrand {
   display: flex;
+  justify-content: start;
   align-items: center;
   white-space: nowrap;
-}
-.LinkedinIcon {
-  min-width: 38px;
-  min-width: 38px;
-  display: block;
 }
 .navSearch {
   margin-right: auto;
@@ -29,4 +33,9 @@
   color: grey;
   overflow: hidden;
   white-space: nowrap;
+}
+@media screen and (min-width: 1200px) {
+  .navbarContent {
+    min-width: 1200px;
+  }
 }
