@@ -7,7 +7,11 @@
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.2.2",
     "bootstrap": "^4.5.3",
+<<<<<<< HEAD
     "dotenv": "^8.2.0",
+=======
+    "envdot": "0.0.3",
+>>>>>>> 5ded6fc858583fbe80db162bb13344c11ffde125
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.0",
     "react-dom": "^17.0.1",
