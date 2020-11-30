@@ -36,7 +36,8 @@
   }
 }
 
-#footer-dropdown-basic-button {
-  width: 250px;
-  text-align: left;
+.footerLang {
+  background-color: #f3f2ef !important;
+  border: 1px solid #111 !important;
+  font-size: 12px !important;
 }
