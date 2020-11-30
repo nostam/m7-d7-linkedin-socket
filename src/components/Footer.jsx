@@ -68,7 +68,7 @@ class footer extends React.Component {
             <Col md={6}>
               <Row>
                 <Col xs={6}>
-                  <Row>
+                  <Row className="mb-3 mt-1">
                     <IconContext.Provider
                       value={{
                         color: "#616160",
@@ -98,7 +98,7 @@ class footer extends React.Component {
                   </Row>
                 </Col>
                 <Col xs={6}>
-                  <span>Select a Language:</span>
+                  <span>Select Language</span>
                   <DropdownButton
                     id="footer-dropdown-basic-button"
                     variant="outline-secondary"
