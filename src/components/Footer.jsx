@@ -1,5 +1,12 @@
 import React from "react";
-import { Container, Row, Col, DropdownButton, Dropdown } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  DropdownButton,
+  Dropdown,
+  Form,
+} from "react-bootstrap";
 import { IconContext } from "react-icons";
 import { FaQuestionCircle } from "react-icons/fa";
 import { BsFillGearFill } from "react-icons/bs";
@@ -99,15 +106,13 @@ class footer extends React.Component {
                 </Col>
                 <Col xs={6}>
                   <span>Select Language</span>
-                  <DropdownButton
-                    id="footer-dropdown-basic-button"
-                    variant="outline-secondary"
-                    title="English"
-                  >
-                    <Dropdown.Item href="#/action-1">English</Dropdown.Item>
-                    <Dropdown.Item href="#/action-2">Klingon</Dropdown.Item>
-                    <Dropdown.Item href="#/action-3">Italian</Dropdown.Item>
-                  </DropdownButton>
+                  <Form.Group>
+                    <Form.Control className="footerLang" size="sm" as="select">
+                      <option>English</option>
+                      <option>Klingon</option>
+                      <option>Italian</option>
+                    </Form.Control>
+                  </Form.Group>
                 </Col>
               </Row>
             </Col>
