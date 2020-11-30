@@ -1,11 +1,21 @@
-import Sidebar from "./components/Sidebar";
-import "./App.css";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
-    <div>
-      <Sidebar />
-    </div>
+    <Router>
+      <AppNavBar />
+      <Route
+        path={"/"}
+        exact
+        render={(props) => <Home title="Homepage" {...props} />}
+      />
+      <Route
+        path={"/in/:name"}
+        exact
+        render={(props) => <Profile {...props} />}
+      />
+    </Router>
   );
 }
 
