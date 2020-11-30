@@ -1,13 +1,24 @@
 .navbarBrand {
   display: flex;
-  overflow: hidden;
+  align-items: center;
   white-space: nowrap;
+}
+.LinkedinIcon {
+  min-width: 38px;
+  min-width: 38px;
+  display: block;
+}
+.navSearch {
+  margin-right: auto;
+  margin-left: 0;
+  padding: 0;
+  max-width: 230px;
 }
 .navCol {
   padding: 0;
   text-align: center;
-  width: 56px;
-  margin: 0;
+  /* width: 56px; */
+  margin: auto 4px;
 }
 .navIcon {
   color: grey;
