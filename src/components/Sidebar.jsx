@@ -1,29 +1,64 @@
-import React from "react";
+import React, { Component } from "react";
+import { Row } from "react-bootstrap";
 import "./Sidebar.css";
-import { usersFetch } from "./usersFetch";
-const Sidebar = () => {
-  componentDidMount = () => {
-    const users = usersFetch;
+
+class Sidebar extends Component {
+  state = {
+    users: [],
   };
-  return (
-    <>
-      <div>
-        <img
-          src="https://static-exp1.licdn.com/scds/common/u/images/promo/ads/li_evergreen_jobs_ad_300x250_v1.jpg"
-          alt="Advertise on LinkedIn"
-          border={0}
-        />
-      </div>
-      <div></div>
-      <div style={{ position: "sticky", top: "0" }}>
-        <img
-          src="https://static-exp1.licdn.com/scds/common/u/images/promo/ads/li_evergreen_jobs_ad_300x250_v1.jpg"
-          alt="Advertise on LinkedIn"
-          border={0}
-        />
-      </div>
-    </>
-  );
-};
+  componentDidMount = () => {
+    let response = fetch("https://striveschool-api.herokuapp.com/api/profile", {
+      method: "GET",
+      headers: new Headers({
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmM0ZWU3N2VkMjY2ODAwMTcwZWEzZTciLCJpYXQiOjE2MDY3NDE2MjQsImV4cCI6MTYwNzk1MTIyNH0.STnsxsacz4ygONashW1XfNqAZH-GP_QeIGilDbrfQ2w",
+        ContentType: "application/json",
+      }),
+    })
+      .then((response) => response.json())
+      .then((info) => {
+        console.log(info);
+
+        this.setState({ users: info }, console.log(this.state.users));
+        console.log(this.state.users);
+      });
+  };
+  render() {
+    return (
+      <>
+        <div id="ad-div">
+          <img
+            id="ad"
+            src="https://static-exp1.licdn.com/scds/common/u/images/promo/ads/li_evergreen_jobs_ad_300x250_v1.jpg"
+            alt="Advertise on LinkedIn"
+            border={0}
+          />
+        </div>
+        <div>
+          {this.state.users &&
+            this.state.users.map((user) => (
+              <div>
+                <Row>
+                  <img id="user" src={user.image}></img>
+                  <div>
+                    <h1 style={{ fontSize: "15px" }}>{user.name}</h1>
+                    <p>{user.title}</p>
+                  </div>
+                </Row>
+              </div>
+            ))}
+        </div>
+        <div id="ad-div">
+          <img
+            id="ad"
+            src="https://static-exp1.licdn.com/scds/common/u/images/promo/ads/li_evergreen_jobs_ad_300x250_v1.jpg"
+            alt="Advertise on LinkedIn"
+            border={0}
+          />
+        </div>
+      </>
+    );
+  }
+}
 
 export default Sidebar;
