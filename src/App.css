@@ -40,6 +40,11 @@
 
 .header {
   height: 75vh !important;
+  background-color: white !important;
+  border-radius: 1vw !important;
+  border-color: lightgrey;
+  border-style: solid;
+  border-width: .1vw;
 }
 
 .coverpic {
@@ -70,6 +75,8 @@ h1 {
   font-size: 20pt !important;
   font-family: 'Roboto', sans-serif;
   font-weight: 400 !important;
+  position: absolute;
+  top: 3vw;
 }
 
 h2,
@@ -78,8 +85,36 @@ h3 {
 }
 
 h2 {
-  top: 38%;
-  font-size: 18pt !important;
+  top: 5.5vw;
+  font-size: 15pt !important;
   font-family: 'Roboto', sans-serif;
   font-weight: 400 !important;
+}
+
+.loc {
+  top: 7.5vw;
+  font-size: 12pt !important
+}
+
+.dropdown {
+  display: flex;
+  position: relative;
+  top: 30%;
+  left: 45%;
+  z-index: 4
+}
+
+.morebtn {
+  position: absolute !important;
+  top: 33% !important;
+  left: 80%;
+}
+
+.editbtn {
+  background-color: white !important;
+  border: none !important;
+  color: black;
+  position: absolute !important;
+  top: 33% !important;
+  left: 90%;
 }
