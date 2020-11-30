@@ -1,0 +1,21 @@
+.navbarBrand {
+  display: flex;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.navCol {
+  padding: 0;
+  text-align: center;
+  width: 56px;
+  margin: 0;
+}
+.navIcon {
+  color: grey;
+  font-size: 24px;
+}
+.navIconText {
+  font-size: 10px;
+  color: grey;
+  overflow: hidden;
+  white-space: nowrap;
+}
