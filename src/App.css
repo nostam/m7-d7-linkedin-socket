@@ -32,7 +32,54 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+.header {
+  height: 75vh !important;
+}
+
+.coverpic {
+  height: 30%;
+  background: url("https://www.veikel.com//images/covers/1561680392_cover%20veikel%20default.jpg");
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  margin: 1vw;
+  margin-top: 0;
+  z-index: 1
+}
+
+.propic {
+  width: 20%;
+  position: absolute;
+  z-index: 2;
+  border-radius: 50%;
+  border-width: .3vw;
+  border-color: white;
+  border-style: solid
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+h1 {
+  font-size: 20pt !important;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400 !important;
+}
+
+h2,
+h3 {
+  position: absolute;
+}
+
+h2 {
+  top: 38%;
+  font-size: 18pt !important;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400 !important;
 }
