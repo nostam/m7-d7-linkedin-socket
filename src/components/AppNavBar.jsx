@@ -60,9 +60,11 @@ class AppNavBar extends React.Component {
                 </InputGroup.Text>
               </InputGroup.Prepend>
               <FormControl
+                value={this.props.query}
                 type="text"
                 placeholder="Search"
                 className="mr-sm-2"
+                onChange={(e) => this.props.searchHandler(e)}
               />
             </InputGroup>
           </Form>
