@@ -1,4 +1,6 @@
 * {
   transition: all 0.25s;
-  background-color: #bbbbbc;
+}
+body {
+  background-color: #f3f2ef;
 }

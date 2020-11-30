@@ -2,13 +2,41 @@
   padding: 1px;
   border-radius: 15px;
   background-color: #ffffff;
+  height: 210px;
+  width: 245px;
+  background-attachment: fixed;
 }
 #ad {
+  margin: 3px;
   height: 200px;
-  margin-top: 150px;
 }
 #user {
   cursor: pointer;
   border-radius: 100px;
   height: 50px;
+}
+#usersp {
+  margin: 0;
+  font-size: 15px;
+}
+#usersp:hover {
+  color: rgb(9, 85, 172);
+  text-decoration-line: underline;
+  cursor: pointer;
+}
+#usersh1 {
+  margin: 0;
+  font-size: 15px;
+}
+#usersh1:hover {
+  color: teal;
+  text-decoration-line: underline;
+  cursor: pointer;
+}
+#usersDiv {
+  width: 200px;
+  background-color: #ffffff;
+}
+#userdiv2 {
+  background-color: transparent;
 }

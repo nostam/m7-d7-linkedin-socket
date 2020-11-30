@@ -34,15 +34,15 @@ class Sidebar extends Component {
             border={0}
           />
         </div>
-        <div>
+        <div id="usersDiv">
           {this.state.users &&
             this.state.users.map((user) => (
-              <div>
-                <Row>
+              <div id="userdiv2">
+                <Row id="userdiv2">
                   <img id="user" src={user.image}></img>
-                  <div>
-                    <h1 style={{ fontSize: "15px" }}>{user.name}</h1>
-                    <p>{user.title}</p>
+                  <div id="userdiv2">
+                    <h1 id="usersh1">{user.name}</h1>
+                    <p id="usersh1">{user.title}</p>
                   </div>
                 </Row>
               </div>
