@@ -1,8 +1,7 @@
 import React from "react";
 import EditPage from "./EditPage";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "../App.css";
 import { Jumbotron, Dropdown, Button, Card, Row, Col } from "react-bootstrap";
+import "../App.css";
 class Header extends React.Component {
   render() {
     return (
