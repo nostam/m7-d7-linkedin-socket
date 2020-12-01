@@ -3,16 +3,19 @@ import Edit from "./EditExp";
 import Add from "./AddExp"
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../App.css";
-import { Button, Card, Col, Row, Modal } from "react-bootstrap";
+import { Button, Card, Col, Row } from "react-bootstrap";
 
 class Experience extends React.Component {
   state = {
     openEdit: false,
     openAdd: false,
+    experience: [],
+    selectedExperience : {}
+
   };
 
   componentDidMount() {
-    fetch("https://striveschool-api.herokuapp.com/api/profile/me/experiences", {
+    fetch("https://striveschool-api.herokuapp.com/api/profile/5fc4ee77ed266800170ea3e7/experiences", {
       method: "GET",
       headers: new Headers({
         Authorization: process.env.REACT_APP_TOKEN,
@@ -22,19 +25,24 @@ class Experience extends React.Component {
       .then((response) => response.json())
       .then((experience) => {
         console.log(experience);
-        let exp = { ...experience };
+        this.setState({experience : experience}, ()=> console.log(this.state.experience))
+
       });
   }
 
   toggleAddModal = () => {
     this.setState({ openAdd: !this.state.openAdd });
   };
-  toggleEditModal = () => {
-    this.setState({ openEdit: !this.state.openEdit });
+  toggleEditModal = (item) => {
+    this.setState({selectedExperience : item}, console.log(this.state.selectedExperience))
+    this.setState({ openEdit: !this.state.openEdit }, console.log(this.state.openEdit));
+
   };
   onOk = () => {
-    this.setState({ clickBook: false, open: false });
+    this.setState({openEdit: false, openAdd: false });
   };
+
+  
 
   render() {
     return (
@@ -47,8 +55,8 @@ class Experience extends React.Component {
                   Experience
                 </div>
               </Col>
-              <Col md={1}>
-                <Button variant="light" onClick={this.toggleAddModal}>
+              <Col>
+              <Button variant="light" onClick={this.toggleAddModal}>
                   <svg
                     width="1em"
                     height="1em"
@@ -63,7 +71,12 @@ class Experience extends React.Component {
                     />
                   </svg>{" "}
                 </Button>
-                <Button variant="light" onClick={this.toggleEditModal}>
+                </Col>
+            </Row>
+            <Edit />
+            {this.state.experience.map((jobs, index) => {return <ul id={jobs._id} key={`exp${index}`}>
+              
+                <Button variant="light" onClick={() => this.toggleEditModal(jobs)}>
                   <svg
                     width="1em"
                     height="1em"
@@ -78,30 +91,34 @@ class Experience extends React.Component {
                     />
                   </svg>
                 </Button>
-              </Col>
-            </Row>
-            <Edit />
-            <ul>
               <li style={{ listStyleType: `none` }}>
-                <div class="roleExp">Istruttore</div>
+                <div class="roleExp">{jobs.role}</div>
               </li>
               <li style={{ listStyleType: `none` }}>
-                <div class="workplaceExp">S.G. Rubattino Part-time</div>
+                <div class="workplaceExp">{jobs.company}</div>
               </li>
               <li style={{ listStyleType: `none` }}>
-                <div class="timeExp">2017 – presente • 3 anni 4 mesi</div>
+            <div class="timeExp">{jobs.startDate}</div>
               </li>
               <li style={{ listStyleType: `none` }}>
-                <div class="cityExp">Genova, Liguria, Italia</div>
+            <div class="timeExp">{jobs.endDate}</div>
               </li>
-            </ul>
+              <li style={{ listStyleType: `none` }}>
+            <div class="cityExp">{jobs.area}</div>
+              </li>
+              <li style={{ listStyleType: `none` }}>
+            <div class="cityExp">{jobs.description}</div>
+              </li>
+            </ul>})}
+            
           </Card.Body>
         </Card>
         <Edit
           open={this.state.openEdit}
           onHide={this.toggleEditModal}
           onClick={this.onOk}
-        />
+          id = {this.state.selected}
+          experience = {this.state.selectedExperience}        />
         <Add 
         open={this.state.openAdd}
         onHide={this.toggleAddModal}

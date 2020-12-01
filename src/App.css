@@ -1,38 +1,87 @@
-.App {
-  text-align: center;
+* {
+  transition: all 0.25s;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  background-color: #f3f2ef;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.header {
+  height: 50vh !important;
+  background-color: white !important;
+  border-radius: 1vw !important;
+  border-color: lightgrey;
+  border-style: solid;
+  border-width: 0.1vw;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.coverpic {
+  height: 30%;
+  width: 100%;
+  background: url("https://www.veikel.com//images/covers/1561680392_cover%20veikel%20default.jpg");
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  margin: 0vw;
+  margin-top: 0;
+  z-index: 1;
+  border-top-left-radius: 1vw;
+  border-top-right-radius: 1vw;
+}
+
+.propic {
+  width: 20%;
+  position: absolute;
+  top: 5.5vh;
+  z-index: 2;
+  border-radius: 50%;
+  border-width: 0.5vw;
+  border-color: white;
+  border-style: solid;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+
+#headerName {
+  font-size: 18pt !important;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400 !important;
+  letter-spacing: 0.3px;
+  position: absolute;
+  top: 1vw;
+}
+
+#headerDescription {
+  position: absolute;
+  top: 2.7vw;
+  font-size: 13pt !important;
+  letter-spacing: 0.3px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400 !important;
+}
+
+#headerLoc {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-size: 12pt !important;
+}
+#headerLink {
+  margin-left: -2vw;
+  display: flex;
+  color: #087bba;
+}
+#headerCI {
+  margin-left: -1vw;
+  display: flex;
+  color: #087bba;
 }
 
-.App-link {
-  color: #61dafb;
+.info {
+  font-size: 15pt !important;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400 !important;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.infobody {
+  font-size: 11pt !important;
 }

@@ -37,6 +37,7 @@ class Add extends React.Component {
     }
   };
 
+
   updateState = (e) => {
     let exp = { ...this.state.experience}; // creating a copy of the current state
     let currentId = e.currentTarget.id; // 'name', 'phone', etc.
