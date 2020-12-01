@@ -26,7 +26,6 @@ class App extends React.Component {
           render={(props) => <Home title="Homepage" {...props} />}
         /> */}
         <Route path={"/"} exact render={(props) => <Profile {...props} />} />
-        <EditPage />
         <Footer />
       </Router>
     );
