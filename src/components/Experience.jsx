@@ -108,7 +108,7 @@ class Experience extends React.Component {
           open={this.state.openAdd}
           onHide={this.toggleAddModal}
           onClick={this.onOk}
-        /> */}
+        />
       </>
     );
   }
