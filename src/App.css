@@ -1,4 +1,5 @@
-* {
+div:not(.editProfileModal),
+div:not(.confirmDialog) {
   transition: all 0.25s;
 }
 

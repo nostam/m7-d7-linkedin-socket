@@ -45,5 +45,5 @@
   max-width: 330px;
   justify-content: center;
   border-radius: 16px;
-  box-shadow: 0 0 0 100vh rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.5);
 }
