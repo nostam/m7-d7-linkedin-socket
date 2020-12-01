@@ -38,20 +38,16 @@ class Sidebar extends Component {
         <div className="usersDiv">
           {this.state.users &&
             this.state.users.slice(0, 6).map((user, index) => (
-              <div className="userdiv2" key={`SuggestUsers${index}`}>
-                <Row>
-                  <img className="user" src={user.image} alt="user"></img>
-                  <div>
-                    <h5
-                      as={Link}
-                      to={`/user/${user._id}`}
-                      id={`SuggestUsers${index}name`}
-                    >
-                      {user.name}
-                    </h5>
-                    <p className="usersh1">{user.title}</p>
-                  </div>
-                </Row>
+              <div className="userdiv2" key={`suggestUsers${index}`}>
+                <Link to={`/user/${user._id}`}>
+                  <Row>
+                    <img className="user" src={user.image} alt="user"></img>
+                    <div>
+                      <h6 id={`suggestUsers${index}name`}>{user.name}</h6>
+                      <p className="usersh1">{user.title}</p>
+                    </div>
+                  </Row>
+                </Link>
               </div>
             ))}
         </div>
