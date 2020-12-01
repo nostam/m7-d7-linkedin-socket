@@ -1,5 +1,5 @@
-* {
-  transition: all 0.25s;
+.App {
+  text-align: center;
 }
 
 .App-logo {
@@ -37,87 +37,82 @@
     transform: rotate(360deg);
   }
 }
-body {
-  background-color: #f3f2ef;
-}
 
 .header {
-  height: 75vh !important;
+  height: 50vh !important;
   background-color: white !important;
   border-radius: 1vw !important;
   border-color: lightgrey;
   border-style: solid;
-  border-width: 0.1vw;
+  border-width: .1vw;
 }
 
 .coverpic {
   height: 30%;
+  width: 100%;
   background: url("https://www.veikel.com//images/covers/1561680392_cover%20veikel%20default.jpg");
   position: absolute;
   left: 0;
   right: 0;
   top: 0;
-  margin: 1vw;
+  margin: 0vw;
   margin-top: 0;
-  z-index: 1;
+  z-index: 1
 }
 
 .propic {
   width: 20%;
   position: absolute;
+  top: 5.5vh;
   z-index: 2;
   border-radius: 50%;
-  border-width: 0.3vw;
+  border-width: .5vw;
   border-color: white;
-  border-style: solid;
+  border-style: solid
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 
-h1 {
-  font-size: 20pt !important;
-  font-family: "Roboto", sans-serif;
+#headerName {
+  font-size: 18pt !important;
+  font-family: 'Roboto', sans-serif;
   font-weight: 400 !important;
+  letter-spacing: .3px;
   position: absolute;
-  top: 3vw;
+  top: 2vw;
 }
 
-h2,
-h3 {
+#headerDescription {
   position: absolute;
-}
-
-h2 {
-  top: 5.5vw;
-  font-size: 15pt !important;
-  font-family: "Roboto", sans-serif;
+  top: 4.7vw;
+  font-size: 13pt !important;
+  letter-spacing: .3px;
+  font-family: 'Roboto', sans-serif;
   font-weight: 400 !important;
 }
 
-.loc {
-  top: 7.5vw;
-  font-size: 12pt !important;
-}
-
-.dropdown {
+#headerLoc {
   display: flex;
-  position: relative;
-  top: 30%;
-  left: 45%;
-  z-index: 4;
+  font-size: 12pt !important
+}
+#headerLink {
+  margin-left: -3vw ;
+  display: flex;
+  color:#087BBA;
+}
+#headerCI {
+  margin-left: -2vw ;
+  display: flex;
+  color:#087BBA;
 }
 
-.morebtn {
-  position: absolute !important;
-  top: 33% !important;
-  left: 80%;
+
+.info {
+  font-size: 15pt !important;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400 !important;
 }
 
-.editbtn {
-  background-color: white !important;
-  border: none !important;
-  color: black;
-  position: absolute !important;
-  top: 33% !important;
-  left: 90%;
+.infobody {
+  font-size: 11pt !important;
 }
