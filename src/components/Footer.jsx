@@ -100,7 +100,12 @@ class footer extends React.Component {
                 <Col xs={6}>
                   <span>Select Language</span>
                   <Form.Group>
-                    <Form.Control       variant="outline-secondary" className="footerLang" size="sm" as="select">
+                    <Form.Control
+                      variant="outline-secondary"
+                      className="footerLang"
+                      size="sm"
+                      as="select"
+                    >
                       <option>English</option>
                       <option>Klingon</option>
                       <option>Italian</option>

@@ -5,18 +5,18 @@ import Header from "./Jumbotron"
 import Sidebar from "./Sidebar"
 
 class Body extends React.Component {
-    state = {
-        profile: {
-            name: "",
-            surname: "",
-            propic: "",
-            title: "",
-            area: "",
-            bio: ""
-        },
-        showAlert: null,
-        success : false,
-    }
+  state = {
+    profile: {
+      name: "",
+      surname: "",
+      propic: "",
+      title: "",
+      area: "",
+      bio: "",
+    },
+    showAlert: null,
+    success: false,
+  };
 
 
     componentDidMount() {
