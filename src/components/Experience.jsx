@@ -3,12 +3,13 @@ import Edit from "./EditExp";
 import Add from "./AddExp"
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../App.css";
-import { Button, Card, Col, Row, Modal } from "react-bootstrap";
+import { Button, Card, Col, Row } from "react-bootstrap";
 
 class Experience extends React.Component {
   state = {
     openEdit: false,
     openAdd: false,
+    experience: []
   };
 
   componentDidMount() {
@@ -22,7 +23,7 @@ class Experience extends React.Component {
       .then((response) => response.json())
       .then((experience) => {
         console.log(experience);
-        let exp = { ...experience };
+        this.setState({experience : experience})
       });
   }
 
@@ -35,7 +36,6 @@ class Experience extends React.Component {
   onOk = () => {
     this.setState({ clickBook: false, open: false });
   };
-
   render() {
     return (
       <>
@@ -47,8 +47,8 @@ class Experience extends React.Component {
                   Experience
                 </div>
               </Col>
-              <Col md={1}>
-                <Button variant="light" onClick={this.toggleAddModal}>
+              <Col>
+              <Button variant="light" onClick={this.toggleAddModal}>
                   <svg
                     width="1em"
                     height="1em"
@@ -63,6 +63,11 @@ class Experience extends React.Component {
                     />
                   </svg>{" "}
                 </Button>
+                </Col>
+            </Row>
+            <Edit />
+            {this.state.experience.map((jobs) => {return <ul id={jobs._id}>
+              
                 <Button variant="light" onClick={this.toggleEditModal}>
                   <svg
                     width="1em"
@@ -78,29 +83,34 @@ class Experience extends React.Component {
                     />
                   </svg>
                 </Button>
-              </Col>
-            </Row>
-            <Edit />
-            <ul>
               <li style={{ listStyleType: `none` }}>
-                <div class="roleExp">Istruttore</div>
+                <div class="roleExp">{jobs.role}</div>
               </li>
               <li style={{ listStyleType: `none` }}>
-                <div class="workplaceExp">S.G. Rubattino Part-time</div>
+                <div class="workplaceExp">{jobs.company}</div>
               </li>
               <li style={{ listStyleType: `none` }}>
-                <div class="timeExp">2017 – presente • 3 anni 4 mesi</div>
+            <div class="timeExp">{jobs.startDate}</div>
               </li>
               <li style={{ listStyleType: `none` }}>
-                <div class="cityExp">Genova, Liguria, Italia</div>
+            <div class="timeExp">{jobs.endDate}</div>
               </li>
-            </ul>
+              <li style={{ listStyleType: `none` }}>
+            <div class="cityExp">{jobs.area}</div>
+              </li>
+              <li style={{ listStyleType: `none` }}>
+            <div class="cityExp">{jobs.description}</div>
+              </li>
+            </ul>})}
+            
           </Card.Body>
         </Card>
         <Edit
           open={this.state.openEdit}
           onHide={this.toggleEditModal}
           onClick={this.onOk}
+          id = {this.state.experience._id}
+         
         />
         <Add 
         open={this.state.openAdd}

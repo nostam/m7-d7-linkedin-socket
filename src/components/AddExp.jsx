@@ -37,6 +37,10 @@ class Add extends React.Component {
     }
   };
 
+  passToProps = () => {
+    this.props.name = this.state.experience.name
+  }
+
   updateState = (e) => {
     let exp = { ...this.state.experience}; // creating a copy of the current state
     let currentId = e.currentTarget.id; // 'name', 'phone', etc.
