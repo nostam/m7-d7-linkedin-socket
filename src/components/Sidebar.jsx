@@ -7,7 +7,7 @@ class Sidebar extends Component {
     users: [],
   };
   componentDidMount = () => {
-    let response = fetch("https://striveschool-api.herokuapp.com/api/profile", {
+    fetch("https://striveschool-api.herokuapp.com/api/profile", {
       method: "GET",
       headers: new Headers({
         Authorization: process.env.REACT_APP_TOKEN,
