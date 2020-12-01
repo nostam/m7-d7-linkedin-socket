@@ -4,7 +4,6 @@ import Home from "./components/Home";
 import AppNavBar from "./components/AppNavBar";
 import Footer from "./components/Footer";
 import Profile from "./components/ProfileBody";
-import EditPage from "./components/EditPage";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 class App extends React.Component {
