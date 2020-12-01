@@ -1,6 +1,7 @@
 import React from "react";
 import { Col, Container, Row, Spinner, Alert } from "react-bootstrap";
 import Bio from "./BioCard";
+import Experience from "./Experience";
 import Header from "./Jumbotron";
 import Sidebar from "./Sidebar";
 
@@ -64,6 +65,7 @@ class Body extends React.Component {
                 profile={this.state.profile}
               />
               <Bio bio={this.state.profile.bio} />
+              <Experience/>
             </Col>
             <Col>
               <Sidebar />
