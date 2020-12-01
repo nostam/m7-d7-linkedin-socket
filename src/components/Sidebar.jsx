@@ -10,8 +10,7 @@ class Sidebar extends Component {
     let response = fetch("https://striveschool-api.herokuapp.com/api/profile", {
       method: "GET",
       headers: new Headers({
-        Authorization:
-        process.env.REACT_APP_TOKEN,
+        Authorization: process.env.REACT_APP_TOKEN,
         ContentType: "application/json",
       }),
     })
@@ -39,7 +38,7 @@ class Sidebar extends Component {
             this.state.users.slice(0, 6).map((user) => (
               <div id="userdiv2">
                 <Row id="userdiv2">
-                  <img id="user" src={user.image}></img>
+                  <img id="user" src={user.image} alt="user"></img>
                   <div id="userdiv2">
                     <h1 id="usersh1">{user.name}</h1>
                     <p id="usersh1">{user.title}</p>

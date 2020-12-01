@@ -7,7 +7,7 @@ import {
   InputGroup,
   Col,
 } from "react-bootstrap";
-import { withRouter, Link, NavLink } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import { IconContext } from "react-icons";
 import {
   FaLinkedin,

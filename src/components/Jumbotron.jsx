@@ -49,7 +49,7 @@ class Header extends React.Component {
           </Col>
         </Row>
         {/*propic and headers*/}
-        <img src={this.props.src} className="propic" />
+        <img src={this.props.src} className="propic" alt="profile" />
         <div style={{ position: "absolute", top: "40%", width: "100%" }}>
           <div id="headerName">{this.props.name}</div>
           <div id="headerDescription">{this.props.desc}</div>
