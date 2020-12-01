@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Container, Row, Spinner } from "react-bootstrap";
+import { Col, Container, Row, Spinner, Alert } from "react-bootstrap";
 import Bio from "./BioCard";
 import Header from "./Jumbotron";
 import Sidebar from "./Sidebar";
@@ -8,7 +8,9 @@ class Body extends React.Component {
   state = {
     profile: {},
     showAlert: null,
-    success: false,
+    err: false,
+    errType: null,
+    errMsg: "",
     loading: true,
   };
 
@@ -32,17 +34,24 @@ class Body extends React.Component {
       })
       .catch((error) => {
         console.log(error);
+        this.setState({
+          loading: false,
+          err: true,
+          errType: "dander",
+          errMsg: error.messasge,
+        });
       });
   }
   render() {
     return (
       <Container>
-        {this.state.loading ? (
+        {this.state.err && <Alert variant="danger">{this.state.errMsg}</Alert>}
+        {this.state.loading && this.state.err !== true ? (
           <Row className="d-flex justify-content-center my-5">
             <h3>Loading profile...</h3>
-            <Spinner animation="border" variant="secondary"></Spinner>
+            <Spinner animation="border" variant={this.state.errType}></Spinner>
           </Row>
-        ) : (
+        ) : Object.keys(this.state.profile).length !== 0 ? (
           <Row>
             <Col xs={12} md={8}>
               <Header
@@ -59,6 +68,12 @@ class Body extends React.Component {
               <Sidebar />
             </Col>
           </Row>
+        ) : (
+          this.setState({
+            err: true,
+            errType: "warning",
+            errMsg: "We have encounter a problem, the profile is empty",
+          })
         )}
       </Container>
     );
