@@ -61,6 +61,7 @@ class Body extends React.Component {
                 desc={this.state.profile.title}
                 src={this.state.profile.image}
                 loc={this.state.profile.area}
+                profile={this.state.profile}
               />
               <Bio bio={this.state.profile.bio} />
             </Col>
