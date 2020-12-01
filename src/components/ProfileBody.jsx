@@ -14,18 +14,14 @@ class Body extends React.Component {
     errMsg: "",
     loading: true,
   };
-  searchProfile = () => {
-    fetch(
-      "https://striveschool-api.herokuapp.com/api/profile/" +
-        this.props.match.params.id,
-      {
-        method: "GET",
-        headers: new Headers({
-          Authorization: process.env.REACT_APP_TOKEN,
-          ContentType: "application/json",
-        }),
-      }
-    )
+  searchProfile = (id) => {
+    fetch("https://striveschool-api.herokuapp.com/api/profile/" + id, {
+      method: "GET",
+      headers: new Headers({
+        Authorization: process.env.REACT_APP_TOKEN,
+        ContentType: "application/json",
+      }),
+    })
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -47,11 +43,12 @@ class Body extends React.Component {
       });
   };
   componentDidMount = async () => {
-    this.props.match.params.id && this.searchProfile();
+    this.props.match.params.id &&
+      this.searchProfile(this.props.match.params.id);
   };
   componentDidUpdate = (prevProps) => {
     if (prevProps.match.params.id !== this.props.match.params.id) {
-      this.searchProfile();
+      this.searchProfile(this.props.match.params.id);
     }
   };
   render() {
@@ -76,6 +73,7 @@ class Body extends React.Component {
                 profile={this.state.profile}
               />
               <Bio bio={this.state.profile.bio} />
+              <Experience props={this.props} />
             </Col>
             <Col>
               <Sidebar />
