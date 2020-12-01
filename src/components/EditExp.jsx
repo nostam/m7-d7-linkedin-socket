@@ -41,12 +41,14 @@ class Edit extends React.Component {
   submitData = async (str) => {
     const url =
       str === "POST"
-        ? `${this.url}${this.props.userId}/experiences/`
+        ? `${this.url}${this.props.userId}/experiences`
         : `${this.url}${this.props.userId}/experiences/${this.props.expId}`;
+
     try {
+      const body = JSON.stringify(this.state.experience);
       const response = await fetch(url, {
         method: str,
-        body: JSON.stringify(this.state.experience),
+        body: body,
         headers: this.headers,
       });
       console.log("submit feedback", response);
@@ -60,7 +62,6 @@ class Edit extends React.Component {
     }
   };
   actionBtn = (str) => {
-    console.log(JSON.stringify(this.state.experience));
     str === "DELETE"
       ? this.submitData("DELETE")
       : this.props.method === "PUT"
@@ -158,7 +159,7 @@ class Edit extends React.Component {
             <Button
               className="rounded-pill py-1 mr-auto"
               variant="danger"
-              onClick={() => this.props.actionBtn("DELETE")}
+              onClick={() => this.actionBtn("DELETE")}
             >
               DELETE
             </Button>
