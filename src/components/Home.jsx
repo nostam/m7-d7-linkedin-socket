@@ -3,7 +3,6 @@ import Body from "./ProfileBody";
 
 export default class Home extends Component {
   render() {
-    return (
-    <Body/>)
+    return <Body />;
   }
 }
