@@ -1,5 +1,5 @@
 import React from "react";
-import EditPage from "./EditPage"
+import EditPage from "./EditPage";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../App.css";
 import { Jumbotron, Dropdown, Button, Card, Row, Col } from "react-bootstrap";
@@ -45,7 +45,7 @@ class Header extends React.Component {
             </Button>
           </Col>
           <Col md={2}>
-            <EditPage/>
+            <EditPage />
           </Col>
         </Row>
         {/*propic and headers*/}
