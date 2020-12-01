@@ -19,11 +19,11 @@ class App extends React.Component {
           query={this.state.query}
           searchHandler={this.searchHandler}
         />
-        <Route
+        {/* <Route
           path={"/home"}
           exact
           render={(props) => <Home title="Homepage" {...props} />}
-        />
+        /> */}
         <Route path={"/"} exact render={(props) => <Profile {...props} />} />
 
         <Footer />
