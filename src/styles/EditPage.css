@@ -21,3 +21,20 @@
 .JumbBiPencilDiv:active .JumbBiPencil {
   color: black;
 }
+
+.editProfileModal .modal-dialog {
+  max-width: 700px;
+}
+.editProfileModal .form-label {
+  color: grey;
+}
+.editProfileModal .form-control-sm,
+.editProfileModal .form-control {
+  color: black;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+.editProfileModal .form-control-sm:focus,
+.editProfileModal .form-control:focus {
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
+}

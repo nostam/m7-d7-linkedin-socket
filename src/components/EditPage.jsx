@@ -66,10 +66,7 @@ class EditPage extends React.Component {
     return (
       <>
         <div
-          onClick={() => {
-            this.setState({ showModal: true });
-            //this.props.handleAlert(undefined, false);
-          }}
+          onClick={() => this.setState({ showModal: true })}
           className="JumbBiPencilDiv"
         >
           <IconContext.Provider
@@ -82,6 +79,7 @@ class EditPage extends React.Component {
           </IconContext.Provider>
         </div>
         <Modal
+          className="editProfileModal"
           show={this.state.showModal}
           onHide={() => this.setState({ showModal: false })}
         >
@@ -103,6 +101,7 @@ class EditPage extends React.Component {
                       type="text"
                       value={this.state.profile.name}
                       id="name"
+                      size="sm"
                       onChange={(e) => this.onChangeHandler(e)}
                     />
                   </Form.Group>
@@ -114,6 +113,7 @@ class EditPage extends React.Component {
                       type="text"
                       value={this.state.profile.surname}
                       id="surname"
+                      size="sm"
                       onChange={(e) => this.onChangeHandler(e)}
                     />
                   </Form.Group>
@@ -127,6 +127,7 @@ class EditPage extends React.Component {
                   rows={2}
                   value={this.state.profile.bio}
                   id="bio"
+                  size="sm"
                   onChange={(e) => this.onChangeHandler(e)}
                 />
               </Form.Group>
@@ -136,6 +137,7 @@ class EditPage extends React.Component {
                   type="text"
                   value={this.state.profile.title}
                   id="title"
+                  size="sm"
                   onChange={(e) => this.onChangeHandler(e)}
                 />
               </Form.Group>
@@ -146,14 +148,18 @@ class EditPage extends React.Component {
                   type="text"
                   value={this.state.profile.area}
                   id="area"
+                  size="sm"
                   onChange={(e) => this.onChangeHandler(e)}
                 />
               </Form.Group>
             </Form>
             <Modal.Footer>
-              <Button variant="secondary">Close</Button>
-              <Button variant="primary" onClick={() => this.editPage()}>
-                Submit
+              <Button
+                className="rounded-pill py-1"
+                variant="primary"
+                onClick={() => this.editPage()}
+              >
+                Save
               </Button>
             </Modal.Footer>
           </Modal.Body>
