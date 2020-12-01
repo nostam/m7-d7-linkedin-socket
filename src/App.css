@@ -1,11 +1,13 @@
 * {
   transition: all 0.25s;
 }
+
 body {
   background-color: #f3f2ef;
 }
+
 .header {
-  height: 75vh !important;
+  height: 50vh !important;
   background-color: white !important;
   border-radius: 1vw !important;
   border-color: lightgrey;
@@ -15,72 +17,71 @@ body {
 
 .coverpic {
   height: 30%;
+  width: 100%;
   background: url("https://www.veikel.com//images/covers/1561680392_cover%20veikel%20default.jpg");
   position: absolute;
   left: 0;
   right: 0;
   top: 0;
-  margin: 1vw;
+  margin: 0vw;
   margin-top: 0;
   z-index: 1;
+  border-top-left-radius: 1vw;
+  border-top-right-radius: 1vw;
 }
 
 .propic {
   width: 20%;
   position: absolute;
+  top: 5.5vh;
   z-index: 2;
   border-radius: 50%;
-  border-width: 0.3vw;
+  border-width: 0.5vw;
   border-color: white;
   border-style: solid;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
 
-#h1 {
-  font-size: 20pt !important;
+#headerName {
+  font-size: 18pt !important;
   font-family: "Roboto", sans-serif;
   font-weight: 400 !important;
+  letter-spacing: 0.3px;
   position: absolute;
-  top: 3vw;
+  top: 1vw;
 }
 
-h2,
-h3 {
+#headerDescription {
   position: absolute;
+  top: 2.7vw;
+  font-size: 13pt !important;
+  letter-spacing: 0.3px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400 !important;
 }
 
-h2 {
-  top: 5.5vw;
+#headerLoc {
+  display: flex;
+  font-size: 12pt !important;
+}
+#headerLink {
+  margin-left: -2vw;
+  display: flex;
+  color: #087bba;
+}
+#headerCI {
+  margin-left: -1vw;
+  display: flex;
+  color: #087bba;
+}
+
+.info {
   font-size: 15pt !important;
   font-family: "Roboto", sans-serif;
   font-weight: 400 !important;
 }
 
-.loc {
-  top: 7.5vw;
-  font-size: 12pt !important;
-}
-
-.dropdown {
-  display: flex;
-  position: relative;
-  top: 30%;
-  left: 45%;
-  z-index: 4;
-}
-
-.morebtn {
-  position: absolute !important;
-  top: 33% !important;
-  left: 80%;
-}
-
-.editbtn {
-  background-color: white !important;
-  border: none !important;
-  color: black;
-  position: absolute !important;
-  top: 33% !important;
-  left: 90%;
+.infobody {
+  font-size: 11pt !important;
 }
