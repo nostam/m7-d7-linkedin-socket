@@ -1,16 +1,16 @@
 import React from "react";
 import Edit from "./EditExp";
-import Add from "./AddExp";
 import { Button, Card, Col, Row } from "react-bootstrap";
 import { BiPencil } from "react-icons/bi";
 import { BsPlus } from "react-icons/bs";
 import "../styles/Experience.css";
 class Experience extends React.Component {
   state = {
-    openEdit: false,
-    openAdd: false,
+    showModal: false,
     experience: [],
-    selectedExperience: {},
+    selectedId: null,
+    method: null,
+    exp: null,
   };
   searchExp = async (_id) => {
     await fetch(
@@ -38,22 +38,15 @@ class Experience extends React.Component {
       this.searchExp(this.props.profile._id);
     }
   };
-
-  toggleAddModal = () => {
-    this.setState({ openAdd: !this.state.openAdd });
-  };
-  toggleEditModal = (item) => {
-    this.setState(
-      { selectedExperience: item },
-      console.log(this.state.selectedExperience)
-    );
-    this.setState(
-      { openEdit: !this.state.openEdit },
-      console.log(this.state.openEdit)
-    );
-  };
-  onOk = () => {
-    this.setState({ openEdit: false, openAdd: false });
+  toggleModal = (job) => {
+    job !== undefined
+      ? this.setState({
+          selectedId: job._id,
+          exp: job,
+          showModal: !this.state.showModal,
+          method: "PUT",
+        })
+      : this.setState({ showModal: !this.state.showModal, method: "POST" });
   };
 
   render() {
@@ -68,56 +61,49 @@ class Experience extends React.Component {
                 </div>
               </Col>
               <Col>
-                <Button variant="light" onClick={this.toggleAddModal}>
+                <Button variant="light" onClick={() => this.toggleModal()}>
                   <BsPlus />
                 </Button>
               </Col>
             </Row>
             {/* <Edit /> */}
-            {this.state.experience.map((jobs, index) => {
+            {this.state.experience.map((job, index) => {
               return (
-                <ul id={jobs._id} key={`exp${index}`}>
-                  <Button
-                    variant="light"
-                    onClick={() => this.toggleEditModal(jobs)}
-                  >
+                <ul id={job._id} key={`exp${index}`}>
+                  <Button variant="light" onClick={() => this.toggleModal(job)}>
                     <BiPencil />
                   </Button>
                   <li className="expEntries">
-                    <div class="roleExp">{jobs.role}</div>
+                    <div class="roleExp">{job.role}</div>
                   </li>
                   <li className="expEntries">
-                    <div class="workplaceExp">{jobs.company}</div>
+                    <div class="workplaceExp">{job.company}</div>
                   </li>
                   <li className="expEntries">
-                    <div class="timeExp">{jobs.startDate}</div>
+                    <div class="timeExp">{job.startDate}</div>
                   </li>
                   <li className="expEntries">
-                    <div class="timeExp">{jobs.endDate}</div>
+                    <div class="timeExp">{job.endDate}</div>
                   </li>
                   <li className="expEntries">
-                    <div class="cityExp">{jobs.area}</div>
+                    <div class="cityExp">{job.area}</div>
                   </li>
                   <li className="expEntries">
-                    <div class="cityExp">{jobs.description}</div>
+                    <div class="cityExp">{job.description}</div>
                   </li>
                 </ul>
               );
             })}
           </Card.Body>
         </Card>
-        {/* <Edit
-          open={this.state.openEdit}
-          onHide={this.toggleEditModal}
-          onClick={this.onOk}
-          id={this.state.selected}
-          experience={this.state.selectedExperience}
-        /> */}
-        {/* <Add
-          open={this.state.openAdd}
-          onHide={this.toggleAddModal}
-          onClick={this.onOk}
-        /> */}
+        <Edit
+          show={this.state.showModal}
+          userId={this.props.profile._id}
+          expId={this.state.selectedId}
+          method={this.state.method}
+          toggle={() => this.toggleModal()}
+          exp={this.state.exp}
+        />
       </>
     );
   }
