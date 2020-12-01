@@ -1,6 +1,7 @@
 import React from "react"
 import { Col, Container, Jumbotron, Row } from "react-bootstrap"
 import Bio from "./BioCard"
+import EditPage from "./EditPage"
 import Header from "./Jumbotron"
 import Sidebar from "./Sidebar"
 
@@ -13,7 +14,9 @@ class Body extends React.Component {
             title: "",
             area: "",
             bio: ""
-        }
+        },
+        showAlert: null,
+        success : false,
     }
 
 
@@ -32,11 +35,21 @@ class Body extends React.Component {
                 this.setState({ profile: profile }, console.log(this.state))
             })
     }
+    handleAlert = (response, show) => {
+        this.setState({ showAlert: show });
+    
+        if (response) {
+          this.setState({ success: true });
+        } else {
+          this.setState({ success: false });
+        }
+      };
     render() {
 
 
 
         return (
+            <div>
             <Container >
                 <Row>
                     <Col xs={12} md={8}>
@@ -49,6 +62,12 @@ class Body extends React.Component {
                     <Col> <Sidebar/> </Col>
                 </Row>
             </Container>
+                <EditPage
+                handleAlert={this.handleAlert}
+                refetch={this.fetchData}
+                method={"POST"}
+              />
+            </div>
         )
     }
 } export default Body
