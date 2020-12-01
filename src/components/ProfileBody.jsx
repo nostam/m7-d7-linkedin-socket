@@ -2,6 +2,7 @@ import React from "react"
 import { Col, Container, Jumbotron, Row } from "react-bootstrap"
 import Bio from "./BioCard"
 import Header from "./Jumbotron"
+import Sidebar from "./Sidebar"
 
 class Body extends React.Component {
     state = {
@@ -45,7 +46,7 @@ class Body extends React.Component {
                             loc={this.state.profile.area} />
                         <Bio bio={this.state.profile.bio} />
                     </Col>
-                    <Col>{/*here will be the sidebar*/}</Col>
+                    <Col> <Sidebar/> </Col>
                 </Row>
             </Container>
         )
