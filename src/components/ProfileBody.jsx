@@ -28,7 +28,6 @@ class Body extends React.Component {
         }
       })
       .then((info) => {
-        console.log("fetched profile", info);
         let profile = { ...info };
         this.setState({ profile: profile, loading: false });
       })
@@ -73,7 +72,7 @@ class Body extends React.Component {
                 profile={this.state.profile}
               />
               <Bio bio={this.state.profile.bio} />
-              <Experience props={this.props} />
+              <Experience profile={this.state.profile} />
             </Col>
             <Col>
               <Sidebar />

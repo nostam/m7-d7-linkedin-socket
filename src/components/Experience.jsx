@@ -3,7 +3,8 @@ import Edit from "./EditExp";
 import Add from "./AddExp";
 import { Button, Card, Col, Row } from "react-bootstrap";
 import { BiPencil } from "react-icons/bi";
-import "bootstrap/dist/css/bootstrap.min.css";
+import { BsPlus } from "react-icons/bs";
+import "../styles/Experience.css";
 class Experience extends React.Component {
   state = {
     openEdit: false,
@@ -11,11 +12,9 @@ class Experience extends React.Component {
     experience: [],
     selectedExperience: {},
   };
-  searchExp = () => {
-    fetch(
-      "https://striveschool-api.herokuapp.com/api/profile/" +
-        this.props.match.params.id +
-        "/experiences",
+  searchExp = async (_id) => {
+    await fetch(
+      `https://striveschool-api.herokuapp.com/api/profile/${_id}/experiences`,
       {
         method: "GET",
         headers: new Headers({
@@ -31,10 +30,14 @@ class Experience extends React.Component {
         );
       });
   };
-  componentDidMount() {
-    console.log(this.state.experience, this.props);
-    // this.searchExp();
-  }
+  componentDidMount = () => {
+    this.searchExp(this.props.profile._id);
+  };
+  componentDidUpdate = (prevProps) => {
+    if (prevProps.profile._id !== this.props.profile._id) {
+      this.searchExp(this.props.profile._id);
+    }
+  };
 
   toggleAddModal = () => {
     this.setState({ openAdd: !this.state.openAdd });
@@ -66,23 +69,11 @@ class Experience extends React.Component {
               </Col>
               <Col>
                 <Button variant="light" onClick={this.toggleAddModal}>
-                  <svg
-                    width="1em"
-                    height="1em"
-                    viewBox="0 0 16 16"
-                    class="bi bi-plus"
-                    fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
-                    />
-                  </svg>{" "}
+                  <BsPlus />
                 </Button>
               </Col>
             </Row>
-            <Edit />
+            {/* <Edit /> */}
             {this.state.experience.map((jobs, index) => {
               return (
                 <ul id={jobs._id} key={`exp${index}`}>
@@ -92,22 +83,22 @@ class Experience extends React.Component {
                   >
                     <BiPencil />
                   </Button>
-                  <li style={{ listStyleType: `none` }}>
+                  <li className="expEntries">
                     <div class="roleExp">{jobs.role}</div>
                   </li>
-                  <li style={{ listStyleType: `none` }}>
+                  <li className="expEntries">
                     <div class="workplaceExp">{jobs.company}</div>
                   </li>
-                  <li style={{ listStyleType: `none` }}>
+                  <li className="expEntries">
                     <div class="timeExp">{jobs.startDate}</div>
                   </li>
-                  <li style={{ listStyleType: `none` }}>
+                  <li className="expEntries">
                     <div class="timeExp">{jobs.endDate}</div>
                   </li>
-                  <li style={{ listStyleType: `none` }}>
+                  <li className="expEntries">
                     <div class="cityExp">{jobs.area}</div>
                   </li>
-                  <li style={{ listStyleType: `none` }}>
+                  <li className="expEntries">
                     <div class="cityExp">{jobs.description}</div>
                   </li>
                 </ul>
