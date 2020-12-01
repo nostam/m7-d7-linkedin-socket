@@ -23,7 +23,7 @@ import "../styles/AppNavBar.css";
 class AppNavBar extends React.Component {
   render() {
     return (
-      <Navbar bg="white" variant="light" className="py-0">
+      <Navbar bg="white" variant="light" className="py-0 fixed-top">
         <div className="navbarContent">
           <Navbar.Brand
             as={Link}
