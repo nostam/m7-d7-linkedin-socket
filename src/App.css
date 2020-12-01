@@ -39,7 +39,7 @@
 }
 
 .header {
-  height: 75vh !important;
+  height: 50vh !important;
   background-color: white !important;
   border-radius: 1vw !important;
   border-color: lightgrey;
@@ -63,62 +63,49 @@
 .propic {
   width: 20%;
   position: absolute;
+  top: 5.5vh;
   z-index: 2;
   border-radius: 50%;
-  border-width: .3vw;
+  border-width: .5vw;
   border-color: white;
   border-style: solid
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 
-h1 {
-  font-size: 20pt !important;
+#headerName {
+  font-size: 18pt !important;
   font-family: 'Roboto', sans-serif;
   font-weight: 400 !important;
+  letter-spacing: .3px;
   position: absolute;
-  top: 3vw;
+  top: 2vw;
 }
 
-h2,
-h3 {
+#headerDescription {
   position: absolute;
-}
-
-h2 {
-  top: 5.5vw;
-  font-size: 15pt !important;
+  top: 4.7vw;
+  font-size: 13pt !important;
+  letter-spacing: .3px;
   font-family: 'Roboto', sans-serif;
   font-weight: 400 !important;
 }
 
-.loc {
-  top: 7.5vw;
+#headerLoc {
+  display: flex;
   font-size: 12pt !important
 }
-
-.dropdown {
+#headerLink {
+  margin-left: -3vw ;
   display: flex;
-  position: absolute;
-  top: 30%;
-  left: 45%;
-  z-index: 4
+  color:#087BBA;
+}
+#headerCI {
+  margin-left: -2vw ;
+  display: flex;
+  color:#087BBA;
 }
 
-.morebtn {
-  position: absolute !important;
-  top: 35% !important;
-  left: 80%;
-}
-
-.editbtn {
-  background-color: white !important;
-  border: none !important;
-  color: black;
-  position: absolute !important;
-  top: 35% !important;
-  left: 93%;
-}
 
 .info {
   font-size: 15pt !important;
