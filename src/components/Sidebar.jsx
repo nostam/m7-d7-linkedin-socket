@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import { Row } from "react-bootstrap";
 import "../styles/Sidebar.css";
+import {Link} from "react-router-dom"
 
 class Sidebar extends Component {
   state = {
     users: [],
+    selected: "me"
   };
   componentDidMount = () => {
     fetch("https://striveschool-api.herokuapp.com/api/profile", {
@@ -40,7 +42,7 @@ class Sidebar extends Component {
                 <Row id="userdiv2">
                   <img id="user" src={user.image} alt="user"></img>
                   <div id="userdiv2">
-                    <h1 id="usersh1">{user.name}</h1>
+                  <Link to={`/user/${user._id}`}  >  <h1 id="usersh1">{user.name}</h1></Link>
                     <p id="usersh1">{user.title}</p>
                   </div>
                 </Row>

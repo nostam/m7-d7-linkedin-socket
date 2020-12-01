@@ -98,10 +98,10 @@ class AppNavBar extends React.Component {
               </Col>
             </Nav.Link>
             <Nav.Link className="navLinkCol">
-              <Col className="navCol">
-                <FaUserCircle className="navIcon" />
+            <Link to="/user/me">  <Col className="navCol">
+            <FaUserCircle className="navIcon" />
                 <span className="navIconText">Me</span>
-              </Col>
+              </Col></Link>   
             </Nav.Link>
             <div class="vl"></div>
             <Nav.Link className="navLinkCol">

@@ -16,7 +16,7 @@ class Body extends React.Component {
   };
 
   componentDidMount() {
-    fetch("https://striveschool-api.herokuapp.com/api/profile/me", {
+    fetch("https://striveschool-api.herokuapp.com/api/profile/" + this.props.match.params.id, {
       method: "GET",
       headers: new Headers({
         Authorization: process.env.REACT_APP_TOKEN,
@@ -41,7 +41,7 @@ class Body extends React.Component {
           errType: "dander",
           errMsg: error.messasge,
         });
-      });
+      })
   }
   render() {
     return (
@@ -65,7 +65,7 @@ class Body extends React.Component {
                 profile={this.state.profile}
               />
               <Bio bio={this.state.profile.bio} />
-              <Experience/>
+              
             </Col>
             <Col>
               <Sidebar />

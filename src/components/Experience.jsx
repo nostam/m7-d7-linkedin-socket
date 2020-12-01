@@ -15,7 +15,7 @@ class Experience extends React.Component {
   };
 
   componentDidMount() {
-    fetch("https://striveschool-api.herokuapp.com/api/profile/5fc4ee77ed266800170ea3e7/experiences", {
+   fetch("https://striveschool-api.herokuapp.com/api/profile/" + this.props.match.params.id + "/experiences", {
       method: "GET",
       headers: new Headers({
         Authorization: process.env.REACT_APP_TOKEN,
@@ -41,8 +41,6 @@ class Experience extends React.Component {
   onOk = () => {
     this.setState({openEdit: false, openAdd: false });
   };
-
-  
 
   render() {
     return (
