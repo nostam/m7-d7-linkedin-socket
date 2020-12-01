@@ -18,7 +18,7 @@ class Sidebar extends Component {
     })
       .then((response) => response.json())
       .then((info) => {
-        this.setState({ users: info }, console.log(this.state.users));
+        this.setState({ users: info });
       });
   };
   render() {
