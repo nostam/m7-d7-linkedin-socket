@@ -104,11 +104,6 @@ class Experience extends React.Component {
           toggle={() => this.toggleModal()}
           exp={this.state.exp}
         />
-        {/* <Add
-          open={this.state.openAdd}
-          onHide={this.toggleAddModal}
-          onClick={this.onOk}
-        />
       </>
     );
   }

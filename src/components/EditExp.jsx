@@ -27,6 +27,8 @@ class Edit extends React.Component {
         if (response.ok) {
           this.setState({ experience: data });
         }
+      } else {
+        throw "expId is invalid";
       }
     } catch (e) {
       console.log(e);
@@ -68,8 +70,8 @@ class Edit extends React.Component {
       : this.submitData("DELETE");
   };
   componentDidMount = () => {
-    this.setState({ experience: this.props.exp });
-    // this.fetchExp();
+    // this.setState({ experience: this.props.exp });
+    this.fetchExp();
   };
   render() {
     return (
@@ -80,117 +82,121 @@ class Edit extends React.Component {
         centered
         onHide={this.props.toggle}
       >
-        <Modal.Header closeButton>
-          <Modal.Title>
-            {this.props.method === "PUT" ? "Edit" : "Add"} Experience
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form>
-            <Form.Group>
-              <Form.Label>Role * </Form.Label>
-              <Form.Control
-                required
-                id="role"
-                value={this.state.experience.role}
-                type="text"
-                size="sm"
-                placeholder="Role"
-                onChange={(e) => this.onChangeHandler(e)}
-              />
-            </Form.Group>
-            <Form.Group>
-              <Form.Label>Company * </Form.Label>
-              <Form.Control
-                required
-                id="company"
-                value={this.state.experience.company}
-                type="text"
-                size="sm"
-                placeholder="Company"
-                onChange={(e) => this.onChangeHandler(e)}
-              />
-            </Form.Group>
-            <Row>
-              <Col>
+        {this.state.experience && (
+          <>
+            <Modal.Header closeButton>
+              <Modal.Title>
+                {this.props.method === "PUT" ? "Edit" : "Add"} Experience
+              </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <Form>
                 <Form.Group>
-                  <Form.Label>Start date * </Form.Label>
+                  <Form.Label>Role * </Form.Label>
                   <Form.Control
                     required
-                    id="startDate"
-                    value={this.state.experience.startDate}
-                    type="date"
+                    id="role"
+                    value={this.state.experience.role}
+                    type="text"
                     size="sm"
-                    placeholder="Headline"
+                    placeholder="Role"
                     onChange={(e) => this.onChangeHandler(e)}
                   />
                 </Form.Group>
-              </Col>
-              <Col>
                 <Form.Group>
-                  <Form.Label>End date (empty if current) </Form.Label>
+                  <Form.Label>Company * </Form.Label>
                   <Form.Control
-                    value={this.state.experience.endDate}
-                    id="endDate"
-                    type="date"
+                    required
+                    id="company"
+                    value={this.state.experience.company}
+                    type="text"
                     size="sm"
-                    placeholder="Current Position"
+                    placeholder="Company"
                     onChange={(e) => this.onChangeHandler(e)}
                   />
                 </Form.Group>
-              </Col>
-            </Row>
-            <Form.Group>
-              <Form.Label>Description * </Form.Label>
-              <Form.Control
-                required
-                value={this.state.experience.description}
-                id="description"
-                as="textarea"
-                size="sm"
-                placeholder="Description"
-                onChange={(e) => this.onChangeHandler(e)}
-              />
-            </Form.Group>
-            <Form.Group>
-              <Form.Label>Area * </Form.Label>
-              <Form.Control
-                required
-                value={this.state.experience.area}
-                id="area"
-                type="text"
-                size="sm"
-                placeholder="Area"
-                onChange={(e) => this.onChangeHandler(e)}
-              />
-            </Form.Group>
-          </Form>
-        </Modal.Body>
-        <Modal.Footer>
-          {this.props.method === "PUT" && (
-            <Button
-              className="rounded-pill py-1 mr-auto"
-              variant="danger"
-              onClick={() => this.actionBtn("DELETE")}
-            >
-              DELETE
-            </Button>
-          )}
-          <Button
-            className="rounded-pill py-1"
-            variant="secondary"
-            onClick={this.props.toggle}
-          >
-            Close
-          </Button>
-          <Button
-            className="rounded-pill py-1"
-            variant="primary"
-            onClick={() => this.actionBtn()}
-          >
-            {this.props.method === "PUT" ? "Save Changes" : "Submit"}
-          </Button>
-        </Modal.Footer>
+                <Row>
+                  <Col>
+                    <Form.Group>
+                      <Form.Label>Start date * </Form.Label>
+                      <Form.Control
+                        required
+                        id="startDate"
+                        value={this.state.experience.startDate}
+                        type="date"
+                        size="sm"
+                        placeholder="Headline"
+                        onChange={(e) => this.onChangeHandler(e)}
+                      />
+                    </Form.Group>
+                  </Col>
+                  <Col>
+                    <Form.Group>
+                      <Form.Label>End date (empty if current) </Form.Label>
+                      <Form.Control
+                        value={this.state.experience.endDate}
+                        id="endDate"
+                        type="date"
+                        size="sm"
+                        placeholder="Current Position"
+                        onChange={(e) => this.onChangeHandler(e)}
+                      />
+                    </Form.Group>
+                  </Col>
+                </Row>
+                <Form.Group>
+                  <Form.Label>Description * </Form.Label>
+                  <Form.Control
+                    required
+                    value={this.state.experience.description}
+                    id="description"
+                    as="textarea"
+                    size="sm"
+                    placeholder="Description"
+                    onChange={(e) => this.onChangeHandler(e)}
+                  />
+                </Form.Group>
+                <Form.Group>
+                  <Form.Label>Area * </Form.Label>
+                  <Form.Control
+                    required
+                    value={this.state.experience.area}
+                    id="area"
+                    type="text"
+                    size="sm"
+                    placeholder="Area"
+                    onChange={(e) => this.onChangeHandler(e)}
+                  />
+                </Form.Group>
+              </Form>
+            </Modal.Body>
+            <Modal.Footer>
+              {this.props.method === "PUT" && (
+                <Button
+                  className="rounded-pill py-1 mr-auto"
+                  variant="danger"
+                  onClick={() => this.actionBtn("DELETE")}
+                >
+                  DELETE
+                </Button>
+              )}
+              <Button
+                className="rounded-pill py-1"
+                variant="secondary"
+                onClick={this.props.toggle}
+              >
+                Close
+              </Button>
+              <Button
+                className="rounded-pill py-1"
+                variant="primary"
+                onClick={() => this.actionBtn()}
+              >
+                {this.props.method === "PUT" ? "Save Changes" : "Submit"}
+              </Button>
+            </Modal.Footer>
+          </>
+        )}
       </Modal>
     );
   }
