@@ -1,6 +1,7 @@
 import React from "react"
 import { Col, Container, Jumbotron, Row } from "react-bootstrap"
 import Bio from "./BioCard"
+import Experience from "./Experience"
 import Header from "./Jumbotron"
 
 class Body extends React.Component {
@@ -44,6 +45,7 @@ class Body extends React.Component {
                             src={this.state.profile.image}
                             loc={this.state.profile.area} />
                         <Bio bio={this.state.profile.bio} />
+                        <Experience/>
                     </Col>
                     <Col>{/*here will be the sidebar*/}</Col>
                 </Row>
