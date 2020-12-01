@@ -43,7 +43,7 @@ class Header extends React.Component {
                 <div style={{ position: "absolute", top: "40%", width: "100%" }}>
                     <div id="headerName">{this.props.name}</div>
                     <div id="headerDescription">{this.props.desc}</div>
-                    <Row className="d-flex" noGutters style={{position: `relative`, top: `7vw`}}>
+                    <Row className="d-flex" noGutters style={{position: `relative`, top: `4.5vw`}}>
                         <Col md={5}>
                         <div id="headerLoc"> {this.props.loc}</div>
                         </Col>
@@ -57,7 +57,7 @@ class Header extends React.Component {
                     
 
                 </div>
-                <Card style={{ width: "90%", position: "absolute", top: "35vh", left: "5%", borderRadius: "1vw" }}>
+                <Card style={{ width: "90%", position: "absolute", top: "34vh", left: "5%", borderRadius: "1vw" }}>
                     <Card.Header style={{ textDecoration: "underline", fontSize: "11pt" }}><strong>Available for work</strong> <br />
                     Web developer and CEO roles <br />
                         <strong style={{ color: "#087BBA" }}>See details</strong>
