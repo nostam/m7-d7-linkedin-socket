@@ -53,11 +53,8 @@ class EditPage extends React.Component {
       console.log(response);
       if (response.ok) {
         this.setState({ showModal: false });
-        //this.props.handleAlert(true, true);
-        //this.props.refetch();
       } else {
         this.setState({ showModal: false });
-        //this.props.handleAlert(false, true);
       }
     } catch (e) {
       console.log(e);
