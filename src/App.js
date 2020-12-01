@@ -3,7 +3,9 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Home from "./components/Home";
 import AppNavBar from "./components/AppNavBar";
 import Footer from "./components/Footer";
+import Body from "./components/ProfileBody";
 import "bootstrap/dist/css/bootstrap.min.css";
+
 class App extends React.Component {
   state = { searchQuery: "" };
   searchHandler = (e) => {
@@ -18,15 +20,12 @@ class App extends React.Component {
           searchHandler={this.searchHandler}
         />
         <Route
-          path={"/"}
+          path={"/home"}
           exact
           render={(props) => <Home title="Homepage" {...props} />}
         />
-        {/* <Route
-        path={"/in/:name"}
-        exact
-        render={(props) => <Profile {...props} />}
-      /> */}
+        <Route path={"/"} exact render={(props) => <Body {...props} />} />
+
         <Footer />
       </Router>
     );

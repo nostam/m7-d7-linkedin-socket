@@ -36,7 +36,7 @@ class Sidebar extends Component {
         </div>
         <div id="usersDiv">
           {this.state.users &&
-            this.state.users.map((user) => (
+            this.state.users.slice(0, 6).map((user) => (
               <div id="userdiv2">
                 <Row id="userdiv2">
                   <img id="user" src={user.image}></img>
