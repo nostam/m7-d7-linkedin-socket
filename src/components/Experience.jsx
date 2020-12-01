@@ -10,7 +10,7 @@ class Experience extends React.Component {
     openEdit: false,
     openAdd: false,
     experience: [],
-    selected: ""
+    selectedExperience : {}
 
   };
 
@@ -25,7 +25,8 @@ class Experience extends React.Component {
       .then((response) => response.json())
       .then((experience) => {
         console.log(experience);
-        this.setState({experience : experience})
+        this.setState({experience : experience}, ()=> console.log(this.state.experience))
+
       });
   }
 
@@ -33,12 +34,16 @@ class Experience extends React.Component {
     this.setState({ openAdd: !this.state.openAdd });
   };
   toggleEditModal = (item) => {
-    this.setState({ openEdit: !this.state.openEdit });
-    this.state.experience && this.setState({selected : item._id}, () => console.log(this.state.selected))
+    this.setState({selectedExperience : item}, console.log(this.state.selectedExperience))
+    this.setState({ openEdit: !this.state.openEdit }, console.log(this.state.openEdit));
+
   };
   onOk = () => {
     this.setState({openEdit: false, openAdd: false });
   };
+
+  
+
   render() {
     return (
       <>
@@ -69,7 +74,7 @@ class Experience extends React.Component {
                 </Col>
             </Row>
             <Edit />
-            {this.state.experience.map((jobs) => {return <ul id={jobs._id}>
+            {this.state.experience.map((jobs, index) => {return <ul id={jobs._id} key={`exp${index}`}>
               
                 <Button variant="light" onClick={() => this.toggleEditModal(jobs)}>
                   <svg
@@ -113,8 +118,7 @@ class Experience extends React.Component {
           onHide={this.toggleEditModal}
           onClick={this.onOk}
           id = {this.state.selected}
-         
-        />
+          experience = {this.state.selectedExperience}        />
         <Add 
         open={this.state.openAdd}
         onHide={this.toggleAddModal}
