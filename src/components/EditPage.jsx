@@ -65,24 +65,22 @@ class EditPage extends React.Component {
   render() {
     return (
       <>
-        <Button
+        <div
           onClick={() => {
             this.setState({ showModal: true });
             //this.props.handleAlert(undefined, false);
           }}
-          className="rounded-pill"
-          variant="light"
-          style={{ backgroundColor: `white`, borderStyle: `none` }}
+          className="JumbBiPencilDiv"
         >
           <IconContext.Provider
             value={{
               size: "24px",
-              color: "#666",
+              className: "JumbBiPencil",
             }}
           >
             <BiPencil />
           </IconContext.Provider>
-        </Button>
+        </div>
         <Modal
           show={this.state.showModal}
           onHide={() => this.setState({ showModal: false })}
