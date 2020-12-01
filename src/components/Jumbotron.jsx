@@ -44,7 +44,7 @@ class Header extends React.Component {
             </Button>
           </Col>
           <Col md={2}>
-            <EditPage />
+            <EditPage profile={this.props.profile} />
           </Col>
         </Row>
         {/*propic and headers*/}

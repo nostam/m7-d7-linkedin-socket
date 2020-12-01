@@ -63,8 +63,11 @@ class EditPage extends React.Component {
       console.log(e);
     }
   };
-  handleCloseModal = () => {
-    this.setState({ confirmDialog: true });
+  handleCloseModal = async () => {
+    (await JSON.stringify(this.props.profile)) !==
+    JSON.stringify(this.state.profile)
+      ? this.setState({ confirmDialog: true })
+      : this.setState({ showModal: false });
   };
   render() {
     return (
@@ -183,23 +186,27 @@ class EditPage extends React.Component {
           onHide={() => this.setState({ confirmDialog: false })}
         >
           <Modal.Header closeButton>
-            <Modal.Title>Edit Intro</Modal.Title>
+            <Modal.Title>Discard Changes</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             Are you sure you want to discard changes you made?
-            <Modal.Footer>
-              <Button className="rounded-pill py-1" variant="outline-primary">
-                Cancel
-              </Button>
-              <Button
-                className="rounded-pill py-1"
-                variant="primary"
-                onClick={() => this.handleDiscardChanges}
-              >
-                Discard
-              </Button>
-            </Modal.Footer>
           </Modal.Body>
+          <Modal.Footer>
+            <Button
+              className="rounded-pill py-1"
+              variant="outline-primary"
+              onClick={() => this.setState({ confirmDialog: false })}
+            >
+              Cancel
+            </Button>
+            <Button
+              className="rounded-pill py-1"
+              variant="primary"
+              onClick={() => this.handleDiscardChanges}
+            >
+              Discard
+            </Button>
+          </Modal.Footer>
         </Modal>
       </>
     );
