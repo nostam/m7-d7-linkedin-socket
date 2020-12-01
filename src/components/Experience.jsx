@@ -10,6 +10,7 @@ class Experience extends React.Component {
     experience: [],
     selectedId: null,
     method: null,
+    exp: null,
   };
   searchExp = async (_id) => {
     await fetch(
@@ -41,6 +42,7 @@ class Experience extends React.Component {
     job !== undefined
       ? this.setState({
           selectedId: job._id,
+          exp: job,
           showModal: !this.state.showModal,
           method: "PUT",
         })
@@ -100,6 +102,7 @@ class Experience extends React.Component {
           expId={this.state.selectedId}
           method={this.state.method}
           toggle={() => this.toggleModal()}
+          exp={this.state.exp}
         />
         {/* <Add
           open={this.state.openAdd}

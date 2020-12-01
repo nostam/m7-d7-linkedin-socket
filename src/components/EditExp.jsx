@@ -1,6 +1,6 @@
 import React from "react";
 // import { useState } from "react";
-import { Button, Modal, Form } from "react-bootstrap";
+import { Button, Modal, Form, Row, Col } from "react-bootstrap";
 import "../App.css";
 class Edit extends React.Component {
   state = {
@@ -28,7 +28,9 @@ class Edit extends React.Component {
           this.setState({ experience: data });
         }
       }
-    } catch (error) {}
+    } catch (e) {
+      console.log(e);
+    }
   };
   onChangeHandler = (e) => {
     this.setState({
@@ -43,18 +45,17 @@ class Edit extends React.Component {
       str === "POST"
         ? `${this.url}${this.props.userId}/experiences`
         : `${this.url}${this.props.userId}/experiences/${this.props.expId}`;
-
     try {
-      const body = JSON.stringify(this.state.experience);
       const response = await fetch(url, {
         method: str,
-        body: body,
+        body: JSON.stringify(this.state.experience),
         headers: this.headers,
       });
-      console.log("submit feedback", response);
-      if (response.ok) {
-        console.log("submit succeed");
+      if (response.status === 200) {
+        console.log("submit succeed", this.state.experience);
+        this.fetchExp();
       } else {
+        console.log("submit failed");
       }
       this.setState({ showModal: false });
     } catch (e) {
@@ -62,14 +63,13 @@ class Edit extends React.Component {
     }
   };
   actionBtn = (str) => {
-    str === "DELETE"
-      ? this.submitData("DELETE")
-      : this.props.method === "PUT"
-      ? this.submitData("PUT")
-      : this.submitData("POST");
+    str !== "DELETE"
+      ? this.submitData(this.props.method)
+      : this.submitData("DELETE");
   };
   componentDidMount = () => {
-    this.fetchExp();
+    this.setState({ experience: this.props.exp });
+    // this.fetchExp();
   };
   render() {
     return (
@@ -94,6 +94,7 @@ class Edit extends React.Component {
                 id="role"
                 value={this.state.experience.role}
                 type="text"
+                size="sm"
                 placeholder="Role"
                 onChange={(e) => this.onChangeHandler(e)}
               />
@@ -105,31 +106,40 @@ class Edit extends React.Component {
                 id="company"
                 value={this.state.experience.company}
                 type="text"
+                size="sm"
                 placeholder="Company"
                 onChange={(e) => this.onChangeHandler(e)}
               />
             </Form.Group>
-            <Form.Group>
-              <Form.Label>Start date * </Form.Label>
-              <Form.Control
-                required
-                id="startDate"
-                value={this.state.experience.startDate}
-                type="date"
-                placeholder="Headline"
-                onChange={(e) => this.onChangeHandler(e)}
-              />
-            </Form.Group>
-            <Form.Group>
-              <Form.Label>End date (empty if current) </Form.Label>
-              <Form.Control
-                value={this.state.experience.endDate}
-                id="endDate"
-                type="date"
-                placeholder="Current Position"
-                onChange={(e) => this.onChangeHandler(e)}
-              />
-            </Form.Group>
+            <Row>
+              <Col>
+                <Form.Group>
+                  <Form.Label>Start date * </Form.Label>
+                  <Form.Control
+                    required
+                    id="startDate"
+                    value={this.state.experience.startDate}
+                    type="date"
+                    size="sm"
+                    placeholder="Headline"
+                    onChange={(e) => this.onChangeHandler(e)}
+                  />
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group>
+                  <Form.Label>End date (empty if current) </Form.Label>
+                  <Form.Control
+                    value={this.state.experience.endDate}
+                    id="endDate"
+                    type="date"
+                    size="sm"
+                    placeholder="Current Position"
+                    onChange={(e) => this.onChangeHandler(e)}
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
             <Form.Group>
               <Form.Label>Description * </Form.Label>
               <Form.Control
@@ -137,6 +147,7 @@ class Edit extends React.Component {
                 value={this.state.experience.description}
                 id="description"
                 as="textarea"
+                size="sm"
                 placeholder="Description"
                 onChange={(e) => this.onChangeHandler(e)}
               />
@@ -148,6 +159,7 @@ class Edit extends React.Component {
                 value={this.state.experience.area}
                 id="area"
                 type="text"
+                size="sm"
                 placeholder="Area"
                 onChange={(e) => this.onChangeHandler(e)}
               />
