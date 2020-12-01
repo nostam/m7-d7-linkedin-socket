@@ -1,6 +1,7 @@
 import React from "react";
 import { Image, Row, Col, Form, Button, Modal } from "react-bootstrap";
 import { BiPencil } from "react-icons/bi";
+import { MdClose } from "react-icons/md";
 import { IconContext } from "react-icons";
 import "../styles/EditPage.css";
 
@@ -8,6 +9,7 @@ class EditPage extends React.Component {
   state = {
     profile: {},
     showModal: false,
+    confirmDialog: false,
   };
 
   async componentDidMount() {
@@ -61,7 +63,9 @@ class EditPage extends React.Component {
       console.log(e);
     }
   };
-
+  handleCloseModal = () => {
+    this.setState({ confirmDialog: true });
+  };
   render() {
     return (
       <>
@@ -83,8 +87,17 @@ class EditPage extends React.Component {
           show={this.state.showModal}
           onHide={() => this.setState({ showModal: false })}
         >
-          <Modal.Header closeButton>
+          <Modal.Header>
             <Modal.Title>Edit Intro</Modal.Title>
+            <IconContext.Provider
+              value={{
+                size: "28px",
+                color: "grey",
+                className: "closeModal",
+              }}
+            >
+              <MdClose onClick={() => this.handleCloseModal()} />
+            </IconContext.Provider>
           </Modal.Header>
           <Modal.Body>
             <Image
@@ -160,6 +173,30 @@ class EditPage extends React.Component {
                 onClick={() => this.editPage()}
               >
                 Save
+              </Button>
+            </Modal.Footer>
+          </Modal.Body>
+        </Modal>
+        <Modal
+          className="confirmDialog"
+          show={this.state.confirmDialog}
+          onHide={() => this.setState({ confirmDialog: false })}
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>Edit Intro</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            Are you sure you want to discard changes you made?
+            <Modal.Footer>
+              <Button className="rounded-pill py-1" variant="outline-primary">
+                Cancel
+              </Button>
+              <Button
+                className="rounded-pill py-1"
+                variant="primary"
+                onClick={() => this.handleDiscardChanges}
+              >
+                Discard
               </Button>
             </Modal.Footer>
           </Modal.Body>

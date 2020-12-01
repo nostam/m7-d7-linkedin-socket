@@ -24,6 +24,7 @@
 
 .editProfileModal .modal-dialog {
   max-width: 700px;
+  border-radius: 16px;
 }
 .editProfileModal .form-label {
   color: grey;
@@ -37,4 +38,12 @@
 .editProfileModal .form-control:focus {
   border: 1px solid rgba(0, 0, 0, 0.5);
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
+}
+
+.confirmDialog .modal-dialog {
+  display: flex;
+  max-width: 330px;
+  justify-content: center;
+  border-radius: 16px;
+  box-shadow: 0 0 0 100vh rgba(0, 0, 0, 0.5);
 }
