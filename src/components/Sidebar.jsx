@@ -11,7 +11,7 @@ class Sidebar extends Component {
       method: "GET",
       headers: new Headers({
         Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmM0ZWU3N2VkMjY2ODAwMTcwZWEzZTciLCJpYXQiOjE2MDY3NDE2MjQsImV4cCI6MTYwNzk1MTIyNH0.STnsxsacz4ygONashW1XfNqAZH-GP_QeIGilDbrfQ2w",
+        process.env.REACT_APP_TOKEN,
         ContentType: "application/json",
       }),
     })
