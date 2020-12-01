@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { Row } from "react-bootstrap";
-import "./Sidebar.css";
+import "../styles/Sidebar.css";
 
 class Sidebar extends Component {
   state = {
     users: [],
   };
   componentDidMount = () => {
-    let response = fetch("https://striveschool-api.herokuapp.com/api/profile", {
+    fetch("https://striveschool-api.herokuapp.com/api/profile", {
       method: "GET",
       headers: new Headers({
         Authorization: process.env.REACT_APP_TOKEN,
@@ -38,7 +38,7 @@ class Sidebar extends Component {
             this.state.users.slice(0, 6).map((user, index) => (
               <div id="userdiv2" key={`SuggestUsers${index}`}>
                 <Row id="userdiv2">
-                  <img id="user" src={user.image}></img>
+                  <img id="user" src={user.image} alt="user"></img>
                   <div id="userdiv2">
                     <h1 id="usersh1">{user.name}</h1>
                     <p id="usersh1">{user.title}</p>
