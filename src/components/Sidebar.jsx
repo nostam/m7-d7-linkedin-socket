@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Row } from "react-bootstrap";
-import "./Sidebar.css";
+import "./styles/Sidebar.css";
 
 class Sidebar extends Component {
   state = {
