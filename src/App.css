@@ -49,12 +49,13 @@
 
 .coverpic {
   height: 30%;
+  width: 100%;
   background: url("https://www.veikel.com//images/covers/1561680392_cover%20veikel%20default.jpg");
   position: absolute;
   left: 0;
   right: 0;
   top: 0;
-  margin: 1vw;
+  margin: 0vw;
   margin-top: 0;
   z-index: 1
 }
@@ -98,7 +99,7 @@ h2 {
 
 .dropdown {
   display: flex;
-  position: relative;
+  position: absolute;
   top: 30%;
   left: 45%;
   z-index: 4
@@ -106,7 +107,7 @@ h2 {
 
 .morebtn {
   position: absolute !important;
-  top: 33% !important;
+  top: 35% !important;
   left: 80%;
 }
 
@@ -115,6 +116,16 @@ h2 {
   border: none !important;
   color: black;
   position: absolute !important;
-  top: 33% !important;
-  left: 90%;
+  top: 35% !important;
+  left: 93%;
+}
+
+.info {
+  font-size: 15pt !important;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400 !important;
+}
+
+.infobody {
+  font-size: 11pt !important;
 }

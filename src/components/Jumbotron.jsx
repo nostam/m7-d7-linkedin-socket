@@ -5,7 +5,7 @@ import { Jumbotron, Dropdown, Button, Card } from "react-bootstrap"
 class Header extends React.Component {
     render() {
         return (
-            <Jumbotron className="header">
+            <Jumbotron className="header" style={{ position: "relative" }}>
 
                 <div className="coverpic"></div>
                 <Dropdown className="dropdown">
