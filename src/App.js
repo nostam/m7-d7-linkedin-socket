@@ -3,7 +3,10 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Home from "./components/Home";
 import AppNavBar from "./components/AppNavBar";
 import Footer from "./components/Footer";
+import EditPage from "./components/EditPage"
+
 import "bootstrap/dist/css/bootstrap.min.css";
+
 class App extends React.Component {
   state = { searchQuery: "" };
   searchHandler = (e) => {
@@ -27,6 +30,7 @@ class App extends React.Component {
         exact
         render={(props) => <Profile {...props} />}
       /> */}
+        <EditPage />
         <Footer />
       </Router>
     );
