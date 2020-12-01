@@ -199,7 +199,9 @@ class EditPage extends React.Component {
             <Button
               className="rounded-pill py-1"
               variant="primary"
-              onClick={() => this.handleDiscardChanges}
+              onClick={() =>
+                this.setState({ confirmDialog: false, showModal: false })
+              }
             >
               Discard
             </Button>
