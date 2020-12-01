@@ -6,8 +6,9 @@ import { Button, Modal, Form } from "react-bootstrap";
 
 class Edit extends React.Component {
   state ={ 
-    id: this.props._id,
-    selected: ""
+    id: this.props.id,
+    experience: [],
+    selected: {}
   }
 
   componentDidMount() {
@@ -22,9 +23,9 @@ class Edit extends React.Component {
       .then((experience) => {
         console.log(experience);
         let ids = experience.map((exp)=> exp._id)
-        let selected = ids.indexOf(this.state._id)
-        this.setState({experience : experience})
-        this.setState({selected: selected}, console.log(this.state.selected))
+        let selected = ids.indexOf(this.state.id)
+        this.setState({selected : selected}, () => console.log(this.state.selected))
+        
       });
   }
   render() {
