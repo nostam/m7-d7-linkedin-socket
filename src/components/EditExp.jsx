@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../App.css";
 import { Button, Modal, Form } from "react-bootstrap";
@@ -9,11 +8,9 @@ class Edit extends React.Component {
     id: this.props.id,
     experience: [],
   }
-
-
-  
   render() {
     console.log(this.props)
+    
     return (
       
       <Modal
@@ -35,23 +32,23 @@ class Edit extends React.Component {
             </Form.Group>
             <Form.Group>
               <Form.Label>Company  * </Form.Label>
-              <Form.Control required value={this.props.experience && this.props.experience.company} type="text" placeholder="Company" />
+              <Form.Control required  value={this.props.experience && this.props.experience.company} type="text" placeholder="Company" />
             </Form.Group>
             <Form.Group>
               <Form.Label>Start date  * </Form.Label>
-              <Form.Control required value={this.props.experience && this.props.experience.startDate} type="date" placeholder="Headline" />
+              <Form.Control required  value={this.props.experience && this.props.experience.startDate} type="date" placeholder="Headline" />
             </Form.Group>
             <Form.Group>
               <Form.Label>End date (empty if current)  </Form.Label>
-              <Form.Control value={this.props.experience && this.props.experience.endDate} type="date" placeholder="Current Position" />
+              <Form.Control  value={this.props.experience && this.props.experience.endDate} type="date" placeholder="Current Position" />
             </Form.Group>
             <Form.Group>
               <Form.Label>Description * </Form.Label>
-              <Form.Control required value={this.props.experience && this.props.experience.description} as="textarea" placeholder="Description" />
+              <Form.Control required  value={this.props.experience && this.props.experience.description} as="textarea" placeholder="Description" />
             </Form.Group>
             <Form.Group>
               <Form.Label>Area * </Form.Label>
-              <Form.Control required value={this.props.experience && this.props.experience.area} type="text" placeholder="Area" />
+              <Form.Control required  value={this.props.experience && this.props.experience.area} type="text" placeholder="Area" />
             </Form.Group>
            
             

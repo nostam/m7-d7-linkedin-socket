@@ -106,18 +106,18 @@ class Experience extends React.Component {
             })}
           </Card.Body>
         </Card>
-        {/* <Edit
+        <Edit
           open={this.state.openEdit}
           onHide={this.toggleEditModal}
           onClick={this.onOk}
           id={this.state.selected}
           experience={this.state.selectedExperience}
-        /> */}
-        {/* <Add
+        />
+        <Add
           open={this.state.openAdd}
           onHide={this.toggleAddModal}
           onClick={this.onOk}
-        /> */}
+        />
       </>
     );
   }
