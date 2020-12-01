@@ -20,18 +20,18 @@
   font-size: 15px;
 }
 #usersp:hover {
-  color: rgb(9, 85, 172);
+  color: rgb(9, 85, 172) !important;
   text-decoration-line: underline;
   cursor: pointer;
 }
 #usersh1 {
-  margin: 0;
-  font-size: 15px;
+  margin: 0 !important;
+  font-size: 15px !important;
 }
 #usersh1:hover {
-  color: teal;
-  text-decoration-line: underline;
-  cursor: pointer;
+  color: rgb(9, 85, 172) !important;
+  text-decoration-line: underline !important;
+  cursor: pointer !important;
 }
 #usersDiv {
   width: 200px;
