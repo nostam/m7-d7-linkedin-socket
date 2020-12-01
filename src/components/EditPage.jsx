@@ -23,9 +23,7 @@ class EditPage extends React.Component {
         }
       );
       const pResponse = await pFetch.json();
-      console.log(pResponse);
       this.setState({ profile: pResponse });
-      console.log(this.state.profile);
     } catch (error) {
       console.log(error);
     }
@@ -50,7 +48,6 @@ class EditPage extends React.Component {
           Authorization: process.env.REACT_APP_TOKEN,
         },
       });
-      console.log(response);
       if (response.ok) {
         this.setState({ showModal: false });
       } else {

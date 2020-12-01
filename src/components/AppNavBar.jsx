@@ -67,7 +67,7 @@ class AppNavBar extends React.Component {
             </InputGroup>
           </Form>
           <div className="ml-auto mr-0 d-flex row justify-content-end">
-            <Nav.Link className="navLinkCol">
+            <Nav.Link className="navLinkCol" as={Link} to="/">
               <Col className="navCol">
                 <FaHome className="navIcon" />
                 <span className="navIconText">Home</span>
@@ -98,10 +98,13 @@ class AppNavBar extends React.Component {
               </Col>
             </Nav.Link>
             <Nav.Link className="navLinkCol">
-              <Col className="navCol">
-                <FaUserCircle className="navIcon" />
-                <span className="navIconText">Me</span>
-              </Col>
+              <Link to="/user/me">
+                {" "}
+                <Col className="navCol">
+                  <FaUserCircle className="navIcon" />
+                  <span className="navIconText">Me</span>
+                </Col>
+              </Link>
             </Nav.Link>
             <div class="vl"></div>
             <Nav.Link className="navLinkCol">
