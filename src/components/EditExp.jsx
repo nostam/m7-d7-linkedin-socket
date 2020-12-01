@@ -31,15 +31,16 @@ class Edit extends React.Component {
     } catch (error) {}
   };
   render() {
+    console.log(this.props);
     return (
       <Modal
         show={this.props.show}
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered
-        onHide={this.props.onHide}
+        onHide={this.props.toggle}
       >
-        <Modal.Header>
+        <Modal.Header closeButton>
           <Modal.Title>
             {this.props.method === "PUT" ? "Edit" : "Add"} Experience
           </Modal.Title>
@@ -100,26 +101,22 @@ class Edit extends React.Component {
                 placeholder="Area"
               />
             </Form.Group>
-
-            <Button variant="primary" type="submit">
-              Submit
-            </Button>
           </Form>
         </Modal.Body>
         <Modal.Footer>
           <Button
             className="rounded-pill py-1"
             variant="secondary"
-            onClick={this.props.onClick}
+            onClick={this.props.toggle}
           >
             Close
           </Button>
           <Button
             className="rounded-pill py-1"
             variant="primary"
-            onClick={this.props.onClick}
+            onClick={this.props.toggle}
           >
-            Save Changes
+            {this.props.method === "PUT" ? "Save Changes" : "Submit"}
           </Button>
         </Modal.Footer>
       </Modal>

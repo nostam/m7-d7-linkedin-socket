@@ -96,11 +96,10 @@ class Experience extends React.Component {
         </Card>
         <Edit
           show={this.state.showModal}
-          onHide={this.state.showModal}
           userId={this.props.profile._id}
           expId={this.state.selectedId}
           method={this.state.method}
-          onClick={() => this.toggleModal()}
+          toggle={() => this.toggleModal()}
         />
         {/* <Add
           open={this.state.openAdd}
