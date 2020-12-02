@@ -17,7 +17,6 @@ class Bio extends React.Component {
             <EditPage
               profile={this.props.profile}
               refetch={this.props.refetch}
-              color='#0A66CE'
             />
             </Col>
           </Row>

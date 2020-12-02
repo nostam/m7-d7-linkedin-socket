@@ -13,9 +13,9 @@ class Feature extends React.Component {
         <Card.Body>
           <div className="info">Featured</div>
           
-          <Row style={{overflow: 'hidden', width: `100%`}}>
+          <Row style={{overflow: 'hidden', width: `100%`, paddingRight: 0, marginRight: 0}}>
             <Col md={5} style={{marginRight: '.5vw' }}>
-              <Card style={{ width: "16vw", borderRadius: ".5vw", }}>
+              <Card style={{ width: "16vw", borderRadius: ".5vw"}}>
                 <Card.Img
                   variant="top"
                   src={feat3}
