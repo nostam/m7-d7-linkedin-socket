@@ -9,16 +9,22 @@
   display: flex;
   justify-content: center;
 }
+
 .ad {
   display: block;
   margin: auto;
-  height: 99%;
-  width: 99%;
-  border-radius: .5vw;
+  height: 95%;
+  width: 96%;
 }
+
 .divTitle {
   margin-top: -8px !important;
+  font-size: 1.45rem;
+  line-height: 1.33333;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400 !important;
 }
+
 .userimg {
   cursor: pointer;
   border-radius: 100px;
@@ -121,4 +127,8 @@ small {
 }
 .vid-sml {
   margin-left: 10px;
+}
+
+.ranking { 
+  color: grey
 }
