@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Home from "./components/Home";
+// import Home from "./components/Home";
 import AppNavBar from "./components/AppNavBar";
 import Footer from "./components/Footer";
 import Profile from "./components/ProfileBody";
@@ -24,7 +24,11 @@ class App extends React.Component {
           exact
           render={(props) => <Home title="Homepage" {...props} />}
         /> */}
-        <Route path={"/"} exact render={(props) => <Profile {...props} />} />
+        <Route
+          path={"/user/:id"}
+          exact
+          render={(props) => <Profile {...props} />}
+        />
         <Footer />
       </Router>
     );

@@ -1,8 +1,7 @@
 import React from "react";
 import EditPage from "./EditPage";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "../App.css";
 import { Jumbotron, Dropdown, Button, Card, Row, Col } from "react-bootstrap";
+import "../App.css";
 class Header extends React.Component {
   render() {
     return (
@@ -13,18 +12,22 @@ class Header extends React.Component {
           style={{
             position: `absolute`,
             top: `32%`,
-            left: `43%`,
+            left: `55%`,
             display: `flex`,
           }}
         >
-          <Col md={8} style={{ paddingLeft: 0, paddingRight: 0 }}>
+          <Col md={7} style={{ paddingLeft: 0, paddingRight: 0 }}>
             <Dropdown>
               <Dropdown.Toggle
                 className="rounded-pill"
                 id="dropdown-basic"
-                style={{ backgroundColor: "#087BBA", fontWeight: 600 }}
+                style={{
+                  backgroundColor: "#004182",
+                  fontWeight: 600,
+                  borderStyle: "none",
+                }}
               >
-                Add a section to your profile
+                Add profile section
               </Dropdown.Toggle>
 
               <Dropdown.Menu>
@@ -39,17 +42,20 @@ class Header extends React.Component {
               </Dropdown.Menu>
             </Dropdown>
           </Col>
-          <Col md={2} style={{ paddingLeft: `0vw` }}>
+          <Col md={3} style={{ paddingLeft: `0vw` }}>
             <Button className="rounded-pill" variant="outline-secondary">
               More...
             </Button>
           </Col>
-          <Col md={2}>
-            <EditPage />
+          <Col md={1}>
+            <EditPage
+              profile={this.props.profile}
+              refetch={this.props.refetch}
+            />
           </Col>
         </Row>
         {/*propic and headers*/}
-        <img src={this.props.src} className="propic" />
+        <img src={this.props.src} className="propic" alt="profile" />
         <div style={{ position: "absolute", top: "40%", width: "100%" }}>
           <div id="headerName">{this.props.name}</div>
           <div id="headerDescription">{this.props.desc}</div>
@@ -82,7 +88,7 @@ class Header extends React.Component {
             style={{ textDecoration: "underline", fontSize: "11pt" }}
           >
             <strong>Available for work</strong> <br />
-            Web developer and CEO roles <br />
+            {this.props.role} roles <br />
             <strong style={{ color: "#087BBA" }}>See details</strong>
           </Card.Header>
           <Card.Footer

@@ -7,7 +7,7 @@ import {
   InputGroup,
   Col,
 } from "react-bootstrap";
-import { withRouter, Link, NavLink } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import { IconContext } from "react-icons";
 import {
   FaLinkedin,
@@ -23,7 +23,7 @@ import "../styles/AppNavBar.css";
 class AppNavBar extends React.Component {
   render() {
     return (
-      <Navbar bg="white" variant="light" className="py-0">
+      <Navbar bg="white" variant="light" className="py-0 fixed-top">
         <div className="navbarContent">
           <Navbar.Brand
             as={Link}
@@ -67,7 +67,7 @@ class AppNavBar extends React.Component {
             </InputGroup>
           </Form>
           <div className="ml-auto mr-0 d-flex row justify-content-end">
-            <Nav.Link className="navLinkCol">
+            <Nav.Link className="navLinkCol" as={Link} to="/">
               <Col className="navCol">
                 <FaHome className="navIcon" />
                 <span className="navIconText">Home</span>
@@ -97,7 +97,7 @@ class AppNavBar extends React.Component {
                 <span className="navIconText">Notifications</span>
               </Col>
             </Nav.Link>
-            <Nav.Link className="navLinkCol">
+            <Nav.Link className="navLinkCol" as={Link} to="/user/me">
               <Col className="navCol">
                 <FaUserCircle className="navIcon" />
                 <span className="navIconText">Me</span>

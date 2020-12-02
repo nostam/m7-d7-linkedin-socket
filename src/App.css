@@ -1,4 +1,4 @@
-* {
+div:not(.modal-content) {
   transition: all 0.25s;
 }
 
@@ -36,7 +36,7 @@ body {
   top: 5.5vh;
   z-index: 2;
   border-radius: 50%;
-  border-width: 0.5vw;
+  border-width: 0.3vw;
   border-color: white;
   border-style: solid;
 }

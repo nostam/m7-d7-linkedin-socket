@@ -1,4 +1,4 @@
-#ad-div {
+.ad-div {
   padding: 1px;
   border-radius: 15px;
   background-color: #ffffff;
@@ -6,37 +6,37 @@
   width: 245px;
   background-attachment: fixed;
 }
-#ad {
+.ad {
   margin: 3px;
   height: 200px;
 }
-#user {
+.user {
   cursor: pointer;
   border-radius: 100px;
   height: 50px;
 }
 #usersp {
   margin: 0;
-  font-size: 15px;
+  font-size: 14px;
 }
 #usersp:hover {
   color: rgb(9, 85, 172) !important;
   text-decoration-line: underline;
   cursor: pointer;
 }
-#usersh1 {
+.usersh1 {
   margin: 0 !important;
   font-size: 15px !important;
 }
-#usersh1:hover {
+.usersh1:hover {
   color: rgb(9, 85, 172) !important;
   text-decoration-line: underline !important;
   cursor: pointer !important;
 }
-#usersDiv {
+.usersDiv {
   width: 200px;
   background-color: #ffffff;
 }
-#userdiv2 {
+.userdiv2 {
   background-color: transparent;
 }

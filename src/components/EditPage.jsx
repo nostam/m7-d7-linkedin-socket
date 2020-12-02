@@ -1,11 +1,15 @@
 import React from "react";
 import { Image, Row, Col, Form, Button, Modal } from "react-bootstrap";
+import { BiPencil } from "react-icons/bi";
+import { MdClose } from "react-icons/md";
+import { IconContext } from "react-icons";
 import "../styles/EditPage.css";
 
 class EditPage extends React.Component {
   state = {
     profile: {},
     showModal: false,
+    confirmDialog: false,
   };
 
   async componentDidMount() {
@@ -19,9 +23,7 @@ class EditPage extends React.Component {
         }
       );
       const pResponse = await pFetch.json();
-      console.log(pResponse);
       this.setState({ profile: pResponse });
-      console.log(this.state.profile);
     } catch (error) {
       console.log(error);
     }
@@ -46,9 +48,9 @@ class EditPage extends React.Component {
           Authorization: process.env.REACT_APP_TOKEN,
         },
       });
-      console.log(response);
       if (response.ok) {
         this.setState({ showModal: false });
+        this.props.refetch();
       } else {
         this.setState({ showModal: false });
       }
@@ -56,38 +58,46 @@ class EditPage extends React.Component {
       console.log(e);
     }
   };
-
+  handleCloseModal = async () => {
+    console.log(this.props.profile, this.state.profile);
+    (await JSON.stringify(this.props.profile)) !==
+    JSON.stringify(this.state.profile)
+      ? this.setState({ confirmDialog: true })
+      : this.setState({ showModal: false });
+  };
   render() {
     return (
       <>
-        <Button
-          onClick={() => {
-            this.setState({ showModal: true });
-          }}
-          className="rounded-pill"
-          variant="light"
-          style={{ backgroundColor: `white`, borderStyle: `none` }}
+
+        <div
+          onClick={() => this.setState({ showModal: true })}
+          className="JumbBiPencilDiv"
         >
-          <svg
-            width="1em"
-            height="1em"
-            viewBox="0 0 16 16"
-            class="bi bi-pencil-fill"
-            fill="black"
-            xmlns="http://www.w3.org/2000/svg"
+          <IconContext.Provider
+            value={{
+              size: "24px",
+              className: "JumbBiPencil",
+            }}
           >
-            <path
-              fill-rule="evenodd"
-              d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"
-            />
-          </svg>
-        </Button>
+            <BiPencil />
+          </IconContext.Provider>
+        </div>
         <Modal
+          className="editProfileModal"
           show={this.state.showModal}
           onHide={() => this.setState({ showModal: false })}
         >
-          <Modal.Header closeButton>
+          <Modal.Header>
             <Modal.Title>Edit Intro</Modal.Title>
+            <IconContext.Provider
+              value={{
+                size: "28px",
+                color: "grey",
+                className: "closeModal",
+              }}
+            >
+              <MdClose onClick={() => this.handleCloseModal()} />
+            </IconContext.Provider>
           </Modal.Header>
           <Modal.Body>
             <Image
@@ -104,6 +114,7 @@ class EditPage extends React.Component {
                       type="text"
                       value={this.state.profile.name}
                       id="name"
+                      size="sm"
                       onChange={(e) => this.onChangeHandler(e)}
                     />
                   </Form.Group>
@@ -115,6 +126,7 @@ class EditPage extends React.Component {
                       type="text"
                       value={this.state.profile.surname}
                       id="surname"
+                      size="sm"
                       onChange={(e) => this.onChangeHandler(e)}
                     />
                   </Form.Group>
@@ -128,6 +140,7 @@ class EditPage extends React.Component {
                   rows={2}
                   value={this.state.profile.bio}
                   id="bio"
+                  size="sm"
                   onChange={(e) => this.onChangeHandler(e)}
                 />
               </Form.Group>
@@ -137,6 +150,7 @@ class EditPage extends React.Component {
                   type="text"
                   value={this.state.profile.title}
                   id="title"
+                  size="sm"
                   onChange={(e) => this.onChangeHandler(e)}
                 />
               </Form.Group>
@@ -147,17 +161,51 @@ class EditPage extends React.Component {
                   type="text"
                   value={this.state.profile.area}
                   id="area"
+                  size="sm"
                   onChange={(e) => this.onChangeHandler(e)}
                 />
               </Form.Group>
             </Form>
             <Modal.Footer>
-              <Button variant="secondary">Close</Button>
-              <Button variant="primary" onClick={() => this.editPage()}>
-                Submit
+              <Button
+                className="rounded-pill py-1"
+                variant="primary"
+                onClick={() => this.editPage()}
+              >
+                Save
               </Button>
             </Modal.Footer>
           </Modal.Body>
+        </Modal>
+        <Modal
+          className="confirmDialog"
+          show={this.state.confirmDialog}
+          onHide={() => this.setState({ confirmDialog: false })}
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>Discard Changes</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            Are you sure you want to discard changes you made?
+          </Modal.Body>
+          <Modal.Footer>
+            <Button
+              className="rounded-pill py-1"
+              variant="outline-primary"
+              onClick={() => this.setState({ confirmDialog: false })}
+            >
+              Cancel
+            </Button>
+            <Button
+              className="rounded-pill py-1"
+              variant="primary"
+              onClick={() =>
+                this.setState({ confirmDialog: false, showModal: false })
+              }
+            >
+              Discard
+            </Button>
+          </Modal.Footer>
         </Modal>
       </>
     );
