@@ -72,7 +72,7 @@ class Edit extends React.Component {
     this.fetchExp();
   };
   componentDidUpdate(prevProps) {
-    if (prevProps.exp !== this.props.exp) {
+    if (prevProps.expId !== this.props.expId) {
       if (this.edit()) {
         this.fetchExp();
       } else {
@@ -81,7 +81,7 @@ class Edit extends React.Component {
     }
   }
   edit = () => {
-    return this.props.exp.empty !== true ? true : false;
+    return this.props.expId !== null ? true : false;
   };
   render() {
     return (
