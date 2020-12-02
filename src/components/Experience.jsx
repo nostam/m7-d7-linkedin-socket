@@ -38,16 +38,13 @@ class Experience extends React.Component {
     }
   };
   toggleModal = (job) => {
-    console.log("exp", this.props, this.state);
     job !== undefined
       ? this.setState({
           selectedId: job._id,
-          exp: job,
           showModal: !this.state.showModal,
         })
       : this.setState({
           selectedId: null,
-          exp: {},
           showModal: !this.state.showModal,
         });
   };
@@ -118,8 +115,7 @@ class Experience extends React.Component {
           userId={this.props.profile._id}
           expId={this.state.selectedId}
           toggle={() => this.toggleModal()}
-          exp={this.state.exp}
-          // refetch={() => this.searchExp()}
+          refetch={() => this.searchExp()}
         />
       </>
     );
