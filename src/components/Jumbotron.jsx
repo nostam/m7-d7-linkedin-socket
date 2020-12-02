@@ -21,7 +21,11 @@ class Header extends React.Component {
               <Dropdown.Toggle
                 className="rounded-pill"
                 id="dropdown-basic"
-                style={{ backgroundColor: "#004182", fontWeight: 600, borderStyle : "none" }}
+                style={{
+                  backgroundColor: "#004182",
+                  fontWeight: 600,
+                  borderStyle: "none",
+                }}
               >
                 Add profile section
               </Dropdown.Toggle>
@@ -44,7 +48,10 @@ class Header extends React.Component {
             </Button>
           </Col>
           <Col md={1}>
-            <EditPage profile={this.props.profile} />
+            <EditPage
+              profile={this.props.profile}
+              refetch={this.props.refetch}
+            />
           </Col>
         </Row>
         {/*propic and headers*/}

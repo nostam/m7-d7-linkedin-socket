@@ -50,6 +50,7 @@ class EditPage extends React.Component {
       });
       if (response.ok) {
         this.setState({ showModal: false });
+        this.props.refetch();
       } else {
         this.setState({ showModal: false });
       }
@@ -58,6 +59,7 @@ class EditPage extends React.Component {
     }
   };
   handleCloseModal = async () => {
+    console.log(this.props.profile, this.state.profile);
     (await JSON.stringify(this.props.profile)) !==
     JSON.stringify(this.state.profile)
       ? this.setState({ confirmDialog: true })
