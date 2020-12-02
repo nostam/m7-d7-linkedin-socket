@@ -2,6 +2,7 @@ import React from "react";
 import EditPage from "./EditPage";
 import { Jumbotron, Dropdown, Button, Card, Row, Col } from "react-bootstrap";
 import "../App.css";
+import Job from '../assets/job.png'
 class Header extends React.Component {
   render() {
     return (
@@ -9,9 +10,10 @@ class Header extends React.Component {
         <div className="coverpic"></div>
         {/*Edit, more and add section button*/}
         <Row
+          noGutters
           style={{
             position: `absolute`,
-            top: `32%`,
+            top: `21vh`,
             left: `55%`,
             display: `flex`,
           }}
@@ -22,9 +24,11 @@ class Header extends React.Component {
                 className="rounded-pill"
                 id="dropdown-basic"
                 style={{
-                  backgroundColor: "#004182",
+                  backgroundColor: "#0A66CE",
+                  height: "3.1vh",
                   fontWeight: 600,
                   borderStyle: "none",
+                  paddingBottom: "1.5vw",
                 }}
               >
                 Add profile section
@@ -42,12 +46,19 @@ class Header extends React.Component {
               </Dropdown.Menu>
             </Dropdown>
           </Col>
-          <Col md={3} style={{ paddingLeft: `0vw` }}>
-            <Button className="rounded-pill" variant="outline-secondary">
+          <Col md={3} style={{ marginLeft: `.5vw` }}>
+            <Button
+              style={{
+                height: "2.8vh",
+                paddingBottom: "1.5vw",
+              }}
+              className="rounded-pill"
+              variant="outline-secondary"
+            >
               More...
             </Button>
           </Col>
-          <Col md={1}>
+          <Col md={1} style={{marginLeft: '.5vw'}}>
             <EditPage
               profile={this.props.profile}
               refetch={this.props.refetch}
@@ -59,36 +70,29 @@ class Header extends React.Component {
         <div style={{ position: "absolute", top: "40%", width: "100%" }}>
           <div id="headerName">{this.props.name}</div>
           <div id="headerDescription">{this.props.desc}</div>
-          <Row
-            className="d-flex"
-            noGutters
-            style={{ position: `relative`, top: `4.5vw` }}
-          >
-            <Col md={5}>
-              <div id="headerLoc"> {this.props.loc}</div>
-            </Col>
-            <Col md={1}>
-              <div id="headerLink">• 24 links</div>
-            </Col>
-            <Col md={2}>
-              <div id="headerCI">• Contact Info</div>
-            </Col>
+          <Row className="d-flex" noGutters id="headerLinkLoc">
+            <div id="headerLoc"> {this.props.loc}</div>
+
+            <div id="headerLink" className="hoverBlue">
+              ∙&nbsp;&nbsp;24 connections&nbsp;&nbsp;∙&nbsp;&nbsp;Contact Info
+            </div>
           </Row>
         </div>
+        <img src={Job} className={job}/>
         <Card
           style={{
-            width: "90%",
+            width: "91%",
             position: "absolute",
-            top: "34vh",
-            left: "5%",
-            borderRadius: "1vw",
+            top: "35.5vh",
+            left: "4",
+            borderRadius: ".5vw",
           }}
         >
-          <Card.Header
-            style={{ textDecoration: "underline", fontSize: "11pt" }}
+          <Card.Header className="hoverBlue"
+            style={{ fontSize: "11pt", borderRadius: ".5vw",}}
           >
             <strong>Available for work</strong> <br />
-            {this.props.role} roles <br />
+            {this.props.desc} roles <br />
             <strong style={{ color: "#087BBA" }}>See details</strong>
           </Card.Header>
           <Card.Footer

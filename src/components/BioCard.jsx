@@ -8,7 +8,7 @@ class Bio extends React.Component {
     return (
       <Card style={{ borderRadius: "1vw" }}>
         <Card.Body>
-          <div className="info">Information:</div>
+          <div className="info">About</div>
           <div class="infobody">{this.props.bio}</div>
         </Card.Body>
       </Card>
