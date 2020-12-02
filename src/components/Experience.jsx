@@ -38,7 +38,6 @@ class Experience extends React.Component {
     }
   };
   toggleModal = (job) => {
-    console.log("exp", this.props, this.state);
     job !== undefined
       ? this.setState({
           selectedId: job._id,
