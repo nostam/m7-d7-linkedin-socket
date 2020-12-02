@@ -8,12 +8,33 @@ export default class Login extends Component {
     user: [],
     hidden: true,
   };
+  url = "https://striveschool-api.herokuapp.com/api/account/register";
+  header = {
+    Authorization: process.env.REACT_APP_TOKEN,
+    ContentType: "application/json",
+  };
+  submitData = async () => {
+    let response = await fetch("this.url", {
+      method: "POST",
+      body: JSON.stringify(this.state.user),
+      header: this.header,
+    });
+    if (response.ok) {
+      this.props.history.details.push("/user/me");
+    } catch (e) {
+		console.log(e)
+	}
+  };
   onChangeHandler = (e) => {
     this.setState({
       user: { ...this.state.user, [e.target.id]: e.currentTarget.value },
     });
   };
-
+  handleLogin = () => {
+    if (e.keyCode === 13) {
+      this.props.submitData(this.state.user);
+    }
+  };
   toggleShow = (e) => {
     e.preventDefault();
     this.setState({ hidden: !this.state.hidden });
@@ -34,6 +55,7 @@ export default class Login extends Component {
                 type="text"
                 size="lg"
                 placeholder="Email or Phone"
+                onKeyDown={this.handleLogin}
                 onChange={(e) => this.onChangeHandler(e)}
               />
             </Form.Group>
@@ -45,6 +67,7 @@ export default class Login extends Component {
                 type={this.state.hidden ? "password" : "text"}
                 size="lg"
                 placeholder="Password"
+                onKeyDown={this.handleLogin}
                 onChange={(e) => this.onChangeHandler(e)}
               />
               <Badge

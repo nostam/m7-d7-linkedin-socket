@@ -2,7 +2,8 @@ body {
   background-color: #ffffff;
 }
 .loginBox {
-  margin-top: 20vh;
+  display: flex;
+  align-items: center;
   padding: 2rem;
 }
 .loginCol {
@@ -41,6 +42,7 @@ body {
 }
 .loginCol .form-control {
   border: 1px solid #111;
+  font-size: 1rem;
 }
 .loginCol .input-group-text {
   color: grey;
