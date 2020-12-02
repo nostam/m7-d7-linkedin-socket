@@ -14,25 +14,31 @@ export default class Login extends Component {
     ContentType: "application/json",
   };
   submitData = async () => {
-    let response = await fetch("this.url", {
-      method: "POST",
-      body: JSON.stringify(this.state.user),
-      header: this.header,
-    });
-    if (response.ok) {
-      this.props.history.details.push("/user/me");
-    } catch (e) {
-		console.log(e)
-	}
+    try {
+      let response = await fetch("this.url", {
+        method: "POST",
+        body: JSON.stringify(this.state.user),
+        header: this.header,
+      });
+      if (response.ok) {
+        this.props.history.details.push("/user/me");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
   onChangeHandler = (e) => {
     this.setState({
       user: { ...this.state.user, [e.target.id]: e.currentTarget.value },
     });
   };
-  handleLogin = () => {
+  handleLogin = (e) => {
     if (e.keyCode === 13) {
       this.props.submitData(this.state.user);
+    } else {
+      this.setState({
+        user: { ...this.state.user, [e.target.id]: e.currentTarget.value },
+      });
     }
   };
   toggleShow = (e) => {
@@ -55,7 +61,7 @@ export default class Login extends Component {
                 type="text"
                 size="lg"
                 placeholder="Email or Phone"
-                onKeyDown={this.handleLogin}
+                onKeyDown={(e) => this.handleLogin(e)}
                 onChange={(e) => this.onChangeHandler(e)}
               />
             </Form.Group>
@@ -67,7 +73,7 @@ export default class Login extends Component {
                 type={this.state.hidden ? "password" : "text"}
                 size="lg"
                 placeholder="Password"
-                onKeyDown={this.handleLogin}
+                onKeyDown={(e) => this.handleLogin(e)}
                 onChange={(e) => this.onChangeHandler(e)}
               />
               <Badge
