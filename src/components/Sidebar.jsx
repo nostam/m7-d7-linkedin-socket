@@ -46,7 +46,7 @@ class Sidebar extends Component {
                       <h6 className="sugUsers" id={`suggestUsers${index}name`}>
                         {user.name}
                       </h6>
-                      <small>• 3rd+</small>
+                      <small className="ranking">• 2nd</small>
                       <p className="usersp">{user.title}</p>
                       <hr className="hrside" />
                     </div>
