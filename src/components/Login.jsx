@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Col, Form, Button, Container } from "react-bootstrap";
+import { Row, Col, Form, Button, Container, Badge } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import FooterLogo from "../footer_logo.svg";
 import "../styles/Login.css";
 export default class Login extends Component {
@@ -12,6 +13,7 @@ export default class Login extends Component {
       user: { ...this.state.user, [e.target.id]: e.currentTarget.value },
     });
   };
+
   toggleShow = (e) => {
     e.preventDefault();
     this.setState({ hidden: !this.state.hidden });
@@ -19,15 +21,10 @@ export default class Login extends Component {
   render() {
     return (
       <Container>
-        <Col lg={10} className="loginContainer mt-5 mx-auto">
-          <img src={FooterLogo} className="my-4 py-2" />
-          <h4>Welcome Back</h4>
-          <h6>
-            Don't miss your next opportunity. Sign in to stay updated on your
-            professional world.
-          </h6>
-        </Col>
-        <Col lg={3}>
+        <Col className="loginCol mt-5 loginBox">
+          <img src={FooterLogo} className="mb-4 " style={{ height: "30px" }} />
+          <h2>Sign in</h2>
+          <span>Stay updated on your professional world</span>
           <Form>
             <Form.Group>
               <Form.Control
@@ -40,7 +37,7 @@ export default class Login extends Component {
                 onChange={(e) => this.onChangeHandler(e)}
               />
             </Form.Group>
-            <Form.Group>
+            <Form.Group className="inputPwd">
               <Form.Control
                 required
                 id="password"
@@ -50,12 +47,24 @@ export default class Login extends Component {
                 placeholder="Password"
                 onChange={(e) => this.onChangeHandler(e)}
               />
-              <button onClick={(e) => this.toggleShow(e)}>
+              <Badge
+                pill
+                className="inputToggle"
+                onClick={(e) => this.toggleShow(e)}
+              >
                 {this.state.hidden ? "Show" : "Hide"}
-              </button>
+              </Badge>
             </Form.Group>
           </Form>
-          <Button className="loginBtn">Sign in</Button>
+          <a className="forgetPwd">Forget your password?</a>
+          <Col className="loginCol">
+            <Button className="loginBtn">Sign in</Button>
+          </Col>
+          <Row className="d-flex justify-content-center align-items-center text-center my-4 mx-auto">
+            <div>
+              New to LinkedIn?<Link to="/signup">Join now</Link>
+            </div>
+          </Row>
         </Col>
       </Container>
     );

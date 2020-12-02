@@ -1,25 +1,36 @@
 body {
   background-color: #ffffff;
 }
-.loginContainer {
+.loginBox {
+  margin-top: 20vh;
+  padding: 2rem;
+}
+.loginCol {
+  width: 352px;
+  margin-left: auto;
+  margin-right: auto;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
   flex-direction: column;
 }
-.loginContainer h4 {
+.loginCol h4 {
   font-weight: 600;
 }
-.loginContainer h6 {
-  color: grey;
+.loginCol span {
+  font-size: 0.9rem;
   margin-bottom: 2rem;
 }
-
-.loginContainer .loginBtn {
+.loginCol a {
+  font-variant: #0a66c2;
+  margin-top: 1rem auto 1rem 0;
+}
+.loginCol .loginBtn {
   background-color: #0a66c2;
   width: 100%;
   padding: 0.75rem;
   margin: 0.25rem;
+  margin-top: 1rem;
   color: white;
   font-weight: 500;
   font-size: 0.8rem;
@@ -27,4 +38,34 @@ body {
   border-radius: 2rem;
   text-align: center;
   font-size: 1rem;
+}
+.loginCol .form-control {
+  border: 1px solid #111;
+}
+.loginCol .input-group-text {
+  color: grey;
+}
+.inputPwd {
+  position: relative;
+}
+.loginCol .inputToggle {
+  position: absolute;
+  margin-left: auto;
+  margin-right: 0.5rem;
+  right: 0;
+  top: 0;
+  transform: translateY(50%);
+  display: inline-block;
+  background-color: transparent;
+  color: #0a66c2;
+}
+.loginCol .inputToggle:hover {
+  /* background-color: lightblue; */
+}
+@media screen and (min-width: 1024px) {
+  .loginBox {
+    border-radius: 8px;
+    border: 1px solid white;
+    box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.25);
+  }
 }
