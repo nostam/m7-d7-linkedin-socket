@@ -85,3 +85,7 @@ body {
 .infobody {
   font-size: 11pt !important;
 }
+.HomeModal{
+  display: flex;
+  justify-content: left;
+}
