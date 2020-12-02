@@ -52,7 +52,7 @@ class Body extends React.Component {
   };
   render() {
     return (
-      <Container>
+      <div className="mainBody">
         {this.state.err && <Alert variant="danger">{this.state.errMsg}</Alert>}
         {this.state.loading && this.state.err !== true ? (
           <Row className="d-flex justify-content-center my-5">
@@ -75,7 +75,7 @@ class Body extends React.Component {
               <Bio bio={this.state.profile.bio} />
               <Experience profile={this.state.profile} />
             </Col>
-            <Col>
+            <Col style={{marginTop: '5.3vw'}}>
               <Sidebar />
             </Col>
           </Row>
@@ -86,7 +86,7 @@ class Body extends React.Component {
             errMsg: "We have encounter a problem, the profile is empty",
           })
         )}
-      </Container>
+      </div>
     );
   }
 }
