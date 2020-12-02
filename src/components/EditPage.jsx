@@ -49,11 +49,8 @@ class EditPage extends React.Component {
       console.log(response);
       if (response.ok) {
         this.setState({ showModal: false });
-        //this.props.handleAlert(true, true);
-        //this.props.refetch();
       } else {
         this.setState({ showModal: false });
-        //this.props.handleAlert(false, true);
       }
     } catch (e) {
       console.log(e);
@@ -66,7 +63,6 @@ class EditPage extends React.Component {
         <Button
           onClick={() => {
             this.setState({ showModal: true });
-            //this.props.handleAlert(undefined, false);
           }}
           className="rounded-pill"
           variant="light"
