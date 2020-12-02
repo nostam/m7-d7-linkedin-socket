@@ -47,7 +47,7 @@ class Experience extends React.Component {
         })
       : this.setState({
           selectedId: null,
-          exp: {},
+          exp: { empty: true },
           showModal: !this.state.showModal,
         });
   };
@@ -119,7 +119,7 @@ class Experience extends React.Component {
           expId={this.state.selectedId}
           toggle={() => this.toggleModal()}
           exp={this.state.exp}
-          // refetch={() => this.searchExp()}
+          refetch={() => this.searchExp()}
         />
       </>
     );
