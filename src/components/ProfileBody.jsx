@@ -57,7 +57,7 @@ class Body extends React.Component {
         {this.state.loading && this.state.err !== true ? (
           <Row className="d-flex justify-content-center my-5">
             <h3>Loading profile...</h3>
-            <Spinner animation="border" variant={this.state.errType}></Spinner>
+            <Spinner animation="border" variant="info" />
           </Row>
         ) : Object.keys(this.state.profile).length !== 0 ? (
           <Row>
@@ -66,6 +66,7 @@ class Body extends React.Component {
                 name={
                   this.state.profile.name + " " + this.state.profile.surname
                 }
+                refetch={() => this.searchProfile(this.props.match.params.id)}
                 desc={this.state.profile.title}
                 src={this.state.profile.image}
                 loc={this.state.profile.area}

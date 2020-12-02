@@ -1,17 +1,16 @@
 import React from "react";
 // import { useState } from "react";
-import { Button, Modal, Form, Row, Col } from "react-bootstrap";
+import { Button, Modal, Form, Row, Col, ThemeProvider } from "react-bootstrap";
 import "../App.css";
 class Edit extends React.Component {
   state = {
     showModal: false,
-    id: this.props.id,
-    experience: "",
+    experience: {},
   };
   url = "https://striveschool-api.herokuapp.com/api/profile/";
   headers = {
     Authorization: process.env.REACT_APP_TOKEN,
-    ContentType: "application/json",
+    "Content-Type": "application/json",
   };
   fetchExp = async () => {
     try {
@@ -27,8 +26,6 @@ class Edit extends React.Component {
         if (response.ok) {
           this.setState({ experience: data });
         }
-      } else {
-        throw "expId is invalid";
       }
     } catch (e) {
       console.log(e);
@@ -47,33 +44,46 @@ class Edit extends React.Component {
       str === "POST"
         ? `${this.url}${this.props.userId}/experiences`
         : `${this.url}${this.props.userId}/experiences/${this.props.expId}`;
+    const payload = JSON.stringify(this.state.experience);
     try {
+      console.log(payload, str);
       const response = await fetch(url, {
         method: str,
-        body: JSON.stringify(this.state.experience),
         headers: this.headers,
+        body: payload,
       });
-      if (response.status === 200) {
-        console.log("submit succeed", this.state.experience);
-        this.fetchExp();
+      if (response.ok) {
+        console.log("submit succeed");
+        // this.props.refetch();
       } else {
         console.log("submit failed");
       }
+
       this.setState({ showModal: false });
+      this.fetchExp();
     } catch (e) {
       console.log(e);
     }
   };
   actionBtn = (str) => {
     str !== "DELETE"
-      ? this.submitData(this.props.method)
+      ? this.submitData(this.edit() ? "PUT" : "POST")
       : this.submitData("DELETE");
   };
   componentDidMount = () => {
-    // this.setState({ experience: this.props.exp });
     this.fetchExp();
+    // if (this.props.method === "POST") {
+    //   this.setState({ exp: {} });
+    // } else {
+    //   this.fetchExp();
+    // }
+    !this.edit() && this.setState({ exp: {} });
+  };
+  edit = () => {
+    return Object.keys(this.props.exp).length ? true : false;
   };
   render() {
+    console.log("edit", this.props, this.state);
     return (
       <Modal
         show={this.props.show}
@@ -82,11 +92,11 @@ class Edit extends React.Component {
         centered
         onHide={this.props.toggle}
       >
-        {this.state.experience && (
+        {this.state.experience._id && (
           <>
             <Modal.Header closeButton>
               <Modal.Title>
-                {this.props.method === "PUT" ? "Edit" : "Add"} Experience
+                {this.edit() ? "Edit" : "Add"} Experience
               </Modal.Title>
             </Modal.Header>
             <Modal.Body>
@@ -171,7 +181,7 @@ class Edit extends React.Component {
               </Form>
             </Modal.Body>
             <Modal.Footer>
-              {this.props.method === "PUT" && (
+              {this.edit() && (
                 <Button
                   className="rounded-pill py-1 mr-auto"
                   variant="danger"
@@ -190,9 +200,9 @@ class Edit extends React.Component {
               <Button
                 className="rounded-pill py-1"
                 variant="primary"
-                onClick={() => this.actionBtn()}
+                onClick={() => this.actionBtn(this.edit() ? "PUT" : "POST")}
               >
-                {this.props.method === "PUT" ? "Save Changes" : "Submit"}
+                {this.edit() ? "Save Changes" : "Submit"}
               </Button>
             </Modal.Footer>
           </>

@@ -40,10 +40,11 @@
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
 }
 
-.modalDiv {
+.confirmDialog .modal-dialog {
   display: flex;
   max-width: 330px;
   justify-content: center;
+  align-self: center;
   border-radius: 16px;
   box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.5);
 }
