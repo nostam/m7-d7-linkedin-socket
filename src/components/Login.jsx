@@ -48,52 +48,62 @@ export default class Login extends Component {
   render() {
     return (
       <Container>
-        <Col className="loginCol mt-5 loginBox">
+        <Col
+          md={{ span: 6, offset: 3 }}
+          sm={{ span: 10, offset: 1 }}
+          className="loginCol mt-5 "
+        >
           <img src={FooterLogo} className="mb-4 " style={{ height: "30px" }} />
-          <h2>Sign in</h2>
-          <span>Stay updated on your professional world</span>
-          <Form>
-            <Form.Group>
-              <Form.Control
-                required
-                id="username"
-                value={this.state.user.username}
-                type="text"
-                size="lg"
-                placeholder="Email or Phone"
-                onKeyDown={(e) => this.handleLogin(e)}
-                onChange={(e) => this.onChangeHandler(e)}
-              />
-            </Form.Group>
-            <Form.Group className="inputPwd">
-              <Form.Control
-                required
-                id="password"
-                value={this.state.user.password}
-                type={this.state.hidden ? "password" : "text"}
-                size="lg"
-                placeholder="Password"
-                onKeyDown={(e) => this.handleLogin(e)}
-                onChange={(e) => this.onChangeHandler(e)}
-              />
-              <Badge
-                pill
-                className="inputToggle"
-                onClick={(e) => this.toggleShow(e)}
-              >
-                {this.state.hidden ? "Show" : "Hide"}
-              </Badge>
-            </Form.Group>
-          </Form>
-          <a className="forgetPwd">Forget your password?</a>
-          <Col className="loginCol">
-            <Button className="loginBtn">Sign in</Button>
-          </Col>
-          <Row className="d-flex justify-content-center align-items-center text-center my-4 mx-auto">
-            <div>
-              New to LinkedIn?<Link to="/signup">Join now</Link>
+          <div className="shadowBox">
+            <div className="mb-3">
+              <h2>Sign in</h2>
+              <span>Stay updated on your professional world</span>
             </div>
-          </Row>
+            <Form>
+              <Form.Group>
+                <Form.Control
+                  required
+                  id="username"
+                  value={this.state.user.username}
+                  type="text"
+                  size="lg"
+                  placeholder="Email or Phone"
+                  onKeyDown={(e) => this.handleLogin(e)}
+                  onChange={(e) => this.onChangeHandler(e)}
+                />
+              </Form.Group>
+              <Form.Group className="inputPwd">
+                <Form.Control
+                  required
+                  id="password"
+                  value={this.state.user.password}
+                  type={this.state.hidden ? "password" : "text"}
+                  size="lg"
+                  placeholder="Password"
+                  onKeyDown={(e) => this.handleLogin(e)}
+                  onChange={(e) => this.onChangeHandler(e)}
+                />
+                <Badge
+                  pill
+                  className="inputToggle"
+                  onClick={(e) => this.toggleShow(e)}
+                >
+                  {this.state.hidden ? "show" : "hide"}
+                </Badge>
+              </Form.Group>
+            </Form>
+            <a className="forgetPwd">Forget your password?</a>
+            <Col className="loginCol">
+              <Button className="loginBtn">Sign in</Button>
+            </Col>
+          </div>
+          <div className="text-center mx-auto my-5 d-flex">
+            <h6 className="mx-1">
+              <span>
+                New to LinkedIn? <Link to="/signup">Join now</Link>
+              </span>
+            </h6>
+          </div>
         </Col>
       </Container>
     );
