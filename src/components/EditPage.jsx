@@ -68,6 +68,7 @@ class EditPage extends React.Component {
   render() {
     return (
       <>
+
         <div
           onClick={() => this.setState({ showModal: true })}
           className="JumbBiPencilDiv"
