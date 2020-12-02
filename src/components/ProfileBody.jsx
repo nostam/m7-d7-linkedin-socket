@@ -75,7 +75,7 @@ class Body extends React.Component {
               <Bio bio={this.state.profile.bio} />
               <Experience profile={this.state.profile} />
             </Col>
-            <Col>
+            <Col style={{marginTop: '5.3vw'}}>
               <Sidebar />
             </Col>
           </Row>
