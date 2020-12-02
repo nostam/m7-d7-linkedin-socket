@@ -7,7 +7,7 @@ body {
 }
 
 .header {
-  margin-top: 5vw;
+  margin-top: 5.5vw;
   height: 51.4vh !important;
   background-color: white !important;
   border-radius: .5vw !important;
@@ -15,14 +15,9 @@ body {
   border-style: solid;
   border-width: 0.1vw;
 }
-@media (max-width: 1300px) {
-  .mainBody {
-    width: 100vw!important;
-    margin: 0
-  }
-}
+
 .mainBody {
-  width: 60vw;
+  width: 63.2vw;
   margin-right: 20vw;
   margin-left: 20vw
 }
@@ -65,8 +60,18 @@ body {
 }
 .job{
   position: absolute;
-  top: 2.9vw;
-  left:90%
+  width: 1.8vw;
+  top: 14vw;
+  left:67%
+}
+.jobdec {
+  position: absolute;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500!important;
+  font-size: 11pt;
+  width: 1.8vw;
+  top: 14.3vw;
+  left:72.5%
 }
 
 #headerDescription {

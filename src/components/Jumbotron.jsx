@@ -6,7 +6,7 @@ import Job from '../assets/job.png'
 class Header extends React.Component {
   render() {
     return (
-      <Jumbotron className="header" style={{ position: "relative" }}>
+      <Jumbotron className="header" style={{ position: "relative", paddingBottom: 0, marginBottom: 0}}>
         <div className="coverpic"></div>
         {/*Edit, more and add section button*/}
         <Row
@@ -58,7 +58,7 @@ class Header extends React.Component {
               More...
             </Button>
           </Col>
-          <Col md={1} style={{marginLeft: '.5vw'}}>
+          <Col md={1} style={{marginLeft: '.7vw'}}>
             <EditPage
               profile={this.props.profile}
               refetch={this.props.refetch}
@@ -78,7 +78,8 @@ class Header extends React.Component {
             </div>
           </Row>
         </div>
-        <img src={Job} className={job}/>
+        <img src={Job} className='job'/>
+        <div className='jobdec hoverBlue'>{this.props.desc}</div>
         <Card
           style={{
             width: "91%",
