@@ -12,7 +12,7 @@ export default class RSidebar extends React.Component {
         "https://striveschool-api.herokuapp.com/api/profile/me",
         {
           headers: {
-            Authorization: localStorage.getItem("token"),
+            Authorization: "Bearer " + localStorage.getItem("token"),
           },
         }
       );

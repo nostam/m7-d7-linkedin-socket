@@ -29,7 +29,7 @@ class EditPost extends React.Component {
           body: JSON.stringify(this.state.propPost),
           headers: {
             "Content-Type": "application/json",
-            Authorization: localStorage.getItem("token"),
+            Authorization: "Bearer " + localStorage.getItem("token"),
           },
         }
       );
@@ -52,7 +52,7 @@ class EditPost extends React.Component {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
-            Authorization: localStorage.getItem("token"),
+            Authorization: "Bearer " + localStorage.getItem("token"),
           },
         }
       );

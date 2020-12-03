@@ -21,7 +21,7 @@ class Login extends Component {
       });
       if (response.ok) {
         const { access_token } = await response.json();
-        localStorage.setItem("token", `Bearer ${access_token}`);
+        localStorage.setItem("token", access_token);
         this.props.history.push("/home");
       }
     } catch (error) {

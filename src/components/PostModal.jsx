@@ -19,7 +19,7 @@ class PostModal extends React.Component {
         "https://striveschool-api.herokuapp.com/api/profile/me",
         {
           headers: {
-            Authorization: localStorage.getItem("token"),
+            Authorization: "Bearer " + localStorage.getItem("token"),
           },
         }
       );
@@ -52,7 +52,7 @@ class PostModal extends React.Component {
           body: JSON.stringify(this.state.post),
           headers: {
             "Content-Type": "application/json",
-            Authorization: localStorage.getItem("token"),
+            Authorization: "Bearer " + localStorage.getItem("token"),
           },
         }
       );

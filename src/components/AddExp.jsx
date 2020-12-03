@@ -25,7 +25,7 @@ class Add extends React.Component {
           body: JSON.stringify(this.state.experience),
           headers: {
             "Content-Type": "application/json",
-            Authorization: localStorage.getItem("token"),
+            Authorization: "Bearer " + localStorage.getItem("token"),
           },
         }
       );

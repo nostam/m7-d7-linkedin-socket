@@ -10,7 +10,7 @@ class Edit extends React.Component {
   };
   url = "https://striveschool-api.herokuapp.com/api/profile/";
   headers = {
-    Authorization: localStorage.getItem("token"),
+    Authorization: "Bearer " + localStorage.getItem("token"),
     "Content-Type": "application/json",
   };
   fetchExp = async () => {
