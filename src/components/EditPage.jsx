@@ -4,12 +4,14 @@ import { BiPencil } from "react-icons/bi";
 import { MdClose } from "react-icons/md";
 import { IconContext } from "react-icons";
 import "../styles/EditPage.css";
+import axios from "axios";
 
 class EditPage extends React.Component {
   state = {
     profile: {},
     showModal: false,
     confirmDialog: false,
+    selectedFile: null,
   };
 
   async componentDidMount() {
@@ -65,10 +67,43 @@ class EditPage extends React.Component {
       ? this.setState({ confirmDialog: true })
       : this.setState({ showModal: false });
   };
+  fileselectHandler = (event) => {
+    this.setState({ selectedFile: event.target.files[0] });
+  };
+  fileUploadHandler = async() => {
+    
+    const headers = {
+      Authorization: process.env.REACT_APP_TOKEN,     
+    };
+    const fd = new FormData();
+    fd.append(
+      "profile", 
+     this.state.selectedFile
+      
+    );
+    const response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/${this.state.profile._id}/picture`, {
+      method: "POST",
+      headers: headers,
+     body:fd
+    })
+    if (response.ok) {
+      alert('uploaded')
+    }
+
+    // axios.post(
+    //   `https://striveschool-api.herokuapp.com/api/profile/${}/picture`,
+    //   headers,
+    //   fd,
+    //   {
+    //     headers
+    // })
+    //   .then((res) => {
+    //     console.log(res);
+    //   });
+  };
   render() {
     return (
       <>
-
         <div
           onClick={() => this.setState({ showModal: true })}
           className="JumbBiPencilDiv"
@@ -105,6 +140,8 @@ class EditPage extends React.Component {
               roundedCircle
               className="editImage"
             />
+            <input type="file" onChange={this.fileselectHandler}></input>
+            <button onClick={this.fileUploadHandler}>Upload Image</button>
             <Form>
               <Row className="mt-4">
                 <Col>

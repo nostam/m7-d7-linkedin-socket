@@ -62,7 +62,7 @@ class Body extends React.Component {
           </Row>
         ) : Object.keys(this.state.profile).length !== 0 ? (
           <Row>
-            <Col xs={12} md={8}>
+            <Col xs={12} md={12} lg={8}>
               <Header
                 name={
                   this.state.profile.name + " " + this.state.profile.surname
@@ -74,10 +74,14 @@ class Body extends React.Component {
                 profile={this.state.profile}
               />
               <Bio bio={this.state.profile.bio} />
-              <Feature/>
+              <Feature />
               <Experience profile={this.state.profile} />
             </Col>
-            <Col style={{marginTop: '5.3vw'}} className='d-none d-lg-block'>
+            <Col
+              lg={4}
+              style={{ marginTop: "5.3vw" }}
+              className="d-none d-lg-block"
+            >
               <Sidebar />
             </Col>
           </Row>

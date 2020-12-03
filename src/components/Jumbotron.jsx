@@ -2,11 +2,14 @@ import React from "react";
 import EditPage from "./EditPage";
 import { Jumbotron, Dropdown, Button, Card, Row, Col } from "react-bootstrap";
 import "../App.css";
-import Job from '../assets/job.png'
+import Job from "../assets/job.png";
 class Header extends React.Component {
   render() {
     return (
-      <Jumbotron className="header" style={{ position: "relative", paddingBottom: 0, marginBottom: 0}}>
+      <Jumbotron
+        className="header"
+        style={{ position: "relative", paddingBottom: 0, marginBottom: 0 }}
+      >
         <div className="coverpic"></div>
         {/*Edit, more and add section button*/}
         <Row
@@ -58,7 +61,7 @@ class Header extends React.Component {
               More...
             </Button>
           </Col>
-          <Col md={1} style={{marginLeft: '.7vw'}}>
+          <Col md={1} style={{ marginLeft: ".7vw" }}>
             <EditPage
               profile={this.props.profile}
               refetch={this.props.refetch}
@@ -66,7 +69,7 @@ class Header extends React.Component {
           </Col>
         </Row>
         {/*propic and headers*/}
-        <img src={this.props.src} className="propic" alt="profile" />
+        <img src={this.props.profile.image} className="propic" alt="profile" />
         <div style={{ position: "absolute", top: "40%", width: "100%" }}>
           <div id="headerName">{this.props.name}</div>
           <div id="headerDescription">{this.props.desc}</div>
@@ -78,8 +81,10 @@ class Header extends React.Component {
             </div>
           </Row>
         </div>
-        <img src={Job} className='job'/>
-        <div className='jobdec hoverBlue' style={{whiteSpace: 'nowrap'}}>{this.props.desc}</div>
+        <img src={Job} className="job" />
+        <div className="jobdec hoverBlue" style={{ whiteSpace: "nowrap" }}>
+          {this.props.desc}
+        </div>
         <Card
           style={{
             width: "91%",
@@ -89,8 +94,9 @@ class Header extends React.Component {
             borderRadius: ".5vw",
           }}
         >
-          <Card.Header className="hoverBlue"
-            style={{ fontSize: "11pt", borderRadius: ".5vw",}}
+          <Card.Header
+            className="hoverBlue"
+            style={{ fontSize: "11pt", borderRadius: ".5vw" }}
           >
             <strong>Available for work</strong> <br />
             {this.props.desc} roles <br />
