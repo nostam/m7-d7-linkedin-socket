@@ -2,7 +2,7 @@ import React from "react";
 // import { useState } from "react";
 import { Button, Modal, Form, Row, Col, ThemeProvider } from "react-bootstrap";
 import "../App.css";
-import '../styles/Profile.css'
+import "../styles/Profile.css";
 class Edit extends React.Component {
   state = {
     showModal: false,
@@ -10,7 +10,7 @@ class Edit extends React.Component {
   };
   url = "https://striveschool-api.herokuapp.com/api/profile/";
   headers = {
-    Authorization: process.env.REACT_APP_TOKEN,
+    Authorization: localStorage.getItem("token"),
     "Content-Type": "application/json",
   };
   fetchExp = async () => {

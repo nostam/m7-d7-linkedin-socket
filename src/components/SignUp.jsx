@@ -10,7 +10,6 @@ export default class SignUp extends Component {
   };
   url = "https://striveschool-api.herokuapp.com/api/account/register";
   header = {
-    // Authorization: process.env.REACT_APP_TOKEN,
     ContentType: "application/json",
   };
   submitData = async () => {
@@ -18,7 +17,6 @@ export default class SignUp extends Component {
       let payload = this.state.user;
       // payload.password = btoa(payload.password);
       // payload.username = btoa(payload.username);
-      console.log("payload", payload);
       let response = await fetch(this.url, {
         method: "POST",
         body: JSON.stringify(payload),
@@ -100,9 +98,8 @@ export default class SignUp extends Component {
                 <a>Cookie Policy</a>.
               </span>
               <Col className="signupCol px-0">
-                <Button className="signupBtn" onClick={() => this.submitData()}>
-                  Agree & Join
-                </Button>
+                {/* <Button className="signupBtn" onClick={() => this.submitData()}> */}
+                <Button className="signupBtn">Agree & Join</Button>
               </Col>
             </div>
             <Row className="d-flex justify-content-around mt-4 mx-auto ">

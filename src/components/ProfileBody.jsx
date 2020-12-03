@@ -19,7 +19,7 @@ class Body extends React.Component {
     fetch("https://striveschool-api.herokuapp.com/api/profile/" + id, {
       method: "GET",
       headers: new Headers({
-        Authorization: process.env.REACT_APP_TOKEN,
+        Authorization: localStorage.getItem("token"),
         ContentType: "application/json",
       }),
     })
@@ -54,7 +54,6 @@ class Body extends React.Component {
   };
   render() {
     return (
-
       <div className="profileDiv">
         <div className="mainBody">
           {this.state.err && (
@@ -67,7 +66,7 @@ class Body extends React.Component {
             </Row>
           ) : Object.keys(this.state.profile).length !== 0 ? (
             <Row>
-              <Col  xs={12} lg={8} md={12}>
+              <Col xs={12} lg={8} md={12}>
                 <Header
                   name={
                     this.state.profile.name + " " + this.state.profile.surname
