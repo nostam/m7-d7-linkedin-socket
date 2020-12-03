@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../App.css";
 import { Card, Col, Row } from "react-bootstrap";
 import EditPage from "./EditPage"
+import '../styles/Profile.css'
 
 class Bio extends React.Component {
   render() {
@@ -18,7 +19,6 @@ class Bio extends React.Component {
               profile={this.props.profile}
               refetch={this.props.refetch}
               color='#0A66CE'
-              backgroundColor="transparent"
             />
             </Col>
           </Row>

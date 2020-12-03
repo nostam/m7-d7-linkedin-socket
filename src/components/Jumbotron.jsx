@@ -2,6 +2,7 @@ import React from "react";
 import EditPage from "./EditPage";
 import { Jumbotron, Dropdown, Button, Card, Row, Col } from "react-bootstrap";
 import "../App.css";
+import '../styles/Profile.css'
 import Job from "../assets/job.png";
 class Header extends React.Component {
   render() {

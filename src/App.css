@@ -43,6 +43,7 @@ body {
   }
   .propic {
     width: 15vw !important;
+    height: 15vw !important;
     position: absolute;
     top: 4vh!important;
     z-index: 2;
@@ -129,6 +130,7 @@ body {
   }
   .propic {
     width: 12vw !important;
+    height: 12vw !important;
     position: absolute;
     top: 7.5vh;
     z-index: 2;
@@ -202,6 +204,7 @@ body {
   }
   .propic {
     width: 12vw !important;
+    height: 12vw!important;
     position: absolute;
     top: 7.5vh;
     z-index: 2;
@@ -297,6 +300,7 @@ body {
 
 .propic {
   width: 8vw;
+  height: 8vw;
   position: absolute;
   top: 7.5vh;
   z-index: 2;

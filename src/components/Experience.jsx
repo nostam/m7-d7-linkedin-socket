@@ -6,6 +6,7 @@ import { BiPencil } from "react-icons/bi";
 import { BsPlus } from "react-icons/bs";
 import "../styles/Experience.css";
 import Job from "../assets/job.png";
+import '../styles/Profile.css'
 
 class Experience extends React.Component {
   state = {
