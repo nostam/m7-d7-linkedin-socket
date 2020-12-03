@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { Row, Col, Form, Button, Container, Badge } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import FooterLogo from "../footer_logo.svg";
-import "../styles/Login.css";
-export default class Login extends Component {
+import "../styles/SignUp.css";
+export default class SignUp extends Component {
   state = {
     user: [],
     hidden: true,
@@ -60,7 +60,7 @@ export default class Login extends Component {
         <Col
           md={{ span: 6, offset: 3 }}
           sm={{ span: 10, offset: 1 }}
-          className="loginCol mt-5"
+          className="signupCol mt-5 bg-white"
         >
           <div className="shadowBox">
             <div className="mb-3">
@@ -101,7 +101,7 @@ export default class Login extends Component {
               </Form.Group>
             </Form>
             <a className="forgetPwd">Forget your password?</a>
-            <Col className="loginCol">
+            <Col className="signupCol">
               <Button className="loginBtn">Sign in</Button>
             </Col>
           </div>
