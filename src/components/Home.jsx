@@ -32,7 +32,7 @@ export default class Home extends Component {
         <Row>
           <Col xs={12} md={8}>
         <PostModal/>
-          {this.state.Posts.map((Posts)=>(
+          {this.state.posts.map((Posts)=>(
             <Modal.Dialog>
             <Modal.Header>
               <Modal.Title><Image
