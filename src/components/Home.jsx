@@ -9,6 +9,7 @@ import "../styles/Home.css";
 export default class Home extends Component {
   state = {
     posts: [],
+    me: {},
   };
   fetchPost = async () => {
     try {
@@ -28,9 +29,26 @@ export default class Home extends Component {
       console.log(error);
     }
   };
-
+  fetchMe = async () => {
+    try {
+      const meFetch = await fetch(
+        "https://striveschool-api.herokuapp.com/api/profile/me",
+        {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+        }
+      );
+      const meResponse = await meFetch.json();
+      console.log(meResponse);
+      this.setState({ me: meResponse });
+    } catch (error) {
+      console.log(error);
+    }
+  };
   componentDidMount() {
     this.fetchPost();
+    this.fetchMe();
   }
 
   // componentDidUpdate(prevProps, prevState) {
@@ -45,12 +63,12 @@ export default class Home extends Component {
         <Container className="HomeCont">
           <Row>
             <Col className="d-none d-lg-block" lg={3}>
-              <RSidebar />
+              <RSidebar me={this.state.me} />
             </Col>
             <Col lg={6} md={9}>
-              <PostModal />
+              <PostModal refetch={() => this.fetchPost()} me={this.state.me} />
               {this.state.posts.map((post) => (
-                <Card className="w100 my-4" key="post._id">
+                <Card className="w100 my-4" key={`feed${post._id}`}>
                   <Card.Header className="d-flex justify-content-between px-3">
                     <div>
                       <Image

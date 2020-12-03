@@ -10,23 +10,6 @@ class RSidebar extends React.Component {
     localStorage.setItem("token", "");
     this.props.history.push("/");
   };
-  async componentDidMount() {
-    try {
-      const MeFetch = await fetch(
-        "https://striveschool-api.herokuapp.com/api/profile/me",
-        {
-          headers: {
-            Authorization: "Bearer " + localStorage.getItem("token"),
-          },
-        }
-      );
-      const MeResponse = await MeFetch.json();
-      this.setState({ Me: MeResponse });
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
   render() {
     return (
       <>
@@ -34,16 +17,16 @@ class RSidebar extends React.Component {
           <Card.Body>
             <Card.Title>
               <Image
-                src={this.state.Me.image}
+                src={this.props.me.image}
                 roundedCircle
                 className="postModalImg"
               />
             </Card.Title>
             <Card.Text>
               <p className="mb-0">
-                {this.state.Me.name + " " + this.state.Me.surname}
+                {this.props.me.name + " " + this.props.me.surname}
               </p>
-              <p>{this.state.Me.title}</p>
+              <p>{this.props.me.title}</p>
             </Card.Text>
           </Card.Body>
           <ListGroup className="list-group-flush">

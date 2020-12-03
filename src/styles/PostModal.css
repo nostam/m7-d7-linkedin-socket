@@ -8,7 +8,11 @@
 .postButton {
   border-radius: 30px !important;
   display: flex;
+  flex-direction: row;
   width: 100%;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding: 1rem !important;
+  font-size: 14px !important;
+}
+.postImage {
+  background-color: white;
 }
