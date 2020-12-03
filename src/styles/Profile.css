@@ -1,3 +1,4 @@
+
 .header {
     margin-top: 5.5vw;
     height: 38vh !important;
@@ -378,3 +379,8 @@
   .infobody {
     font-size: 11pt !important;
   }
+
+.profileDiv {
+  background-color: #f3f2ef;
+}
+

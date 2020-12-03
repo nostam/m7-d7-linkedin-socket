@@ -27,7 +27,7 @@ class AppNavBar extends React.Component {
         <div className="navbarContent">
           <Navbar.Brand
             as={Link}
-            to="/"
+            to="/Home"
             className="navbarBrand d-flex nowrap mr-2"
           >
             <IconContext.Provider
@@ -67,7 +67,7 @@ class AppNavBar extends React.Component {
             </InputGroup>
           </Form>
           <div className="ml-auto mr-0 d-flex row justify-content-end">
-            <Nav.Link className="navLinkCol" as={Link} to="/">
+            <Nav.Link className="navLinkCol" as={Link} to="/Home">
               <Col className="navCol">
                 <FaHome className="navIcon" />
                 <span className="navIconText">Home</span>

@@ -1,10 +1,10 @@
 div:not(.modal-content) {
   transition: all 0.25s;
 }
-
-body {
+/* THIS BREAKS ALL OTHER COMPONENTS BG-COLOR */
+/* body {
   background-color: #f3f2ef;
-}
+} */
 
 .header {
   margin-top: 5.5vw;
@@ -313,6 +313,7 @@ body {
 
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
 
+
 .job {
   position: absolute;
   width: 1.8vw;
@@ -386,4 +387,26 @@ body {
 
 .infobody {
   font-size: 11pt !important;
+}
+.HomeModal {
+  display: flex;
+  justify-content: left;
+}
+.RightSidebar {
+  text-align: center;
+  max-width: 216px;
+}
+.RSidebarBG {
+  max-width: 216px;
+  max-height: 54px;
+}
+.HomeDiv {
+  background-color: #f3f2ef;
+}
+.HomeCont {
+  padding-top: 100px;
+}
+.PostImage {
+  max-width: 450px;
+  max-height: 300px;
 }
