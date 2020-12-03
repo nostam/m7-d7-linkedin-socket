@@ -4,6 +4,9 @@ import Home from "./components/Home";
 import AppNavBar from "./components/AppNavBar";
 import Footer from "./components/Footer";
 import Profile from "./components/ProfileBody";
+import Login from "./components/Login";
+import SignUp from "./components/SignUp";
+// import Welcome from "./components/Welcome";
 import PostModal from "./components/PostModal"
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -16,9 +19,14 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-        <AppNavBar
-          query={this.state.query}
-          searchHandler={this.searchHandler}
+        <Route
+          path={["/user/:id", "/home"]}
+          render={() => (
+            <AppNavBar
+              query={this.state.query}
+              searchHandler={this.searchHandler}
+            />
+          )}
         />
         <Route
           path={"/home"}
@@ -30,7 +38,9 @@ class App extends React.Component {
           exact
           render={(props) => <Profile {...props} />}
         />
-        <Footer />
+        <Route path={"/login"} render={() => <Login />} />
+        <Route path={"/signup"} render={() => <SignUp />} />
+        <Route path={["/user/:id", "/home"]} component={Footer} />
       </Router>
     );
   }

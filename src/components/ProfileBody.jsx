@@ -5,7 +5,7 @@ import Experience from "./Experience";
 import Feature from "./Featured";
 import Header from "./Jumbotron";
 import Sidebar from "./Sidebar";
-
+import "../styles/Profile.css";
 class Body extends React.Component {
   state = {
     profile: {},
@@ -53,7 +53,7 @@ class Body extends React.Component {
   };
   render() {
     return (
-      <div className="mainBody">
+      <div className="mainBody profileDiv">
         {this.state.err && <Alert variant="danger">{this.state.errMsg}</Alert>}
         {this.state.loading && this.state.err !== true ? (
           <Row className="d-flex justify-content-center my-5">

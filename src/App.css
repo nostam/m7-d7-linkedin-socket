@@ -1,10 +1,10 @@
 div:not(.modal-content) {
   transition: all 0.25s;
 }
-
-body {
+/* THIS BREAKS ALL OTHER COMPONENTS BG-COLOR */
+/* body {
   background-color: #f3f2ef;
-}
+} */
 
 .header {
   margin-top: 5.5vw;
