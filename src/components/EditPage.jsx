@@ -18,7 +18,7 @@ class EditPage extends React.Component {
         "https://striveschool-api.herokuapp.com/api/profile/me",
         {
           headers: {
-            Authorization: process.env.REACT_APP_TOKEN,
+            Authorization: "Bearer " + localStorage.getItem("token"),
           },
         }
       );
@@ -45,7 +45,7 @@ class EditPage extends React.Component {
         body: JSON.stringify(this.state.profile),
         headers: {
           "Content-Type": "application/json",
-          Authorization: process.env.REACT_APP_TOKEN,
+          Authorization: "Bearer " + localStorage.getItem("token"),
         },
       });
       if (response.ok) {
@@ -68,11 +68,10 @@ class EditPage extends React.Component {
   render() {
     return (
       <>
-
         <div
           onClick={() => this.setState({ showModal: true })}
           className="JumbBiPencilDiv"
-          style={{backgroundColor:"transparent"}}
+          style={{ backgroundColor: "transparent" }}
         >
           <IconContext.Provider
             value={{

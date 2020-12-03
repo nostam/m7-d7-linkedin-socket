@@ -6,8 +6,8 @@ import Footer from "./components/Footer";
 import Profile from "./components/ProfileBody";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
-// import Welcome from "./components/Welcome";
-import PostModal from "./components/PostModal"
+import Welcome from "./components/Welcome";
+// import PostModal from "./components/PostModal";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 class App extends React.Component {
@@ -38,6 +38,7 @@ class App extends React.Component {
           exact
           render={(props) => <Profile {...props} />}
         />
+        <Route path={"/"} exact render={() => <Welcome />} />
         <Route path={"/login"} render={() => <Login />} />
         <Route path={"/signup"} render={() => <SignUp />} />
         <Route path={["/user/:id", "/home"]} component={Footer} />

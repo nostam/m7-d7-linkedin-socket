@@ -1,11 +1,10 @@
-div:not(.modal-content) {
+/* div:not(.modal-content) {
   transition: all 0.25s;
-}
+} */
 /* THIS BREAKS ALL OTHER COMPONENTS BG-COLOR */
 /* body {
   background-color: #f3f2ef;
 } */
-
 
 .HomeModal {
   display: flex;
@@ -18,14 +17,4 @@ div:not(.modal-content) {
 .RSidebarBG {
   max-width: 216px;
   max-height: 54px;
-}
-.HomeDiv {
-  background-color: #f3f2ef;
-}
-.HomeCont {
-  padding-top: 100px;
-}
-.PostImage {
-  max-width: 450px;
-  max-height: 300px;
 }

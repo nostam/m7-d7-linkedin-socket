@@ -1,0 +1,15 @@
+.homeDiv {
+  background-color: #f3f2ef;
+}
+.HomeCont {
+  padding-top: 100px;
+}
+.postImage {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+.HomeModal {
+  display: flex;
+  justify-content: left;
+}

@@ -1,10 +1,14 @@
 .postModalImg {
-    width: 48px;
-    height: 48px
+  width: 48px;
+  height: 48px;
 }
-.HashButton{
-    block-size: max-content;
+.HashButton {
+  block-size: max-content;
 }
-.postButton{
-    border-radius: 30px !important;
+.postButton {
+  border-radius: 30px !important;
+  display: flex;
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
