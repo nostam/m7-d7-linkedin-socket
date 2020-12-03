@@ -44,6 +44,26 @@ class EditPost extends React.Component {
         }
     };
 
+    Delete = async () =>{
+        try {
+            const response = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${this.props.Post._id}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: process.env.REACT_APP_TOKEN,
+                },
+            });
+            if (response.ok) {
+                this.setState({ showModal: false });
+                //this.props.refetch();
+            } else {
+                this.setState({ showModal: false });
+            }
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
     componentDidMount() {
         this.setState({propPost: this.props.Post})
     }
@@ -91,6 +111,7 @@ class EditPost extends React.Component {
                     </Modal.Body>
 
                     <Modal.Footer>
+                        <Button variant="danger" onClick={this.Delete}>Delete</Button>
                         <Button variant="primary" onClick={this.Edit}>Save</Button>
                     </Modal.Footer>
                 </Modal>
