@@ -4,7 +4,7 @@ import { BiPencil } from "react-icons/bi";
 import { MdClose } from "react-icons/md";
 import { IconContext } from "react-icons";
 import "../styles/EditPage.css";
-import axios from "axios";
+
 
 class EditPage extends React.Component {
   state = {
