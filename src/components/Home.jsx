@@ -10,8 +10,7 @@ export default class Home extends Component {
   state = {
     posts: [],
   };
-
-  async componentDidMount() {
+  async componentDidMount(){
     try {
       const postFetch = await fetch(
         "https://striveschool-api.herokuapp.com/api/posts/ ",
@@ -26,6 +25,26 @@ export default class Home extends Component {
       console.log(this.state.posts);
     } catch (error) {
       console.log(error);
+    }
+  }
+
+  async componentDidUpdate(_prevProps, prevState) {
+    if(prevState.posts !== this.state.posts){
+      try {
+        const postFetch = await fetch(
+          "https://striveschool-api.herokuapp.com/api/posts/ ",
+          {
+            headers: {
+              Authorization: process.env.REACT_APP_TOKEN,
+            },
+          }
+        );
+        const postResponse = await postFetch.json();
+        this.setState({ posts: postResponse });
+        console.log("Update")
+      } catch (error) {
+        console.log(error);
+      }
     }
   }
 
