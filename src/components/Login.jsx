@@ -9,19 +9,19 @@ export default class Login extends Component {
     hidden: true,
   };
   url = "https://striveschool-api.herokuapp.com/api/account/register";
-  header = {
-    Authorization: process.env.REACT_APP_TOKEN,
-    ContentType: "application/json",
-  };
-  submitData = async () => {
+  submitData = async (e) => {
+    e.preventDefault();
     try {
-      let response = await fetch("this.url", {
+      let response = await fetch(this.url, {
         method: "POST",
         body: JSON.stringify(this.state.user),
-        header: this.header,
+        headers: {
+          "Content-Type": "application/json",
+        },
       });
       if (response.ok) {
-        this.props.history.details.push("/user/me");
+        const { access_token } = await response.json();
+        console.log(access_token);
       }
     } catch (error) {
       console.log(error);
@@ -61,7 +61,7 @@ export default class Login extends Component {
                 <h2>Sign in</h2>
                 <span>Stay updated on your professional world</span>
               </div>
-              <Form>
+              <Form onSubmit={this.submitData}>
                 <Form.Group>
                   <Form.Control
                     required
@@ -93,11 +93,13 @@ export default class Login extends Component {
                     {this.state.hidden ? "show" : "hide"}
                   </Badge>
                 </Form.Group>
+                <Col className="loginCol">
+                  <Button type="submit" className="loginBtn">
+                    Sign in
+                  </Button>
+                </Col>
               </Form>
               <a className="forgetPwd">Forget your password?</a>
-              <Col className="loginCol">
-                <Button className="loginBtn">Sign in</Button>
-              </Col>
             </div>
             <Row className="d-flex justify-content-around mt-5 mx-auto bg-transparent">
               New to LinkedIn?{" "}
