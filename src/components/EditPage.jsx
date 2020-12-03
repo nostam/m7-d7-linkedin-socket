@@ -73,14 +73,14 @@ class EditPage extends React.Component {
           className="JumbBiPencilDiv"
           style={{ backgroundColor: "transparent" }}
         >
-          <text.Provider
+          <IconContext.Provider
             value={{
               size: "1.6vw",
               className: "JumbBiPencil",
             }}
           >
             <BiPencil />
-          </text.Provider>
+          </IconContext.Provider>
         </div>
         <Modal
           className="editProfileModal"
