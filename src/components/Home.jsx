@@ -1,31 +1,29 @@
 import React, { Component } from "react";
-import { Container,Modal,Button,Image,Row,Col } from "react-bootstrap";
+import { Container, Modal, Button, Image, Row, Col } from "react-bootstrap";
 import EditPost from "./EditPost";
 import PostModal from "./PostModal";
-import Sidebar from "./Sidebar"
+import Sidebar from "./Sidebar";
 
 export default class Home extends Component {
-
   state = {
-    Posts:[]
-  }
+    posts: [],
+  };
 
-
-  async componentDidMount(){
+  async componentDidMount() {
     try {
       const postFetch = await fetch(
-          "https://striveschool-api.herokuapp.com/api/posts/ ",
-          {
-              headers: {
-                  Authorization: process.env.REACT_APP_TOKEN,
-              },
-          }
+        "https://striveschool-api.herokuapp.com/api/posts/ ",
+        {
+          headers: {
+            Authorization: process.env.REACT_APP_TOKEN,
+          },
+        }
       );
       const postResponse = await postFetch.json();
-      this.setState({Posts: postResponse });
-  } catch (error) {
+      this.setState({ posts: postResponse });
+    } catch (error) {
       console.log(error);
-  }
+    }
   }
 
   render() {
@@ -58,12 +56,10 @@ export default class Home extends Component {
           ))}
           </Col>
           <Col>
-        <Sidebar />
+            <Sidebar />
           </Col>
         </Row>
       </Container>
-
-
-    )
+    );
   }
 }
