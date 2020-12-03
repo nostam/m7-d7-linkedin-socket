@@ -16,7 +16,7 @@ export default class Home extends Component {
         "https://striveschool-api.herokuapp.com/api/posts/ ",
         {
           headers: {
-            Authorization: localStorage.getItem("token").toString(),
+            Authorization: "Bearer " + localStorage.getItem("token").toString(),
           },
         }
       );
