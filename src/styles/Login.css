@@ -17,10 +17,10 @@ body {
 .shadowBox {
   padding: 2rem;
 }
-.loginCol {
+.loginCol:not(.loginLogo) {
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
 }
 .loginCol h4 {
@@ -44,7 +44,6 @@ body {
   font-size: 0.8rem;
   letter-spacing: 0.1em;
   border-radius: 2rem;
-  text-align: center;
   font-size: 1rem;
 }
 .loginCol .form-control {

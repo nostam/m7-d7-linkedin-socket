@@ -48,12 +48,13 @@ export default class Login extends Component {
   render() {
     return (
       <Container>
-        <Col
-          md={{ span: 6, offset: 3 }}
-          sm={{ span: 10, offset: 1 }}
-          className="loginCol mt-5 "
-        >
-          <img src={FooterLogo} className="mb-4 " style={{ height: "30px" }} />
+        <Col className="loginCol mt-5 ">
+          <img
+            src={FooterLogo}
+            className="mb-4 "
+            alt="loginLogo"
+            style={{ height: "30px" }}
+          />
           <div className="shadowBox">
             <div className="mb-3">
               <h2>Sign in</h2>
@@ -97,13 +98,9 @@ export default class Login extends Component {
               <Button className="loginBtn">Sign in</Button>
             </Col>
           </div>
-          <div className="text-center mx-auto my-5 d-flex">
-            <h6 className="mx-1">
-              <span>
-                New to LinkedIn? <Link to="/signup">Join now</Link>
-              </span>
-            </h6>
-          </div>
+          <Row className="d-flex justify-content-around mt-4 mx-auto ">
+            New to LinkedIn? <Link to="/signup">Join now</Link>
+          </Row>
         </Col>
       </Container>
     );
