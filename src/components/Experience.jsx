@@ -56,7 +56,7 @@ class Experience extends React.Component {
   render() {
     return (
       <>
-        <Card style={{ borderRadius: ".5vw", marginTop: ".8vw" }}>
+        <Card style={{ borderRadius: ".5vw", marginTop: ".8vw", width: '46vw', left: '-3.5vw' }}>
           <Card.Body>
             <Row className='d-flex justify-content-between ml-1'>
               

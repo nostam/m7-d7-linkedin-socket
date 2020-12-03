@@ -58,54 +58,51 @@ class Header extends React.Component {
           </Row>
           {/*propic and headers*/}
           <img src={this.props.src} className="propic" alt="profile" />
-
-          <Row noGutters>
-            <Col>
-              <div
-                id="headerName"
-                className="d-flex justify-content-center my-2"
-              >
-                {this.props.name}
-              </div>
-            </Col>
-          </Row>
-          <Row className="d-flex" noGutters>
-            <Col>
-              <div
-                id="headerDescription"
-                className="d-flex justify-content-center"
-              >
-                {this.props.desc}
-              </div>
-            </Col>
-            <Col className='d-flex justify-content-around'>
-              <img src={Job} className="job d-flex" />
-
-              <div className="jobdec hoverBlue d-flex justify-content-center">
-                Student
-              </div>
-            </Col>
-          </Row>
-          <Row className="d-flex" noGutters id="headerLinkLoc">
-            <div id="headerLoc" className="d-flex justify-content-center">
-              {" "}
-              {this.props.loc}
-            </div>
-            <div id="headerLink" className="hoverBlue">
-              ∙&nbsp;&nbsp;24 connections&nbsp;&nbsp;∙&nbsp;&nbsp;Contact Info
-            </div>
-          </Row>
-          {/* <Row
-            className="d-flex opentowork"
+          <ul
             style={{
-              width: "38vw",
-              height: "6.8vw",
+              listStyleType: "none",
               position: "absolute",
-              top: "36vh",
-              borderRadius: ".5vw",
+              left: "-1vw",
+              top: "15vw",
             }}
           >
-            <Col xs={12}>
+            <li>
+              <Row noGutters>
+                <Col>
+                  <div id="headerName" className="d-flex  my-2">
+                    {this.props.name}
+                  </div>
+                </Col>
+              </Row>
+            </li>
+            <li>
+              <Row className="d-flex" noGutters style={{ width: "46vw" }}>
+                <Col>
+                  <div id="headerDescription" className="d-flex ">
+                    {this.props.desc}
+                  </div>
+                </Col>
+                <Col className="d-flex justify-content-around">
+                  <img src={Job} className="job d-flex" />
+
+                  <div className="jobdec hoverBlue d-flex ">Student</div>
+                </Col>
+              </Row>
+            </li>
+            <li>
+              <Row className="d-flex" noGutters id="headerLinkLoc">
+                <div id="headerLoc" className="d-flex justify-content-center">
+                  {this.props.loc}
+                </div>
+                <div id="headerLink" className="hoverBlue">
+                  &nbsp;&nbsp;∙&nbsp;&nbsp;24
+                  connections&nbsp;&nbsp;∙&nbsp;&nbsp;Contact Info
+                </div>
+              </Row>
+            </li>
+          </ul>
+          <Row className="d-flex justify-content-center" style={{width: '46vw'}}>
+            <Col xs={12} className='opentowork'>
               <Card>
                 <Card.Header
                   className="hoverBlue"
@@ -143,7 +140,6 @@ class Header extends React.Component {
               </Card>
             </Col>
           </Row>
-                */}
         </div>
       </Jumbotron>
     );

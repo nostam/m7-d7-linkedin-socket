@@ -67,7 +67,7 @@ class Body extends React.Component {
             </Row>
           ) : Object.keys(this.state.profile).length !== 0 ? (
             <Row>
-              <Col  xs={12} lg={8} md={12}>
+              <Col  xs={12} lg={8} md={12} >
                 <Header
                   name={
                     this.state.profile.name + " " + this.state.profile.surname
@@ -82,7 +82,7 @@ class Body extends React.Component {
                 <Feature />
                 <Experience profile={this.state.profile} />
               </Col>
-              <Col style={{ marginTop: "5.3vw" }} xs={12} lg={4} md={12} >
+              <Col style={{ marginTop: "5.7vw" }} xs={12} lg={4} md={12} >
                 <Sidebar />
               </Col>
             </Row>
