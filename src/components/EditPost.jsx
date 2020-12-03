@@ -1,5 +1,7 @@
 import React from "react";
 import { Button, Col, Row, Modal, Image, Form } from "react-bootstrap";
+import { BiDotsHorizontalRounded } from "react-icons/bi";
+import { IconContext } from "react-icons";
 import "../styles/PostModal.css"
 
 
@@ -42,6 +44,26 @@ class EditPost extends React.Component {
         }
     };
 
+    Delete = async () =>{
+        try {
+            const response = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${this.props.Post._id}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: process.env.REACT_APP_TOKEN,
+                },
+            });
+            if (response.ok) {
+                this.setState({ showModal: false });
+                //this.props.refetch();
+            } else {
+                this.setState({ showModal: false });
+            }
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
     componentDidMount() {
         this.setState({propPost: this.props.Post})
     }
@@ -49,9 +71,19 @@ class EditPost extends React.Component {
     render() {
         return (
             <>
-                <Button variant="primary" onClick={() => this.setState({ showModal: true })} className="ml-3">
-                    Edit
-                </Button>
+        <div
+          onClick={() => this.setState({ showModal: true })}
+          className="JumbBiPencilDiv"
+        >
+          <IconContext.Provider
+            value={{
+              size: "1.6vw",
+              className: "JumbBiPencil",
+            }}
+          >
+            <BiDotsHorizontalRounded />
+          </IconContext.Provider>
+        </div>
                 <Modal
                 show={this.state.showModal}
                 onHide={() => this.setState({ showModal: false })}>
@@ -79,6 +111,7 @@ class EditPost extends React.Component {
                     </Modal.Body>
 
                     <Modal.Footer>
+                        <Button variant="danger" onClick={this.Delete}>Delete</Button>
                         <Button variant="primary" onClick={this.Edit}>Save</Button>
                     </Modal.Footer>
                 </Modal>

@@ -1,5 +1,7 @@
 import React from "react";
 import { Button, Col, Row, Modal, Image, Form } from "react-bootstrap";
+import { FaCamera, FaVideo, FaStickyNote, FaPenSquare } from "react-icons/fa"
+import {BiPencil} from "react-icons/bi"
 import "../styles/PostModal.css";
 
 class PostModal extends React.Component {
@@ -73,12 +75,13 @@ class PostModal extends React.Component {
     return (
       <>
         <Button
-          variant="primary"
+          className="postButton"
+          variant="outline-dark"
           size="md"
           onClick={() => this.setState({ showModal: true })}
           block
         >
-          Start a Post
+          <BiPencil/> Start a Post
         </Button>
         <Modal show={this.state.showModal}
         onHide={() => this.setState({ showModal: false })}>
@@ -125,6 +128,10 @@ class PostModal extends React.Component {
           </Modal.Body>
 
           <Modal.Footer>
+                    <button className="btn"><i><FaCamera style={{ color: "#666666" }} size={30} /></i></button>
+                    <button className="btn"><i><FaVideo style={{ color: "#666666" }} size={30} /></i></button>
+                    <button className="btn"><i><FaStickyNote style={{ color: "#666666" }} size={30} /></i></button>
+                    <button className="btn"><i><FaPenSquare className="pen mx-1" style={{ color: "#666666" }} size={30} /></i></button>
             <Button variant="primary" onClick={this.post}>
               Post
             </Button>
