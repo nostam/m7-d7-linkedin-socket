@@ -22,6 +22,7 @@ export default class Login extends Component {
       if (response.ok) {
         const { access_token } = await response.json();
         console.log(access_token);
+        localStorage.setItem("token", access_token);
       }
     } catch (error) {
       console.log(error);

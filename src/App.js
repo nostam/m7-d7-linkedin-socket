@@ -7,7 +7,7 @@ import Profile from "./components/ProfileBody";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 // import Welcome from "./components/Welcome";
-import PostModal from "./components/PostModal"
+// import PostModal from "./components/PostModal";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 class App extends React.Component {
