@@ -132,11 +132,11 @@ div:not(.modal-content) {
   max-width: 216px;
   max-height: 54px;
 }
-.homeDiv {
+.HomeDiv {
   background-color: #f3f2ef;
 }
 .HomeCont {
-  margin-top: 100px;
+  padding-top: 100px;
 }
 .PostImage {
   max-width: 450px;
