@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Container, Modal, Button, Image, Row, Col } from "react-bootstrap";
 import EditPost from "./EditPost";
 import PostModal from "./PostModal";
+import RSidebar from "./RSidebar";
 import Sidebar from "./Sidebar";
 
 export default class Home extends Component {
@@ -21,6 +22,7 @@ export default class Home extends Component {
       );
       const postResponse = await postFetch.json();
       this.setState({ posts: postResponse });
+      console.log(this.state.posts)
     } catch (error) {
       console.log(error);
     }
@@ -28,9 +30,12 @@ export default class Home extends Component {
 
   render() {
     return (
-      <Container className="mt-5">
+      <Container className="HomeCont">
         <Row>
-          <Col xs={12} md={8}>
+          <Col>
+            <RSidebar/>
+          </Col>
+          <Col xs={6}>
         <PostModal/>
           {this.state.posts.map((Posts)=>(
             <Modal.Dialog>
@@ -43,6 +48,9 @@ export default class Home extends Component {
             </Modal.Header>
           
             <Modal.Body>
+            <Image
+                                    src={Posts.image}
+                                />
               <p>{Posts.text}</p>
             </Modal.Body>
           
