@@ -8,7 +8,7 @@ body {
 
 .header {
   margin-top: 5.5vw;
-  height: 51.4vh !important;
+  height: 25vw !important;
   background-color: white !important;
   border-radius: .5vw !important;
   border-color: lightgrey;
@@ -20,6 +20,48 @@ body {
   width: 63.2vw;
   margin-right: 20vw;
   margin-left: 20vw
+}
+@media (max-width:576px) {
+  .mainBody {
+  width: 90vw;
+  margin-left: 5vw;
+  margin-right: 5vw;
+  
+  }
+}
+@media (max-width:768px) {
+  .mainBody {
+  width: 80vw;
+  
+  }
+}
+@media (max-width:992px) {
+  .mainBody {
+  width: 30vw;
+  
+  }
+}
+@media (max-width:1200px) {
+  .mainBody {
+  width: 80vw;
+  margin-left: 10vw;
+  margin-right: 10vw;
+  
+  }
+  .wrapper {
+    position: absolute;
+    top: 3vh;
+    width: 30vw;
+    height: 19vh;
+  }
+  #headerName {
+    font-size: 1.45rem;
+    line-height: 1.33333;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400 !important;
+    position: absolute;
+    top: 1vh;
+  }
 }
 
 .coverpic {
@@ -38,9 +80,9 @@ body {
 }
 
 .propic {
-  width: 22%;
+  width: 8vw;
   position: absolute;
-  top: 9vh;
+  top: 7.5vh;
   z-index: 2;
   border-radius: 50%;
   border-width: 0.3vw;
@@ -50,18 +92,11 @@ body {
 
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
 
-#headerName {
-  font-size: 1.45rem;
-  line-height: 1.33333;
-  font-family: "Roboto", sans-serif;
-  font-weight: 400 !important;
-  position: absolute;
-  top: 2.9vw;
-}
+
 .job{
   position: absolute;
   width: 1.8vw;
-  top: 14vw;
+  top: 7.5vh;
   left:67%
 }
 .jobdec {
@@ -70,14 +105,21 @@ body {
   font-weight: 500!important;
   font-size: 11pt;
   width: 1.8vw;
-  top: 14.3vw;
-  left:72.5%
+  top: 8.2vh;
+  left: 12.5vw
 }
-
+#headerName {
+  font-size: 1.45rem;
+  line-height: 1.33333;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400 !important;
+  position: absolute;
+  top: 6vh;
+}
 #headerDescription {
   position: absolute;
-  top: 4.6vw;
-  font-size: 1.2rem !important;
+  top: 10vh;
+  font-size: 1rem !important;
   line-height: 1.33333;
   font-family: "Roboto", sans-serif;
   font-weight: 300 !important;
@@ -85,19 +127,17 @@ body {
 
 #headerLoc {
   display: flex;
-  font-size: 1rem !important;
+  font-size: .9rem !important;
   font-weight: 300 !important;
   margin-right: 1vw;
   font-family: "Roboto", sans-serif;
-  
-  
 }
 
 #headerLinkLoc { 
   margin:0!important;
   padding:0!important;
   position: relative;
-  top: 6vw;
+  top: 12.8vh;
   
 }
 #headerLink {
@@ -110,6 +150,14 @@ body {
 }
 .hoverBlue:hover {
   text-decoration: underline 
+}
+
+.wrapper {
+  position: absolute;
+  top: 18vh;
+  width: 30vw;
+  height: 19vh;
+  
 }
 .info {
   font-size: 1.3rem;
