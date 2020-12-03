@@ -10,13 +10,13 @@ export default class Home extends Component {
   state = {
     posts: [],
   };
-  async componentDidMount() {
+  fetchPosts = async () => {
     try {
       const postFetch = await fetch(
         "https://striveschool-api.herokuapp.com/api/posts/ ",
         {
           headers: {
-            Authorization: process.env.REACT_APP_TOKEN,
+            Authorization: localStorage.getItem("token").toString(),
           },
         }
       );
@@ -26,27 +26,16 @@ export default class Home extends Component {
     } catch (error) {
       console.log(error);
     }
-  }
+  };
+  componentDidMount = () => {
+    this.fetchPosts();
+  };
 
-  async componentDidUpdate(_prevProps, prevState) {
+  componentDidUpdate = (prevProps, prevState) => {
     if (prevState.posts !== this.state.posts) {
-      try {
-        const postFetch = await fetch(
-          "https://striveschool-api.herokuapp.com/api/posts/ ",
-          {
-            headers: {
-              Authorization: process.env.REACT_APP_TOKEN,
-            },
-          }
-        );
-        const postResponse = await postFetch.json();
-        this.setState({ posts: postResponse });
-        console.log("Update");
-      } catch (error) {
-        console.log(error);
-      }
+      this.fetchPosts();
     }
-  }
+  };
 
   render() {
     return (

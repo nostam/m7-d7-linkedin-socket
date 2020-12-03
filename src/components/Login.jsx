@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Row, Col, Form, Button, Container, Badge } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import FooterLogo from "../footer_logo.svg";
 import "../styles/Login.css";
-export default class Login extends Component {
+class Login extends Component {
   state = {
     user: [],
     hidden: true,
@@ -21,8 +21,8 @@ export default class Login extends Component {
       });
       if (response.ok) {
         const { access_token } = await response.json();
-        console.log(access_token);
-        localStorage.setItem("token", access_token);
+        localStorage.setItem("token", `Bearer ${access_token}`);
+        this.props.history.push("/home");
       }
     } catch (error) {
       console.log(error);
@@ -114,3 +114,4 @@ export default class Login extends Component {
     );
   }
 }
+export default withRouter(Login);

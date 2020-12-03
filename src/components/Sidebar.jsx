@@ -14,7 +14,7 @@ class Sidebar extends Component {
     fetch("https://striveschool-api.herokuapp.com/api/profile", {
       method: "GET",
       headers: new Headers({
-        Authorization: process.env.REACT_APP_TOKEN,
+        Authorization: localStorage.getItem("token"),
         ContentType: "application/json",
       }),
     })

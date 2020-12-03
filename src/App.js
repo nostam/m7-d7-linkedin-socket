@@ -38,7 +38,7 @@ class App extends React.Component {
           exact
           render={(props) => <Profile {...props} />}
         />
-        <Route path={"/"} render={() => <Welcome />} />
+        <Route path={"/"} exact render={() => <Welcome />} />
         <Route path={"/login"} render={() => <Login />} />
         <Route path={"/signup"} render={() => <SignUp />} />
         <Route path={["/user/:id", "/home"]} component={Footer} />

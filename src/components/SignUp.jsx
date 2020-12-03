@@ -10,7 +10,6 @@ export default class SignUp extends Component {
   };
   url = "https://striveschool-api.herokuapp.com/api/account/register";
   header = {
-    // Authorization: process.env.REACT_APP_TOKEN,
     ContentType: "application/json",
   };
   submitData = async () => {
