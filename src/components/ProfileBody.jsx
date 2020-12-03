@@ -58,8 +58,12 @@ class Body extends React.Component {
         {this.state.err && <Alert variant="danger">{this.state.errMsg}</Alert>}
         {this.state.loading && this.state.err !== true ? (
           <Row className="d-flex justify-content-center my-5">
-            <h3>Loading profile...</h3>
-            <Spinner animation="border" variant="info" />
+            <h3 style={{ paddingTop: "20vh" }}>Loading profile...</h3>
+            <Spinner
+              animation="border"
+              variant="info"
+              style={{ marginTop: "20vh" }}
+            />
           </Row>
         ) : Object.keys(this.state.profile).length !== 0 ? (
           <Row>
