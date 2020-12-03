@@ -79,62 +79,63 @@ class Experience extends React.Component {
             </Row>
             {/* <Edit /> */}
             {this.state.experience.map((job, index) => {
-              let startyear = job.startDate.slice(0,4)
-              let startmonth = job.startDate.slice(5,7)
-              if (startmonth === '01') {
-                startmonth = 'Jan'
-              } else if (startmonth === '02') {
-                startmonth = 'Feb'
-              } else if (startmonth === '03') {
-                startmonth = 'Mar'
-              } else if (startmonth === '04') {
-                startmonth = 'Apr'
-              } else if (startmonth === '05') {
-                startmonth = 'May'
-              } else if (startmonth === '06') {
-                startmonth = 'Jun'
-              } else if (startmonth === '07') {
-                startmonth = 'Jul'
-              } else if (startmonth === '08') {
-                startmonth = 'Aug'
-              } else if (startmonth === '09') {
-                startmonth = 'Sep'
-              } else if (startmonth === '10') {
-                startmonth = 'Oct'
-              } else if (startmonth === '11') {
-                startmonth = 'Nov'
-              } else if (startmonth === '12') {
-                startmonth = 'Dec'
+              let startyear = job.startDate.slice(0, 4);
+              let startmonth = job.startDate.slice(5, 7);
+              if (startmonth === "01") {
+                startmonth = "Jan";
+              } else if (startmonth === "02") {
+                startmonth = "Feb";
+              } else if (startmonth === "03") {
+                startmonth = "Mar";
+              } else if (startmonth === "04") {
+                startmonth = "Apr";
+              } else if (startmonth === "05") {
+                startmonth = "May";
+              } else if (startmonth === "06") {
+                startmonth = "Jun";
+              } else if (startmonth === "07") {
+                startmonth = "Jul";
+              } else if (startmonth === "08") {
+                startmonth = "Aug";
+              } else if (startmonth === "09") {
+                startmonth = "Sep";
+              } else if (startmonth === "10") {
+                startmonth = "Oct";
+              } else if (startmonth === "11") {
+                startmonth = "Nov";
+              } else if (startmonth === "12") {
+                startmonth = "Dec";
               }
               
-              let enddate = job.endDate.slice(0,10)
-              let endyear = job.endDate.slice(0,4)
-              let endmonth = job.endDate.slice(5,7)
-              if (endmonth === '01') {
-                endmonth = 'Jan'
-              } else if (endmonth === '02') {
-                endmonth = 'Feb'
-              } else if (endmonth === '03') {
-                endmonth = 'Mar'
-              } else if (endmonth === '04') {
-                endmonth = 'Apr'
-              } else if (endmonth === '05') {
-                endmonth = 'May'
-              } else if (endmonth === '06') {
-                endmonth = 'Jun'
-              } else if (endmonth === '07') {
-                endmonth = 'Jul'
-              } else if (endmonth === '08') {
-                endmonth = 'Aug'
-              } else if (endmonth === '09') {
-                endmonth = 'Sep'
-              } else if (endmonth === '10') {
-                endmonth = 'Oct'
-              } else if (endmonth === '11') {
-                endmonth = 'Nov'
-              } else if (endmonth === '12') {
-                endmonth = 'Dec'
-              }
+                let enddate = job.endDate.slice(0, 10);
+                let endyear = job.endDate.slice(0, 4);
+                let endmonth = job.endDate.slice(5, 7);
+                if (endmonth === "01") {
+                  endmonth = "Jan";
+                } else if (endmonth === "02") {
+                  endmonth = "Feb";
+                } else if (endmonth === "03") {
+                  endmonth = "Mar";
+                } else if (endmonth === "04") {
+                  endmonth = "Apr";
+                } else if (endmonth === "05") {
+                  endmonth = "May";
+                } else if (endmonth === "06") {
+                  endmonth = "Jun";
+                } else if (endmonth === "07") {
+                  endmonth = "Jul";
+                } else if (endmonth === "08") {
+                  endmonth = "Aug";
+                } else if (endmonth === "09") {
+                  endmonth = "Sep";
+                } else if (endmonth === "10") {
+                  endmonth = "Oct";
+                } else if (endmonth === "11") {
+                  endmonth = "Nov";
+                } else if (endmonth === "12") {
+                  endmonth = "Dec";
+                }
+              
               return (
                 <>
                   <Row noGutters>
@@ -166,10 +167,14 @@ class Experience extends React.Component {
                           <div class="workplaceExp">{job.company}</div>
                         </li>
                         <li className="expEntries">
-                          <div class="timeExp">{startmonth + " " + startyear}</div>
+                          <div class="timeExp">
+                            {startmonth + " " + startyear}
+                          </div>
                         </li>
                         <li className="expEntries">
-                          <div class="timeExp">{endmonth + " " + endyear}</div>
+                          <div class="timeExp">
+                            {endmonth + " " + endyear}
+                          </div>
                         </li>
                         <li className="expEntries">
                           <div class="cityExp">{job.area}</div>
@@ -191,7 +196,7 @@ class Experience extends React.Component {
           expId={this.state.selectedId}
           toggle={() => this.toggleModal()}
           refetch={() => this.searchExp()}
-          color='#0A66CE'
+          color="#0A66CE"
         />
       </>
     );

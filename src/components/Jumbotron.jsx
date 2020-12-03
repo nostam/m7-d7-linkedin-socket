@@ -79,7 +79,7 @@ class Header extends React.Component {
           </Row>
         </div>
         <img src={Job} className='job'/>
-        <div className='jobdec hoverBlue'>{this.props.desc}</div>
+        <div className='jobdec hoverBlue' style={{whiteSpace: 'nowrap'}}>{this.props.desc}</div>
         <Card
           style={{
             width: "91%",
