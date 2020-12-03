@@ -47,7 +47,7 @@ export default class Login extends Component {
   };
   render() {
     return (
-      <div>
+      <div className="loginDiv">
         <Container>
           <Col className="loginCol mt-5">
             <img

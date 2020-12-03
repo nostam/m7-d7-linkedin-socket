@@ -21,7 +21,8 @@ export default class SignUp extends Component {
         header: this.header,
       });
       if (response.ok) {
-        this.props.history.details.push("/user/me");
+        console.log(response);
+        // this.props.history.details.push("/login");
       }
     } catch (error) {
       console.log(error);
@@ -47,7 +48,7 @@ export default class SignUp extends Component {
   };
   render() {
     return (
-      <div className="loginDiv">
+      <Container fluid className="signupDiv">
         <Container className="d-flex flex-column justify-content-center align-content-center">
           <Col className="d-flex justify-content-center mx-auto mt-4 flex-column text-center">
             <img
@@ -106,7 +107,7 @@ export default class SignUp extends Component {
             </Row>
           </Col>
         </Container>
-      </div>
+      </Container>
     );
   }
 }

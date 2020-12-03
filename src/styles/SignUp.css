@@ -1,8 +1,14 @@
+div:not(.modal-content) {
+  transition: unset !important;
+}
 .signupDiv {
   background-color: #f3f2ef;
+  width: 100vw;
+  height: 100vh;
 }
 .signupBox {
   width: 400px;
+  border-radius: 8px;
 }
 .signupCol {
   background-color: white !important;
@@ -65,8 +71,8 @@
   background-color: lightblue;
 } */
 @media screen and (max-width: 1160px) {
-  body {
-    background-color: white !important;
+  .signupDiv {
+    background-color: white;
   }
   .signupBox {
     width: 100vw;
