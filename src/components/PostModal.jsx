@@ -51,7 +51,7 @@ class PostModal extends React.Component {
       console.log(e);
     }
   };
-
+  handleSubmitImg = () => {};
   componentDidMount() {}
 
   render() {
@@ -120,7 +120,7 @@ class PostModal extends React.Component {
                 color: "#666",
               }}
             >
-              <FaCamera />
+              <FaCamera onClick={() => this.handleSubmitImg()} />
               <FaVideo />
               <FaStickyNote />
               <FaPenSquare />

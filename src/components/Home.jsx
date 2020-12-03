@@ -73,7 +73,8 @@ export default class Home extends Component {
                     <div>
                       <Image
                         src={post.user.image}
-                        className="postModalImg  mr-3"
+                        className="postModalImg mr-3"
+                        roundedCircle
                       />
                       {post.user.name + " " + post.user.surname}
                     </div>
