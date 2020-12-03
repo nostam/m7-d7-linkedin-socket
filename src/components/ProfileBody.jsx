@@ -30,6 +30,7 @@ class Body extends React.Component {
       })
       .then((info) => {
         let profile = { ...info };
+        console.log(profile);
         this.setState({ profile: profile, loading: false });
       })
       .catch((error) => {
