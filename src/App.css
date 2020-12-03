@@ -139,3 +139,7 @@ div:not(.modal-content) {
 .HomeCont{
   margin-top: 100px;
 }
+.PostImage{
+  max-width: 450px;
+  max-height: 300px;
+}
