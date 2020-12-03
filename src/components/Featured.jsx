@@ -9,7 +9,7 @@ import feat3 from "../assets/3.png";
 class Feature extends React.Component {
   render() {
     return (
-      <Card style={{ borderRadius: ".5vw", marginTop: ".8vw", width: '46vw', left: '-3.5vw',paddingRight:0 }}>
+      <Card className='bio'style={{ borderRadius: ".5vw", marginTop: ".8vw",paddingRight:0 }}>
         <Card.Body style={{paddingRight:0}}>
           <div className="info">Featured</div>
           

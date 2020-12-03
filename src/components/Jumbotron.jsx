@@ -58,40 +58,35 @@ class Header extends React.Component {
           </Row>
           {/*propic and headers*/}
           <img src={this.props.src} className="propic" alt="profile" />
-          <ul
-            style={{
-              listStyleType: "none",
-              position: "absolute",
-              left: "-1vw",
-              top: "15vw",
-            }}
+          <ul className="headerList" 
+            
           >
             <li>
               <Row noGutters>
                 <Col>
-                  <div id="headerName" className="d-flex  my-2">
+                  <div id="headerName" className="  my-2">
                     {this.props.name}
                   </div>
                 </Col>
               </Row>
             </li>
             <li>
-              <Row className="d-flex" noGutters style={{ width: "46vw" }}>
+              <Row noGutters style={{ width: "46vw" }}>
                 <Col>
-                  <div id="headerDescription" className="d-flex ">
+                  <div id="headerDescription" >
                     {this.props.desc}
                   </div>
                 </Col>
                 <Col className="d-flex justify-content-around">
                   <img src={Job} className="job d-flex" />
 
-                  <div className="jobdec hoverBlue d-flex ">Student</div>
+                  <div className="jobdec hoverBlue d-flex">Strive Student</div>
                 </Col>
               </Row>
             </li>
             <li>
               <Row className="d-flex" noGutters id="headerLinkLoc">
-                <div id="headerLoc" className="d-flex justify-content-center">
+                <div id="headerLoc" >
                   {this.props.loc}
                 </div>
                 <div id="headerLink" className="hoverBlue">
@@ -101,7 +96,7 @@ class Header extends React.Component {
               </Row>
             </li>
           </ul>
-          <Row className="d-flex justify-content-center" style={{width: '46vw'}}>
+          <Row  style={{width: '46vw'}}>
             <Col xs={12} className='opentowork'>
               <Card>
                 <Card.Header
