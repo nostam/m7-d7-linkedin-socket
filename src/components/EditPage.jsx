@@ -72,6 +72,7 @@ class EditPage extends React.Component {
         <div
           onClick={() => this.setState({ showModal: true })}
           className="JumbBiPencilDiv"
+          style={{backgroundColor:"transparent"}}
         >
           <IconContext.Provider
             value={{

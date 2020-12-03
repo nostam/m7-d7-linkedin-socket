@@ -54,6 +54,7 @@ class Body extends React.Component {
   };
   render() {
     return (
+
       <div className="profileDiv">
         <div className="mainBody">
           {this.state.err && (
@@ -66,7 +67,7 @@ class Body extends React.Component {
             </Row>
           ) : Object.keys(this.state.profile).length !== 0 ? (
             <Row>
-              <Col xs={12} md={8}>
+              <Col  xs={12} lg={8} md={12}>
                 <Header
                   name={
                     this.state.profile.name + " " + this.state.profile.surname

@@ -2,6 +2,7 @@ import React from "react";
 // import { useState } from "react";
 import { Button, Modal, Form, Row, Col, ThemeProvider } from "react-bootstrap";
 import "../App.css";
+import '../styles/Profile.css'
 class Edit extends React.Component {
   state = {
     showModal: false,
