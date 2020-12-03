@@ -1,35 +1,13 @@
 
-.header {
-    margin-top: 5.5vw;
-    height: 38vh;
-    background-color: white;
-    border-radius: 0.5vw;
-    border-color: lightgrey;
-    border-style: solid;
-    border-width: 0.1vw;
-  }
-  
-  .mainBody {
-    width: 63.2vw;
-    margin-right: 20vw;
-    margin-left: 20vw;
-  }
-  @media only screen and (max-width: 576px) {
+/*@media only screen and (max-width: 576px) {
     .mainBody {
       width: 90vw;
       margin-left: 5vw;
       margin-right: 5vw;
-    }
-  }
-  @media only screen and (min-width: 577px) and (max-width: 780px) {
-    .mainBody {
-      width: 70v;
-      margin-left: 15vw;
-      margin-right: 15vw;
       margin-top: 5vw;
     }
     .wrapper {
-      position: absolute;
+
       top: 4vh;
       width: 71vw;
       height: 19vh;
@@ -37,8 +15,8 @@
     .propic {
       width: 15vw;
       height: 15vw;
-      position: absolute;
-      top: 4v;
+
+      top: 4vw;
       z-index: 2;
       border-radius: 50%;
       border-width: 0.3vw;
@@ -53,12 +31,12 @@
       line-height: 1.33333;
       font-family: "Roboto", sans-serif;
       font-weight: 400;
-      position: absolute;
+
       top: 11vh;
       width: 63vw;
     }
     #headerDescription {
-      position: absolute;
+
       top: 14.5vh;
       font-size: 1rem;
       line-height: 1.33333;
@@ -74,29 +52,123 @@
       position: relative;
       top: 16.5vh;
       padding: 0 auto;
-      width: 63vw;
+      display: flex;
+      justify-content: center;
     }
-    
+  
     .btncol {
       margin-top: 0;
-      margin-bottom: 0
+      margin-bottom: 0;
     }
   
     .job {
-      display: none
+      display: none;
     }
   
     .jobdec {
-      display: non 
+      display: non;
     }
-    
+  
     .btns {
+
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       justify-content: center;
-      top: 24.5v;
-      width:77v;
-      justify-content: center;
+      align-items: center;
+      width: 77vw !important;
+      top: 31vw!important;
+      }
+      .dropdownAdd {
+        width: 25vw;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        background-color: #0a66ce;
+        height: 3vw;
+        font-weight: 600;
+        border-style: none;
+        margin-bottom: 1vw;
+      }
+      .moreBtn {
+        width: 7.5vw;
+        padding-bottom: 2.5vw;
+        margin-left: 2vw;
+        margin-right: 2vw;
+      }
+    }
+@media only screen and (min-width: 577px) and (max-width: 780px) {
+  .mainBody {
+    width: 70vw;
+    margin-left: 15vw;
+    margin-right: 15vw;
+    margin-top: 5vw;
+  }
+  .wrapper {
+    top: 4vh;
+    width: 71vw;
+    height: 19vh;
+  }
+  .propic {
+    width: 15vw;
+    height: 15vw;
+    top: 4vw;
+    z-index: 2;
+    border-radius: 50%;
+    border-width: 0.3vw;
+    border-color: white;
+    border-style: solid;
+    object-fit: scale-down;
+    height: 15vw;
+    margin-left: 24vw;
+  }
+  #headerName {
+    font-size: 1.45rem;
+    line-height: 1.33333;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    top: 11vh;
+    width: 63vw;
+  }
+  #headerDescription {
+    top: 14.5vh;
+    font-size: 1rem;
+    line-height: 1.33333;
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+
+    padding: 0 auto;
+    width: 63vw;
+  }
+  #headerLinkLoc {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: 16.5vh;
+    padding: 0 auto;
+    display: flex;
+    justify-content: center;
+  }
+
+  .btncol {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .job {
+    display: none;
+  }
+
+  .jobdec {
+    display: non;
+  }
+
+  .btns {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 77vw !important;
+    top: 31vw!important;
     }
     .dropdownAdd {
       width: 25vw;
@@ -104,186 +176,175 @@
       white-space: nowrap;
       text-overflow: ellipsis;
       background-color: #0a66ce;
-      height: 3v;
+      height: 3vw;
       font-weight: 600;
       border-style: none;
+      margin-bottom: 1vw;
     }
     .moreBtn {
-      width: 10vw;
+      width: 7.5vw;
       padding-bottom: 2.5vw;
       margin-left: 2vw;
-      margin-right: 2vw 
+      margin-right: 2vw;
     }
   }
-  
-  @media only screen and (min-width: 781px) and (max-width: 992px) {
-    .mainBody {
-      width: 30vw;
-    }
-    .moreBtn {
-      width: 15v;
-      padding-bottom: 2.5vw
-    }
-    .wrapper {
-      position: absolute;
-      top: 4vh;
-      width: 80vw;
-      height: 19vh;
-    }
-    .propic {
-      width: 12vw;
-      height: 12vw;
-      position: absolute;
-      top: 7.5vh;
-      z-index: 2;
-      border-radius: 50%;
-      border-width: 0.3vw;
-      border-color: white;
-      border-style: solid;
-      object-fit: scale-down;
-      height: 12vw;
-      margin-left: 16.6vw;
-    }
-    #headerName {
-      font-size: 1.45rem;
-      line-height: 1.33333;
-      font-family: "Roboto", sans-serif;
-      font-weight: 400;
-      position: absolute;
-      top: 12.5vh;
-      width: 80vw;
-    }
-    #headerDescription {
-      position: absolute;
-      top: 15.3vh;
-      font-size: 1rem;
-      line-height: 1.33333;
-      font-family: "Roboto", sans-serif;
-      font-weight: 300;
-  
-      padding: 0 auto;
-      width: 46vw;
-    }
-    #headerLinkLoc {
-      margin: 0;
-      padding: 0;
-      position: relative;
-      top: 17vh;
-      padding: 0 auto;
-      width: 46vw;
-    }
-    .opentowork {
-      display: none;
-    }
-    .btns {
-      position: absolute;
-      top: 22.5v;
-      width: 46v;
-    }
-    .dropdownAdd {
-      width: 18vw;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      background-color: #0a66ce;
-      height: 2.5v;
-      font-weight: 600;
-      border-style: none;
-    }
+@media only screen and (min-width: 781px) and (max-width: 992px) {
+  .mainBody {
+    width: 30vw;
   }
-  
-  @media only screen and (min-width: 993px) and (max-width: 1200px) {
-    .mainBody {
-      width: 80vw;
-      margin-left: 10vw;
-      margin-right: 10vw;
-    }
-    .wrapper {
-      position: absolute;
-      top: 4vh;
-      width: 30vw;
-      height: 19vh;
-    }
-    .propic {
-      width: 12vw;
-      height: 12v;
-      position: absolute;
-      top: 7.5vh;
-      z-index: 2;
-      border-radius: 50%;
-      border-width: 0.3vw;
-      border-color: white;
-      border-style: solid;
-      object-fit: scale-down;
-      height: 12vw;
-      margin-left: 16.6vw;
-    }
-    #headerName {
-      font-size: 1.45rem;
-      line-height: 1.33333;
-      font-family: "Roboto", sans-serif;
-      font-weight: 400;
-      position: absolute;
-      top: 12.5vh;
-      display: flex;
-      justify-content: center;
-    }
-    #headerDescription {
-      position: absolute;
-      top: 15.3vh;
-      font-size: 1rem;
-      line-height: 1.33333;
-      font-family: "Roboto", sans-serif;
-      font-weight: 300;
-      padding: 0 auto;
-      display: flex;
-      justify-content: center;
-    }
-    #headerLinkLoc {
-      margin: 0;
-      padding: 0;
-      position: relative;
-      top: 17vh;
-      padding: 0 auto;
-      display: flex;
-      justify-content: center;
+  .moreBtn {
+    width: 7.5vw;
+    padding-bottom: 2.5vw;
+  }
+  .wrapper {
+    top: 4vh;
+    width: 80vw;
+    height: 19vh;
+  }
+  .propic {
+    width: 12vw;
+    height: 12vw;
+    top: 7.5vh;
+    z-index: 2;
+    border-radius: 50%;
+    border-width: 0.3vw;
+    border-color: white;
+    border-style: solid;
+    object-fit: scale-down;
+    height: 12vw;
+    margin-left: 16.6vw;
+  }
+  #headerName {
+    font-size: 1.45rem;
+    line-height: 1.33333;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    top: 12.5vh;
+    width: 80vw;
+  }
+  #headerDescription {
+    top: 15.3vh;
+    font-size: 1rem;
+    line-height: 1.33333;
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
 
-    }
-    .opentowork {
-      display: none;
-    }
-    .btns {
-      position: absolute;
-      top: 23vw;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-    .moreBtn {
-      width: 8v;
-      padding-bottom: 2.5v;
-      margin: 1vw;
-    }
-
-    .dropdownAdd {
-      width: 18vw;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      background-color: #0a66ce;
-      height: 2.5v;
-      font-weight: 600;
-      border-style: none;
-    }
-    
+    padding: 0 auto;
+    width: 46vw;
   }
-  
+  #headerLinkLoc {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: 17vh;
+    padding: 0 auto;
+    display: flex;
+    justify-content: center;
+  }
+  .opentowork {
+    display: none;
+  }
   .btns {
-    position: absolute;
+    top: 22.5vw;
+    width: 15vw;
+  }
+  .dropdownAdd {
+    width: 18vw;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    background-color: #0a66ce;
+    height: 2.5vw;
+    font-weight: 600;
+    border-style: none;
+  }
+}
+@media only screen and (min-width: 993px) and (max-width: 1200px) {
+  .mainBody {
+    width: 80vw;
+    margin-left: 10vw;
+    margin-right: 10vw;
+  }
+  .wrapper {
+    top: 4vh;
+    width: 30vw;
+    height: 19vh;
+  }
+  .propic {
+    width: 12vw;
+    height: 12vw;
+    top: 7.5vh;
+    z-index: 2;
+    border-radius: 50%;
+    border-width: 0.3vw;
+    border-color: white;
+    border-style: solid;
+    object-fit: scale-down;
+    height: 12vw;
+    margin-left: 16.6vw;
+  }
+  #headerName {
+    font-size: 1.45rem;
+    line-height: 1.33333;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    top: 12.5vh;
+    display: flex;
+    justify-content: center;
+  }
+  #headerDescription {
+    top: 15.3vh;
+    font-size: 1rem;
+    line-height: 1.33333;
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    padding: 0 auto;
+    display: flex;
+    justify-content: center;
+  }
+  #headerLinkLoc {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: 17vh;
+    padding: 0 auto;
+    display: flex;
+    justify-content: center;
+  }
+  .opentowork {
+    display: none;
+  }
+  .btns {
+    top: 23vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 15vw !important;
+  }
+  .moreBtn {
+    width: 7.5vw;
+    padding-bottom: 2.5vw;
+    margin: 1vw;
+  }
+
+  .dropdownAdd {
+    width: 18vw;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    background-color: #0a66ce;
+    height: 2.5vw;
+    font-weight: 600;
+    border-style: none;
+  }
+}*/
+
+  .btns {
     top: 16vh;
-    right: 1vw;
-    width: 16vw;
+    display: flexbox;
+    flex-direction: row;
+    align-content: space-around;
   }
   .dropdownAdd {
     width: 10vw;
@@ -299,6 +360,7 @@
   }
 
   .moreBtn {
+    width: 4.5vw;
     margin-right: 1vw;
   }
 
@@ -306,7 +368,6 @@
     height: 40%;
     width: 100.5%;
     background: url("https://www.veikel.com//images/covers/1561680392_cover%20veikel%20default.jpg");
-    position: absolute;
     left: -0.25%;
     right: 0;
     top: -1%;
@@ -316,11 +377,10 @@
     border-top-left-radius: 0.5vw;
     border-top-right-radius: 0.5vw;
   }
-  
+
   .propic {
     width: 8vw;
     height: 8vw;
-    position: absolute;
     top: 7.5vh;
     z-index: 2;
     border-radius: 50%;
@@ -329,17 +389,14 @@
     border-style: solid;
     object-fit: cover;
   }
-  
+
   @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
-  
+
   .job {
-    position: absolute;
     width: 1.8vw;
     top: 7.7vh;
-    
   }
   .jobdec {
-    position: absolute;
     font-family: "Roboto", sans-serif;
     font-weight: 500;
     font-size: 11pt;
@@ -354,11 +411,9 @@
     line-height: 1.33333;
     font-family: "Roboto", sans-serif;
     font-weight: 400;
-    position: absolute;
     top: 6vh;
   }
   #headerDescription {
-    position: absolute;
     top: 9.8vh;
     font-size: 1rem;
     line-height: 1.33333;
@@ -375,7 +430,7 @@
     margin-right: 1vw;
     font-family: "Roboto", sans-serif;
   }
-  
+
   #headerLinkLoc {
     margin: 0;
     padding: 0;
@@ -392,7 +447,6 @@
   .hoverBlue:hover {
     text-decoration: underline;
   }
-  
   .wrapper {
     padding-top: 5vw;
     padding-bottom: 1vw;
@@ -407,12 +461,27 @@
     padding-top: 0.5vw;
     padding-bottom: 1vw;
   }
-  
+
   .infobody {
     font-size: 11pt;
   }
 
-.profileDiv {
-  background-color: #f3f2ef;
-}
+  .profileDiv {
+    background-color: #f3f2ef;
+  }
 
+  .header {
+    margin-top: 5.5vw;
+    height: 38vh;
+    background-color: white;
+    border-radius: 0.5vw;
+    border-color: lightgrey;
+    border-style: solid;
+    border-width: 0.1vw;
+  }
+  
+  .mainBody {
+    width: 63.2vw;
+    margin-right: 20vw;
+    margin-left: 20vw;
+  }

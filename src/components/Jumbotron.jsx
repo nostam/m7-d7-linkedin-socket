@@ -14,7 +14,7 @@ class Header extends React.Component {
         <div className="coverpic"></div>
         {/*Edit, more and add section button*/}
         <div className="wrapper">
-          <Row className="btns d-flex justify-content-center mx-auto">
+          <Row className="btns mx-auto">
             <Dropdown>
               <Dropdown.Toggle
                 className="rounded-pill dropdownAdd"
@@ -37,7 +37,6 @@ class Header extends React.Component {
 
             <Button
               style={{
-                width: "4.5vw",
                 overflow: "hidden",
                 whiteSpace: "nowrap",
                 textOverflow: "ellipsis",
@@ -63,7 +62,7 @@ class Header extends React.Component {
             <Col>
               <div
                 id="headerName"
-                className="d-flex justify-content-center my-2"
+                className= "my-2"
               >
                 {this.props.name}
               </div>
@@ -73,7 +72,7 @@ class Header extends React.Component {
             <Col>
               <div
                 id="headerDescription"
-                className="d-flex justify-content-center"
+                
               >
                 {this.props.desc}
               </div>
@@ -81,13 +80,13 @@ class Header extends React.Component {
             <Col className='d-flex justify-content-around'>
               <img src={Job} className="job d-flex" />
 
-              <div className="jobdec hoverBlue d-flex justify-content-center">
+              <div className="jobdec hoverBlue">
                 Student
               </div>
             </Col>
           </Row>
           <Row className="d-flex" noGutters id="headerLinkLoc">
-            <div id="headerLoc" className="d-flex justify-content-center">
+            <div id="headerLoc" >
               {" "}
               {this.props.loc}
             </div>
