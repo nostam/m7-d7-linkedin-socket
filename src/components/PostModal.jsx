@@ -79,7 +79,6 @@ class PostModal extends React.Component {
           variant="outline-dark"
           size="md"
           onClick={() => this.setState({ showModal: true })}
-          block
         >
           <BiPencil /> Start a Post
         </Button>

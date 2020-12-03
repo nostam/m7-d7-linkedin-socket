@@ -30,7 +30,7 @@ div:not(.modal-content) {
 }
 @media only screen and (min-width: 577px) and (max-width: 780px) {
   .mainBody {
-    width: 70vw!important;
+    width: 70vw !important;
     margin-left: 15vw;
     margin-right: 15vw;
     margin-top: 5vw;
@@ -45,7 +45,7 @@ div:not(.modal-content) {
     width: 15vw !important;
     height: 15vw !important;
     position: absolute;
-    top: 4vh!important;
+    top: 4vh !important;
     z-index: 2;
     border-radius: 50%;
     border-width: 0.3vw;
@@ -83,24 +83,24 @@ div:not(.modal-content) {
     padding: 0 auto;
     width: 63vw !important;
   }
-  
+
   .btncol {
     margin-top: 0;
-    margin-bottom: 0
+    margin-bottom: 0;
   }
 
   .job {
-    display: none
+    display: none;
   }
 
   .jobdec {
-    display: none!important 
+    display: none !important;
   }
-  
+
   .btns {
     position: absolute;
-    top: 22.5vh!important;
-    width:77vw!important
+    top: 22.5vh !important;
+    width: 77vw !important;
   }
   .dropdownAdd {
     width: 25vw !important;
@@ -108,13 +108,13 @@ div:not(.modal-content) {
     white-space: nowrap;
     text-overflow: ellipsis;
     background-color: #0a66ce;
-    height: 3vh!important;
+    height: 3vh !important;
     font-weight: 600;
     border-style: none;
   }
   .moreBtn {
-    width: 10vw!important;
-    padding-bottom: 2.5vw
+    width: 10vw !important;
+    padding-bottom: 2.5vw;
   }
 }
 
@@ -175,8 +175,8 @@ div:not(.modal-content) {
   }
   .btns {
     position: absolute;
-    top: 22.5vh!important;
-    width: 46vw!important;
+    top: 22.5vh !important;
+    width: 46vw !important;
   }
   .dropdownAdd {
     width: 18vw !important;
@@ -184,7 +184,7 @@ div:not(.modal-content) {
     white-space: nowrap;
     text-overflow: ellipsis;
     background-color: #0a66ce;
-    height: 2.5vh!important;
+    height: 2.5vh !important;
     font-weight: 600;
     border-style: none;
   }
@@ -204,7 +204,7 @@ div:not(.modal-content) {
   }
   .propic {
     width: 12vw !important;
-    height: 12vw!important;
+    height: 12vw !important;
     position: absolute;
     top: 7.5vh;
     z-index: 2;
@@ -249,8 +249,8 @@ div:not(.modal-content) {
   }
   .btns {
     position: absolute;
-    top: 22.5vh!important;
-    width:12vw!important
+    top: 22.5vh !important;
+    width: 12vw !important;
   }
   .dropdownAdd {
     width: 18vw !important;
@@ -258,13 +258,11 @@ div:not(.modal-content) {
     white-space: nowrap;
     text-overflow: ellipsis;
     background-color: #0a66ce;
-    height: 2.5vh!important;
+    height: 2.5vh !important;
     font-weight: 600;
     border-style: none;
   }
-  
 }
-
 
 .btns {
   position: absolute;
@@ -312,7 +310,6 @@ div:not(.modal-content) {
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
-
 
 .job {
   position: absolute;
@@ -391,6 +388,7 @@ div:not(.modal-content) {
 .HomeModal {
   display: flex;
   justify-content: left;
+  justify-content: space-evenly;
 }
 .RightSidebar {
   text-align: center;
@@ -399,14 +397,4 @@ div:not(.modal-content) {
 .RSidebarBG {
   max-width: 216px;
   max-height: 54px;
-}
-.HomeDiv {
-  background-color: #f3f2ef;
-}
-.HomeCont {
-  padding-top: 100px;
-}
-.PostImage {
-  max-width: 450px;
-  max-height: 300px;
 }
