@@ -1,9 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-// import Home from "./components/Home";
+import Home from "./components/Home";
 import AppNavBar from "./components/AppNavBar";
 import Footer from "./components/Footer";
 import Profile from "./components/ProfileBody";
+import PostModal from "./components/PostModal"
 import "bootstrap/dist/css/bootstrap.min.css";
 
 class App extends React.Component {
@@ -19,11 +20,11 @@ class App extends React.Component {
           query={this.state.query}
           searchHandler={this.searchHandler}
         />
-        {/* <Route
+        <Route
           path={"/home"}
           exact
           render={(props) => <Home title="Homepage" {...props} />}
-        /> */}
+        />
         <Route
           path={"/user/:id"}
           exact
