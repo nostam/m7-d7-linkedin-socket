@@ -15,9 +15,11 @@ export default class SignUp extends Component {
   };
   submitData = async () => {
     try {
+      const payload = this.state.user;
+      btoa(payload.password);
       let response = await fetch(this.url, {
         method: "POST",
-        body: JSON.stringify(this.state.user),
+        body: JSON.stringify(payload),
         header: this.header,
       });
       if (response.ok) {
@@ -35,7 +37,7 @@ export default class SignUp extends Component {
   };
   handleLogin = (e) => {
     if (e.keyCode === 13) {
-      this.props.submitData(this.state.user);
+      this.submitData(this.state.user);
     } else {
       this.setState({
         user: { ...this.state.user, [e.target.id]: e.currentTarget.value },
