@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Container, Modal, Button, Image, Row, Col } from "react-bootstrap";
+import {BiLike,BiCommentDetail,BiShare,BiSend} from "react-icons/bi"
 import EditPost from "./EditPost";
 import PostModal from "./PostModal";
 import RSidebar from "./RSidebar";
@@ -55,10 +56,10 @@ export default class Home extends Component {
             </Modal.Body>
           
             <Modal.Footer className="HomeModal">
-              <Button variant="primary">Like</Button>
-              <Button variant="primary">Comment</Button>
-              <Button variant="primary">Share</Button>
-              <Button variant="primary">Send</Button>
+              <Button variant="outline-dark"><BiLike/> Like</Button>
+              <Button variant="outline-dark"><BiCommentDetail/> Comment</Button>
+              <Button variant="outline-dark"><BiShare/> Share</Button>
+              <Button variant="outline-dark"><BiSend/> Send</Button>
             </Modal.Footer>
           </Modal.Dialog>
           ))}
