@@ -47,64 +47,66 @@ export default class SignUp extends Component {
   };
   render() {
     return (
-      <Container className="d-flex flex-column justify-content-center align-content-center">
-        <Col className="d-flex justify-content-center mx-auto mt-4 flex-column text-center">
-          <img
-            src={FooterLogo}
-            className="mb-4"
-            alt="logo"
-            style={{ height: "30px" }}
-          />
-          <h3>Make the most of your professional life</h3>
-        </Col>
-        <Col className="signupCol mt-5 signupBox">
-          <div className="bg-white d-flex flex-column ">
-            <Form>
-              <Form.Group>
-                <Form.Label>Username</Form.Label>
-                <Form.Control
-                  required
-                  id="username"
-                  value={this.state.user.username}
-                  type="text"
-                  size="sm"
-                  placeholder="Email or Phone"
-                  onKeyDown={(e) => this.handleLogin(e)}
-                  onChange={(e) => this.onChangeHandler(e)}
-                />
-              </Form.Group>
-              <Form.Group className="inputPwd">
-                <Form.Label>Password (6 or more characters)</Form.Label>
-                <Form.Control
-                  required
-                  id="password"
-                  value={this.state.user.password}
-                  type={this.state.hidden ? "password" : "text"}
-                  size="sm"
-                  placeholder="Password"
-                  onKeyDown={(e) => this.handleLogin(e)}
-                  onChange={(e) => this.onChangeHandler(e)}
-                />
-              </Form.Group>
-            </Form>
-            <span>
-              By clicking Agree & Join, you agree to the LinkedIn{" "}
-              <a>User Agreement</a>, <a>Privacy Policy</a>, and{" "}
-              <a>Cookie Policy</a>.
-            </span>
-            <Col className="signupCol px-0">
-              <Button className="loginBtn">Agree & Join</Button>
-            </Col>
-          </div>
-          <Row className="d-flex justify-content-around mt-4 mx-auto ">
-            Already on LinkedIn?{" "}
-            <Link className="ml-1" to="/login">
-              {" "}
-              Sign in
-            </Link>
-          </Row>
-        </Col>
-      </Container>
+      <div className="loginDiv">
+        <Container className="d-flex flex-column justify-content-center align-content-center">
+          <Col className="d-flex justify-content-center mx-auto mt-4 flex-column text-center">
+            <img
+              src={FooterLogo}
+              className="mb-4"
+              alt="logo"
+              style={{ height: "30px" }}
+            />
+            <h3>Make the most of your professional life</h3>
+          </Col>
+          <Col className="signupCol mt-5 signupBox">
+            <div className="bg-white d-flex flex-column ">
+              <Form>
+                <Form.Group>
+                  <Form.Label>Username</Form.Label>
+                  <Form.Control
+                    required
+                    id="username"
+                    value={this.state.user.username}
+                    type="text"
+                    size="sm"
+                    placeholder="Email or Phone"
+                    onKeyDown={(e) => this.handleLogin(e)}
+                    onChange={(e) => this.onChangeHandler(e)}
+                  />
+                </Form.Group>
+                <Form.Group className="inputPwd">
+                  <Form.Label>Password (6 or more characters)</Form.Label>
+                  <Form.Control
+                    required
+                    id="password"
+                    value={this.state.user.password}
+                    type={this.state.hidden ? "password" : "text"}
+                    size="sm"
+                    placeholder="Password"
+                    onKeyDown={(e) => this.handleLogin(e)}
+                    onChange={(e) => this.onChangeHandler(e)}
+                  />
+                </Form.Group>
+              </Form>
+              <span>
+                By clicking Agree & Join, you agree to the LinkedIn{" "}
+                <a>User Agreement</a>, <a>Privacy Policy</a>, and{" "}
+                <a>Cookie Policy</a>.
+              </span>
+              <Col className="signupCol px-0">
+                <Button className="loginBtn">Agree & Join</Button>
+              </Col>
+            </div>
+            <Row className="d-flex justify-content-around mt-4 mx-auto ">
+              Already on LinkedIn?{" "}
+              <Link className="ml-1" to="/login">
+                {" "}
+                Sign in
+              </Link>
+            </Row>
+          </Col>
+        </Container>
+      </div>
     );
   }
 }

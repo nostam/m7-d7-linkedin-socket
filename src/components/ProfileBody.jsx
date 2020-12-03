@@ -4,7 +4,7 @@ import Bio from "./BioCard";
 import Experience from "./Experience";
 import Header from "./Jumbotron";
 import Sidebar from "./Sidebar";
-
+import "../styles/Profile.css";
 class Body extends React.Component {
   state = {
     profile: {},
@@ -52,41 +52,45 @@ class Body extends React.Component {
   };
   render() {
     return (
-      <Container>
-        {this.state.err && <Alert variant="danger">{this.state.errMsg}</Alert>}
-        {this.state.loading && this.state.err !== true ? (
-          <Row className="d-flex justify-content-center my-5">
-            <h3>Loading profile...</h3>
-            <Spinner animation="border" variant="info" />
-          </Row>
-        ) : Object.keys(this.state.profile).length !== 0 ? (
-          <Row>
-            <Col xs={12} md={8}>
-              <Header
-                name={
-                  this.state.profile.name + " " + this.state.profile.surname
-                }
-                refetch={() => this.searchProfile(this.props.match.params.id)}
-                desc={this.state.profile.title}
-                src={this.state.profile.image}
-                loc={this.state.profile.area}
-                profile={this.state.profile}
-              />
-              <Bio bio={this.state.profile.bio} />
-              <Experience profile={this.state.profile} />
-            </Col>
-            <Col>
-              <Sidebar />
-            </Col>
-          </Row>
-        ) : (
-          this.setState({
-            err: true,
-            errType: "warning",
-            errMsg: "We have encounter a problem, the profile is empty",
-          })
-        )}
-      </Container>
+      <div className="profileDiv">
+        <Container>
+          {this.state.err && (
+            <Alert variant="danger">{this.state.errMsg}</Alert>
+          )}
+          {this.state.loading && this.state.err !== true ? (
+            <Row className="d-flex justify-content-center my-5">
+              <h3>Loading profile...</h3>
+              <Spinner animation="border" variant="info" />
+            </Row>
+          ) : Object.keys(this.state.profile).length !== 0 ? (
+            <Row>
+              <Col xs={12} md={8}>
+                <Header
+                  name={
+                    this.state.profile.name + " " + this.state.profile.surname
+                  }
+                  refetch={() => this.searchProfile(this.props.match.params.id)}
+                  desc={this.state.profile.title}
+                  src={this.state.profile.image}
+                  loc={this.state.profile.area}
+                  profile={this.state.profile}
+                />
+                <Bio bio={this.state.profile.bio} />
+                <Experience profile={this.state.profile} />
+              </Col>
+              <Col>
+                <Sidebar />
+              </Col>
+            </Row>
+          ) : (
+            this.setState({
+              err: true,
+              errType: "warning",
+              errMsg: "We have encounter a problem, the profile is empty",
+            })
+          )}
+        </Container>
+      </div>
     );
   }
 }

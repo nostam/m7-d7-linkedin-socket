@@ -47,65 +47,67 @@ export default class Login extends Component {
   };
   render() {
     return (
-      <Container>
-        <Col className="loginCol mt-5">
-          <img
-            src={FooterLogo}
-            className="mb-4 "
-            alt="loginLogo"
-            style={{ height: "30px" }}
-          />
-          <div className="shadowBox">
-            <div className="mb-3">
-              <h2>Sign in</h2>
-              <span>Stay updated on your professional world</span>
+      <div>
+        <Container>
+          <Col className="loginCol mt-5">
+            <img
+              src={FooterLogo}
+              className="mb-4 "
+              alt="loginLogo"
+              style={{ height: "30px" }}
+            />
+            <div className="shadowBox">
+              <div className="mb-3">
+                <h2>Sign in</h2>
+                <span>Stay updated on your professional world</span>
+              </div>
+              <Form>
+                <Form.Group>
+                  <Form.Control
+                    required
+                    id="username"
+                    value={this.state.user.username}
+                    type="text"
+                    size="lg"
+                    placeholder="Email or Phone"
+                    onKeyDown={(e) => this.handleLogin(e)}
+                    onChange={(e) => this.onChangeHandler(e)}
+                  />
+                </Form.Group>
+                <Form.Group className="inputPwd">
+                  <Form.Control
+                    required
+                    id="password"
+                    value={this.state.user.password}
+                    type={this.state.hidden ? "password" : "text"}
+                    size="lg"
+                    placeholder="Password"
+                    onKeyDown={(e) => this.handleLogin(e)}
+                    onChange={(e) => this.onChangeHandler(e)}
+                  />
+                  <Badge
+                    pill
+                    className="inputToggle"
+                    onClick={(e) => this.toggleShow(e)}
+                  >
+                    {this.state.hidden ? "show" : "hide"}
+                  </Badge>
+                </Form.Group>
+              </Form>
+              <a className="forgetPwd">Forget your password?</a>
+              <Col className="loginCol">
+                <Button className="loginBtn">Sign in</Button>
+              </Col>
             </div>
-            <Form>
-              <Form.Group>
-                <Form.Control
-                  required
-                  id="username"
-                  value={this.state.user.username}
-                  type="text"
-                  size="lg"
-                  placeholder="Email or Phone"
-                  onKeyDown={(e) => this.handleLogin(e)}
-                  onChange={(e) => this.onChangeHandler(e)}
-                />
-              </Form.Group>
-              <Form.Group className="inputPwd">
-                <Form.Control
-                  required
-                  id="password"
-                  value={this.state.user.password}
-                  type={this.state.hidden ? "password" : "text"}
-                  size="lg"
-                  placeholder="Password"
-                  onKeyDown={(e) => this.handleLogin(e)}
-                  onChange={(e) => this.onChangeHandler(e)}
-                />
-                <Badge
-                  pill
-                  className="inputToggle"
-                  onClick={(e) => this.toggleShow(e)}
-                >
-                  {this.state.hidden ? "show" : "hide"}
-                </Badge>
-              </Form.Group>
-            </Form>
-            <a className="forgetPwd">Forget your password?</a>
-            <Col className="loginCol">
-              <Button className="loginBtn">Sign in</Button>
-            </Col>
-          </div>
-          <Row className="d-flex justify-content-around mt-5 mx-auto bg-transparent">
-            New to LinkedIn?{" "}
-            <Link className="ml-1" to="/signup">
-              Join now
-            </Link>
-          </Row>
-        </Col>
-      </Container>
+            <Row className="d-flex justify-content-around mt-5 mx-auto bg-transparent">
+              New to LinkedIn?{" "}
+              <Link className="ml-1" to="/signup">
+                Join now
+              </Link>
+            </Row>
+          </Col>
+        </Container>
+      </div>
     );
   }
 }
