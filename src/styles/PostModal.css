@@ -1,0 +1,10 @@
+.postModalImg {
+    width: 48px;
+    height: 48px
+}
+.HashButton{
+    block-size: max-content;
+}
+.postButton{
+    border-radius: 30px !important;
+}
