@@ -1,9 +1,9 @@
 
 .header {
     margin-top: 5.5vw;
-    height: 38vh !important;
-    background-color: white !important;
-    border-radius: 0.5vw !important;
+    height: 38vh;
+    background-color: white;
+    border-radius: 0.5vw;
     border-color: lightgrey;
     border-style: solid;
     border-width: 0.1vw;
@@ -23,7 +23,7 @@
   }
   @media only screen and (min-width: 577px) and (max-width: 780px) {
     .mainBody {
-      width: 70vw!important;
+      width: 70v;
       margin-left: 15vw;
       margin-right: 15vw;
       margin-top: 5vw;
@@ -31,14 +31,14 @@
     .wrapper {
       position: absolute;
       top: 4vh;
-      width: 71vw !important;
+      width: 71vw;
       height: 19vh;
     }
     .propic {
-      width: 15vw !important;
-      height: 15vw !important;
+      width: 15vw;
+      height: 15vw;
       position: absolute;
-      top: 4vh!important;
+      top: 4v;
       z-index: 2;
       border-radius: 50%;
       border-width: 0.3vw;
@@ -52,29 +52,29 @@
       font-size: 1.45rem;
       line-height: 1.33333;
       font-family: "Roboto", sans-serif;
-      font-weight: 400 !important;
+      font-weight: 400;
       position: absolute;
-      top: 11vh !important;
-      width: 63vw !important;
+      top: 11vh;
+      width: 63vw;
     }
     #headerDescription {
       position: absolute;
-      top: 14.5vh !important;
-      font-size: 1rem !important;
+      top: 14.5vh;
+      font-size: 1rem;
       line-height: 1.33333;
       font-family: "Roboto", sans-serif;
-      font-weight: 300 !important;
+      font-weight: 300;
   
       padding: 0 auto;
-      width: 63vw !important;
+      width: 63vw;
     }
     #headerLinkLoc {
-      margin: 0 !important;
-      padding: 0 !important;
+      margin: 0;
+      padding: 0;
       position: relative;
-      top: 16.5vh !important;
+      top: 16.5vh;
       padding: 0 auto;
-      width: 63vw !important;
+      width: 63vw;
     }
     
     .btncol {
@@ -87,33 +87,42 @@
     }
   
     .jobdec {
-      display: none!important 
+      display: non 
     }
     
     .btns {
-      position: absolute;
-      top: 22.5vh!important;
-      width:77vw!important
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      top: 24.5v;
+      width:77v;
+      justify-content: center;
     }
     .dropdownAdd {
-      width: 25vw !important;
+      width: 25vw;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
       background-color: #0a66ce;
-      height: 3vh!important;
+      height: 3v;
       font-weight: 600;
       border-style: none;
     }
     .moreBtn {
-      width: 10vw!important;
-      padding-bottom: 2.5vw
+      width: 10vw;
+      padding-bottom: 2.5vw;
+      margin-left: 2vw;
+      margin-right: 2vw 
     }
   }
   
   @media only screen and (min-width: 781px) and (max-width: 992px) {
     .mainBody {
       width: 30vw;
+    }
+    .moreBtn {
+      width: 15v;
+      padding-bottom: 2.5vw
     }
     .wrapper {
       position: absolute;
@@ -122,8 +131,8 @@
       height: 19vh;
     }
     .propic {
-      width: 12vw !important;
-      height: 12vw !important;
+      width: 12vw;
+      height: 12vw;
       position: absolute;
       top: 7.5vh;
       z-index: 2;
@@ -139,45 +148,45 @@
       font-size: 1.45rem;
       line-height: 1.33333;
       font-family: "Roboto", sans-serif;
-      font-weight: 400 !important;
+      font-weight: 400;
       position: absolute;
-      top: 12.5vh !important;
-      width: 80vw !important;
+      top: 12.5vh;
+      width: 80vw;
     }
     #headerDescription {
       position: absolute;
-      top: 15.3vh !important;
-      font-size: 1rem !important;
+      top: 15.3vh;
+      font-size: 1rem;
       line-height: 1.33333;
       font-family: "Roboto", sans-serif;
-      font-weight: 300 !important;
+      font-weight: 300;
   
       padding: 0 auto;
-      width: 46vw !important;
+      width: 46vw;
     }
     #headerLinkLoc {
-      margin: 0 !important;
-      padding: 0 !important;
+      margin: 0;
+      padding: 0;
       position: relative;
-      top: 17vh !important;
+      top: 17vh;
       padding: 0 auto;
-      width: 46vw !important;
+      width: 46vw;
     }
     .opentowork {
       display: none;
     }
     .btns {
       position: absolute;
-      top: 22.5vh!important;
-      width: 46vw!important;
+      top: 22.5v;
+      width: 46v;
     }
     .dropdownAdd {
-      width: 18vw !important;
+      width: 18vw;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
       background-color: #0a66ce;
-      height: 2.5vh!important;
+      height: 2.5v;
       font-weight: 600;
       border-style: none;
     }
@@ -196,8 +205,8 @@
       height: 19vh;
     }
     .propic {
-      width: 12vw !important;
-      height: 12vw!important;
+      width: 12vw;
+      height: 12v;
       position: absolute;
       top: 7.5vh;
       z-index: 2;
@@ -213,45 +222,57 @@
       font-size: 1.45rem;
       line-height: 1.33333;
       font-family: "Roboto", sans-serif;
-      font-weight: 400 !important;
+      font-weight: 400;
       position: absolute;
-      top: 12.5vh !important;
-      width: 46vw !important;
+      top: 12.5vh;
+      display: flex;
+      justify-content: center;
     }
     #headerDescription {
       position: absolute;
-      top: 15.3vh !important;
-      font-size: 1rem !important;
+      top: 15.3vh;
+      font-size: 1rem;
       line-height: 1.33333;
       font-family: "Roboto", sans-serif;
-      font-weight: 300 !important;
-  
+      font-weight: 300;
       padding: 0 auto;
-      width: 46vw !important;
+      display: flex;
+      justify-content: center;
     }
     #headerLinkLoc {
-      margin: 0 !important;
-      padding: 0 !important;
+      margin: 0;
+      padding: 0;
       position: relative;
-      top: 17vh !important;
+      top: 17vh;
       padding: 0 auto;
-      width: 46vw !important;
+      display: flex;
+      justify-content: center;
+
     }
     .opentowork {
       display: none;
     }
     .btns {
       position: absolute;
-      top: 22.5vh!important;
-      width:12vw!important
+      top: 23vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
+    .moreBtn {
+      width: 8v;
+      padding-bottom: 2.5v;
+      margin: 1vw;
+    }
+
     .dropdownAdd {
-      width: 18vw !important;
+      width: 18vw;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
       background-color: #0a66ce;
-      height: 2.5vh!important;
+      height: 2.5v;
       font-weight: 600;
       border-style: none;
     }
@@ -262,7 +283,7 @@
     position: absolute;
     top: 16vh;
     right: 1vw;
-    width: 20vw;
+    width: 16vw;
   }
   .dropdownAdd {
     width: 10vw;
@@ -274,7 +295,13 @@
     font-weight: 600;
     border-style: none;
     padding-bottom: 1.5vw;
+    margin-right: 1vw;
   }
+
+  .moreBtn {
+    margin-right: 1vw;
+  }
+
   .coverpic {
     height: 40%;
     width: 100.5%;
@@ -309,44 +336,49 @@
     position: absolute;
     width: 1.8vw;
     top: 7.7vh;
-    left: 5vw;
+    
   }
   .jobdec {
     position: absolute;
     font-family: "Roboto", sans-serif;
-    font-weight: 500 !important;
+    font-weight: 500;
     font-size: 11pt;
-    width: 1.8vw;
-    top: 8vh;
-    right: 9.5vw;
+    top: 8.3vh;
+    left: 5.5vw;
+    width: 7vw;
+    overflow: visible;
+    white-space: normal;
   }
   #headerName {
     font-size: 1.45rem;
     line-height: 1.33333;
     font-family: "Roboto", sans-serif;
-    font-weight: 400 !important;
+    font-weight: 400;
     position: absolute;
     top: 6vh;
   }
   #headerDescription {
     position: absolute;
     top: 9.8vh;
-    font-size: 1rem !important;
+    font-size: 1rem;
     line-height: 1.33333;
     font-family: "Roboto", sans-serif;
-    font-weight: 300 !important;
+    font-weight: 300;
+    width: 19vw;
+    overflow: visible;
+    white-space: nowrap;
   }
   #headerLoc {
     display: flex;
-    font-size: 0.9rem !important;
-    font-weight: 300 !important;
+    font-size: 0.9rem;
+    font-weight: 300;
     margin-right: 1vw;
     font-family: "Roboto", sans-serif;
   }
   
   #headerLinkLoc {
-    margin: 0 !important;
-    padding: 0 !important;
+    margin: 0;
+    padding: 0;
     position: relative;
     top: 12.8vh;
   }
@@ -354,7 +386,7 @@
     display: flex;
     color: #0a66ce;
     font-family: "Roboto", sans-serif;
-    font-weight: bold !important;
+    font-weight: bold;
     margin-left: -0.5vw;
   }
   .hoverBlue:hover {
@@ -370,14 +402,14 @@
     font-size: 1.3rem;
     line-height: 1.33333;
     font-family: "Roboto", sans-serif;
-    font-weight: 400 !important;
+    font-weight: 400;
     color: rgba(0, 0, 0, 0.9);
     padding-top: 0.5vw;
     padding-bottom: 1vw;
   }
   
   .infobody {
-    font-size: 11pt !important;
+    font-size: 11pt;
   }
 
 .profileDiv {

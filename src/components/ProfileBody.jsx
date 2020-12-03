@@ -82,7 +82,7 @@ class Body extends React.Component {
                 <Feature />
                 <Experience profile={this.state.profile} />
               </Col>
-              <Col style={{ marginTop: "5.3vw" }}>
+              <Col style={{ marginTop: "5.3vw" }} xs={12} lg={4} md={12} >
                 <Sidebar />
               </Col>
             </Row>
