@@ -78,7 +78,8 @@ class PostModal extends React.Component {
                     Start a Post
                 </Button>
                 <Modal
-                show={this.state.showModal}>
+                show={this.state.showModal}
+                onHide={() => this.setState({ showModal: false })}>
                     <Modal.Header closeButton>
                         <Modal.Title>Create a Post</Modal.Title>
                     </Modal.Header>

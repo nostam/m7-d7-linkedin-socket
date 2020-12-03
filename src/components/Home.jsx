@@ -40,7 +40,7 @@ export default class Home extends Component {
               <Modal.Title><Image
                                     src={Posts.user.image}
                                     roundedCircle
-                                    className="postModalImg"
+                                    className="postModalImg  mr-3"
                                 />{Posts.user.name + " " + Posts.user.surname}<EditPost Post={Posts}/></Modal.Title>
             </Modal.Header>
           

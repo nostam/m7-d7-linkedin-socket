@@ -8,28 +8,8 @@ class EditPost extends React.Component {
 
     state = {
         showModal: false,
-        Me: {
-
-        },
         propPost:[],
         Post:[]
-    }
-
-    fetchMe = async () => {
-        try {
-            const meFetch = await fetch(
-                "https://striveschool-api.herokuapp.com/api/profile/me",
-                {
-                    headers: {
-                        Authorization: process.env.REACT_APP_TOKEN,
-                    },
-                }
-            );
-            const meResponse = await meFetch.json();
-            this.setState({ Me: meResponse });
-        } catch (error) {
-            console.log(error);
-        }
     }
 
     onChangeHandler = (e) => {
@@ -63,14 +43,13 @@ class EditPost extends React.Component {
     };
 
     componentDidMount() {
-        this.fetchMe()
         this.setState({propPost: this.props.Post})
     }
 
     render() {
         return (
             <>
-                <Button variant="primary" onClick={() => this.setState({ showModal: true })}>
+                <Button variant="primary" onClick={() => this.setState({ showModal: true })} className="ml-3">
                     Edit
                 </Button>
                 <Modal
