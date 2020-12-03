@@ -10,7 +10,7 @@ body {
   margin-top: 5.5vw;
   height: 38vh !important;
   background-color: white !important;
-  border-radius: .5vw !important;
+  border-radius: 0.5vw !important;
   border-color: lightgrey;
   border-style: solid;
   border-width: 0.1vw;
@@ -19,40 +19,37 @@ body {
 .mainBody {
   width: 63.2vw;
   margin-right: 20vw;
-  margin-left: 20vw
+  margin-left: 20vw;
 }
-@media (max-width:576px) {
+@media only screen and (max-width: 576px) {
   .mainBody {
-  width: 90vw;
-  margin-left: 5vw;
-  margin-right: 5vw;
-  
+    width: 90vw;
+    margin-left: 5vw;
+    margin-right: 5vw;
   }
 }
-@media (max-width:768px) {
+@media only screen and (max-width: 769px) {
   .mainBody {
-  width: 80vw;
-  
-  }
-}
-@media (max-width:992px) {
-  .mainBody {
-  width: 30vw;
-  
-  }
-}
-@media (max-width:1200px) {
-  .mainBody {
-  width: 80vw;
-  margin-left: 10vw;
-  margin-right: 10vw;
-  
+    width: 80vw!important;
   }
   .wrapper {
     position: absolute;
-    top: 3vh;
-    width: 30vw;
+    top: 4vh;
+    width: 71vw;
     height: 19vh;
+  }
+  .propic {
+    width: 12vw !important;
+    position: absolute;
+    top: 7.5vh;
+    z-index: 2;
+    border-radius: 50%;
+    border-width: 0.3vw;
+    border-color: white;
+    border-style: solid;
+    object-fit: scale-down;
+    height: 12vw;
+    margin-left: 16.6vw;
   }
   #headerName {
     font-size: 1.45rem;
@@ -60,26 +57,223 @@ body {
     font-family: "Roboto", sans-serif;
     font-weight: 400 !important;
     position: absolute;
-    top: 1vh;
+    top: 12.5vh !important;
+    width: 72vw !important;
+  }
+  #headerDescription {
+    position: absolute;
+    top: 15.3vh !important;
+    font-size: 1rem !important;
+    line-height: 1.33333;
+    font-family: "Roboto", sans-serif;
+    font-weight: 300 !important;
+
+    padding: 0 auto;
+    width: 72vw !important;
+  }
+  #headerLinkLoc {
+    margin: 0 !important;
+    padding: 0 !important;
+    position: relative;
+    top: 17vh !important;
+    padding: 0 auto;
+    width: 72vw !important;
   }
   .opentowork {
-    display: none
+    display: none;
+  }
+  .btns {
+    position: absolute;
+    top: 22.5vh!important;
+    width:72vw!important
+  }
+  .dropdownAdd {
+    width: 18vw !important;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    background-color: #0a66ce;
+    height: 2.5vh!important;
+    font-weight: 600;
+    border-style: none;
   }
 }
 
+
+@media only screen and (max-width: 1200px) {
+  .mainBody {
+    width: 80vw;
+    margin-left: 10vw;
+    margin-right: 10vw;
+  }
+  .wrapper {
+    position: absolute;
+    top: 4vh;
+    width: 30vw;
+    height: 19vh;
+  }
+  .propic {
+    width: 12vw !important;
+    position: absolute;
+    top: 7.5vh;
+    z-index: 2;
+    border-radius: 50%;
+    border-width: 0.3vw;
+    border-color: white;
+    border-style: solid;
+    object-fit: scale-down;
+    height: 12vw;
+    margin-left: 16.6vw;
+  }
+  #headerName {
+    font-size: 1.45rem;
+    line-height: 1.33333;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400 !important;
+    position: absolute;
+    top: 12.5vh !important;
+    width: 46vw !important;
+  }
+  #headerDescription {
+    position: absolute;
+    top: 15.3vh !important;
+    font-size: 1rem !important;
+    line-height: 1.33333;
+    font-family: "Roboto", sans-serif;
+    font-weight: 300 !important;
+
+    padding: 0 auto;
+    width: 46vw !important;
+  }
+  #headerLinkLoc {
+    margin: 0 !important;
+    padding: 0 !important;
+    position: relative;
+    top: 17vh !important;
+    padding: 0 auto;
+    width: 46vw !important;
+  }
+  .opentowork {
+    display: none;
+  }
+  .btns {
+    position: absolute;
+    top: 22.5vh!important;
+    width:12vw!important
+  }
+  .dropdownAdd {
+    width: 18vw !important;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    background-color: #0a66ce;
+    height: 2.5vh!important;
+    font-weight: 600;
+    border-style: none;
+  }
+  
+}
+
+@media only screen and (max-width: 992px) {
+  .mainBody {
+    width: 30vw;
+  }
+  .wrapper {
+    position: absolute;
+    top: 4vh;
+    width: 80vw;
+    height: 19vh;
+  }
+  .propic {
+    width: 12vw !important;
+    position: absolute;
+    top: 7.5vh;
+    z-index: 2;
+    border-radius: 50%;
+    border-width: 0.3vw;
+    border-color: white;
+    border-style: solid;
+    object-fit: scale-down;
+    height: 12vw;
+    margin-left: 16.6vw;
+  }
+  #headerName {
+    font-size: 1.45rem;
+    line-height: 1.33333;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400 !important;
+    position: absolute;
+    top: 12.5vh !important;
+    width: 80vw !important;
+  }
+  #headerDescription {
+    position: absolute;
+    top: 15.3vh !important;
+    font-size: 1rem !important;
+    line-height: 1.33333;
+    font-family: "Roboto", sans-serif;
+    font-weight: 300 !important;
+
+    padding: 0 auto;
+    width: 46vw !important;
+  }
+  #headerLinkLoc {
+    margin: 0 !important;
+    padding: 0 !important;
+    position: relative;
+    top: 17vh !important;
+    padding: 0 auto;
+    width: 46vw !important;
+  }
+  .opentowork {
+    display: none;
+  }
+  .btns {
+    position: absolute;
+    top: 22.5vh!important;
+    width: 46vw!important;
+  }
+  .dropdownAdd {
+    width: 18vw !important;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    background-color: #0a66ce;
+    height: 2.5vh!important;
+    font-weight: 600;
+    border-style: none;
+  }
+}
+.btns {
+  position: absolute;
+  top: 16vh;
+  right: 1vw;
+  width: 20vw;
+}
+.dropdownAdd {
+  width: 10vw;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  background-color: #0a66ce;
+  height: 3.1vh;
+  font-weight: 600;
+  border-style: none;
+  padding-bottom: 1.5vw;
+}
 .coverpic {
   height: 40%;
   width: 100.5%;
   background: url("https://www.veikel.com//images/covers/1561680392_cover%20veikel%20default.jpg");
   position: absolute;
-  left: -.25%;
+  left: -0.25%;
   right: 0;
   top: -1%;
   margin: 0vw;
   margin-top: 0;
   z-index: 1;
-  border-top-left-radius: .5vw;
-  border-top-right-radius: .5vw;
+  border-top-left-radius: 0.5vw;
+  border-top-right-radius: 0.5vw;
 }
 
 .propic {
@@ -91,25 +285,25 @@ body {
   border-width: 0.3vw;
   border-color: white;
   border-style: solid;
+  object-fit: cover;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
 
-
-.job{
+.job {
   position: absolute;
   width: 1.8vw;
-  top: 4vh;
-  left:5vw
+  top: 7.7vh;
+  left: 5vw;
 }
 .jobdec {
   position: absolute;
   font-family: "Roboto", sans-serif;
-  font-weight: 500!important;
+  font-weight: 500 !important;
   font-size: 11pt;
   width: 1.8vw;
-  top: 4vh;
-  right: 10vw
+  top: 8vh;
+  right: 9.5vw;
 }
 #headerName {
   font-size: 1.45rem;
@@ -129,42 +323,41 @@ body {
 }
 #headerLoc {
   display: flex;
-  font-size: .9rem !important;
+  font-size: 0.9rem !important;
   font-weight: 300 !important;
   margin-right: 1vw;
   font-family: "Roboto", sans-serif;
 }
 
-#headerLinkLoc { 
-  margin:0!important;
-  padding:0!important;
+#headerLinkLoc {
+  margin: 0 !important;
+  padding: 0 !important;
   position: relative;
   top: 12.8vh;
-  
 }
 #headerLink {
   display: flex;
-  color: #0A66CE;
+  color: #0a66ce;
   font-family: "Roboto", sans-serif;
   font-weight: bold !important;
-  margin-left: -.5vw;
-  
+  margin-left: -0.5vw;
 }
 .hoverBlue:hover {
-  text-decoration: underline 
+  text-decoration: underline;
 }
 
 .wrapper {
-  margin-top: 5.5vw;
-  height: 18vh
+  padding-top: 5vw;
+  padding-bottom: 1vw;
+  height: 17vh;
 }
 .info {
   font-size: 1.3rem;
   line-height: 1.33333;
   font-family: "Roboto", sans-serif;
   font-weight: 400 !important;
-  color: rgba(0,0,0,.9);
-  padding-top: .5vw;
+  color: rgba(0, 0, 0, 0.9);
+  padding-top: 0.5vw;
   padding-bottom: 1vw;
 }
 

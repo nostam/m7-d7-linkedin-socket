@@ -12,36 +12,19 @@ class Header extends React.Component {
       >
         <div className="coverpic"></div>
         {/*Edit, more and add section button*/}
-        <div className="wrapper" >
-          <Row
-            style={{
-              position: `absolute`,
-              top: `17vh`,
-              right: `3.5vw`,
-              width: "18vw",
-            }}
-          >
+        <div className="wrapper">
+          <Row className="btns d-flex justify-content-center mx-auto">
             <Col
+              className="d-flex justify-content-center my-2"
               sm={12}
-              lg={7}
+              lg={12}
               xl={7}
               style={{ paddingLeft: ".5vw", paddingRight: ".5vw" }}
             >
               <Dropdown>
                 <Dropdown.Toggle
-                  className="rounded-pill"
+                  className="rounded-pill dropdownAdd"
                   id="dropdown-basic"
-                  style={{
-                    width: "10vw",
-                    overflow: "hidden",
-                    whiteSpace: "nowrap",
-                    textOverflow: "ellipsis",
-                    backgroundColor: "#0A66CE",
-                    height: "3.1vh",
-                    fontWeight: 600,
-                    borderStyle: "none",
-                    paddingBottom: "1.5vw",
-                  }}
                 >
                   Add profile section
                 </Dropdown.Toggle>
@@ -58,7 +41,7 @@ class Header extends React.Component {
                 </Dropdown.Menu>
               </Dropdown>
             </Col>
-            <Col sm={12} lg={3} xl={3}>
+            <Col sm={12} lg={12} xl={3} className="d-flex justify-content-center my-2">
               <Button
                 style={{
                   width: "4.5vw",
@@ -75,7 +58,7 @@ class Header extends React.Component {
                 More...
               </Button>
             </Col>
-            <Col sm={12} lg={2} xl={2}>
+            <Col sm={12} lg={12} xl={2} className="d-flex justify-content-center my-1">
               <EditPage
                 profile={this.props.profile}
                 refetch={this.props.refetch}
@@ -85,32 +68,40 @@ class Header extends React.Component {
           {/*propic and headers*/}
           <img src={this.props.src} className="propic" alt="profile" />
 
-          <Row className="d-flex" noGutters>
+          <Row noGutters>
             <Col>
-              <div id="headerName">{this.props.name}</div>
-            </Col>
-            <Col>
-             <Col>
-             <img src={Job} className="job" />
-             </Col> 
-             <Col>
-             <div className="jobdec hoverBlue">{this.props.desc}</div>
-             </Col>
-              
+              <div id="headerName" className="d-flex justify-content-center my-2">
+                {this.props.name}
+              </div>
             </Col>
           </Row>
           <Row className="d-flex" noGutters>
             <Col>
-              <div id="headerDescription">{this.props.desc}</div>
+              <div
+                id="headerDescription"
+                className="d-flex justify-content-center"
+              >
+                {this.props.desc}
+              </div>
+            </Col>
+            <Col>
+              <img src={Job} className="job" />
+
+              <div className="jobdec hoverBlue d-flex justify-content-center">
+                {this.props.desc}
+              </div>
             </Col>
           </Row>
           <Row className="d-flex" noGutters id="headerLinkLoc">
-            <div id="headerLoc"> {this.props.loc}</div>
+            <div id="headerLoc" className="d-flex justify-content-center">
+              {" "}
+              {this.props.loc}
+            </div>
             <div id="headerLink" className="hoverBlue">
               ∙&nbsp;&nbsp;24 connections&nbsp;&nbsp;∙&nbsp;&nbsp;Contact Info
             </div>
           </Row>
-         {/* <Row
+          {/* <Row
             className="d-flex opentowork"
             style={{
               width: "38vw",
