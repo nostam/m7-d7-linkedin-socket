@@ -118,7 +118,7 @@ body {
 }
 #headerDescription {
   position: absolute;
-  top: 10vh;
+  top: 9.8vh;
   font-size: 1rem !important;
   line-height: 1.33333;
   font-family: "Roboto", sans-serif;
@@ -153,10 +153,8 @@ body {
 }
 
 .wrapper {
-  position: absolute;
-  top: 18vh;
-  width: 30vw;
-  height: 19vh;
+  margin-top: 5.5vw;
+  height: 25vw !important;
   
 }
 .info {
