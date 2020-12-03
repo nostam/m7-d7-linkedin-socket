@@ -5,36 +5,6 @@
 .HashButton{
     block-size: max-content;
 }
-.btn-post{
-    font-style: normal;
-    font-family: Arial, Helvetica, sans-serif !important;
-    color: #666666;
-    align-items: flex-start;
-    background-color: hsl(0, 0%, 100%) !important;
-    outline-style: solid;
-    outline-color: hsl(210, 14%, 83%);
-    border: 0;
-    /* height:4.5625rem;
-    width:20.875rem; */
-    cursor: pointer;
-  }
-  .JumbBiPencilDiv {
-    width: 40px;
-    height: 40px;
-    background-color: white;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .JumbBiPencilDiv:hover,
-  .JumbBiPencilDiv:active {
-    background-color: #d9d9d9;
-  }
-  .JumbBiPencil {
-    color: #666;
-  }
-  .JumbBiPencilDiv:hover .JumbBiPencil,
-  .JumbBiPencilDiv:active .JumbBiPencil {
-    color: black;
-  }
+.postButton{
+    border-radius: 30px !important;
+}

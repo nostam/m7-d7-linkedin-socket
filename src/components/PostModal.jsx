@@ -75,6 +75,7 @@ class PostModal extends React.Component {
     return (
       <>
         <Button
+          className="postButton"
           variant="outline-dark"
           size="md"
           onClick={() => this.setState({ showModal: true })}
