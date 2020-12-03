@@ -48,7 +48,7 @@ export default class Login extends Component {
   render() {
     return (
       <Container>
-        <Col className="loginCol mt-5 ">
+        <Col className="loginCol mt-5">
           <img
             src={FooterLogo}
             className="mb-4 "
@@ -98,8 +98,11 @@ export default class Login extends Component {
               <Button className="loginBtn">Sign in</Button>
             </Col>
           </div>
-          <Row className="d-flex justify-content-around mt-4 mx-auto ">
-            New to LinkedIn? <Link to="/signup">Join now</Link>
+          <Row className="d-flex justify-content-around mt-5 mx-auto bg-transparent">
+            New to LinkedIn?{" "}
+            <Link className="ml-1" to="/signup">
+              Join now
+            </Link>
           </Row>
         </Col>
       </Container>

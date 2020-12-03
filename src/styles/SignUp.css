@@ -1,20 +1,28 @@
 body {
-  background-color: #f3f2ef;
+  background-color: #f3f2ef !important;
+}
+.signupBox {
+  width: 400px;
 }
 .signupCol {
+  background-color: white !important;
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
   flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-self: center;
+  padding: 2rem;
 }
-.signupCol h4 {
+/* .signupCol h4 {
   font-weight: 600;
-}
+} */
 .signupCol span {
-  font-size: 0.9rem;
+  font-size: 12px;
+  text-align: center;
 }
 .signupCol a {
-  font-variant: #0a66c2;
+  color: #0a66c2 !important;
+  font-weight: bold;
   margin-top: 1rem auto 1rem 0;
 }
 .signupCol .loginBtn {
@@ -22,7 +30,6 @@ body {
   width: 100%;
   padding: 0.75rem;
   margin: 0.25rem;
-  margin-top: 1rem;
   color: white;
   font-weight: 500;
   font-size: 0.8rem;
@@ -34,15 +41,18 @@ body {
 .signupCol .form-control {
   border: 1px solid #111;
   font-size: 1rem;
-  width: 352px;
+  margin-top: 0;
+  padding-top: 2px;
+}
+.signupCol .form-label {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.6);
 }
 .signupCol .input-group-text {
   color: grey;
 }
-.inputPwd {
-  position: relative;
-}
-.signupCol .inputToggle {
+
+/* .signupCol .inputToggle {
   position: absolute;
   margin-left: auto;
   margin-right: 0.5rem;
@@ -52,7 +62,17 @@ body {
   display: inline-block;
   background-color: white;
   color: #0a66c2;
-}
-.signupCol .inputToggle:hover {
+}  .signupCol .inputToggle:hover {
   background-color: lightblue;
+} */
+@media screen and (max-width: 1160px) {
+  body {
+    background-color: white !important;
+  }
+  .signupBox {
+    width: 100vw;
+  }
+  .signupCol {
+    max-width: 568px;
+  }
 }
