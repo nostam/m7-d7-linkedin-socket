@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Row, Col, Form, Button, Container, Badge } from "react-bootstrap";
+import { Row, Col, Form, Button, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import FooterLogo from "../footer_logo.svg";
 import "../styles/SignUp.css";
@@ -10,19 +10,24 @@ export default class SignUp extends Component {
   };
   url = "https://striveschool-api.herokuapp.com/api/account/register";
   header = {
-    Authorization: process.env.REACT_APP_TOKEN,
+    // Authorization: process.env.REACT_APP_TOKEN,
     ContentType: "application/json",
   };
   submitData = async () => {
     try {
+      let payload = this.state.user;
+      // payload.password = btoa(payload.password);
+      // payload.username = btoa(payload.username);
+      console.log("payload", payload);
       let response = await fetch(this.url, {
         method: "POST",
-        body: JSON.stringify(this.state.user),
+        body: JSON.stringify(payload),
         header: this.header,
       });
       if (response.ok) {
         console.log(response);
-        // this.props.history.details.push("/login");
+        console.log("response", await response.json());
+        this.props.history.details.push("/login");
       }
     } catch (error) {
       console.log(error);
@@ -35,7 +40,7 @@ export default class SignUp extends Component {
   };
   handleLogin = (e) => {
     if (e.keyCode === 13) {
-      this.props.submitData(this.state.user);
+      this.submitData(this.state.user);
     } else {
       this.setState({
         user: { ...this.state.user, [e.target.id]: e.currentTarget.value },
@@ -95,7 +100,7 @@ export default class SignUp extends Component {
                 <a>Cookie Policy</a>.
               </span>
               <Col className="signupCol px-0">
-                <Button className="loginBtn" onClick={() => this.submitData()}>
+                <Button className="signupBtn" onClick={() => this.submitData()}>
                   Agree & Join
                 </Button>
               </Col>

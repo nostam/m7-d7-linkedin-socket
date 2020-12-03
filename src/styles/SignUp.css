@@ -31,17 +31,19 @@ div:not(.modal-content) {
   font-weight: bold;
   margin-top: 1rem auto 1rem 0;
 }
-.signupCol .loginBtn {
+.signupCol .signupBtn {
   background-color: #0a66c2;
   width: 100%;
   padding: 0.75rem;
-  margin: 0.25rem;
+  margin-top: 0.25rem;
   color: white;
   font-weight: 500;
   font-size: 0.8rem;
   border-radius: 2rem;
-  text-align: center;
   font-size: 1rem;
+}
+.signupCol .signupBtn:hover {
+  background-color: #09223b;
 }
 .signupCol .form-control {
   border: 1px solid #111;
