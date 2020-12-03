@@ -15,7 +15,7 @@ class Header extends React.Component {
         <div className="wrapper">
           <Row className="btns d-flex justify-content-center mx-auto">
             <Col
-              className="d-flex justify-content-center my-2"
+              className="d-flex justify-content-center my-2 btncol"
               sm={12}
               lg={12}
               xl={7}
@@ -41,7 +41,7 @@ class Header extends React.Component {
                 </Dropdown.Menu>
               </Dropdown>
             </Col>
-            <Col sm={12} lg={12} xl={3} className="d-flex justify-content-center my-2">
+            <Col sm={12} lg={12} xl={3} className="d-flex justify-content-center my-2 btncol">
               <Button
                 style={{
                   width: "4.5vw",
@@ -52,13 +52,13 @@ class Header extends React.Component {
                   paddingBottom: "1.5vw",
                   overflow: "hidden",
                 }}
-                className="rounded-pill"
+                className="rounded-pill moreBtn"
                 variant="outline-secondary"
               >
                 More...
               </Button>
             </Col>
-            <Col sm={12} lg={12} xl={2} className="d-flex justify-content-center my-1">
+            <Col sm={12} lg={12} xl={2} className="d-flex justify-content-center my-1 btncol">
               <EditPage
                 profile={this.props.profile}
                 refetch={this.props.refetch}

@@ -28,14 +28,103 @@ body {
     margin-right: 5vw;
   }
 }
-@media only screen and (max-width: 769px) {
+@media only screen and (min-width: 577px) and (max-width: 780px) {
   .mainBody {
-    width: 80vw!important;
+    width: 70vw!important;
+    margin-left: 15vw;
+    margin-right: 15vw;
+    margin-top: 5vw;
   }
   .wrapper {
     position: absolute;
     top: 4vh;
-    width: 71vw;
+    width: 71vw !important;
+    height: 19vh;
+  }
+  .propic {
+    width: 15vw !important;
+    position: absolute;
+    top: 4vh!important;
+    z-index: 2;
+    border-radius: 50%;
+    border-width: 0.3vw;
+    border-color: white;
+    border-style: solid;
+    object-fit: scale-down;
+    height: 15vw;
+    margin-left: 24vw;
+  }
+  #headerName {
+    font-size: 1.45rem;
+    line-height: 1.33333;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400 !important;
+    position: absolute;
+    top: 11vh !important;
+    width: 63vw !important;
+  }
+  #headerDescription {
+    position: absolute;
+    top: 14.5vh !important;
+    font-size: 1rem !important;
+    line-height: 1.33333;
+    font-family: "Roboto", sans-serif;
+    font-weight: 300 !important;
+
+    padding: 0 auto;
+    width: 63vw !important;
+  }
+  #headerLinkLoc {
+    margin: 0 !important;
+    padding: 0 !important;
+    position: relative;
+    top: 16.5vh !important;
+    padding: 0 auto;
+    width: 63vw !important;
+  }
+  
+  .btncol {
+    margin-top: 0;
+    margin-bottom: 0
+  }
+
+  .job {
+    display: none
+  }
+
+  .jobdec {
+    display: none!important 
+  }
+  
+  .btns {
+    position: absolute;
+    top: 22.5vh!important;
+    width:77vw!important
+  }
+  .dropdownAdd {
+    width: 25vw !important;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    background-color: #0a66ce;
+    height: 3vh!important;
+    font-weight: 600;
+    border-style: none;
+  }
+  .moreBtn {
+    width: 10vw!important;
+    padding-bottom: 2.5vw
+  }
+}
+
+@media only screen and (min-width: 781px) and (max-width: 992px) {
+  .mainBody {
+    width: 30vw;
+  }
+  .wrapper {
+    position: absolute;
+    top: 4vh;
+    width: 80vw;
     height: 19vh;
   }
   .propic {
@@ -58,7 +147,7 @@ body {
     font-weight: 400 !important;
     position: absolute;
     top: 12.5vh !important;
-    width: 72vw !important;
+    width: 80vw !important;
   }
   #headerDescription {
     position: absolute;
@@ -69,7 +158,7 @@ body {
     font-weight: 300 !important;
 
     padding: 0 auto;
-    width: 72vw !important;
+    width: 46vw !important;
   }
   #headerLinkLoc {
     margin: 0 !important;
@@ -77,7 +166,7 @@ body {
     position: relative;
     top: 17vh !important;
     padding: 0 auto;
-    width: 72vw !important;
+    width: 46vw !important;
   }
   .opentowork {
     display: none;
@@ -85,7 +174,7 @@ body {
   .btns {
     position: absolute;
     top: 22.5vh!important;
-    width:72vw!important
+    width: 46vw!important;
   }
   .dropdownAdd {
     width: 18vw !important;
@@ -99,8 +188,7 @@ body {
   }
 }
 
-
-@media only screen and (max-width: 1200px) {
+@media only screen and (min-width: 993px) and (max-width: 1200px) {
   .mainBody {
     width: 80vw;
     margin-left: 10vw;
@@ -174,76 +262,7 @@ body {
   
 }
 
-@media only screen and (max-width: 992px) {
-  .mainBody {
-    width: 30vw;
-  }
-  .wrapper {
-    position: absolute;
-    top: 4vh;
-    width: 80vw;
-    height: 19vh;
-  }
-  .propic {
-    width: 12vw !important;
-    position: absolute;
-    top: 7.5vh;
-    z-index: 2;
-    border-radius: 50%;
-    border-width: 0.3vw;
-    border-color: white;
-    border-style: solid;
-    object-fit: scale-down;
-    height: 12vw;
-    margin-left: 16.6vw;
-  }
-  #headerName {
-    font-size: 1.45rem;
-    line-height: 1.33333;
-    font-family: "Roboto", sans-serif;
-    font-weight: 400 !important;
-    position: absolute;
-    top: 12.5vh !important;
-    width: 80vw !important;
-  }
-  #headerDescription {
-    position: absolute;
-    top: 15.3vh !important;
-    font-size: 1rem !important;
-    line-height: 1.33333;
-    font-family: "Roboto", sans-serif;
-    font-weight: 300 !important;
 
-    padding: 0 auto;
-    width: 46vw !important;
-  }
-  #headerLinkLoc {
-    margin: 0 !important;
-    padding: 0 !important;
-    position: relative;
-    top: 17vh !important;
-    padding: 0 auto;
-    width: 46vw !important;
-  }
-  .opentowork {
-    display: none;
-  }
-  .btns {
-    position: absolute;
-    top: 22.5vh!important;
-    width: 46vw!important;
-  }
-  .dropdownAdd {
-    width: 18vw !important;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    background-color: #0a66ce;
-    height: 2.5vh!important;
-    font-weight: 600;
-    border-style: none;
-  }
-}
 .btns {
   position: absolute;
   top: 16vh;
