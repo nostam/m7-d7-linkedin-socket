@@ -44,10 +44,10 @@ export default class Home extends Component {
       <div className="homeDiv">
         <Container className="HomeCont">
           <Row>
-            <Col className="d-none d-lg-block">
+            <Col className="d-none d-lg-block" lg={3}>
               <RSidebar />
             </Col>
-            <Col lg={6}>
+            <Col lg={6} md={9}>
               <PostModal />
               {this.state.posts.map((post) => (
                 <Card className="w100 my-4" key="post._id">
@@ -68,25 +68,25 @@ export default class Home extends Component {
                       className="postImage"
                     />
                   )}
-                  <p>{post.text}</p>
-                  <Card.Footer className="HomeModal">
-                    <Button variant="outline-dark">
+                  <Card.Text className="p-2">{post.text}</Card.Text>
+                  <Card.Footer className="HomeModal bg-white">
+                    <Button variant="outline-dark mx-1">
                       <BiLike /> Like
                     </Button>
-                    <Button variant="outline-dark">
+                    <Button variant="outline-dark mx-1">
                       <BiCommentDetail /> Comment
                     </Button>
-                    <Button variant="outline-dark">
+                    <Button variant="outline-dark mx-1">
                       <BiShare /> Share
                     </Button>
-                    <Button variant="outline-dark">
+                    <Button variant="outline-dark mx-1">
                       <BiSend /> Send
                     </Button>
                   </Card.Footer>
                 </Card>
               ))}
             </Col>
-            <Col className="d-none d-md-block">
+            <Col className="d-none d-md-block" md={3}>
               <Sidebar />
             </Col>
           </Row>

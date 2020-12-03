@@ -1,6 +1,6 @@
-div:not(.modal-content) {
+/* div:not(.modal-content) {
   transition: all 0.25s;
-}
+} */
 /* THIS BREAKS ALL OTHER COMPONENTS BG-COLOR */
 /* body {
   background-color: #f3f2ef;
@@ -385,11 +385,7 @@ div:not(.modal-content) {
 .infobody {
   font-size: 11pt !important;
 }
-.HomeModal {
-  display: flex;
-  justify-content: left;
-  justify-content: space-evenly;
-}
+
 .RightSidebar {
   text-align: center;
   max-width: 216px;
