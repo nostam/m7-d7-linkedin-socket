@@ -128,3 +128,14 @@ div:not(.modal-content) {
   display: flex;
   justify-content: left;
 }
+.RightSidebar{
+  text-align: center;
+  max-width: 216px;
+}
+.RSidebarBG{
+  max-width: 216px;
+  max-height: 54px;
+}
+.HomeCont{
+  margin-top: 100px;
+}
