@@ -15,7 +15,7 @@ export default class SignUp extends Component {
   };
   submitData = async () => {
     try {
-      let response = await fetch("this.url", {
+      let response = await fetch(this.url, {
         method: "POST",
         body: JSON.stringify(this.state.user),
         header: this.header,
@@ -48,7 +48,7 @@ export default class SignUp extends Component {
   };
   render() {
     return (
-      <Container fluid className="signupDiv">
+      <div className="signupDiv">
         <Container className="d-flex flex-column justify-content-center align-content-center">
           <Col className="d-flex justify-content-center mx-auto mt-4 flex-column text-center">
             <img
@@ -95,7 +95,9 @@ export default class SignUp extends Component {
                 <a>Cookie Policy</a>.
               </span>
               <Col className="signupCol px-0">
-                <Button className="loginBtn">Agree & Join</Button>
+                <Button className="loginBtn" onClick={() => this.submitData()}>
+                  Agree & Join
+                </Button>
               </Col>
             </div>
             <Row className="d-flex justify-content-around mt-4 mx-auto ">
@@ -107,7 +109,7 @@ export default class SignUp extends Component {
             </Row>
           </Col>
         </Container>
-      </Container>
+      </div>
     );
   }
 }
