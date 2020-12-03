@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Col, Row, Modal, Image, Form, Card } from "react-bootstrap";
 import { FaCamera, FaVideo, FaStickyNote, FaPenSquare } from "react-icons/fa";
 import { BiPencil } from "react-icons/bi";
+import { IconContext } from "react-icons";
 import { withRouter } from "react-router-dom";
 import "../styles/PostModal.css";
 
@@ -112,31 +113,19 @@ class PostModal extends React.Component {
           </Modal.Body>
 
           <Modal.Footer>
-            <button className="btn">
-              <i>
-                <FaCamera style={{ color: "#666666" }} size={30} />
-              </i>
-            </button>
-            <button className="btn">
-              <i>
-                <FaVideo style={{ color: "#666666" }} size={30} />
-              </i>
-            </button>
-            <button className="btn">
-              <i>
-                <FaStickyNote style={{ color: "#666666" }} size={30} />
-              </i>
-            </button>
-            <button className="btn">
-              <i>
-                <FaPenSquare
-                  className="pen mx-1"
-                  style={{ color: "#666666" }}
-                  size={30}
-                />
-              </i>
-            </button>
-            <Button variant="primary" onClick={this.post}>
+            <IconContext.Provider
+              value={{
+                size: "30px",
+                className: "mx-2",
+                color: "#666",
+              }}
+            >
+              <FaCamera />
+              <FaVideo />
+              <FaStickyNote />
+              <FaPenSquare />
+            </IconContext.Provider>
+            <Button rounded-pill variant="primary" onClick={this.post}>
               Post
             </Button>
           </Modal.Footer>
