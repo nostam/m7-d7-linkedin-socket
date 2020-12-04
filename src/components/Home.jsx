@@ -37,7 +37,7 @@ export default class Home extends Component {
       );
       if (response.ok) {
         let postResponse = await response.json();
-        postResponse.reverse().slice(0, 20);
+        postResponse = postResponse.reverse().slice(0, 50);
         this.setState({ posts: postResponse, loading: false });
       }
     } catch (error) {
