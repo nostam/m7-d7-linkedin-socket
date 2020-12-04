@@ -17,6 +17,7 @@ import EditPage from "./EditPage";
 import "../styles/Profile.css";
 import { BiPencil } from "react-icons/bi";
 import { IconContext } from "react-icons";
+import { Route } from "react-router-dom";
 class Body extends React.Component {
   state = {
     profile: {},
@@ -71,25 +72,25 @@ class Body extends React.Component {
             <Alert variant="danger">{this.state.errMsg}</Alert>
           )}
           {this.state.loading && this.state.err !== true ? (
-            <Row className="d-flex justify-content-center my-5">
-              <h3 style={{ paddingTop: "20vh" }}>Loading profile...</h3>
-              <Spinner
-                animation="border"
-                variant="info"
-                style={{ marginTop: "20vh" }}
-              />
-            </Row>
+            <div
+              style={{ position: "relative", top: "8vh", left: "25vw" }}
+              class="lds-facebook"
+            >
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
           ) : Object.keys(this.state.profile).length !== 0 ? (
             <Row className="rowm">
               {/*<Col lg={3}></Col> */}
               <Col md={8} style={{ marginTop: "10vh" }}>
-                <Card>
+                <Card className="cardProf">
                   <Card.Img
                     className="cardImg"
                     variant="top"
                     src="https://coverfiles.alphacoders.com/372/37275.jpg"
                     style={{ objectFit: "cover" }}
-                    alt="placeholderr"
+                    alt="placeholder"
                   />
                   <Card.Body>
                     <div className="d-flex justify-content-between">
@@ -135,38 +136,43 @@ class Body extends React.Component {
                               </g>
                             </svg>
                           </h3>
-                          <small>{this.state.profile.title}</small>
+                          <div className="roletext">
+                            {this.state.profile.title}
+                          </div>
                           <h6 className="areaTxt">{this.state.profile.area}</h6>
                         </Col>
                         <Col lg={6}>
                           <div className="btnBox">
-                            <DropdownButton
-                              className="d-none d-lg-block"
-                              id="dropdown-basic-button"
-                              size="sm"
-                              title="Add profile section"
-                            >
-                              <Dropdown.Item>Intro</Dropdown.Item>
-                              <Dropdown.Item>About</Dropdown.Item>
-                              <Dropdown.Item>Featured</Dropdown.Item>
-                              <Dropdown.Item>Background</Dropdown.Item>
-                              <Dropdown.Item>Skills</Dropdown.Item>
-                              <Dropdown.Item>Accomplishments</Dropdown.Item>
-                              <Dropdown.Item>
-                                Additional information
-                              </Dropdown.Item>
-                              <Dropdown.Item>Supported languages</Dropdown.Item>
-                            </DropdownButton>
-
-                            <button className="btnMore">More...</button>
-
-                            <EditPage
-                              profile={this.state.profile}
-                              refetch={() =>
-                                this.searchProfile(this.props.match.params.id)
-                              }
-                              color="#0A66CE"
-                            />
+                            <Route path="/user/me">
+                              {" "}
+                              <DropdownButton
+                                className="d-none d-lg-block"
+                                id="dropdown-basic-button"
+                                size="sm"
+                                title="Add profile section"
+                              >
+                                <Dropdown.Item>Intro</Dropdown.Item>
+                                <Dropdown.Item>About</Dropdown.Item>
+                                <Dropdown.Item>Featured</Dropdown.Item>
+                                <Dropdown.Item>Background</Dropdown.Item>
+                                <Dropdown.Item>Skills</Dropdown.Item>
+                                <Dropdown.Item>Accomplishments</Dropdown.Item>
+                                <Dropdown.Item>
+                                  Additional information
+                                </Dropdown.Item>
+                                <Dropdown.Item>
+                                  Supported languages
+                                </Dropdown.Item>
+                              </DropdownButton>
+                              <button className="btnMore">More...</button>
+                              <EditPage
+                                profile={this.state.profile}
+                                refetch={() =>
+                                  this.searchProfile(this.props.match.params.id)
+                                }
+                                color="#0A66CE"
+                              />
+                            </Route>
                           </div>
                         </Col>
                       </Row>
@@ -178,7 +184,10 @@ class Body extends React.Component {
                   profile={this.state.profile}
                   refetch={() => this.searchProfile(this.props.match.params.id)}
                 />
-                <Feature />
+                <Route path="/user/me">
+                  {" "}
+                  <Feature />{" "}
+                </Route>
                 <Experience profile={this.state.profile} />
               </Col>
               <Col
@@ -188,12 +197,6 @@ class Body extends React.Component {
               >
                 <Sidebar />
               </Col>
-
-              <EditPage
-                profile={this.state.profile}
-                refetch={() => this.searchProfile(this.props.match.params.id)}
-                color="#0A66CE"
-              />
             </Row>
           ) : (
             this.setState({

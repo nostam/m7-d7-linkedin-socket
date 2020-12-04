@@ -7,6 +7,8 @@ class Edit extends React.Component {
   state = {
     showModal: false,
     experience: {},
+    selectedFile: null,
+    imgSubmitStatus: "secondary",
   };
   url = "https://striveschool-api.herokuapp.com/api/profile/";
   headers = {
@@ -54,8 +56,12 @@ class Edit extends React.Component {
         body: payload,
       });
       if (response.ok) {
-        this.props.toggle();
-        this.props.refetch();
+        if (this.state.selectedFile !== null) {
+          this.fileUploadHandler();
+        } else {
+          this.props.toggle();
+          this.props.refetch();
+        }
       } else {
         console.log("submit failed");
       }
@@ -83,6 +89,36 @@ class Edit extends React.Component {
   }
   edit = () => {
     return this.props.expId !== null ? true : false;
+  };
+  fileSelectHandler = (event) => {
+    this.setState({
+      selectedFile: event.target.files[0],
+      imgSubmitStatus: "success",
+    });
+  };
+
+  fileUploadHandler = async () => {
+    const fd = new FormData();
+    fd.append("experience", this.state.selectedFile);
+    try {
+      const response = await fetch(
+        `https://striveschool-api.herokuapp.com/api/profile/${this.props.userId}/experiences/${this.props.expId}/picture`,
+        {
+          method: "POST",
+          headers: { Authorization: "Bearer " + localStorage.getItem("token") },
+          body: fd,
+        }
+      );
+      if (response.ok) {
+        this.props.toggle();
+        this.props.refetch();
+      } else {
+        this.props.toggle();
+        this.props.refetch();
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
   render() {
     return (
@@ -187,12 +223,27 @@ class Edit extends React.Component {
               DELETE
             </Button>
           )}
-          <Button
+          {/* <Button
             className="rounded-pill py-1"
             variant="secondary"
             onClick={this.props.toggle}
           >
             Close
+          </Button> */}
+          <input
+            style={{ display: "none" }}
+            type="file"
+            onChange={this.fileSelectHandler}
+            ref={(fileInput) => (this.fileInput = fileInput)}
+          />
+          <Button
+            className="rounded-pill py-1"
+            variant={this.state.imgSubmitStatus}
+            onClick={() => this.fileInput.click()}
+          >
+            {this.state.imgSubmitStatus === "secondary"
+              ? "Choose an image"
+              : "Ready to Upload"}
           </Button>
           <Button
             className="rounded-pill py-1"

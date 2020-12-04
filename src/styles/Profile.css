@@ -1,4 +1,4 @@
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 0px) {
   .rowm {
     margin-left: 0;
     margin-right: 0;
@@ -10,27 +10,47 @@
 @media only screen and (min-width: 992px) {
 }
 .mainBody {
-  width: 1130px;
+  width: 1230px;
   margin-left: auto;
   margin-right: auto;
 }
+.infobody {
+  font-size: 11pt;
+}
 .cardImg {
   max-height: 200px;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
 }
 .bgBody {
   background-color: #f3f2ef;
 }
+.cardProf {
+  width: 800px;
+  margin-left: -10px;
+  border-radius: 8px;
+}
 .usrnTxt {
-  font-size: 24px;
+  font-size: 1.45rem;
+  line-height: 1.33333;
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
-  line-height: 32px;
   color: rgba(0, 0, 0, 0.9);
 }
+
+.roletext {
+  font-size: 1.2rem;
+  line-height: 1.33333;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+}
+
 .areaTxt {
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
+  font-size: 1rem;
+  font-weight: 300 !important;
+  font-family: "Roboto", sans-serif;
   color: rgba(0, 0, 0, 0.9);
+  margin-top: 9px;
 }
 a {
   text-decoration: none;
@@ -55,8 +75,24 @@ a {
   height: 30px;
   margin-left: 10px;
   margin-right: 10px;
+  border-style: solid;
+  border-color: grey;
+  border-width: 1px;
+  color: grey;
 }
 .btnBox {
   display: flex;
   flex-direction: row;
+  position: relative;
+  right: -51px;
+  top: 16px;
+}
+.info {
+  font-size: 1.3rem;
+  line-height: 1.33333;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.9);
+  padding-top: 10px;
+  padding-bottom: 1vw;
 }

@@ -4,10 +4,12 @@ import { Button, Card, Col, Row } from "react-bootstrap";
 import { IconContext } from "react-icons";
 import { BiPencil } from "react-icons/bi";
 import { BsPlus } from "react-icons/bs";
-import "../styles/Experience.css";
 import Job from "../assets/job.png";
-import "../styles/Profile.css";
-
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import { Route } from "react-router-dom";
+import moment from "moment";
+// import "../styles/Profile.css";
+import "../styles/Experience.css";
 class Experience extends React.Component {
   state = {
     showModal: false,
@@ -16,7 +18,49 @@ class Experience extends React.Component {
     // method: null,
     exp: {},
   };
+  // re-order
+  grid = 8;
 
+  getItemStyle = (isDragging, draggableStyle) => ({
+    // some basic styles to make the items look a bit nicer
+    userSelect: "none",
+    padding: this.grid * 2,
+    margin: `0 0 ${this.grid}px 0`,
+
+    // change background colour if dragging
+    background: isDragging ? "lightgreen" : "grey",
+
+    // styles we need to apply on draggables
+    ...draggableStyle,
+  });
+  onDragEnd = (result) => {
+    // dropped outside the list
+    if (!result.destination) {
+      return;
+    }
+
+    const items = this.reorder(
+      this.state.experience,
+      result.source.index,
+      result.destination.index
+    );
+
+    this.setState({
+      experiences: items,
+    });
+  };
+  getListStyle = (isDraggingOver) => ({
+    background: isDraggingOver ? "lightblue" : "lightgrey",
+    padding: this.grid,
+    width: 250,
+  });
+
+  reorder = (list, startIndex, endIndex) => {
+    const result = Array.from(list);
+    const [removed] = result.splice(startIndex, 1);
+    result.splice(endIndex, 0, removed);
+    return result;
+  };
   searchExp = async () => {
     await fetch(
       `https://striveschool-api.herokuapp.com/api/profile/${this.props.profile._id}/experiences`,
@@ -56,146 +100,132 @@ class Experience extends React.Component {
   render() {
     return (
       <>
-        <Card
-          className="bio"
-          style={{ borderRadius: ".5vw", marginTop: ".8vw" }}
-        >
+        <Card className="bio cardProf">
           <Card.Body>
             <Row className="d-flex justify-content-between ml-1">
               <div id="expTitle" className="info">
                 Experience
               </div>
 
-              <Button variant="white" onClick={() => this.toggleModal()}>
-                <IconContext.Provider
-                  value={{
-                    size: "30px",
-                    className: "expIcons",
-                    color: "#0A66CE",
-                  }}
-                >
-                  <BsPlus />
-                </IconContext.Provider>
-              </Button>
+              <Route path="/user/me">
+                <Button variant="white" onClick={() => this.toggleModal()}>
+                  <IconContext.Provider
+                    value={{
+                      size: "24px",
+                      className: "expIcons",
+                      color: "#0A66CE",
+                    }}
+                  >
+                    <BsPlus />
+                  </IconContext.Provider>
+                </Button>
+              </Route>
             </Row>
             {/* <Edit /> */}
-            {this.state.experience.map((job, index) => {
-              let startyear = job.startDate.slice(0, 4);
-              let startmonth = job.startDate.slice(5, 7);
-              if (startmonth === "01") {
-                startmonth = "Jan";
-              } else if (startmonth === "02") {
-                startmonth = "Feb";
-              } else if (startmonth === "03") {
-                startmonth = "Mar";
-              } else if (startmonth === "04") {
-                startmonth = "Apr";
-              } else if (startmonth === "05") {
-                startmonth = "May";
-              } else if (startmonth === "06") {
-                startmonth = "Jun";
-              } else if (startmonth === "07") {
-                startmonth = "Jul";
-              } else if (startmonth === "08") {
-                startmonth = "Aug";
-              } else if (startmonth === "09") {
-                startmonth = "Sep";
-              } else if (startmonth === "10") {
-                startmonth = "Oct";
-              } else if (startmonth === "11") {
-                startmonth = "Nov";
-              } else if (startmonth === "12") {
-                startmonth = "Dec";
-              }
-
-              let enddate = job.endDate.slice(0, 10);
-              let endyear = job.endDate.slice(0, 4);
-              let endmonth = job.endDate.slice(5, 7);
-              if (endmonth === "01") {
-                endmonth = "Jan";
-              } else if (endmonth === "02") {
-                endmonth = "Feb";
-              } else if (endmonth === "03") {
-                endmonth = "Mar";
-              } else if (endmonth === "04") {
-                endmonth = "Apr";
-              } else if (endmonth === "05") {
-                endmonth = "May";
-              } else if (endmonth === "06") {
-                endmonth = "Jun";
-              } else if (endmonth === "07") {
-                endmonth = "Jul";
-              } else if (endmonth === "08") {
-                endmonth = "Aug";
-              } else if (endmonth === "09") {
-                endmonth = "Sep";
-              } else if (endmonth === "10") {
-                endmonth = "Oct";
-              } else if (endmonth === "11") {
-                endmonth = "Nov";
-              } else if (endmonth === "12") {
-                endmonth = "Dec";
-              }
-              return (
-                <>
-                  <Row noGutters>
-                    <Col md={1}>
-                      <img src={Job} style={{ width: "3vw" }} />
-                    </Col>
-                    <Col>
-                      <ul id={job._id} key={`exp${index}`} className="exp">
-                        <Button
-                          variant="white"
-                          className="editBtnExp"
-                          onClick={() => this.toggleModal(job)}
-                        >
-                          <IconContext.Provider
-                            value={{
-                              size: "1.6vw",
-                              className: "expIcons",
-                              color: "#0A66CE",
-                            }}
+            <DragDropContext onDragEnd={this.onDragEnd}>
+              <Droppable droppableId="droppable">
+                {(provided, snapshot) => (
+                  <div {...provided.droppableProps} ref={provided.innerRef}>
+                    {this.state.experience.map((experience, index) => (
+                      <Draggable
+                        key={experience._id}
+                        draggableId={experience._id}
+                        index={index}
+                      >
+                        {(provided, snapshot) => (
+                          <div
+                            ref={provided.innerRef}
+                            {...provided.draggableProps}
+                            {...provided.dragHandleProps}
                           >
-                            <BiPencil />
-                          </IconContext.Provider>
-                        </Button>
+                            <Row noGutters>
+                              <div style={{ width: "48px" }}>
+                                <img
+                                  src={
+                                    experience.image ? experience.image : Job
+                                  }
+                                  style={{ width: "48px" }}
+                                />
+                              </div>
+                              <Col>
+                                <ul
+                                  id={experience._id}
+                                  key={`exp${index}`}
+                                  className="exp"
+                                >
+                                  <Route path="/user/me">
+                                    <Button
+                                      variant="white"
+                                      className="editBtnExp"
+                                      onClick={() =>
+                                        this.toggleModal(experience)
+                                      }
+                                    >
+                                      <IconContext.Provider
+                                        value={{
+                                          size: "24px",
+                                          className: "expIcons",
+                                          color: "#0A66CE",
+                                        }}
+                                      >
+                                        <BiPencil />
+                                      </IconContext.Provider>
+                                    </Button>
+                                  </Route>
+                                  <li className="expEntries">
+                                    <div class="roleExp">{experience.role}</div>
+                                  </li>
+                                  <li className="expEntries">
+                                    <div class="workplaceExp">
+                                      {experience.company}
+                                    </div>
+                                  </li>
+                                  <li className="expEntries">
+                                    <div class="timeExp">
+                                      {moment(experience.startDate).format(
+                                        "MM/YYYY"
+                                      )}  -  {experience.endDate ? moment(experience.endDate).format(
+                                        "MM/YYYY"
+                                      ) : "Current"}
+                                    </div>
+                                    <div class="timeExp">
+                                      
+                                    </div>
+                                  </li>
 
-                        <li className="expEntries">
-                          <div class="roleExp">{job.role}</div>
-                        </li>
-                        <li className="expEntries">
-                          <div class="workplaceExp">{job.company}</div>
-                        </li>
-                        <li className="expEntries">
-                          <div class="timeExp">
-                            {startmonth + " " + startyear}
+                                  <li className="expEntries">
+                                    <div class="cityExp">{experience.area}</div>
+                                  </li>
+                                  <li className="expEntries">
+                                    <div class="descExp">
+                                      {experience.description}
+                                    </div>
+                                  </li>
+                                </ul>
+                              </Col>
+                            </Row>
                           </div>
-                        </li>
-                        <li className="expEntries">
-                          <div class="timeExp">{endmonth + " " + endyear}</div>
-                        </li>
-                        <li className="expEntries">
-                          <div class="cityExp">{job.area}</div>
-                        </li>
-                        <li className="expEntries">
-                          <div class="descExp">{job.description}</div>
-                        </li>
-                      </ul>
-                    </Col>
-                  </Row>
-                </>
-              );
-            })}
+                        )}
+                      </Draggable>
+                    ))}
+                    {provided.placeholder}
+                  </div>
+                )}
+              </Droppable>
+            </DragDropContext>
           </Card.Body>
         </Card>
-        <Edit
-          show={this.state.showModal}
-          userId={this.props.profile._id}
-          expId={this.state.selectedId}
-          toggle={() => this.toggleModal()}
-          refetch={() => this.searchExp()}
-          color="#0A66CE"
-        />
+        <Route path="/user/me">
+          {" "}
+          <Edit
+            show={this.state.showModal}
+            userId={this.props.profile._id}
+            expId={this.state.selectedId}
+            toggle={() => this.toggleModal()}
+            refetch={() => this.searchExp()}
+            color="#0A66CE"
+          />
+        </Route>
       </>
     );
   }
