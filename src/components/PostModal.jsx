@@ -10,6 +10,8 @@ class PostModal extends React.Component {
   state = {
     showModal: false,
     me: {},
+    selectedFile: null,
+    imgSubmitStatus: "secondary",
     post: {
       text: "",
     },
@@ -27,7 +29,34 @@ class PostModal extends React.Component {
       },
     });
   };
-
+  fileSelectHandler = (event) => {
+    this.setState({
+      selectedFile: event.target.files[0],
+      imgSubmitStatus: "success",
+    });
+  };
+  fileUploadHandler = async (postId) => {
+    const fd = new FormData();
+    fd.append("post", this.state.selectedFile);
+    try {
+      const response = await fetch(
+        `https://striveschool-api.herokuapp.com/api/posts/${postId}`,
+        {
+          method: "POST",
+          headers: { Authorization: "Bearer " + localStorage.getItem("token") },
+          body: fd,
+        }
+      );
+      if (response.ok) {
+        this.setState({ showModal: false }, () => this.props.refetch());
+        console.log("posted with a image");
+      } else {
+        this.setState({ showModal: false });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   post = async () => {
     try {
       const response = await fetch(
@@ -41,10 +70,11 @@ class PostModal extends React.Component {
           },
         }
       );
-      this.fileUploadHandler();
       if (response.ok) {
-        this.setState({ showModal: false });
-        this.props.refetch();
+        const data = await response.json();
+        console.log(data);
+        this.fileUploadHandler(data._id);
+        // this.setState({ showModal: false }, () => this.props.refetch());
       } else {
         this.setState({ showModal: false });
       }
@@ -111,6 +141,24 @@ class PostModal extends React.Component {
           </Modal.Body>
 
           <Modal.Footer>
+            <input
+              style={{ display: "none" }}
+              type="file"
+              onChange={this.fileSelectHandler}
+              ref={(fileInput) => (this.fileInput = fileInput)}
+            />
+            <IconContext.Provider
+              value={{
+                size: "30px",
+                className: "mx-2",
+                color:
+                  this.state.imgSubmitStatus === "secondary"
+                    ? "#666"
+                    : "#28a745",
+              }}
+            >
+              <FaCamera onClick={() => this.fileInput.click()} />
+            </IconContext.Provider>
             <IconContext.Provider
               value={{
                 size: "30px",
@@ -118,7 +166,6 @@ class PostModal extends React.Component {
                 color: "#666",
               }}
             >
-              <FaCamera />
               <FaVideo />
               <FaStickyNote />
               <FaPenSquare />

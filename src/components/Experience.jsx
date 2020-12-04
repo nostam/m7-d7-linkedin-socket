@@ -4,19 +4,19 @@ import { Button, Card, Col, Row } from "react-bootstrap";
 import { IconContext } from "react-icons";
 import { BiPencil } from "react-icons/bi";
 import { BsPlus } from "react-icons/bs";
-import "../styles/Experience.css";
 import Job from "../assets/job.png";
-import "../styles/Profile.css";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { Route } from "react-router-dom";
 import moment from "moment";
+// import "../styles/Profile.css";
+import "../styles/Experience.css";
 class Experience extends React.Component {
   state = {
     showModal: false,
     experience: [],
     selectedId: null,
     // method: null,
-    exp: {}
+    exp: {},
   };
   // re-order
   grid = 8;
@@ -31,7 +31,7 @@ class Experience extends React.Component {
     background: isDragging ? "lightgreen" : "grey",
 
     // styles we need to apply on draggables
-    ...draggableStyle
+    ...draggableStyle,
   });
   onDragEnd = (result) => {
     // dropped outside the list
@@ -46,13 +46,13 @@ class Experience extends React.Component {
     );
 
     this.setState({
-      experiences: items
+      experiences: items,
     });
   };
   getListStyle = (isDraggingOver) => ({
     background: isDraggingOver ? "lightblue" : "lightgrey",
     padding: this.grid,
-    width: 250
+    width: 250,
   });
 
   reorder = (list, startIndex, endIndex) => {
@@ -68,8 +68,8 @@ class Experience extends React.Component {
         method: "GET",
         headers: new Headers({
           Authorization: "Bearer " + localStorage.getItem("token"),
-          ContentType: "application/json"
-        })
+          ContentType: "application/json",
+        }),
       }
     )
       .then((response) => response.json())
@@ -89,21 +89,18 @@ class Experience extends React.Component {
     job !== undefined
       ? this.setState({
           selectedId: job._id,
-          showModal: !this.state.showModal
+          showModal: !this.state.showModal,
         })
       : this.setState({
           selectedId: null,
-          showModal: !this.state.showModal
+          showModal: !this.state.showModal,
         });
   };
 
   render() {
     return (
       <>
-        <Card
-          className="bio cardProf"
-          style={{ borderRadius: ".5vw", marginTop: ".8vw" }}
-        >
+        <Card className="bio cardProf">
           <Card.Body>
             <Row className="d-flex justify-content-between ml-1">
               <div id="expTitle" className="info">
@@ -111,13 +108,12 @@ class Experience extends React.Component {
               </div>
 
               <Route path="/user/me">
-                {" "}
                 <Button variant="white" onClick={() => this.toggleModal()}>
                   <IconContext.Provider
                     value={{
-                      size: "30px",
+                      size: "24px",
                       className: "expIcons",
-                      color: "#0A66CE"
+                      color: "#0A66CE",
                     }}
                   >
                     <BsPlus />
@@ -143,14 +139,14 @@ class Experience extends React.Component {
                             {...provided.dragHandleProps}
                           >
                             <Row noGutters>
-                              <Col md={1}>
+                              <div style={{ width: "48px" }}>
                                 <img
                                   src={
                                     experience.image ? experience.image : Job
                                   }
-                                  style={{ width: "3vw" }}
+                                  style={{ width: "48px" }}
                                 />
-                              </Col>
+                              </div>
                               <Col>
                                 <ul
                                   id={experience._id}
@@ -158,7 +154,6 @@ class Experience extends React.Component {
                                   className="exp"
                                 >
                                   <Route path="/user/me">
-                                    {" "}
                                     <Button
                                       variant="white"
                                       className="editBtnExp"
@@ -168,9 +163,9 @@ class Experience extends React.Component {
                                     >
                                       <IconContext.Provider
                                         value={{
-                                          size: "1.6vw",
+                                          size: "24px",
                                           className: "expIcons",
-                                          color: "#0A66CE"
+                                          color: "#0A66CE",
                                         }}
                                       >
                                         <BiPencil />

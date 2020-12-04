@@ -6,28 +6,32 @@
   text-decoration: underline;
 }
 .editBtnExp {
-position: absolute;
-left: 94%;
-margin-top: -.5vw
+  position: absolute;
+  left: 94%;
+  margin-top: -0.5vw;
 }
 
-.roleExp{
+.roleExp {
   font-weight: bold;
-  font-size: .95rem;
+  font-size: 0.95rem;
 }
 
 .workplaceExp {
-  font-size: .9rem;
+  font-size: 0.9rem;
 }
 
-.timeExp, .cityExp {
-  font-size: .9rem;
-  color: grey
+.timeExp,
+.cityExp {
+  font-size: 0.9rem;
+  color: grey;
 }
 
 .descExp {
-  padding-top: .2vw;
-  font-size: .9rem;
+  padding-top: 0.2vw;
+  font-size: 0.9rem;
 }
 
-
+.bio .cardProf {
+  border-radius: 8px;
+  margin-top: 32px !important;
+}
