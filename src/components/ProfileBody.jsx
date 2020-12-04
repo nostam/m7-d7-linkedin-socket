@@ -13,6 +13,7 @@ import Bio from "./BioCard";
 import Experience from "./Experience";
 import Feature from "./Featured";
 import Sidebar from "./Sidebar";
+import EditPage from "./EditPage";
 import "../styles/Profile.css";
 import { BiPencil } from "react-icons/bi";
 import { IconContext } from "react-icons";
@@ -158,20 +159,14 @@ class Body extends React.Component {
                             </DropdownButton>
 
                             <button className="btnMore">More...</button>
-                            <div
-                              onClick={() => this.setState({ showModal: true })}
-                              className="JumbBiPencilDiv"
-                              style={{ backgroundColor: "transparent" }}
-                            >
-                              <IconContext.Provider
-                                value={{
-                                  size: "25px",
-                                  className: "JumbBiPencil",
-                                }}
-                              >
-                                <BiPencil />
-                              </IconContext.Provider>
-                            </div>
+
+                            <EditPage
+                              profile={this.state.profile}
+                              refetch={() =>
+                                this.searchProfile(this.props.match.params.id)
+                              }
+                              color="#0A66CE"
+                            />
                           </div>
                         </Col>
                       </Row>
@@ -193,6 +188,12 @@ class Body extends React.Component {
               >
                 <Sidebar />
               </Col>
+
+              <EditPage
+                profile={this.state.profile}
+                refetch={() => this.searchProfile(this.props.match.params.id)}
+                color="#0A66CE"
+              />
             </Row>
           ) : (
             this.setState({
