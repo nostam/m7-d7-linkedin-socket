@@ -58,7 +58,7 @@ class Experience extends React.Component {
     return (
       <>
         <Card
-          className="bio"
+          className="bio cardProf"
           style={{ borderRadius: ".5vw", marginTop: ".8vw" }}
         >
           <Card.Body>

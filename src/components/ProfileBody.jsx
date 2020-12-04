@@ -77,7 +77,7 @@ class Body extends React.Component {
             <Row className="rowm">
               {/*<Col lg={3}></Col> */}
               <Col md={8} style={{ marginTop: "10vh" }}>
-                <Card>
+                <Card className='cardProf'>
                   <Card.Img
                     className="cardImg"
                     variant="top"
