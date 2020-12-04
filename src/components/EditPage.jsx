@@ -5,7 +5,6 @@ import { MdClose } from "react-icons/md";
 import { IconContext } from "react-icons";
 import "../styles/EditPage.css";
 
-
 class EditPage extends React.Component {
   state = {
     profile: {},
@@ -71,24 +70,22 @@ class EditPage extends React.Component {
   fileselectHandler = (event) => {
     this.setState({ selectedFile: event.target.files[0] });
   };
-  fileUploadHandler = async() => {
-    
+  fileUploadHandler = async () => {
     const headers = {
-      Authorization: process.env.REACT_APP_TOKEN,     
+      Authorization: "Bearer " + localStorage.getItem("token"),
     };
     const fd = new FormData();
-    fd.append(
-      "profile", 
-     this.state.selectedFile
-      
+    fd.append("profile", this.state.selectedFile);
+    const response = await fetch(
+      `https://striveschool-api.herokuapp.com/api/profile/${this.state.profile._id}/picture`,
+      {
+        method: "POST",
+        headers: headers,
+        body: fd,
+      }
     );
-    const response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/${this.state.profile._id}/picture`, {
-      method: "POST",
-      headers: headers,
-     body:fd
-    })
     if (response.ok) {
-      alert('uploaded')
+      alert("uploaded");
     }
 
     // axios.post(

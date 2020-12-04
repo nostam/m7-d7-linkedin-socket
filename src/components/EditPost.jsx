@@ -23,7 +23,7 @@ class EditPost extends React.Component {
   Edit = async () => {
     try {
       const response = await fetch(
-        `https://striveschool-api.herokuapp.com/api/posts/${this.props.Post._id}`,
+        `https://striveschool-api.herokuapp.com/api/posts/${this.props.post._id}`,
         {
           method: "PUT",
           body: JSON.stringify(this.state.propPost),
@@ -47,7 +47,7 @@ class EditPost extends React.Component {
   Delete = async () => {
     try {
       const response = await fetch(
-        `https://striveschool-api.herokuapp.com/api/posts/${this.props.Post._id}`,
+        `https://striveschool-api.herokuapp.com/api/posts/${this.props.post._id}`,
         {
           method: "DELETE",
           headers: {
@@ -68,7 +68,7 @@ class EditPost extends React.Component {
   };
 
   componentDidMount() {
-    this.setState({ propPost: this.props.Post });
+    this.setState({ propPost: this.props.post });
   }
 
   render() {
@@ -99,14 +99,14 @@ class EditPost extends React.Component {
             <Row>
               <Col>
                 <Image
-                  src={this.props.Post.user.image}
+                  src={this.props.post.user.image}
                   roundedCircle
                   className="postModalImg"
                 />
                 <strong className="ml-5">
-                  {this.props.Post.user.name +
+                  {this.props.post.user.name +
                     " " +
-                    this.props.Post.user.surname}
+                    this.props.post.user.surname}
                 </strong>
               </Col>
             </Row>
