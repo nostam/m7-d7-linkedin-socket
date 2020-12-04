@@ -56,26 +56,27 @@ class Experience extends React.Component {
   render() {
     return (
       <>
-        <Card className='bio'style={{ borderRadius: ".5vw", marginTop: ".8vw" }}>
+        <Card
+          className="bio"
+          style={{ borderRadius: ".5vw", marginTop: ".8vw" }}
+        >
           <Card.Body>
-            <Row className='d-flex justify-content-between ml-1'>
-              
-                <div id="expTitle" className="info">
-                  Experience
-                </div>
-              
-                <Button variant="white" onClick={() => this.toggleModal()}>
-                  <IconContext.Provider
-                    value={{
-                      size: "30px",
-                      className: "expIcons",
-                      color: "#0A66CE",
-                    }}
-                  >
-                    <BsPlus />
-                  </IconContext.Provider>
-                </Button>
-             
+            <Row className="d-flex justify-content-between ml-1">
+              <div id="expTitle" className="info">
+                Experience
+              </div>
+
+              <Button variant="white" onClick={() => this.toggleModal()}>
+                <IconContext.Provider
+                  value={{
+                    size: "30px",
+                    className: "expIcons",
+                    color: "#0A66CE",
+                  }}
+                >
+                  <BsPlus />
+                </IconContext.Provider>
+              </Button>
             </Row>
             {/* <Edit /> */}
             {this.state.experience.map((job, index) => {
