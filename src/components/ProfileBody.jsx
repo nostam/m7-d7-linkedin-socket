@@ -72,12 +72,19 @@ class Body extends React.Component {
             <Alert variant="danger">{this.state.errMsg}</Alert>
           )}
           {this.state.loading && this.state.err !== true ? (
-           <div style={{position: "relative", top: '8vh', left: '25vw'}} class="lds-facebook"><div></div><div></div><div></div></div>
+            <div
+              style={{ position: "relative", top: "8vh", left: "25vw" }}
+              class="lds-facebook"
+            >
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
           ) : Object.keys(this.state.profile).length !== 0 ? (
             <Row className="rowm">
               {/*<Col lg={3}></Col> */}
               <Col md={8} style={{ marginTop: "10vh" }}>
-                <Card className='cardProf'>
+                <Card className="cardProf">
                   <Card.Img
                     className="cardImg"
                     variant="top"
@@ -129,39 +136,43 @@ class Body extends React.Component {
                               </g>
                             </svg>
                           </h3>
-                          <div className='roletext'>{this.state.profile.title}</div>
+                          <div className="roletext">
+                            {this.state.profile.title}
+                          </div>
                           <h6 className="areaTxt">{this.state.profile.area}</h6>
                         </Col>
                         <Col lg={6}>
                           <div className="btnBox">
-                          <Route path='/user/me'> <DropdownButton
-                              className="d-none d-lg-block"
-                              id="dropdown-basic-button"
-                              size="sm"
-                              title="Add profile section"
-                            >
-                              <Dropdown.Item>Intro</Dropdown.Item>
-                              <Dropdown.Item>About</Dropdown.Item>
-                              <Dropdown.Item>Featured</Dropdown.Item>
-                              <Dropdown.Item>Background</Dropdown.Item>
-                              <Dropdown.Item>Skills</Dropdown.Item>
-                              <Dropdown.Item>Accomplishments</Dropdown.Item>
-                              <Dropdown.Item>
-                                Additional information
-                              </Dropdown.Item>
-                              <Dropdown.Item>Supported languages</Dropdown.Item>
-                            </DropdownButton> 
-
-                            <button className="btnMore">More...</button>
-
-                            <EditPage
-                              profile={this.state.profile}
-                              refetch={() =>
-                                this.searchProfile(this.props.match.params.id)
-                              }
-                              color="#0A66CE"
-                            />
-                            </Route> 
+                            <Route path="/user/me">
+                              {" "}
+                              <DropdownButton
+                                className="d-none d-lg-block"
+                                id="dropdown-basic-button"
+                                size="sm"
+                                title="Add profile section"
+                              >
+                                <Dropdown.Item>Intro</Dropdown.Item>
+                                <Dropdown.Item>About</Dropdown.Item>
+                                <Dropdown.Item>Featured</Dropdown.Item>
+                                <Dropdown.Item>Background</Dropdown.Item>
+                                <Dropdown.Item>Skills</Dropdown.Item>
+                                <Dropdown.Item>Accomplishments</Dropdown.Item>
+                                <Dropdown.Item>
+                                  Additional information
+                                </Dropdown.Item>
+                                <Dropdown.Item>
+                                  Supported languages
+                                </Dropdown.Item>
+                              </DropdownButton>
+                              <button className="btnMore">More...</button>
+                              <EditPage
+                                profile={this.state.profile}
+                                refetch={() =>
+                                  this.searchProfile(this.props.match.params.id)
+                                }
+                                color="#0A66CE"
+                              />
+                            </Route>
                           </div>
                         </Col>
                       </Row>
@@ -173,7 +184,10 @@ class Body extends React.Component {
                   profile={this.state.profile}
                   refetch={() => this.searchProfile(this.props.match.params.id)}
                 />
-                <Feature />
+                <Route path="/user/me">
+                  {" "}
+                  <Feature />{" "}
+                </Route>
                 <Experience profile={this.state.profile} />
               </Col>
               <Col

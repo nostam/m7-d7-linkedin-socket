@@ -184,12 +184,12 @@ class Experience extends React.Component {
                                     <div class="timeExp">
                                       {moment(experience.startDate).format(
                                         "MM/YYYY"
-                                      )}
+                                      )}  -  {experience.endDate ? moment(experience.endDate).format(
+                                        "MM/YYYY"
+                                      ) : "Current"}
                                     </div>
                                     <div class="timeExp">
-                                      {moment(experience.endDate).format(
-                                        "MM/YYYY"
-                                      )}
+                                      
                                     </div>
                                   </li>
 

@@ -63,11 +63,11 @@ export default class Home extends Component {
     this.fetchMe();
   }
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (prevState.posts !== this.state.posts) {
-  //     this.fetchPost();
-  //   }
-  // } disabled because spamming api every sec
+   componentDidUpdate(prevProps, prevState) {
+     if (prevState.posts !== this.state.posts) {
+       this.fetchPost();
+     }
+   } 
 
   render() {
     return (
