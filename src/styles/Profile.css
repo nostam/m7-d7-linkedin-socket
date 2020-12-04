@@ -51,6 +51,10 @@ a {
 }
 .btnMore {
   border-radius: 50px !important;
+  background-color: transparent;
+  height: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 .btnBox {
   display: flex;

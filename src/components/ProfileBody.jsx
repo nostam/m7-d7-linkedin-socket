@@ -180,6 +180,7 @@ class Body extends React.Component {
                 </Card>
                 <Bio
                   bio={this.state.profile.bio}
+                  profile={this.state.profile}
                   refetch={() => this.searchProfile(this.props.match.params.id)}
                 />
                 <Feature />
