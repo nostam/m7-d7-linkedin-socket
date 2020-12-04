@@ -147,6 +147,11 @@ class PostModal extends React.Component {
               onChange={this.fileSelectHandler}
               ref={(fileInput) => (this.fileInput = fileInput)}
             />
+            <span>
+              {this.state.imgSubmitStatus === "secondary"
+                ? "Choose a file"
+                : "Good to go! Ready to submit"}
+            </span>
             <IconContext.Provider
               value={{
                 size: "30px",
