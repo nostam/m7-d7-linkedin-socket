@@ -144,6 +144,34 @@ class Body extends React.Component {
             })
           )}
         </div>
+                  <Card.Text>
+                    Some quick example text to build on the card title and make
+                    up the bulk of the card's content.
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+              <Bio
+                bio={this.state.profile.bio}
+                refetch={() => this.searchProfile(this.props.match.params.id)}
+              />
+              <Feature />
+              <Experience profile={this.state.profile} />
+            </Col>
+            <Col
+              md={4}
+              style={{ marginTop: "10vh" }}
+              className="d-none d-md-block"
+            >
+              <Sidebar />
+            </Col>
+          </Row>
+        ) : (
+          this.setState({
+            err: true,
+            errType: "warning",
+            errMsg: "We have encounter a problem, the profile is empty",
+          })
+        )}
       </div>
     );
   }
