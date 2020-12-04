@@ -140,7 +140,10 @@ class Experience extends React.Component {
                 <>
                   <Row noGutters>
                     <Col md={1}>
-                      <img src={Job} style={{ width: "3vw" }} />
+                      <img
+                        src={job.image ? job.image : Job}
+                        style={{ width: "3vw" }}
+                      />
                     </Col>
                     <Col>
                       <ul id={job._id} key={`exp${index}`} className="exp">
