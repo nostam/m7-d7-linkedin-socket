@@ -78,7 +78,7 @@ class EditPage extends React.Component {
 
   fileUploadHandler = async () => {
     const fd = new FormData();
-    fd.append("post", this.state.selectedFile);
+    fd.append("profile", this.state.selectedFile);
     try {
       const response = await fetch(
         `https://striveschool-api.herokuapp.com/api/profile/${this.state.profile._id}/picture`,
