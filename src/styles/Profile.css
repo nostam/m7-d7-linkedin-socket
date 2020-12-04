@@ -19,8 +19,8 @@
 }
 .cardImg {
   max-height: 200px;
-  border-top-right-radius: .5vw;
-  border-top-left-radius: .5vw;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
 }
 .bgBody {
   background-color: #f3f2ef;
@@ -28,7 +28,7 @@
 .cardProf {
   width: 800px;
   margin-left: -10px;
-  border-radius: .5vw;
+  border-radius: 10px;
 }
 .usrnTxt {
   font-size: 1.45rem;
@@ -94,6 +94,6 @@ a {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   color: rgba(0, 0, 0, 0.9);
-  padding-top: 0.5vw;
+  padding-top: 10px;
   padding-bottom: 1vw;
 }
