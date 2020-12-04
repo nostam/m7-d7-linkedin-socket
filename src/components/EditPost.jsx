@@ -109,7 +109,7 @@ class EditPost extends React.Component {
         >
           <IconContext.Provider
             value={{
-              size: "1.6vw",
+              size: "24",
               className: "JumbBiPencil",
             }}
           >

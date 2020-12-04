@@ -19,8 +19,8 @@
 }
 .cardImg {
   max-height: 200px;
-  border-top-right-radius: .5vw;
-  border-top-left-radius: .5vw;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
 }
 .bgBody {
   background-color: #f3f2ef;
@@ -28,7 +28,7 @@
 .cardProf {
   width: 800px;
   margin-left: -10px;
-  border-radius: .5vw;
+  border-radius: 8px;
 }
 .usrnTxt {
   font-size: 1.45rem;
@@ -45,9 +45,8 @@
   font-weight: 300;
 }
 
-
 .areaTxt {
-  font-size: 1rem ;
+  font-size: 1rem;
   font-weight: 300 !important;
   font-family: "Roboto", sans-serif;
   color: rgba(0, 0, 0, 0.9);
@@ -79,12 +78,12 @@ a {
   border-style: solid;
   border-color: grey;
   border-width: 1px;
-  color: grey
+  color: grey;
 }
 .btnBox {
   display: flex;
   flex-direction: row;
   position: relative;
   right: -51px;
-  top: -40px
+  top: 16px;
 }
