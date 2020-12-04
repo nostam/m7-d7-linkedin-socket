@@ -55,8 +55,16 @@ a {
   height: 30px;
   margin-left: 10px;
   margin-right: 10px;
+  border-style: solid;
+  border-color: grey;
+  border-width: 1px;
+  color: grey
 }
 .btnBox {
   display: flex;
   flex-direction: row;
+  position: relative;
+    top: -4.5vh;
+    left: 0vw;
+    width: 23vw;
 }
