@@ -7,14 +7,16 @@ import "../styles/PostModal.css";
 class EditPost extends React.Component {
   state = {
     showModal: false,
-    propPost: [],
-    Post: [],
+    content: [],
+    post: {},
+    selectedFile: null,
+    imgSubmitStatus: "secondary",
   };
 
   onChangeHandler = (e) => {
     this.setState({
-      propPost: {
-        ...this.state.propPost,
+      content: {
+        ...this.state.content,
         [e.target.id]: e.currentTarget.value,
       },
     });
@@ -26,7 +28,7 @@ class EditPost extends React.Component {
         `https://striveschool-api.herokuapp.com/api/posts/${this.props.post._id}`,
         {
           method: "PUT",
-          body: JSON.stringify(this.state.propPost),
+          body: JSON.stringify(this.state.content),
           headers: {
             "Content-Type": "application/json",
             Authorization: "Bearer " + localStorage.getItem("token"),
@@ -34,8 +36,9 @@ class EditPost extends React.Component {
         }
       );
       if (response.ok) {
-        this.setState({ showModal: false });
-        //this.props.refetch();
+        this.state.selectedFile !== null
+          ? this.fileUploadHandler()
+          : this.setState({ showModal: false }, () => this.props.refetch());
       } else {
         this.setState({ showModal: false });
       }
@@ -58,7 +61,7 @@ class EditPost extends React.Component {
       );
       if (response.ok) {
         this.setState({ showModal: false });
-        //this.props.refetch();
+        this.props.refetch();
       } else {
         this.setState({ showModal: false });
       }
@@ -66,11 +69,37 @@ class EditPost extends React.Component {
       console.log(e);
     }
   };
+  fileSelectHandler = (event) => {
+    this.setState({
+      selectedFile: event.target.files[0],
+      imgSubmitStatus: "success",
+    });
+  };
 
-  componentDidMount() {
-    this.setState({ propPost: this.props.post });
-  }
-
+  fileUploadHandler = async () => {
+    const fd = new FormData();
+    fd.append("post", this.state.selectedFile);
+    try {
+      const response = await fetch(
+        `https://striveschool-api.herokuapp.com/api/posts/${this.props.post._id}`,
+        {
+          method: "POST",
+          headers: { Authorization: "Bearer " + localStorage.getItem("token") },
+          body: fd,
+        }
+      );
+      if (response.ok) {
+        this.setState({ showModal: false }, () => this.props.refetch());
+      } else {
+        this.setState({ showModal: false });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  componentDidMount = () => {
+    this.setState({ content: this.props.post });
+  };
   render() {
     return (
       <>
@@ -116,7 +145,7 @@ class EditPost extends React.Component {
                   as="textarea"
                   id="text"
                   rows={3}
-                  value={this.state.propPost.text}
+                  value={this.state.content.text}
                   onChange={(e) => this.onChangeHandler(e)}
                 />
               </Form.Group>
@@ -124,11 +153,25 @@ class EditPost extends React.Component {
           </Modal.Body>
 
           <Modal.Footer>
-            <Button variant="danger" onClick={this.Delete}>
+            <input
+              style={{ display: "none" }}
+              type="file"
+              onChange={this.fileSelectHandler}
+              ref={(fileInput) => (this.fileInput = fileInput)}
+            />
+            <Button
+              variant={this.state.imgSubmitStatus}
+              onClick={() => this.fileInput.click()}
+            >
+              {this.state.imgSubmitStatus === "secondary"
+                ? "Choose an image"
+                : "Ready to Upload"}
+            </Button>
+            <Button variant="danger" onClick={() => this.Delete()}>
               Delete
             </Button>
-            <Button variant="primary" onClick={this.Edit}>
-              Save
+            <Button variant="primary" onClick={() => this.Edit()}>
+              Save Changes
             </Button>
           </Modal.Footer>
         </Modal>
