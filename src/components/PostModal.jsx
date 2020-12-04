@@ -1,7 +1,9 @@
 import React from "react";
-import { Button, Col, Row, Modal, Image, Form } from "react-bootstrap";
-import { FaCamera, FaVideo, FaStickyNote, FaPenSquare } from "react-icons/fa"
-import {BiPencil} from "react-icons/bi"
+import { Button, Col, Row, Modal, Image, Form, Card } from "react-bootstrap";
+import { FaCamera, FaVideo, FaStickyNote, FaPenSquare } from "react-icons/fa";
+import { BiPencil } from "react-icons/bi";
+import { IconContext } from "react-icons";
+import { withRouter } from "react-router-dom";
 import "../styles/PostModal.css";
 
 class PostModal extends React.Component {
@@ -11,23 +13,6 @@ class PostModal extends React.Component {
     post: {
       text: "",
     },
-  };
-
-  fetchMe = async () => {
-    try {
-      const meFetch = await fetch(
-        "https://striveschool-api.herokuapp.com/api/profile/me",
-        {
-          headers: {
-            Authorization: process.env.REACT_APP_TOKEN,
-          },
-        }
-      );
-      const meResponse = await meFetch.json();
-      this.setState({ me: meResponse });
-    } catch (error) {
-      console.log(error);
-    }
   };
 
   addHashtag = () => {
@@ -52,13 +37,13 @@ class PostModal extends React.Component {
           body: JSON.stringify(this.state.post),
           headers: {
             "Content-Type": "application/json",
-            Authorization: process.env.REACT_APP_TOKEN,
+            Authorization: "Bearer " + localStorage.getItem("token"),
           },
         }
       );
       if (response.ok) {
         this.setState({ showModal: false });
-        //this.props.refetch();
+        this.props.refetch();
       } else {
         this.setState({ showModal: false });
       }
@@ -66,25 +51,25 @@ class PostModal extends React.Component {
       console.log(e);
     }
   };
-
-  componentDidMount() {
-    this.fetchMe();
-  }
+  handleSubmitImg = () => {};
+  componentDidMount() {}
 
   render() {
     return (
       <>
-        <Button
-          className="postButton"
-          variant="outline-dark"
-          size="md"
-          onClick={() => this.setState({ showModal: true })}
-          block
+        <Card className="bg-white p-4">
+          <Button
+            className="postButton"
+            variant="outline-dark"
+            onClick={() => this.setState({ showModal: true })}
+          >
+            <BiPencil /> Start a Post
+          </Button>
+        </Card>
+        <Modal
+          show={this.state.showModal}
+          onHide={() => this.setState({ showModal: false })}
         >
-          <BiPencil/> Start a Post
-        </Button>
-        <Modal show={this.state.showModal}
-        onHide={() => this.setState({ showModal: false })}>
           <Modal.Header closeButton>
             <Modal.Title>Create a Post</Modal.Title>
           </Modal.Header>
@@ -93,12 +78,12 @@ class PostModal extends React.Component {
             <Row>
               <Col>
                 <Image
-                  src={this.state.me.image}
+                  src={this.props.me.image}
                   roundedCircle
                   className="postModalImg"
                 />
                 <strong className="ml-5">
-                  {this.state.me.name + " " + this.state.me.surname}
+                  {this.props.me.name + " " + this.props.me.surname}
                 </strong>
               </Col>
             </Row>
@@ -128,11 +113,19 @@ class PostModal extends React.Component {
           </Modal.Body>
 
           <Modal.Footer>
-                    <button className="btn"><i><FaCamera style={{ color: "#666666" }} size={30} /></i></button>
-                    <button className="btn"><i><FaVideo style={{ color: "#666666" }} size={30} /></i></button>
-                    <button className="btn"><i><FaStickyNote style={{ color: "#666666" }} size={30} /></i></button>
-                    <button className="btn"><i><FaPenSquare className="pen mx-1" style={{ color: "#666666" }} size={30} /></i></button>
-            <Button variant="primary" onClick={this.post}>
+            <IconContext.Provider
+              value={{
+                size: "30px",
+                className: "mx-2",
+                color: "#666",
+              }}
+            >
+              <FaCamera onClick={() => this.handleSubmitImg()} />
+              <FaVideo />
+              <FaStickyNote />
+              <FaPenSquare />
+            </IconContext.Provider>
+            <Button rounded-pill variant="primary" onClick={this.post}>
               Post
             </Button>
           </Modal.Footer>
@@ -142,4 +135,4 @@ class PostModal extends React.Component {
   }
 }
 
-export default PostModal;
+export default withRouter(PostModal);

@@ -13,14 +13,13 @@ class EditPage extends React.Component {
     confirmDialog: false,
     selectedFile: null,
   };
-
-  async componentDidMount() {
+  fetchMe = async () => {
     try {
       const pFetch = await fetch(
         "https://striveschool-api.herokuapp.com/api/profile/me",
         {
           headers: {
-            Authorization: process.env.REACT_APP_TOKEN,
+            Authorization: "Bearer " + localStorage.getItem("token"),
           },
         }
       );
@@ -29,6 +28,9 @@ class EditPage extends React.Component {
     } catch (error) {
       console.log(error);
     }
+  };
+  componentDidMount() {
+    this.fetchMe();
   }
   onChangeHandler = (e) => {
     this.setState({
@@ -47,7 +49,7 @@ class EditPage extends React.Component {
         body: JSON.stringify(this.state.profile),
         headers: {
           "Content-Type": "application/json",
-          Authorization: process.env.REACT_APP_TOKEN,
+          Authorization: "Bearer " + localStorage.getItem("token"),
         },
       });
       if (response.ok) {
@@ -61,7 +63,6 @@ class EditPage extends React.Component {
     }
   };
   handleCloseModal = async () => {
-    console.log(this.props.profile, this.state.profile);
     (await JSON.stringify(this.props.profile)) !==
     JSON.stringify(this.state.profile)
       ? this.setState({ confirmDialog: true })
@@ -107,7 +108,7 @@ class EditPage extends React.Component {
         <div
           onClick={() => this.setState({ showModal: true })}
           className="JumbBiPencilDiv"
-          style={{backgroundColor:"transparent"}}
+          style={{ backgroundColor: "transparent" }}
         >
           <IconContext.Provider
             value={{
@@ -237,9 +238,10 @@ class EditPage extends React.Component {
             <Button
               className="rounded-pill py-1"
               variant="primary"
-              onClick={() =>
-                this.setState({ confirmDialog: false, showModal: false })
-              }
+              onClick={() => {
+                this.setState({ confirmDialog: false, showModal: false });
+                this.fetchMe();
+              }}
             >
               Discard
             </Button>

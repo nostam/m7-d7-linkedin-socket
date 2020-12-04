@@ -6,6 +6,7 @@ import { BiPencil } from "react-icons/bi";
 import { BsPlus } from "react-icons/bs";
 import "../styles/Experience.css";
 import Job from "../assets/job.png";
+import "../styles/Profile.css";
 
 class Experience extends React.Component {
   state = {
@@ -22,7 +23,7 @@ class Experience extends React.Component {
       {
         method: "GET",
         headers: new Headers({
-          Authorization: process.env.REACT_APP_TOKEN,
+          Authorization: "Bearer " + localStorage.getItem("token"),
           ContentType: "application/json",
         }),
       }
@@ -55,27 +56,27 @@ class Experience extends React.Component {
   render() {
     return (
       <>
-        <Card style={{ borderRadius: ".5vw", marginTop: ".8vw" }}>
+        <Card
+          className="bio"
+          style={{ borderRadius: ".5vw", marginTop: ".8vw" }}
+        >
           <Card.Body>
-            <Row>
-              <Col md={10}>
-                <div id="expTitle" className="info">
-                  Experience
-                </div>
-              </Col>
-              <Col md={2} style={{ position: "absolute", left: "90%" }}>
-                <Button variant="white" onClick={() => this.toggleModal()}>
-                  <IconContext.Provider
-                    value={{
-                      size: "30px",
-                      className: "expIcons",
-                      color: "#0A66CE",
-                    }}
-                  >
-                    <BsPlus />
-                  </IconContext.Provider>
-                </Button>
-              </Col>
+            <Row className="d-flex justify-content-between ml-1">
+              <div id="expTitle" className="info">
+                Experience
+              </div>
+
+              <Button variant="white" onClick={() => this.toggleModal()}>
+                <IconContext.Provider
+                  value={{
+                    size: "30px",
+                    className: "expIcons",
+                    color: "#0A66CE",
+                  }}
+                >
+                  <BsPlus />
+                </IconContext.Provider>
+              </Button>
             </Row>
             {/* <Edit /> */}
             {this.state.experience.map((job, index) => {
@@ -106,36 +107,35 @@ class Experience extends React.Component {
               } else if (startmonth === "12") {
                 startmonth = "Dec";
               }
-              
-                let enddate = job.endDate.slice(0, 10);
-                let endyear = job.endDate.slice(0, 4);
-                let endmonth = job.endDate.slice(5, 7);
-                if (endmonth === "01") {
-                  endmonth = "Jan";
-                } else if (endmonth === "02") {
-                  endmonth = "Feb";
-                } else if (endmonth === "03") {
-                  endmonth = "Mar";
-                } else if (endmonth === "04") {
-                  endmonth = "Apr";
-                } else if (endmonth === "05") {
-                  endmonth = "May";
-                } else if (endmonth === "06") {
-                  endmonth = "Jun";
-                } else if (endmonth === "07") {
-                  endmonth = "Jul";
-                } else if (endmonth === "08") {
-                  endmonth = "Aug";
-                } else if (endmonth === "09") {
-                  endmonth = "Sep";
-                } else if (endmonth === "10") {
-                  endmonth = "Oct";
-                } else if (endmonth === "11") {
-                  endmonth = "Nov";
-                } else if (endmonth === "12") {
-                  endmonth = "Dec";
-                }
-              
+
+              let enddate = job.endDate.slice(0, 10);
+              let endyear = job.endDate.slice(0, 4);
+              let endmonth = job.endDate.slice(5, 7);
+              if (endmonth === "01") {
+                endmonth = "Jan";
+              } else if (endmonth === "02") {
+                endmonth = "Feb";
+              } else if (endmonth === "03") {
+                endmonth = "Mar";
+              } else if (endmonth === "04") {
+                endmonth = "Apr";
+              } else if (endmonth === "05") {
+                endmonth = "May";
+              } else if (endmonth === "06") {
+                endmonth = "Jun";
+              } else if (endmonth === "07") {
+                endmonth = "Jul";
+              } else if (endmonth === "08") {
+                endmonth = "Aug";
+              } else if (endmonth === "09") {
+                endmonth = "Sep";
+              } else if (endmonth === "10") {
+                endmonth = "Oct";
+              } else if (endmonth === "11") {
+                endmonth = "Nov";
+              } else if (endmonth === "12") {
+                endmonth = "Dec";
+              }
               return (
                 <>
                   <Row noGutters>
@@ -172,9 +172,7 @@ class Experience extends React.Component {
                           </div>
                         </li>
                         <li className="expEntries">
-                          <div class="timeExp">
-                            {endmonth + " " + endyear}
-                          </div>
+                          <div class="timeExp">{endmonth + " " + endyear}</div>
                         </li>
                         <li className="expEntries">
                           <div class="cityExp">{job.area}</div>

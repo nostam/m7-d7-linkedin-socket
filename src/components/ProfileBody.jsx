@@ -18,7 +18,7 @@ class Body extends React.Component {
     fetch("https://striveschool-api.herokuapp.com/api/profile/" + id, {
       method: "GET",
       headers: new Headers({
-        Authorization: process.env.REACT_APP_TOKEN,
+        Authorization: "Bearer " + localStorage.getItem("token"),
         ContentType: "application/json",
       }),
     })
