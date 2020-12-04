@@ -51,13 +51,15 @@ class Login extends Component {
       <div className="loginDiv">
         <Container>
           <Col className="loginCol mt-5">
-            <img
-              src={FooterLogo}
-              className="mb-4 "
-              alt="loginLogo"
-              style={{ height: "30px" }}
-            />
-            <div className="shadowBox">
+            {!this.props.dontShowLogo && (
+              <img
+                src={FooterLogo}
+                className="mb-4 "
+                alt="loginLogo"
+                style={{ height: "30px" }}
+              />
+            )}
+            <div className={this.props.dontShowLogo ? "" : "shadowBox"}></div>
               <div className="mb-3">
                 <h2>Sign in</h2>
                 <span>Stay updated on your professional world</span>

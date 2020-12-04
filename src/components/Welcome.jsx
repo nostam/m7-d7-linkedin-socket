@@ -1,9 +1,18 @@
-import FooterLogo from "../footer_logo.svg";
-
 import "../styles/Welcome.css";
 import React, { Component } from "react";
-import { Container, Navbar } from "react-bootstrap";
-import { Link } from "react-router-dom";
+
+import {
+  Row,
+  Col,
+  Form,
+  Button,
+  Container,
+  Badge,
+  Navbar,
+} from "react-bootstrap";
+import { Link, withRouter } from "react-router-dom";
+import FooterLogo from "../footer_logo.svg";
+import "../styles/Login.css";
 import Login from "./Login";
 export default class Welcome extends Component {
   render() {
@@ -31,9 +40,9 @@ export default class Welcome extends Component {
                 <button className="btnSign">Sign in</button>
               </Link>
             </Navbar>
-            <div className="sphereBox">
-              <Login />
-            </div>
+            <Container fluid>
+              <Login dontShowLogo />
+            </Container>
           </div>
         </div>
       </div>
