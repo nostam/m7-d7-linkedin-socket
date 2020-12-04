@@ -82,7 +82,7 @@ class Body extends React.Component {
                     variant="top"
                     src="https://coverfiles.alphacoders.com/372/37275.jpg"
                     style={{ objectFit: "cover" }}
-                    alt="placeholderr"
+                    alt="placeholder"
                   />
                   <Card.Body>
                     <div className="d-flex justify-content-between">
@@ -128,7 +128,7 @@ class Body extends React.Component {
                               </g>
                             </svg>
                           </h3>
-                          <small>{this.state.profile.title}</small>
+                          <div className='roletext'>{this.state.profile.title}</div>
                           <h6 className="areaTxt">{this.state.profile.area}</h6>
                         </Col>
                         <Col lg={6}>

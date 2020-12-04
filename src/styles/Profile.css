@@ -28,16 +28,27 @@
   border-radius: .5vw;
 }
 .usrnTxt {
-  font-size: 24px;
+  font-size: 1.45rem;
+  line-height: 1.33333;
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
-  line-height: 32px;
   color: rgba(0, 0, 0, 0.9);
 }
+
+.roletext {
+  font-size: 1.2rem;
+  line-height: 1.33333;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+}
+
+
 .areaTxt {
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
+  font-size: 1rem ;
+  font-weight: 300 !important;
+  font-family: "Roboto", sans-serif;
   color: rgba(0, 0, 0, 0.9);
+  margin-top: 9px;
 }
 a {
   text-decoration: none;
