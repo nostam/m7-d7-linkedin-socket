@@ -137,7 +137,7 @@ class EditPage extends React.Component {
               roundedCircle
               className="editImage"
             />
-            {/* <input type="file" onChange={this.fileselectHandler}></input>
+            {/* <input type="file" onChange={this.fileSelectHandler}></input>
             <button onClick={this.fileUploadHandler}>Upload Image</button> */}
             <Form>
               <Row className="mt-4">
