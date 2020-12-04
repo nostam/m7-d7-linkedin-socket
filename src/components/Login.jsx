@@ -61,8 +61,18 @@ class Login extends Component {
             )}
             <div className={this.props.dontShowLogo ? "" : "shadowBox"}>
               <div className="mb-3">
-                <h2>Sign in</h2>
-                <span>Stay updated on your professional world</span>
+                {this.props.dontShowLogo ? (
+                  <h1 className="wlcT">
+                    Welcome to your professional community
+                  </h1>
+                ) : (
+                  <h2>Sign in</h2>
+                )}
+                {this.props.dontShowLogo ? (
+                  ""
+                ) : (
+                  <span>Stay updated on your professional world</span>
+                )}
               </div>
               <Form onSubmit={this.submitData}>
                 <Form.Group>
@@ -88,6 +98,7 @@ class Login extends Component {
                     onKeyDown={(e) => this.handleLogin(e)}
                     onChange={(e) => this.onChangeHandler(e)}
                   />
+
                   <Badge
                     pill
                     className="inputToggle"
@@ -104,12 +115,16 @@ class Login extends Component {
               </Form>
               <a className="forgetPwd">Forget your password?</a>
             </div>
-            <Row className="d-flex justify-content-around mt-5 mx-auto bg-transparent">
-              New to LinkedIn?{" "}
-              <Link className="ml-1" to="/signup">
-                Join now
-              </Link>
-            </Row>
+            {this.props.dontShowLogo ? (
+              ""
+            ) : (
+              <Row className="d-flex justify-content-around mt-5 mx-auto bg-transparent">
+                New to LinkedIn?{" "}
+                <Link className="ml-1" to="/signup">
+                  Join now
+                </Link>
+              </Row>
+            )}
           </Col>
         </Container>
       </div>

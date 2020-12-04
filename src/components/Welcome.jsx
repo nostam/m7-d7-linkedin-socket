@@ -30,19 +30,31 @@ export default class Welcome extends Component {
                   alt="linkedin"
                   src={FooterLogo}
                   width="535"
-                  height="38"
+                  height="33"
                 />
               </Navbar.Brand>
-              <button>Join with resume</button>
-              <span>|</span>
-              <button>Join now</button>
+              <button className="jnbtn">Join with resume</button>
+              <p>|</p>
+              <button className="jnbtn1">Join now</button>
               <Link to="/login">
                 <button className="btnSign">Sign in</button>
               </Link>
             </Navbar>
-            <Container fluid>
-              <Login dontShowLogo />
-            </Container>
+            <Row>
+              <Col xs={12} md={8}>
+                <Container className="ml-5">
+                  <div>
+                    <Login dontShowLogo />
+                  </div>
+                </Container>
+              </Col>
+              <Col md={4}>
+                <img
+                  className="wlcmImg d-none d-md-block"
+                  src="https://static-exp1.licdn.com/sc/h/3m4tgpbdz7gbldapvl63mrnxz"
+                ></img>
+              </Col>
+            </Row>
           </div>
         </div>
       </div>
