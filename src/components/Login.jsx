@@ -59,7 +59,7 @@ class Login extends Component {
                 style={{ height: "30px" }}
               />
             )}
-            <div className={this.props.dontShowLogo ? "" : "shadowBox"}></div>
+            <div className={this.props.dontShowLogo ? "" : "shadowBox"}>
               <div className="mb-3">
                 <h2>Sign in</h2>
                 <span>Stay updated on your professional world</span>
