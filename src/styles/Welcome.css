@@ -50,6 +50,8 @@
 }
 .wlcmImg {
   margin-top: 50px;
-  width: 100%;
+  width: 45vw;
+  display: block;
   position: relative;
+  z-index: -9;
 }
