@@ -23,7 +23,6 @@ class EditPost extends React.Component {
   };
 
   Edit = async () => {
-    this.fileUploadHandler();
     try {
       const response = await fetch(
         `https://striveschool-api.herokuapp.com/api/posts/${this.props.post._id}`,
@@ -37,8 +36,9 @@ class EditPost extends React.Component {
         }
       );
       if (response.ok) {
-        this.setState({ showModal: false });
-        this.props.refetch();
+        this.state.selectedFile !== null
+          ? this.fileUploadHandler()
+          : this.setState({ showModal: false }, () => this.props.refetch());
       } else {
         this.setState({ showModal: false });
       }
@@ -89,13 +89,17 @@ class EditPost extends React.Component {
         }
       );
       if (response.ok) {
-        console.log("image submitted");
+        this.setState({ showModal: false }, () => this.props.refetch());
+      } else {
+        this.setState({ showModal: false });
       }
     } catch (error) {
       console.log(error);
     }
   };
-
+  componentDidMount = () => {
+    this.setState({ content: this.props.post });
+  };
   render() {
     return (
       <>
@@ -141,7 +145,7 @@ class EditPost extends React.Component {
                   as="textarea"
                   id="text"
                   rows={3}
-                  value={this.props.post.text}
+                  value={this.state.content.text}
                   onChange={(e) => this.onChangeHandler(e)}
                 />
               </Form.Group>
@@ -163,10 +167,10 @@ class EditPost extends React.Component {
                 ? "Choose an image"
                 : "Ready to Upload"}
             </Button>
-            <Button variant="danger" onClick={this.Delete}>
+            <Button variant="danger" onClick={() => this.Delete()}>
               Delete
             </Button>
-            <Button variant="primary" onClick={this.Edit}>
+            <Button variant="primary" onClick={() => this.Edit()}>
               Save Changes
             </Button>
           </Modal.Footer>
