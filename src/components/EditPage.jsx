@@ -99,7 +99,7 @@ class EditPage extends React.Component {
         >
           <IconContext.Provider
             value={{
-              size: "1.6vw",
+              size: "25px",
               className: "JumbBiPencil",
             }}
           >

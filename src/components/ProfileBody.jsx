@@ -1,10 +1,22 @@
 import React from "react";
-import { Col, Container, Row, Spinner, Alert, Card } from "react-bootstrap";
+import {
+  Col,
+  Container,
+  Row,
+  Spinner,
+  Alert,
+  Card,
+  Dropdown,
+  DropdownButton,
+} from "react-bootstrap";
 import Bio from "./BioCard";
 import Experience from "./Experience";
 import Feature from "./Featured";
 import Sidebar from "./Sidebar";
+import EditPage from "./EditPage";
 import "../styles/Profile.css";
+import { BiPencil } from "react-icons/bi";
+import { IconContext } from "react-icons";
 class Body extends React.Component {
   state = {
     profile: {},
@@ -53,74 +65,144 @@ class Body extends React.Component {
   };
   render() {
     return (
-      <div className="mainBody">
-        {this.state.err && <Alert variant="danger">{this.state.errMsg}</Alert>}
-        {this.state.loading && this.state.err !== true ? (
-          <Row className="d-flex justify-content-center my-5">
-            <h3 style={{ paddingTop: "20vh" }}>Loading profile...</h3>
-            <Spinner
-              animation="border"
-              variant="info"
-              style={{ marginTop: "20vh" }}
-            />
-          </Row>
-        ) : Object.keys(this.state.profile).length !== 0 ? (
-          <Row className="rowm">
-            {/*<Col lg={3}></Col> */}
-            <Col md={8} style={{ marginTop: "10vh" }}>
-              <Card>
-                <Card.Img
-                  className="cardImg"
-                  variant="top"
-                  src="https://coverfiles.alphacoders.com/372/37275.jpg"
-                  style={{ objectFit: "cover" }}
-                  alt="placeholderr"
-                />
-                <Card.Body>
-                  <div className="d-flex justify-content-between">
-                    <div style={{ marginTop: "-130px" }}>
-                      <img
-                        src={this.state.profile.image}
-                        alt="placeholder"
-                        height="160px"
-                        width="160px"
-                        style={{
-                          borderRadius: "50%",
-                          border: "4px solid white",
-                          objectFit: "cover",
-                        }}
-                      ></img>
-                    </div>
-                  </div>
-
-                  <Card.Text>
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
-                  </Card.Text>
-                </Card.Body>
-              </Card>
-              <Bio
-                bio={this.state.profile.bio}
-                refetch={() => this.searchProfile(this.props.match.params.id)}
+      <div className="bgBody">
+        <div className="mainBody">
+          {this.state.err && (
+            <Alert variant="danger">{this.state.errMsg}</Alert>
+          )}
+          {this.state.loading && this.state.err !== true ? (
+            <Row className="d-flex justify-content-center my-5">
+              <h3 style={{ paddingTop: "20vh" }}>Loading profile...</h3>
+              <Spinner
+                animation="border"
+                variant="info"
+                style={{ marginTop: "20vh" }}
               />
-              <Feature />
-              <Experience profile={this.state.profile} />
-            </Col>
-            <Col
-              md={4}
-              style={{ marginTop: "10vh" }}
-              className="d-none d-md-block"
-            >
-              <Sidebar />
-            </Col>
-          </Row>
-        ) : (
-          this.setState({
-            err: true,
-            errType: "warning",
-            errMsg: "We have encounter a problem, the profile is empty",
-          })
-        )}
+            </Row>
+          ) : Object.keys(this.state.profile).length !== 0 ? (
+            <Row className="rowm">
+              {/*<Col lg={3}></Col> */}
+              <Col md={8} style={{ marginTop: "10vh" }}>
+                <Card>
+                  <Card.Img
+                    className="cardImg"
+                    variant="top"
+                    src="https://coverfiles.alphacoders.com/372/37275.jpg"
+                    style={{ objectFit: "cover" }}
+                    alt="placeholderr"
+                  />
+                  <Card.Body>
+                    <div className="d-flex justify-content-between">
+                      <div style={{ marginTop: "-130px" }}>
+                        <img
+                          src={this.state.profile.image}
+                          alt="placeholder"
+                          height="160px"
+                          width="160px"
+                          style={{
+                            borderRadius: "50%",
+                            border: "4px solid white",
+                            objectFit: "cover",
+                          }}
+                        ></img>
+                      </div>
+                    </div>
+
+                    <Card.Text>
+                      <Row>
+                        <Col xs={12} lg={6}>
+                          <h3 className="usrnTxt">
+                            {this.state.profile.name +
+                              " " +
+                              this.state.profile.surname +
+                              " "}
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 21 21"
+                              data-supported-dps="21x21"
+                              fill="currentColor"
+                              class="mercado-match"
+                              width="21"
+                              height="21"
+                              focusable="false"
+                              style={{ color: "#C37D16" }}
+                            >
+                              <g>
+                                <path
+                                  class="background-mercado"
+                                  d="M19.5 0h-18A1.5 1.5 0 000 1.5v18A1.5 1.5 0 001.5 21h18a1.5 1.5 0 001.5-1.5v-18A1.5 1.5 0 0019.5 0zM6 18H3V8h3zM4.5 6.25a1.75 1.75 0 110-3.5 1.75 1.75 0 110 3.5zM18 18h-3v-5.09c0-1.62-.74-2.44-1.84-2.44A2.31 2.31 0 0011 13v5H8V8h3v1.39a4.06 4.06 0 013.3-1.63c1.77 0 3.66.93 3.66 4z"
+                                ></path>
+                              </g>
+                            </svg>
+                          </h3>
+                          <small>{this.state.profile.title}</small>
+                          <h6 className="areaTxt">{this.state.profile.area}</h6>
+                        </Col>
+                        <Col lg={6}>
+                          <div className="btnBox">
+                            <DropdownButton
+                              className="d-none d-lg-block"
+                              id="dropdown-basic-button"
+                              size="sm"
+                              title="Add profile section"
+                            >
+                              <Dropdown.Item>Intro</Dropdown.Item>
+                              <Dropdown.Item>About</Dropdown.Item>
+                              <Dropdown.Item>Featured</Dropdown.Item>
+                              <Dropdown.Item>Background</Dropdown.Item>
+                              <Dropdown.Item>Skills</Dropdown.Item>
+                              <Dropdown.Item>Accomplishments</Dropdown.Item>
+                              <Dropdown.Item>
+                                Additional information
+                              </Dropdown.Item>
+                              <Dropdown.Item>Supported languages</Dropdown.Item>
+                            </DropdownButton>
+
+                            <button className="btnMore">More...</button>
+
+                            <EditPage
+                              profile={this.state.profile}
+                              refetch={() =>
+                                this.searchProfile(this.props.match.params.id)
+                              }
+                              color="#0A66CE"
+                            />
+                          </div>
+                        </Col>
+                      </Row>
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+                <Bio
+                  bio={this.state.profile.bio}
+                  profile={this.state.profile}
+                  refetch={() => this.searchProfile(this.props.match.params.id)}
+                />
+                <Feature />
+                <Experience profile={this.state.profile} />
+              </Col>
+              <Col
+                md={4}
+                style={{ marginTop: "10vh" }}
+                className="d-none d-md-block"
+              >
+                <Sidebar />
+              </Col>
+
+              <EditPage
+                profile={this.state.profile}
+                refetch={() => this.searchProfile(this.props.match.params.id)}
+                color="#0A66CE"
+              />
+            </Row>
+          ) : (
+            this.setState({
+              err: true,
+              errType: "warning",
+              errMsg: "We have encounter a problem, the profile is empty",
+            })
+          )}
+        </div>
       </div>
     );
   }

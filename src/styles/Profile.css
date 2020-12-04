@@ -1,13 +1,10 @@
-body {
-  background-color: #f3f2ef;
-}
 @media only screen and (min-width: 768px) {
-  .container {
-    width: 100vw !important;
-  }
   .rowm {
     margin-left: 0;
     margin-right: 0;
+  }
+  .bgBody {
+    overflow: hidden !important;
   }
 }
 @media only screen and (min-width: 992px) {
@@ -19,4 +16,47 @@ body {
 }
 .cardImg {
   max-height: 200px;
+}
+.bgBody {
+  background-color: #f3f2ef;
+}
+.usrnTxt {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 32px;
+  color: rgba(0, 0, 0, 0.9);
+}
+.areaTxt {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.9);
+}
+a {
+  text-decoration: none;
+}
+
+#dropdown-basic-button {
+  border-radius: 50px !important;
+  max-height: 20px;
+  padding-bottom: 24px;
+  background-color: rgb(10, 102, 194);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  width: 200px;
+}
+#dropdown-basic-button:hover {
+  background-color: rgb(9, 68, 128);
+}
+.btnMore {
+  border-radius: 50px !important;
+  background-color: transparent;
+  height: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.btnBox {
+  display: flex;
+  flex-direction: row;
 }
