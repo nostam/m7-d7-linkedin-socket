@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Button, Image, Row, Col, Card, Alert } from "react-bootstrap";
+import { Container, Button, Image, Row, Col, Card } from "react-bootstrap";
 import { BiLike, BiCommentDetail, BiShare, BiSend } from "react-icons/bi";
 import EditPost from "./EditPost";
 import PostModal from "./PostModal";
@@ -10,11 +10,6 @@ export default class Home extends Component {
   state = {
     posts: [],
     me: {},
-    showAlert: null,
-    err: false,
-    errType: null,
-    errMsg: "",
-    loading: true
   };
   fetchPost = async () => {
     try {
@@ -29,16 +24,9 @@ export default class Home extends Component {
       let postResponse = await postFetch.json();
       postResponse.reverse().slice(0, 20);
       this.setState({ posts: postResponse });
-      this.setState({loading: false})
       console.log("Update");
     } catch (error) {
       console.log(error);
-      this.setState({
-        loading: false,
-        err: true,
-        errType: "danger",
-        errMsg: error.messasge,
-      });
     }
   };
   fetchMe = async () => {
@@ -71,15 +59,8 @@ export default class Home extends Component {
 
   render() {
     return (
-      
       <div className="homeDiv">
         <Container className="HomeCont">
-        {this.state.err && (
-        <Alert variant="danger">{this.state.errMsg}</Alert>
-      )}
-      {this.state.loading && this.state.err !== true ? (
-        <div style={{position: "relative", top: '8vh', left: '25vw'}} class="lds-facebook"><div></div><div></div><div></div></div>
-       ) : Object.keys(this.state.posts).length !== 0 ? (
           <Row>
             <Col className="d-none d-lg-block" lg={3}>
               <RSidebar me={this.state.me} />
@@ -128,17 +109,8 @@ export default class Home extends Component {
               <Sidebar />
             </Col>
           </Row>
-       ): (
-        this.setState({
-          err: true,
-          errType: "warning",
-          errMsg: "We have encounter a problem, the profile is empty",
-        })
-       )}
         </Container>
       </div>
     );
-    
-
   }
 }
