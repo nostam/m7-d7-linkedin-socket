@@ -93,6 +93,6 @@ a {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   color: rgba(0, 0, 0, 0.9);
-  padding-top: 0.5vw;
+  padding-top: 10px;
   padding-bottom: 1vw;
 }
