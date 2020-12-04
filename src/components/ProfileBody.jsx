@@ -27,6 +27,7 @@ class Body extends React.Component {
     loading: true,
   };
   searchProfile = (id) => {
+    
     fetch("https://striveschool-api.herokuapp.com/api/profile/" + id, {
       method: "GET",
       headers: new Headers({
@@ -71,6 +72,7 @@ class Body extends React.Component {
             <Alert variant="danger">{this.state.errMsg}</Alert>
           )}
           {this.state.loading && this.state.err !== true ? (
+<<<<<<< Updated upstream
             <Row className="d-flex justify-content-center my-5">
               <h3 style={{ paddingTop: "20vh" }}>Loading profile...</h3>
               <Spinner
@@ -79,6 +81,9 @@ class Body extends React.Component {
                 style={{ marginTop: "20vh" }}
               />
             </Row>
+=======
+           <div > <div style={{position: "relative", top: '8vh', left: '25vw'}} class="lds-facebook"><div></div><div></div><div></div></div> </div>
+>>>>>>> Stashed changes
           ) : Object.keys(this.state.profile).length !== 0 ? (
             <Row className="rowm">
               {/*<Col lg={3}></Col> */}
