@@ -1,16 +1,8 @@
 import "../styles/Welcome.css";
 import React, { Component } from "react";
 
-import {
-  Row,
-  Col,
-  Form,
-  Button,
-  Container,
-  Badge,
-  Navbar,
-} from "react-bootstrap";
-import { Link, withRouter } from "react-router-dom";
+import { Row, Col, Navbar } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import FooterLogo from "../footer_logo.svg";
 import "../styles/Login.css";
 import Login from "./Login";
@@ -48,6 +40,7 @@ export default class Welcome extends Component {
               </Col>
               <Col lg={8} className="d-none d-lg-block">
                 <img
+                  alt="welcomeBG"
                   className="wlcmImg "
                   src="https://static-exp1.licdn.com/sc/h/3m4tgpbdz7gbldapvl63mrnxz"
                 ></img>
