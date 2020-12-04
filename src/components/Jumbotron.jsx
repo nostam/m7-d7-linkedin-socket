@@ -2,7 +2,7 @@ import React from "react";
 import EditPage from "./EditPage";
 import { Jumbotron, Dropdown, Button, Card, Row, Col } from "react-bootstrap";
 import "../App.css";
-import '../styles/Profile.css'
+import "../styles/Profile.css";
 import Job from "../assets/job.png";
 class Header extends React.Component {
   render() {
@@ -15,104 +15,89 @@ class Header extends React.Component {
         {/*Edit, more and add section button*/}
         <div className="wrapper">
           <Row className="btns d-flex justify-content-center mx-auto">
-            <Col
-              className="d-flex justify-content-center my-2 btncol"
-              sm={12}
-              lg={12}
-              xl={7}
-              style={{ paddingLeft: ".5vw", paddingRight: ".5vw" }}
-            >
-              <Dropdown>
-                <Dropdown.Toggle
-                  className="rounded-pill dropdownAdd"
-                  id="dropdown-basic"
-                >
-                  Add profile section
-                </Dropdown.Toggle>
-
-                <Dropdown.Menu>
-                  <Dropdown.Item href="#/action-1">Presentation</Dropdown.Item>
-                  <Dropdown.Item href="#/action-2">Info</Dropdown.Item>
-                  <Dropdown.Item href="#/action-4">Highlights</Dropdown.Item>
-                  <Dropdown.Item href="#/action-5">Education</Dropdown.Item>
-                  <Dropdown.Item href="#/action-6">Skills</Dropdown.Item>
-                  <Dropdown.Item href="#/action-7">Achievements</Dropdown.Item>
-                  <Dropdown.Item href="#/action-8">More info</Dropdown.Item>
-                  <Dropdown.Item href="#/action-9">Languages</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-            </Col>
-            <Col sm={12} lg={12} xl={3} className="d-flex justify-content-center my-2 btncol">
-              <Button
-                style={{
-                  width: "4.5vw",
-                  overflow: "hidden",
-                  whiteSpace: "nowrap",
-                  textOverflow: "ellipsis",
-                  height: "2.8vh",
-                  paddingBottom: "1.5vw",
-                  overflow: "hidden",
-                }}
-                className="rounded-pill moreBtn"
-                variant="outline-secondary"
+            <Dropdown>
+              <Dropdown.Toggle
+                className="rounded-pill dropdownAdd"
+                id="dropdown-basic"
               >
-                More...
-              </Button>
-            </Col>
-            <Col sm={12} lg={12} xl={2} className="d-flex justify-content-center my-1 btncol">
-              <EditPage
-                profile={this.props.profile}
-                refetch={this.props.refetch}
-              />
-            </Col>
+                Add profile section
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu>
+                <Dropdown.Item href="#/action-1">Presentation</Dropdown.Item>
+                <Dropdown.Item href="#/action-2">Info</Dropdown.Item>
+                <Dropdown.Item href="#/action-4">Highlights</Dropdown.Item>
+                <Dropdown.Item href="#/action-5">Education</Dropdown.Item>
+                <Dropdown.Item href="#/action-6">Skills</Dropdown.Item>
+                <Dropdown.Item href="#/action-7">Achievements</Dropdown.Item>
+                <Dropdown.Item href="#/action-8">More info</Dropdown.Item>
+                <Dropdown.Item href="#/action-9">Languages</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+
+            <Button
+              style={{
+                width: "4.5vw",
+                overflow: "hidden",
+                whiteSpace: "nowrap",
+                textOverflow: "ellipsis",
+                height: "2.8vh",
+                paddingBottom: "1.5vw",
+                overflow: "hidden",
+              }}
+              className="rounded-pill moreBtn"
+              variant="outline-secondary"
+            >
+              More...
+            </Button>
+
+            <EditPage
+              profile={this.props.profile}
+              refetch={this.props.refetch}
+            />
           </Row>
           {/*propic and headers*/}
           <img src={this.props.src} className="propic" alt="profile" />
-
-          <Row noGutters>
-            <Col>
-              <div id="headerName" className="d-flex justify-content-center my-2">
-                {this.props.name}
-              </div>
-            </Col>
-          </Row>
-          <Row className="d-flex" noGutters>
-            <Col>
-              <div
-                id="headerDescription"
-                className="d-flex justify-content-center"
-              >
-                {this.props.desc}
-              </div>
-            </Col>
-            <Col>
-              <img src={Job} className="job" />
-
-              <div className="jobdec hoverBlue d-flex justify-content-center">
-                {this.props.desc}
-              </div>
-            </Col>
-          </Row>
-          <Row className="d-flex" noGutters id="headerLinkLoc">
-            <div id="headerLoc" className="d-flex justify-content-center">
-              {" "}
-              {this.props.loc}
-            </div>
-            <div id="headerLink" className="hoverBlue">
-              ∙&nbsp;&nbsp;24 connections&nbsp;&nbsp;∙&nbsp;&nbsp;Contact Info
-            </div>
-          </Row>
-          {/* <Row
-            className="d-flex opentowork"
-            style={{
-              width: "38vw",
-              height: "6.8vw",
-              position: "absolute",
-              top: "36vh",
-              borderRadius: ".5vw",
-            }}
+          <ul className="headerList" 
+            
           >
-            <Col xs={12}>
+            <li>
+              <Row noGutters>
+                <Col>
+                  <div id="headerName" className="  my-2">
+                    {this.props.name}
+                  </div>
+                </Col>
+              </Row>
+            </li>
+            <li>
+              <Row noGutters style={{ width: "46vw" }}>
+                <Col>
+                  <div id="headerDescription" >
+                    {this.props.desc}
+                  </div>
+                </Col>
+                <Col className="d-flex justify-content-around">
+                  <img src={Job} className="job d-flex" />
+
+                  <div className="jobdec hoverBlue d-flex">Strive Student</div>
+                </Col>
+              </Row>
+            </li>
+            <li>
+              <Row className="d-flex" noGutters id="headerLinkLoc">
+                <div id="headerLoc" >
+                  {this.props.loc}
+                </div>
+                <div id="headerLink" className="hoverBlue">
+                  &nbsp;&nbsp;∙&nbsp;&nbsp;24
+                  connections&nbsp;&nbsp;∙&nbsp;&nbsp;Contact Info
+                </div>
+              </Row>
+            </li>
+          </ul>
+          <Row  style={{width: '46vw'}}>
+            <Col xs={12} className='opentowork'>
               <Card>
                 <Card.Header
                   className="hoverBlue"
@@ -150,7 +135,6 @@ class Header extends React.Component {
               </Card>
             </Col>
           </Row>
-                */}
         </div>
       </Jumbotron>
     );

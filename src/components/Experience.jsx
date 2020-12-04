@@ -56,15 +56,14 @@ class Experience extends React.Component {
   render() {
     return (
       <>
-        <Card style={{ borderRadius: ".5vw", marginTop: ".8vw" }}>
+        <Card className='bio'style={{ borderRadius: ".5vw", marginTop: ".8vw" }}>
           <Card.Body>
-            <Row>
-              <Col md={10}>
+            <Row className='d-flex justify-content-between ml-1'>
+              
                 <div id="expTitle" className="info">
                   Experience
                 </div>
-              </Col>
-              <Col md={2} style={{ position: "absolute", left: "90%" }}>
+              
                 <Button variant="white" onClick={() => this.toggleModal()}>
                   <IconContext.Provider
                     value={{
@@ -76,7 +75,7 @@ class Experience extends React.Component {
                     <BsPlus />
                   </IconContext.Provider>
                 </Button>
-              </Col>
+             
             </Row>
             {/* <Edit /> */}
             {this.state.experience.map((job, index) => {

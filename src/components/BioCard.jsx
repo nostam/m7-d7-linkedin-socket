@@ -8,19 +8,18 @@ import '../styles/Profile.css'
 class Bio extends React.Component {
   render() {
     return (
-      <Card style={{ borderRadius: ".5vw", marginTop: ".8vw" }}>
+      <Card className ='bio' style={{ borderRadius: ".5vw", marginTop: ".8vw" }}>
         <Card.Body>
-          <Row>
-            <Col md={10} lg={11} >
+          <Row className='d-flex justify-content-between ml-1'>
+            
             <div className="info">About</div>
-            </Col>
-            <Col md={2} lg={1} className="pencil" style={{paddingRight: '1vw'}}>
+            
             <EditPage
               profile={this.props.profile}
               refetch={this.props.refetch}
               color='#0A66CE'
             />
-            </Col>
+            
           </Row>
           
           
