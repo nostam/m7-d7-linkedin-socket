@@ -19,16 +19,16 @@
 }
 .cardImg {
   max-height: 200px;
-  border-top-right-radius: 0.5vw;
-  border-top-left-radius: 0.5vw;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
 }
 .bgBody {
   background-color: #f3f2ef;
 }
-.card {
+.cardProf {
   width: 800px;
   margin-left: -10px;
-  border-radius: 0.5vw;
+  border-radius: 8px;
 }
 .usrnTxt {
   font-size: 1.45rem;
@@ -85,5 +85,14 @@ a {
   flex-direction: row;
   position: relative;
   right: -51px;
-  top: -40px;
+  top: 16px;
+}
+.info {
+  font-size: 1.3rem;
+  line-height: 1.33333;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.9);
+  padding-top: 10px;
+  padding-bottom: 1vw;
 }
