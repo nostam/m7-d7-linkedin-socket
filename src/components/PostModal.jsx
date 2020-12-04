@@ -41,6 +41,7 @@ class PostModal extends React.Component {
           },
         }
       );
+      this.fileUploadHandler();
       if (response.ok) {
         this.setState({ showModal: false });
         this.props.refetch();
@@ -51,9 +52,6 @@ class PostModal extends React.Component {
       console.log(e);
     }
   };
-  handleSubmitImg = () => {};
-  componentDidMount() {}
-
   render() {
     return (
       <>
@@ -120,12 +118,12 @@ class PostModal extends React.Component {
                 color: "#666",
               }}
             >
-              <FaCamera onClick={() => this.handleSubmitImg()} />
+              <FaCamera />
               <FaVideo />
               <FaStickyNote />
               <FaPenSquare />
             </IconContext.Provider>
-            <Button rounded-pill variant="primary" onClick={this.post}>
+            <Button rounded-pill variant="primary" onClick={() => this.post()}>
               Post
             </Button>
           </Modal.Footer>

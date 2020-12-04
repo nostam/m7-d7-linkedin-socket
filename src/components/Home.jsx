@@ -78,7 +78,7 @@ export default class Home extends Component {
                       />
                       {post.user.name + " " + post.user.surname}
                     </div>
-                    <EditPost post={post} />
+                    <EditPost post={post} refetch={() => this.fetchPost()} />
                   </Card.Header>
                   {post.image && (
                     <Card.Img

@@ -71,21 +71,22 @@ class EditPage extends React.Component {
     this.setState({ selectedFile: event.target.files[0] });
   };
   fileUploadHandler = async () => {
-    const headers = {
-      Authorization: "Bearer " + localStorage.getItem("token"),
-    };
     const fd = new FormData();
     fd.append("profile", this.state.selectedFile);
-    const response = await fetch(
-      `https://striveschool-api.herokuapp.com/api/profile/${this.state.profile._id}/picture`,
-      {
-        method: "POST",
-        headers: headers,
-        body: fd,
+    try {
+      const response = await fetch(
+        `https://striveschool-api.herokuapp.com/api/profile/${this.state.profile._id}/picture`,
+        {
+          method: "POST",
+          headers: { Authorization: "Bearer " + localStorage.getItem("token") },
+          body: fd,
+        }
+      );
+      if (response.ok) {
+        alert("uploaded");
       }
-    );
-    if (response.ok) {
-      alert("uploaded");
+    } catch (error) {
+      console.log(error);
     }
   };
   render() {
