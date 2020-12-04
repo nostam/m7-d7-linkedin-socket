@@ -7,6 +7,7 @@ import { BsPlus } from "react-icons/bs";
 import "../styles/Experience.css";
 import Job from "../assets/job.png";
 import "../styles/Profile.css";
+import { Route } from "react-router-dom";
 
 class Experience extends React.Component {
   state = {
@@ -66,7 +67,7 @@ class Experience extends React.Component {
                 Experience
               </div>
 
-              <Button variant="white" onClick={() => this.toggleModal()}>
+              <Route path='/user/me'>  <Button variant="white" onClick={() => this.toggleModal()}>
                 <IconContext.Provider
                   value={{
                     size: "30px",
@@ -77,23 +78,37 @@ class Experience extends React.Component {
                   <BsPlus />
                 </IconContext.Provider>
               </Button>
+            </Route>
             </Row>
             {/* <Edit /> */}
             {this.state.experience.map((job, index) => {
-              let startDateObj = new Date(job.startDate)
+              let startDateObj = new Date(job.startDate);
               let startyearO = startDateObj.getFullYear();
               let startmonthO = startDateObj.getMonth();
-              let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-              let smonth = months[startmonthO]
-              let endDateObj = new Date(job.endDate)
+              let months = [
+                "Jan",
+                "Feb",
+                "Mar",
+                "Apr",
+                "May",
+                "Jun",
+                "Jul",
+                "Aug",
+                "Sep",
+                "Oct",
+                "Nov",
+                "Dec",
+              ];
+              let smonth = months[startmonthO];
+              let endDateObj = new Date(job.endDate);
               let endtyearO = endDateObj.getFullYear();
               let endmonthO = endDateObj.getMonth();
-              let emonth = months[endmonthO]
+              let emonth = months[endmonthO];
               if (!emonth || !endtyearO) {
-                emonth='Current'
-                endtyearO=" "
+                emonth = "Current";
+                endtyearO = " ";
               }
-              
+
               return (
                 <>
                   <Row noGutters>
@@ -105,22 +120,24 @@ class Experience extends React.Component {
                     </Col>
                     <Col>
                       <ul id={job._id} key={`exp${index}`} className="exp">
-                        <Button
-                          variant="white"
-                          className="editBtnExp"
-                          onClick={() => this.toggleModal(job)}
-                        >
-                          <IconContext.Provider
-                            value={{
-                              size: "1.6vw",
-                              className: "expIcons",
-                              color: "#0A66CE",
-                            }}
+                        <Route path="/user/me">
+                          {" "}
+                          <Button
+                            variant="white"
+                            className="editBtnExp"
+                            onClick={() => this.toggleModal(job)}
                           >
-                            <BiPencil />
-                          </IconContext.Provider>
-                        </Button>
-
+                            <IconContext.Provider
+                              value={{
+                                size: "1.6vw",
+                                className: "expIcons",
+                                color: "#0A66CE",
+                              }}
+                            >
+                              <BiPencil />
+                            </IconContext.Provider>
+                          </Button>
+                        </Route>
                         <li className="expEntries">
                           <div class="roleExp">{job.role}</div>
                         </li>
@@ -128,9 +145,7 @@ class Experience extends React.Component {
                           <div class="workplaceExp">{job.company}</div>
                         </li>
                         <li className="expEntries">
-                          <div class="timeExp">
-                            {smonth + " " + startyearO}
-                          </div>
+                          <div class="timeExp">{smonth + " " + startyearO}</div>
                         </li>
                         <li className="expEntries">
                           <div class="timeExp">{emonth + " " + endtyearO}</div>
@@ -149,14 +164,17 @@ class Experience extends React.Component {
             })}
           </Card.Body>
         </Card>
-        <Edit
-          show={this.state.showModal}
-          userId={this.props.profile._id}
-          expId={this.state.selectedId}
-          toggle={() => this.toggleModal()}
-          refetch={() => this.searchExp()}
-          color="#0A66CE"
-        />
+        <Route path="/user/me">
+          {" "}
+          <Edit
+            show={this.state.showModal}
+            userId={this.props.profile._id}
+            expId={this.state.selectedId}
+            toggle={() => this.toggleModal()}
+            refetch={() => this.searchExp()}
+            color="#0A66CE"
+          />
+        </Route>
       </>
     );
   }

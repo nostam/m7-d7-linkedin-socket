@@ -17,6 +17,7 @@ import EditPage from "./EditPage";
 import "../styles/Profile.css";
 import { BiPencil } from "react-icons/bi";
 import { IconContext } from "react-icons";
+import { Route } from "react-router-dom";
 class Body extends React.Component {
   state = {
     profile: {},
@@ -133,7 +134,7 @@ class Body extends React.Component {
                         </Col>
                         <Col lg={6}>
                           <div className="btnBox">
-                            <DropdownButton
+                          <Route path='/user/me'> <DropdownButton
                               className="d-none d-lg-block"
                               id="dropdown-basic-button"
                               size="sm"
@@ -149,7 +150,7 @@ class Body extends React.Component {
                                 Additional information
                               </Dropdown.Item>
                               <Dropdown.Item>Supported languages</Dropdown.Item>
-                            </DropdownButton>
+                            </DropdownButton> 
 
                             <button className="btnMore">More...</button>
 
@@ -160,6 +161,7 @@ class Body extends React.Component {
                               }
                               color="#0A66CE"
                             />
+                            </Route> 
                           </div>
                         </Col>
                       </Row>
