@@ -87,7 +87,7 @@ export default class Home extends Component {
                       className="postImage"
                     />
                   )}
-                  <Card.Text className="p-2">{post.text}</Card.Text>
+                  <Card.Text className="p-3">{post.text}</Card.Text>
                   <Card.Footer className="HomeModal bg-white">
                     <Button variant="outline-dark mx-1">
                       <BiLike /> Like
