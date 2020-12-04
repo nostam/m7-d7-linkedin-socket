@@ -41,10 +41,8 @@ class PostModal extends React.Component {
           },
         }
       );
-      this.fileUploadHandler();
       if (response.ok) {
-        this.setState({ showModal: false });
-        this.props.refetch();
+        this.setState({ showModal: false }, () => this.props.refetch());
       } else {
         this.setState({ showModal: false });
       }
