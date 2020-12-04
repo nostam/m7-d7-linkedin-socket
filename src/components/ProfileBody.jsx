@@ -173,8 +173,8 @@ class Body extends React.Component {
                   profile={this.state.profile}
                   refetch={() => this.searchProfile(this.props.match.params.id)}
                 />
-                <Feature />
-                <Experience profile={this.state.profile} />
+               <Route path='/user/me'>  <Feature /> </Route>
+               <Experience profile={this.state.profile} />
               </Col>
               <Col
                 md={4}

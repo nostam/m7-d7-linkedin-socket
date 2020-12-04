@@ -88,3 +88,12 @@ a {
   right: -51px;
   top: -40px
 }
+.info {
+  font-size: 1.3rem;
+  line-height: 1.33333;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.9);
+  padding-top: 0.5vw;
+  padding-bottom: 1vw;
+}
