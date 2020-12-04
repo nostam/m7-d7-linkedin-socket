@@ -87,17 +87,6 @@ class EditPage extends React.Component {
     if (response.ok) {
       alert("uploaded");
     }
-
-    // axios.post(
-    //   `https://striveschool-api.herokuapp.com/api/profile/${}/picture`,
-    //   headers,
-    //   fd,
-    //   {
-    //     headers
-    // })
-    //   .then((res) => {
-    //     console.log(res);
-    //   });
   };
   render() {
     return (
@@ -109,7 +98,7 @@ class EditPage extends React.Component {
         >
           <IconContext.Provider
             value={{
-              size: "1.6vw",
+              size: "25px",
               className: "JumbBiPencil",
             }}
           >

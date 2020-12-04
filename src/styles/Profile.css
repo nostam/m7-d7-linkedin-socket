@@ -20,3 +20,9 @@
 .bgBody {
   background-color: #f3f2ef;
 }
+.usrnTxt {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 32px;
+  color: rgba(0, 0, 0, 0.9);
+}
