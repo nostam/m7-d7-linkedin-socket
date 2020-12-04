@@ -1,3 +1,19 @@
-.profileDiv {
+body {
   background-color: #f3f2ef;
+}
+@media only screen and (min-width: 768px) {
+  .container {
+    width: 100vw !important;
+  }
+  .rowm {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+@media only screen and (min-width: 992px) {
+}
+.mainBody {
+  width: 1130px;
+  margin-left: auto;
+  margin-right: auto;
 }

@@ -1,9 +1,8 @@
 import React from "react";
-import { Col, Container, Row, Spinner, Alert } from "react-bootstrap";
+import { Col, Container, Row, Spinner, Alert, Card } from "react-bootstrap";
 import Bio from "./BioCard";
 import Experience from "./Experience";
 import Feature from "./Featured";
-import Header from "./Jumbotron";
 import Sidebar from "./Sidebar";
 import "../styles/Profile.css";
 class Body extends React.Component {
@@ -66,26 +65,47 @@ class Body extends React.Component {
             />
           </Row>
         ) : Object.keys(this.state.profile).length !== 0 ? (
-          <Row>
-            <Col xs={12} lg={8} md={12}>
-              <Header
-                name={
-                  this.state.profile.name + " " + this.state.profile.surname
-                }
-                refetch={() => this.searchProfile(this.props.match.params.id)}
-                desc={this.state.profile.title}
-                src={this.state.profile.image}
-                loc={this.state.profile.area}
-                profile={this.state.profile}
-              />
+          <Row className="rowm">
+            {/*<Col lg={3}></Col> */}
+            <Col md={8} style={{ marginTop: "10vh" }}>
+              <Card>
+                <Card.Img
+                  variant="top"
+                  src="https://coverfiles.alphacoders.com/372/37275.jpg"
+                  style={{ objectFit: "cover" }}
+                  alt="placeholderr"
+                />
+                <Card.Body>
+                  <div className="d-flex justify-content-between">
+                    <div style={{ marginTop: "-130px" }}>
+                      <img
+                        src={this.state.profile.image}
+                        alt="placeholder"
+                        height="160px"
+                        width="160px"
+                        style={{
+                          borderRadius: "50%",
+                          border: "4px solid white",
+                          objectFit: "cover",
+                        }}
+                      ></img>
+                    </div>
+                  </div>
+
+                  <Card.Text>
+                    Some quick example text to build on the card title and make
+                    up the bulk of the card's content.
+                  </Card.Text>
+                </Card.Body>
+              </Card>
               <Bio bio={this.state.profile.bio} />
               <Feature />
               <Experience profile={this.state.profile} />
             </Col>
             <Col
-              lg={4}
-              style={{ marginTop: "5.3vw" }}
-              className="d-none d-lg-block"
+              md={4}
+              style={{ marginTop: "10vh" }}
+              className="d-none d-md-block"
             >
               <Sidebar />
             </Col>
