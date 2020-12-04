@@ -71,14 +71,7 @@ class Body extends React.Component {
             <Alert variant="danger">{this.state.errMsg}</Alert>
           )}
           {this.state.loading && this.state.err !== true ? (
-            <Row className="d-flex justify-content-center my-5">
-              <h3 style={{ paddingTop: "20vh" }}>Loading profile...</h3>
-              <Spinner
-                animation="border"
-                variant="info"
-                style={{ marginTop: "20vh" }}
-              />
-            </Row>
+           <div style={{position: "relative", top: '8vh', left: '25vw'}} class="lds-facebook"><div></div><div></div><div></div></div>
           ) : Object.keys(this.state.profile).length !== 0 ? (
             <Row className="rowm">
               {/*<Col lg={3}></Col> */}
@@ -89,7 +82,7 @@ class Body extends React.Component {
                     variant="top"
                     src="https://coverfiles.alphacoders.com/372/37275.jpg"
                     style={{ objectFit: "cover" }}
-                    alt="placeholderr"
+                    alt="placeholder"
                   />
                   <Card.Body>
                     <div className="d-flex justify-content-between">
@@ -135,7 +128,7 @@ class Body extends React.Component {
                               </g>
                             </svg>
                           </h3>
-                          <small>{this.state.profile.title}</small>
+                          <div className='roletext'>{this.state.profile.title}</div>
                           <h6 className="areaTxt">{this.state.profile.area}</h6>
                         </Col>
                         <Col lg={6}>
@@ -188,12 +181,6 @@ class Body extends React.Component {
               >
                 <Sidebar />
               </Col>
-
-              <EditPage
-                profile={this.state.profile}
-                refetch={() => this.searchProfile(this.props.match.params.id)}
-                color="#0A66CE"
-              />
             </Row>
           ) : (
             this.setState({
