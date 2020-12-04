@@ -10,15 +10,22 @@
 @media only screen and (min-width: 992px) {
 }
 .mainBody {
-  width: 1130px;
+  width: 1230px;
   margin-left: auto;
   margin-right: auto;
 }
 .cardImg {
   max-height: 200px;
+  border-top-right-radius: .5vw;
+  border-top-left-radius: .5vw;
 }
 .bgBody {
   background-color: #f3f2ef;
+}
+.card {
+  width: 800px;
+  margin-left: -10px;
+  border-radius: .5vw;
 }
 .usrnTxt {
   font-size: 24px;
@@ -63,8 +70,4 @@ a {
 .btnBox {
   display: flex;
   flex-direction: row;
-  position: relative;
-    top: -4.5vh;
-    left: 0vw;
-    width: 23vw;
 }
