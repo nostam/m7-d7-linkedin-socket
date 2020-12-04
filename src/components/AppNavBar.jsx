@@ -27,7 +27,7 @@ class AppNavBar extends React.Component {
         <div className="navbarContent">
           <Navbar.Brand
             as={Link}
-            to="/"
+            to="/home"
             className="navbarBrand d-flex nowrap mr-2"
           >
             <IconContext.Provider

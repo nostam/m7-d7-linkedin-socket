@@ -6,6 +6,8 @@ import { BiPencil } from "react-icons/bi";
 import { BsPlus } from "react-icons/bs";
 import "../styles/Experience.css";
 import Job from "../assets/job.png";
+import "../styles/Profile.css";
+import { Route } from "react-router-dom";
 
 class Experience extends React.Component {
   state = {
@@ -22,7 +24,7 @@ class Experience extends React.Component {
       {
         method: "GET",
         headers: new Headers({
-          Authorization: process.env.REACT_APP_TOKEN,
+          Authorization: "Bearer " + localStorage.getItem("token"),
           ContentType: "application/json",
         }),
       }
@@ -55,110 +57,87 @@ class Experience extends React.Component {
   render() {
     return (
       <>
-        <Card style={{ borderRadius: ".5vw", marginTop: ".8vw" }}>
+        <Card
+          className="bio cardProf"
+          style={{ borderRadius: ".5vw", marginTop: ".8vw" }}
+        >
           <Card.Body>
-            <Row>
-              <Col md={10}>
-                <div id="expTitle" className="info">
-                  Experience
-                </div>
-              </Col>
-              <Col md={2} style={{ position: "absolute", left: "90%" }}>
-                <Button variant="white" onClick={() => this.toggleModal()}>
-                  <IconContext.Provider
-                    value={{
-                      size: "30px",
-                      className: "expIcons",
-                      color: "#0A66CE",
-                    }}
-                  >
-                    <BsPlus />
-                  </IconContext.Provider>
-                </Button>
-              </Col>
+            <Row className="d-flex justify-content-between ml-1">
+              <div id="expTitle" className="info">
+                Experience
+              </div>
+
+              <Route path='/user/me'>  <Button variant="white" onClick={() => this.toggleModal()}>
+                <IconContext.Provider
+                  value={{
+                    size: "30px",
+                    className: "expIcons",
+                    color: "#0A66CE",
+                  }}
+                >
+                  <BsPlus />
+                </IconContext.Provider>
+              </Button>
+            </Route>
             </Row>
             {/* <Edit /> */}
             {this.state.experience.map((job, index) => {
-              let startyear = job.startDate.slice(0,4)
-              let startmonth = job.startDate.slice(5,7)
-              if (startmonth === '01') {
-                startmonth = 'Jan'
-              } else if (startmonth === '02') {
-                startmonth = 'Feb'
-              } else if (startmonth === '03') {
-                startmonth = 'Mar'
-              } else if (startmonth === '04') {
-                startmonth = 'Apr'
-              } else if (startmonth === '05') {
-                startmonth = 'May'
-              } else if (startmonth === '06') {
-                startmonth = 'Jun'
-              } else if (startmonth === '07') {
-                startmonth = 'Jul'
-              } else if (startmonth === '08') {
-                startmonth = 'Aug'
-              } else if (startmonth === '09') {
-                startmonth = 'Sep'
-              } else if (startmonth === '10') {
-                startmonth = 'Oct'
-              } else if (startmonth === '11') {
-                startmonth = 'Nov'
-              } else if (startmonth === '12') {
-                startmonth = 'Dec'
+              let startDateObj = new Date(job.startDate);
+              let startyearO = startDateObj.getFullYear();
+              let startmonthO = startDateObj.getMonth();
+              let months = [
+                "Jan",
+                "Feb",
+                "Mar",
+                "Apr",
+                "May",
+                "Jun",
+                "Jul",
+                "Aug",
+                "Sep",
+                "Oct",
+                "Nov",
+                "Dec",
+              ];
+              let smonth = months[startmonthO];
+              let endDateObj = new Date(job.endDate);
+              let endtyearO = endDateObj.getFullYear();
+              let endmonthO = endDateObj.getMonth();
+              let emonth = months[endmonthO];
+              if (!emonth || !endtyearO) {
+                emonth = "Current";
+                endtyearO = " ";
               }
-              
-              let enddate = job.endDate.slice(0,10)
-              let endyear = job.endDate.slice(0,4)
-              let endmonth = job.endDate.slice(5,7)
-              if (endmonth === '01') {
-                endmonth = 'Jan'
-              } else if (endmonth === '02') {
-                endmonth = 'Feb'
-              } else if (endmonth === '03') {
-                endmonth = 'Mar'
-              } else if (endmonth === '04') {
-                endmonth = 'Apr'
-              } else if (endmonth === '05') {
-                endmonth = 'May'
-              } else if (endmonth === '06') {
-                endmonth = 'Jun'
-              } else if (endmonth === '07') {
-                endmonth = 'Jul'
-              } else if (endmonth === '08') {
-                endmonth = 'Aug'
-              } else if (endmonth === '09') {
-                endmonth = 'Sep'
-              } else if (endmonth === '10') {
-                endmonth = 'Oct'
-              } else if (endmonth === '11') {
-                endmonth = 'Nov'
-              } else if (endmonth === '12') {
-                endmonth = 'Dec'
-              }
+
               return (
                 <>
                   <Row noGutters>
                     <Col md={1}>
-                      <img src={Job} style={{ width: "3vw" }} />
+                      <img
+                        src={job.image ? job.image : Job}
+                        style={{ width: "3vw" }}
+                      />
                     </Col>
                     <Col>
                       <ul id={job._id} key={`exp${index}`} className="exp">
-                        <Button
-                          variant="white"
-                          className="editBtnExp"
-                          onClick={() => this.toggleModal(job)}
-                        >
-                          <IconContext.Provider
-                            value={{
-                              size: "1.6vw",
-                              className: "expIcons",
-                              color: "#0A66CE",
-                            }}
+                        <Route path="/user/me">
+                          {" "}
+                          <Button
+                            variant="white"
+                            className="editBtnExp"
+                            onClick={() => this.toggleModal(job)}
                           >
-                            <BiPencil />
-                          </IconContext.Provider>
-                        </Button>
-
+                            <IconContext.Provider
+                              value={{
+                                size: "1.6vw",
+                                className: "expIcons",
+                                color: "#0A66CE",
+                              }}
+                            >
+                              <BiPencil />
+                            </IconContext.Provider>
+                          </Button>
+                        </Route>
                         <li className="expEntries">
                           <div class="roleExp">{job.role}</div>
                         </li>
@@ -166,10 +145,10 @@ class Experience extends React.Component {
                           <div class="workplaceExp">{job.company}</div>
                         </li>
                         <li className="expEntries">
-                          <div class="timeExp">{startmonth + " " + startyear}</div>
+                          <div class="timeExp">{smonth + " " + startyearO}</div>
                         </li>
                         <li className="expEntries">
-                          <div class="timeExp">{endmonth + " " + endyear}</div>
+                          <div class="timeExp">{emonth + " " + endtyearO}</div>
                         </li>
                         <li className="expEntries">
                           <div class="cityExp">{job.area}</div>
@@ -185,14 +164,17 @@ class Experience extends React.Component {
             })}
           </Card.Body>
         </Card>
-        <Edit
-          show={this.state.showModal}
-          userId={this.props.profile._id}
-          expId={this.state.selectedId}
-          toggle={() => this.toggleModal()}
-          refetch={() => this.searchExp()}
-          color='#0A66CE'
-        />
+        <Route path="/user/me">
+          {" "}
+          <Edit
+            show={this.state.showModal}
+            userId={this.props.profile._id}
+            expId={this.state.selectedId}
+            toggle={() => this.toggleModal()}
+            refetch={() => this.searchExp()}
+            color="#0A66CE"
+          />
+        </Route>
       </>
     );
   }

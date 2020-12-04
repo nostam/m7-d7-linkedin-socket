@@ -25,7 +25,7 @@ class Add extends React.Component {
           body: JSON.stringify(this.state.experience),
           headers: {
             "Content-Type": "application/json",
-            Authorization: process.env.REACT_APP_TOKEN,
+            Authorization: "Bearer " + localStorage.getItem("token"),
           },
         }
       );
@@ -37,9 +37,8 @@ class Add extends React.Component {
     }
   };
 
-
   updateState = (e) => {
-    let exp = { ...this.state.experience}; // creating a copy of the current state
+    let exp = { ...this.state.experience }; // creating a copy of the current state
     let currentId = e.currentTarget.id; // 'name', 'phone', etc.
     exp[currentId] = e.currentTarget.value; // e.currentTarget.value is the keystroke
     this.setState({ experience: exp }, console.log(this.state));
@@ -61,7 +60,8 @@ class Add extends React.Component {
           <Form>
             <Form.Group>
               <Form.Label>Role * </Form.Label>
-              <Form.Control id="role"
+              <Form.Control
+                id="role"
                 required
                 onChange={this.updateState}
                 value={this.state.experience.role}
@@ -71,7 +71,8 @@ class Add extends React.Component {
             </Form.Group>
             <Form.Group>
               <Form.Label>Company * </Form.Label>
-              <Form.Control id="company"
+              <Form.Control
+                id="company"
                 required
                 onChange={this.updateState}
                 value={this.state.experience.company}
@@ -81,7 +82,8 @@ class Add extends React.Component {
             </Form.Group>
             <Form.Group>
               <Form.Label>Start date * </Form.Label>
-              <Form.Control id="startDate"
+              <Form.Control
+                id="startDate"
                 required
                 onChange={this.updateState}
                 value={this.state.experience.startDate}
@@ -91,7 +93,8 @@ class Add extends React.Component {
             </Form.Group>
             <Form.Group>
               <Form.Label>End date (empty if current) </Form.Label>
-              <Form.Control id="endDate"
+              <Form.Control
+                id="endDate"
                 onChange={this.updateState}
                 value={this.state.experience.endDate}
                 type="date"
@@ -100,7 +103,8 @@ class Add extends React.Component {
             </Form.Group>
             <Form.Group>
               <Form.Label>Description * </Form.Label>
-              <Form.Control id="description"
+              <Form.Control
+                id="description"
                 required
                 onChange={this.updateState}
                 value={this.state.experience.description}
@@ -110,7 +114,8 @@ class Add extends React.Component {
             </Form.Group>
             <Form.Group>
               <Form.Label>Area * </Form.Label>
-              <Form.Control id="area"
+              <Form.Control
+                id="area"
                 required
                 onChange={this.updateState}
                 value={this.state.experience.area}
@@ -124,9 +129,7 @@ class Add extends React.Component {
           <Button variant="secondary" onClick={this.props.onClick}>
             Close
           </Button>
-          <Button
-            variant="primary"
-            onClick={this.submitExperience}>
+          <Button variant="primary" onClick={this.submitExperience}>
             Add
           </Button>
         </Modal.Footer>
