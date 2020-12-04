@@ -99,7 +99,10 @@ class Body extends React.Component {
                   </Card.Text>
                 </Card.Body>
               </Card>
-              <Bio bio={this.state.profile.bio} />
+              <Bio
+                bio={this.state.profile.bio}
+                refetch={() => this.searchProfile(this.props.match.params.id)}
+              />
               <Feature />
               <Experience profile={this.state.profile} />
             </Col>
