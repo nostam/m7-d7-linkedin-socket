@@ -70,6 +70,7 @@ class Body extends React.Component {
             <Col md={8} style={{ marginTop: "10vh" }}>
               <Card>
                 <Card.Img
+                  className="cardImg"
                   variant="top"
                   src="https://coverfiles.alphacoders.com/372/37275.jpg"
                   style={{ objectFit: "cover" }}
