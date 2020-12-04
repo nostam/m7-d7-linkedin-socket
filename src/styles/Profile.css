@@ -3,7 +3,7 @@
     margin-top: 6.5vw;
     height: 65vh;
     width: 94vw;
-    left: -12vw;
+    left: -15vw;
     background-color: white;
     border-radius: 0.5vw;
     border-color: lightgrey;
@@ -12,7 +12,7 @@
   }
   .bio {
     width: 94vw;
-    left: -12vw;
+    left: -15vw;
   }
   .mainBody {
     width: 63.2vw;
@@ -216,7 +216,7 @@
     margin-top: 6.5vw;
     height: 65vh;
     width: 90vw;
-    left: -12vw;
+    left: -15vw;
     background-color: white;
     border-radius: 0.5vw;
     border-color: lightgrey;
@@ -225,7 +225,7 @@
   }
   .bio {
     width: 90vw;
-    left: -12vw;
+    left: -15vw;
   }
   .mainBody {
     width: 63.2vw;
