@@ -10,6 +10,8 @@ class EditPage extends React.Component {
     profile: {},
     showModal: false,
     confirmDialog: false,
+    selectedFile: null,
+    imgSubmitStatus: "secondary",
   };
   fetchMe = async () => {
     try {
@@ -51,8 +53,9 @@ class EditPage extends React.Component {
         },
       });
       if (response.ok) {
-        this.setState({ showModal: false });
-        this.props.refetch();
+        this.state.selectedFile !== null
+          ? this.fileUploadHandler()
+          : this.setState({ showModal: false }, () => this.props.refetch());
       } else {
         this.setState({ showModal: false });
       }
@@ -66,6 +69,34 @@ class EditPage extends React.Component {
       ? this.setState({ confirmDialog: true })
       : this.setState({ showModal: false });
   };
+  fileSelectHandler = (event) => {
+    this.setState({
+      selectedFile: event.target.files[0],
+      imgSubmitStatus: "success",
+    });
+  };
+
+  fileUploadHandler = async () => {
+    const fd = new FormData();
+    fd.append("post", this.state.selectedFile);
+    try {
+      const response = await fetch(
+        `https://striveschool-api.herokuapp.com/api/profile/${this.state.profile._id}/picture`,
+        {
+          method: "POST",
+          headers: { Authorization: "Bearer " + localStorage.getItem("token") },
+          body: fd,
+        }
+      );
+      if (response.ok) {
+        this.setState({ showModal: false }, () => this.props.refetch());
+      } else {
+        this.setState({ showModal: false });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   render() {
     return (
       <>
@@ -76,7 +107,7 @@ class EditPage extends React.Component {
         >
           <IconContext.Provider
             value={{
-              size: "1.6vw",
+              size: "25px",
               className: "JumbBiPencil",
             }}
           >
@@ -106,6 +137,8 @@ class EditPage extends React.Component {
               roundedCircle
               className="editImage"
             />
+            {/* <input type="file" onChange={this.fileselectHandler}></input>
+            <button onClick={this.fileUploadHandler}>Upload Image</button> */}
             <Form>
               <Row className="mt-4">
                 <Col>
@@ -168,12 +201,29 @@ class EditPage extends React.Component {
               </Form.Group>
             </Form>
             <Modal.Footer>
+              <input
+                style={{ display: "none" }}
+                type="file"
+                onChange={this.fileSelectHandler}
+                ref={(fileInput) => (this.fileInput = fileInput)}
+              />
+              <Button
+                variant={this.state.imgSubmitStatus}
+                onClick={() => this.fileInput.click()}
+                className="rounded-pill py-1"
+              >
+                {this.state.imgSubmitStatus === "secondary"
+                  ? "Choose an image"
+                  : "Ready to Upload"}
+              </Button>
               <Button
                 className="rounded-pill py-1"
                 variant="primary"
                 onClick={() => this.editPage()}
               >
-                Save
+                {this.state.imgSubmitStatus === "secondary"
+                  ? "Save"
+                  : "Submit changes"}
               </Button>
             </Modal.Footer>
           </Modal.Body>
