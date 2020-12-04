@@ -15,17 +15,11 @@ class Feature extends React.Component {
           
           <Row noGutters style={{overflow: 'hidden', width: `100%`}}>
             <Col md={5} style={{marginRight: '.4vw', marginLeft: '.2vw' }}>
-              <Card style={{ width: "18vw", borderRadius: ".5vw", }}>
-                <Card.Img
+              <Card style={{borderRadius: ".5vw", }} className= 'featimg'>
+                <Card.Img 
                   variant="top"
                   src={feat3}
-                  style={{
-                    borderTopLeftRadius: ".5vw",
-                    borderTopRightRadius: ".5vw",
-                    width: "18vw",
-                    height: '9vw'
-                    
-                  }}
+                  
                 />
                 <Card.Body style={{padding:'.5vw'}} className="infobody">
                   <Card.Text style={{fontWeight: 'bold'}}>
@@ -35,15 +29,12 @@ class Feature extends React.Component {
               </Card>
             </Col>
             <Col md={5} style={{marginRight: '.4vw'}}>
-              <Card style={{ width: "18vw", borderRadius: ".5vw", }}>
+              <Card style={{borderRadius: ".5vw", }} className= 'featimg'>
                 <Card.Img
                   variant="top"
                   src={feat2}
                   style={{
-                    borderTopLeftRadius: ".5vw",
-                    borderTopRightRadius: ".5vw",
-                    width: "18vw",
-                    height: '9vw',
+                    
                     objectFit: 'cover'
                   }}
                 />
@@ -55,17 +46,11 @@ class Feature extends React.Component {
               </Card>
             </Col>
             <Col style={{overflow: 'hidden'}}>
-              <Card md={2} style={{ width: "18vw", borderRadius: ".5vw" }}>
-                <Card.Img
+              <Card md={2} style={{ borderRadius: ".5vw" }} className= 'featimg'>
+                <Card.Img 
                   variant="top"
                   src={feat1}
-                  style={{
-                    borderTopLeftRadius: ".5vw",
-                    borderTopRightRadius: ".5vw",
-                    width: "18vw",
-                    height: '9vw'
-                    
-                  }}
+                  
                 />
                 <Card.Body style={{padding:'.5vw'}} className="infobody">
                   <Card.Text style={{fontWeight: 'bold'}}>
