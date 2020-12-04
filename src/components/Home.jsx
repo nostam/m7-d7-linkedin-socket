@@ -78,7 +78,7 @@ export default class Home extends Component {
                       />
                       {post.user.name + " " + post.user.surname}
                     </div>
-                    <EditPost Post={post} />
+                    <EditPost post={post} />
                   </Card.Header>
                   {post.image && (
                     <Card.Img
