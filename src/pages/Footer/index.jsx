@@ -3,8 +3,8 @@ import { Container, Row, Col, Form } from "react-bootstrap";
 import { IconContext } from "react-icons";
 import { FaQuestionCircle } from "react-icons/fa";
 import { BsFillGearFill } from "react-icons/bs";
-import FooterLogo from "../footer_logo.svg";
-import "../styles/Footer.css";
+import FooterLogo from "../../assets/footer_logo.svg";
+import "./styles.css";
 class footer extends React.Component {
   render() {
     return (

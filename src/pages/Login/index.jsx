@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Row, Col, Form, Button, Container, Badge } from "react-bootstrap";
 import { Link, withRouter } from "react-router-dom";
-import FooterLogo from "../footer_logo.svg";
-import "../styles/Login.css";
+import FooterLogo from "../../assets/footer_logo.svg";
+import "./styles.css";
 class Login extends Component {
   state = {
     user: [],

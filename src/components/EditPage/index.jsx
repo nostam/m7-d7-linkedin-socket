@@ -3,7 +3,7 @@ import { Image, Row, Col, Form, Button, Modal } from "react-bootstrap";
 import { BiPencil } from "react-icons/bi";
 import { MdClose } from "react-icons/md";
 import { IconContext } from "react-icons";
-import "../styles/EditPage.css";
+import "./styles.css";
 
 class EditPage extends React.Component {
   state = {

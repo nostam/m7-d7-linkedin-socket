@@ -4,7 +4,7 @@ import { FaCamera, FaVideo, FaStickyNote, FaPenSquare } from "react-icons/fa";
 import { BiPencil } from "react-icons/bi";
 import { IconContext } from "react-icons";
 import { withRouter } from "react-router-dom";
-import "../styles/PostModal.css";
+import "./styles.css";
 
 class PostModal extends React.Component {
   state = {

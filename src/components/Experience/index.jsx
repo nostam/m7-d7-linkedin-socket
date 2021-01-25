@@ -1,15 +1,14 @@
 import React from "react";
-import Edit from "./EditExp";
+import Edit from "../EditExp";
 import { Button, Card, Col, Row } from "react-bootstrap";
 import { IconContext } from "react-icons";
 import { BiPencil } from "react-icons/bi";
 import { BsPlus } from "react-icons/bs";
-import Job from "../assets/job.png";
+import Job from "../../assets/job.png";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { Route } from "react-router-dom";
 import moment from "moment";
-// import "../styles/Profile.css";
-import "../styles/Experience.css";
+import "./styles.css";
 class Experience extends React.Component {
   state = {
     showModal: false,
@@ -173,31 +172,37 @@ class Experience extends React.Component {
                                     </Button>
                                   </Route>
                                   <li className="expEntries">
-                                    <div class="roleExp">{experience.role}</div>
+                                    <div className="roleExp">
+                                      {experience.role}
+                                    </div>
                                   </li>
                                   <li className="expEntries">
-                                    <div class="workplaceExp">
+                                    <div className="workplaceExp">
                                       {experience.company}
                                     </div>
                                   </li>
                                   <li className="expEntries">
-                                    <div class="timeExp">
+                                    <div className="timeExp">
                                       {moment(experience.startDate).format(
                                         "MM/YYYY"
-                                      )}  -  {experience.endDate ? moment(experience.endDate).format(
-                                        "MM/YYYY"
-                                      ) : "Current"}
+                                      )}{" "}
+                                      -{" "}
+                                      {experience.endDate
+                                        ? moment(experience.endDate).format(
+                                            "MM/YYYY"
+                                          )
+                                        : "Current"}
                                     </div>
-                                    <div class="timeExp">
-                                      
-                                    </div>
+                                    <div className="timeExp"></div>
                                   </li>
 
                                   <li className="expEntries">
-                                    <div class="cityExp">{experience.area}</div>
+                                    <div className="cityExp">
+                                      {experience.area}
+                                    </div>
                                   </li>
                                   <li className="expEntries">
-                                    <div class="descExp">
+                                    <div className="descExp">
                                       {experience.description}
                                     </div>
                                   </li>

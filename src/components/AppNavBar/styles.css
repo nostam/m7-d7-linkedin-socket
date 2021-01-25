@@ -30,8 +30,7 @@
   border: 0;
   padding-right: 0;
 }
-.navLinkCol,
-.navCol.col {
+.navLinkCol {
   display: flex !important;
   justify-content: center;
   align-items: center;

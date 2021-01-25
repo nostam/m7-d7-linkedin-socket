@@ -9,11 +9,11 @@ import {
   Alert,
 } from "react-bootstrap";
 import { BiLike, BiCommentDetail, BiShare, BiSend } from "react-icons/bi";
-import EditPost from "./EditPost";
-import PostModal from "./PostModal";
-import RSidebar from "./RSidebar";
-import Sidebar from "./Sidebar";
-import "../styles/Home.css";
+import EditPost from "../../components/EditPost";
+import PostModal from "../../components/PostModal";
+import RSidebar from "../../components/RSidebar";
+import Sidebar from "../../components/Sidebar";
+import "./styles.css";
 export default class Home extends Component {
   state = {
     posts: [],
@@ -81,7 +81,7 @@ export default class Home extends Component {
           {this.state.loading && this.state.err !== true ? (
             <div
               style={{ position: "relative", top: "8vh", left: "25vw" }}
-              class="lds-facebook"
+              className="lds-facebook"
             ></div>
           ) : Object.keys(this.state.posts).length !== 0 ? (
             <Row>

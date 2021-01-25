@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Col, Row, Modal, Image, Form } from "react-bootstrap";
 import { BiDotsHorizontalRounded } from "react-icons/bi";
 import { IconContext } from "react-icons";
-import "../styles/PostModal.css";
+import "../PostModal/styles.css";
 
 class EditPost extends React.Component {
   state = {

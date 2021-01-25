@@ -1,12 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Home from "./components/Home";
+import Home from "./pages/Home";
 import AppNavBar from "./components/AppNavBar";
-import Footer from "./components/Footer";
-import Profile from "./components/ProfileBody";
-import Login from "./components/Login";
-import SignUp from "./components/SignUp";
-import Welcome from "./components/Welcome";
+import Footer from "./pages/Footer";
+import Profile from "./pages/Profile";
+import Login from "./pages/Login";
+import SignUp from "./pages/Signup";
+import Welcome from "./pages/Welcome";
 // import PostModal from "./components/PostModal";
 import "bootstrap/dist/css/bootstrap.min.css";
 

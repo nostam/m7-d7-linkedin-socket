@@ -1,11 +1,11 @@
-import "../styles/Welcome.css";
+import "./styles.css";
 import React, { Component } from "react";
 
 import { Row, Col, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import FooterLogo from "../footer_logo.svg";
-import "../styles/Login.css";
-import Login from "./Login";
+import FooterLogo from "../../assets/footer_logo.svg";
+import "../Login/styles.css";
+import Login from "../Login";
 export default class Welcome extends Component {
   render() {
     return (

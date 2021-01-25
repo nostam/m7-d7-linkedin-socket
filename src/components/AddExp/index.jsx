@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../App.css";
+import "../../App.css";
 import { Button, Modal, Form } from "react-bootstrap";
 
 class Add extends React.Component {

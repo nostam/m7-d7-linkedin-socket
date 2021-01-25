@@ -44,11 +44,9 @@ class RSidebar extends React.Component {
               </div>
             </div>
 
-            <Card.Text className="crdTxtH">
-              <p className="wlcmP">
-                Welcome
-                {" " + this.props.me.name + "!"}
-              </p>
+            <Card.Text className="crdTxtH wlcmP">
+              Welcome
+              {" " + this.props.me.name + "!"}
               <Card.Link>Add sessines</Card.Link>
             </Card.Text>
           </Card.Body>
@@ -62,7 +60,7 @@ class RSidebar extends React.Component {
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 data-supported-dps="24x24"
-                class="mercado-match"
+                className="mercado-match"
                 width="29"
                 height="29"
                 focusable="false"

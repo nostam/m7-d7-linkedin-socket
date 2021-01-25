@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  Form,
-  FormControl,
-  Navbar,
-  Nav,
-  InputGroup,
-  Col,
-} from "react-bootstrap";
+import { Form, FormControl, Navbar, Nav, InputGroup } from "react-bootstrap";
 import { withRouter, Link } from "react-router-dom";
 import { IconContext } from "react-icons";
 import {
@@ -19,7 +12,7 @@ import {
 import { BsPeopleFill, BsGrid3X3Gap, BsCollectionPlay } from "react-icons/bs";
 import { GiHandBag } from "react-icons/gi";
 import { RiMessage2Fill } from "react-icons/ri";
-import "../styles/AppNavBar.css";
+import "./styles.css";
 class AppNavBar extends React.Component {
   render() {
     return (
@@ -61,60 +54,47 @@ class AppNavBar extends React.Component {
                 value={this.props.query}
                 type="text"
                 placeholder="Search"
-                className=""
                 onChange={(e) => this.props.searchHandler(e)}
               />
             </InputGroup>
           </Form>
           <div className="ml-auto mr-0 d-flex row justify-content-end">
-            <Nav.Link className="navLinkCol" as={Link} to="/Home">
-              <Col className="navCol">
-                <FaHome className="navIcon" />
-                <span className="navIconText">Home</span>
-              </Col>
+            <Nav.Link className="navLinkCol flex-column" as={Link} to="/Home">
+              <FaHome className="navIcon" />
+              <span className="navIconText">Home</span>
             </Nav.Link>
-            <Nav.Link className="navLinkCol">
-              <Col className="navCol">
-                <BsPeopleFill className="navIcon" />
-                <span className="navIconText">My Network</span>
-              </Col>
+            <Nav.Link className="navLinkCol flex-column">
+              <BsPeopleFill className="navIcon" />
+              <span className="navIconText">My Network</span>
             </Nav.Link>
-            <Nav.Link className="navLinkCol">
-              <Col className="navCol">
-                <GiHandBag className="navIcon" />{" "}
-                <span className="navIconText">Jobs</span>
-              </Col>
+            <Nav.Link className="navLinkCol flex-column">
+              <GiHandBag className="navIcon" />
+              <span className="navIconText">Jobs</span>
             </Nav.Link>
-            <Nav.Link className="navLinkCol">
-              <Col className="navCol">
-                <RiMessage2Fill className="navIcon" />
-                <span className="navIconText">Messaging</span>
-              </Col>
+            <Nav.Link className="navLinkCol flex-column">
+              <RiMessage2Fill className="navIcon" />
+              <span className="navIconText">Messaging</span>
             </Nav.Link>
-            <Nav.Link className="navLinkCol">
-              <Col className="navCol">
-                <FaBell className="navIcon" />
-                <span className="navIconText">Notifications</span>
-              </Col>
+            <Nav.Link className="navLinkCol flex-column">
+              <FaBell className="navIcon" />
+              <span className="navIconText">Notifications</span>
             </Nav.Link>
-            <Nav.Link className="navLinkCol" as={Link} to="/user/me">
-              <Col className="navCol">
-                <FaUserCircle className="navIcon" />
-                <span className="navIconText">Me</span>
-              </Col>
+            <Nav.Link
+              className="navLinkCol flex-column"
+              as={Link}
+              to="/user/me"
+            >
+              <FaUserCircle className="navIcon" />
+              <span className="navIconText">Me</span>
             </Nav.Link>
-            <div class="vl"></div>
-            <Nav.Link className="navLinkCol">
-              <Col className="navCol">
-                <BsGrid3X3Gap className="navIcon" />
-                <span className="navIconText">Work</span>
-              </Col>
+            <div className="vl"></div>
+            <Nav.Link className="navLinkCol flex-column">
+              <BsGrid3X3Gap className="navIcon" />
+              <span className="navIconText">Work</span>
             </Nav.Link>
-            <Nav.Link className="navLinkCol">
-              <Col className="navCol">
-                <BsCollectionPlay className="navIcon" />
-                <span className="navIconText">Learning</span>
-              </Col>
+            <Nav.Link className="navLinkCol flex-column">
+              <BsCollectionPlay className="navIcon" />
+              <span className="navIconText">Learning</span>
             </Nav.Link>
           </div>
         </div>

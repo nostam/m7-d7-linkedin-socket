@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { Button, Col, Row } from "react-bootstrap";
-import "../styles/Sidebar.css";
+import "./styles.css";
 import { Link } from "react-router-dom";
-import vid1 from "../assets/vid1.png";
-import vid2 from "../assets/vid2.png";
-import vid3 from "../assets/vid3.png";
+import vid1 from "../../assets/vid1.png";
+import vid2 from "../../assets/vid2.png";
+import vid3 from "../../assets/vid3.png";
 class Sidebar extends Component {
   state = {
     users: [],
@@ -62,7 +62,7 @@ class Sidebar extends Component {
             viewBox="0 0 14 14"
             data-supported-dps="14x14"
             fill="currentColor"
-            class="mercado-match"
+            className="mercado-match"
             width="14"
             height="14"
             focusable="false"

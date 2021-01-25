@@ -9,12 +9,12 @@ import {
   Dropdown,
   DropdownButton,
 } from "react-bootstrap";
-import Bio from "./BioCard";
-import Experience from "./Experience";
-import Feature from "./Featured";
-import Sidebar from "./Sidebar";
-import EditPage from "./EditPage";
-import "../styles/Profile.css";
+import Bio from "../../components/BioCard";
+import Experience from "../../components/Experience";
+import Feature from "../../components/Featured";
+import Sidebar from "../../components/Sidebar";
+import EditPage from "../../components/EditPage";
+import "./styles.css";
 import { BiPencil } from "react-icons/bi";
 import { IconContext } from "react-icons";
 import { Route } from "react-router-dom";
@@ -74,7 +74,7 @@ class Body extends React.Component {
           {this.state.loading && this.state.err !== true ? (
             <div
               style={{ position: "relative", top: "8vh", left: "25vw" }}
-              class="lds-facebook"
+              className="lds-facebook"
             >
               <div></div>
               <div></div>
@@ -122,7 +122,7 @@ class Body extends React.Component {
                               viewBox="0 0 21 21"
                               data-supported-dps="21x21"
                               fill="currentColor"
-                              class="mercado-match"
+                              className="mercado-match"
                               width="21"
                               height="21"
                               focusable="false"
