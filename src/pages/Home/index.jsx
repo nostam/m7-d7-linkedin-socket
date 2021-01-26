@@ -77,7 +77,7 @@ export default class Home extends Component {
               <Col lg={6} md={9}>
                 <PostModal refetch={() => this.getPosts()} me={me} />
                 {posts.map((post) => (
-                  <FeedCard post={post} />
+                  <FeedCard key={post._id} post={post} />
                 ))}
                 <Button
                   variant="outline-secondary"

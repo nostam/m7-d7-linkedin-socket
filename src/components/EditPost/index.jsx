@@ -50,7 +50,7 @@ class EditPost extends React.Component {
   Delete = async () => {
     try {
       const response = await fetch(
-        `https://striveschool-api.herokuapp.com/api/posts/${this.props.post._id}`,
+        `${process.env.REACT_APP_API_URL}/posts/${this.props.post._id}`,
         {
           method: "DELETE",
           headers: {
@@ -81,7 +81,7 @@ class EditPost extends React.Component {
     fd.append("post", this.state.selectedFile);
     try {
       const response = await fetch(
-        `https://striveschool-api.herokuapp.com/api/posts/${this.props.post._id}`,
+        `${process.env.REACT_APP_API_URL}/posts/${this.props.post._id}`,
         {
           method: "POST",
           headers: { Authorization: "Bearer " + localStorage.getItem("token") },
