@@ -62,7 +62,7 @@ class Experience extends React.Component {
   };
   searchExp = async () => {
     await fetch(
-      `https://striveschool-api.herokuapp.com/api/profile/${this.props.profile._id}/experiences`,
+      `http://localhost:4002/experiences/${this.props.profile.username}`,
       {
         method: "GET",
         headers: new Headers({
@@ -231,6 +231,7 @@ class Experience extends React.Component {
             toggle={() => this.toggleModal()}
             refetch={() => this.searchExp()}
             color="#0A66CE"
+            profile= {this.props.profile}
           />
         </Route>
       </>

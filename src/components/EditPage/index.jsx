@@ -16,7 +16,7 @@ class EditPage extends React.Component {
   fetchMe = async () => {
     try {
       const pFetch = await fetch(
-        "https://striveschool-api.herokuapp.com/api/profile/me",
+        "http://localhost:4002/profiles/600ea6c630ffa163f4412d62",
         {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("token"),
@@ -42,7 +42,7 @@ class EditPage extends React.Component {
   };
 
   editPage = async () => {
-    const url = "https://striveschool-api.herokuapp.com/api/profile/";
+    const url = "http://localhost:4002/profiles/600ea6c630ffa163f4412d62";
     try {
       const response = await fetch(url, {
         method: "PUT",
@@ -78,10 +78,10 @@ class EditPage extends React.Component {
 
   fileUploadHandler = async () => {
     const fd = new FormData();
-    fd.append("profile", this.state.selectedFile);
+    fd.append("image", this.state.selectedFile);
     try {
       const response = await fetch(
-        `https://striveschool-api.herokuapp.com/api/profile/${this.state.profile._id}/picture`,
+        "http://localhost:4002/profiles/600ea6c630ffa163f4412d62/img_upld",
         {
           method: "POST",
           headers: { Authorization: "Bearer " + localStorage.getItem("token") },

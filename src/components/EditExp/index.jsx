@@ -10,7 +10,7 @@ class Edit extends React.Component {
     selectedFile: null,
     imgSubmitStatus: "secondary",
   };
-  url = "https://striveschool-api.herokuapp.com/api/profile/";
+  url = `http://localhost:4002/experiences/${this.props.profile.username}`;
   headers = {
     Authorization: "Bearer " + localStorage.getItem("token"),
     "Content-Type": "application/json",
@@ -19,7 +19,7 @@ class Edit extends React.Component {
     try {
       if (this.props.expId !== null) {
         const response = await fetch(
-          `${this.url}${this.props.userId}/experiences/${this.props.expId}`,
+          `http://localhost:4002/experiences/${this.props.profile.username}`,
           {
             method: "GET",
             headers: this.headers,
@@ -45,8 +45,8 @@ class Edit extends React.Component {
   submitData = async (str) => {
     const url =
       str === "POST"
-        ? `${this.url}${this.props.userId}/experiences`
-        : `${this.url}${this.props.userId}/experiences/${this.props.expId}`;
+        ? `${this.url}/exp`
+        : `${this.url}/exp/${this.props.expId}`;
     const payload = JSON.stringify(this.state.experience);
     try {
       console.log(payload, str);
@@ -99,10 +99,10 @@ class Edit extends React.Component {
 
   fileUploadHandler = async () => {
     const fd = new FormData();
-    fd.append("experience", this.state.selectedFile);
+    fd.append("image", this.state.selectedFile);
     try {
       const response = await fetch(
-        `https://striveschool-api.herokuapp.com/api/profile/${this.props.userId}/experiences/${this.props.expId}/picture`,
+       ` http://localhost:4002/experiences/${this.props.profile.username}/exp/${this.props.expId}/upload`,
         {
           method: "POST",
           headers: { Authorization: "Bearer " + localStorage.getItem("token") },
