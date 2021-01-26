@@ -12,7 +12,7 @@ import "./styles.css";
 class Experience extends React.Component {
   state = {
     showModal: false,
-    experience: [],
+    experiences: [],
     selectedId: null,
     // method: null,
     exp: {},
@@ -39,7 +39,7 @@ class Experience extends React.Component {
     }
 
     const items = this.reorder(
-      this.state.experience,
+      this.state.experiences,
       result.source.index,
       result.destination.index
     );
@@ -72,8 +72,8 @@ class Experience extends React.Component {
       }
     )
       .then((response) => response.json())
-      .then((experience) => {
-        this.setState({ experience: experience });
+      .then((experiences) => {
+        this.setState({ experiences: experiences });
       });
   };
   componentDidMount = () => {
@@ -97,6 +97,7 @@ class Experience extends React.Component {
   };
 
   render() {
+    const { experiences } = this.state;
     return (
       <>
         <Card className="bio cardProf">
@@ -125,7 +126,7 @@ class Experience extends React.Component {
               <Droppable droppableId="droppable">
                 {(provided, snapshot) => (
                   <div {...provided.droppableProps} ref={provided.innerRef}>
-                    {this.state.experience.map((experience, index) => (
+                    {experiences.map((experience, index) => (
                       <Draggable
                         key={experience._id}
                         draggableId={experience._id}

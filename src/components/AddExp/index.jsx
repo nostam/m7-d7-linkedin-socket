@@ -45,6 +45,7 @@ class Add extends React.Component {
   };
 
   render() {
+    const { experience } = this.state;
     return (
       <Modal
         show={this.props.open}
@@ -64,7 +65,7 @@ class Add extends React.Component {
                 id="role"
                 required
                 onChange={this.updateState}
-                value={this.state.experience.role}
+                value={experience.role}
                 type="text"
                 placeholder="First Name"
               />
@@ -75,7 +76,7 @@ class Add extends React.Component {
                 id="company"
                 required
                 onChange={this.updateState}
-                value={this.state.experience.company}
+                value={experience.company}
                 type="text"
                 placeholder="Last Name"
               />
@@ -86,7 +87,7 @@ class Add extends React.Component {
                 id="startDate"
                 required
                 onChange={this.updateState}
-                value={this.state.experience.startDate}
+                value={experience.startDate}
                 type="date"
                 placeholder="Headline"
               />
@@ -96,7 +97,7 @@ class Add extends React.Component {
               <Form.Control
                 id="endDate"
                 onChange={this.updateState}
-                value={this.state.experience.endDate}
+                value={experience.endDate}
                 type="date"
                 placeholder="Current Position"
               />
@@ -107,7 +108,7 @@ class Add extends React.Component {
                 id="description"
                 required
                 onChange={this.updateState}
-                value={this.state.experience.description}
+                value={experience.description}
                 as="textarea"
                 placeholder="Description"
               />
@@ -118,7 +119,7 @@ class Add extends React.Component {
                 id="area"
                 required
                 onChange={this.updateState}
-                value={this.state.experience.area}
+                value={experience.area}
                 type="text"
                 placeholder="Area"
               />

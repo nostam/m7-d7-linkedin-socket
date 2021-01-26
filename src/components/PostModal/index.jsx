@@ -83,6 +83,7 @@ class PostModal extends React.Component {
     }
   };
   render() {
+    const { imgSubmitStatus, post } = this.state;
     return (
       <>
         <Card className="bg-white p-4">
@@ -121,7 +122,7 @@ class PostModal extends React.Component {
                   as="textarea"
                   id="text"
                   rows={3}
-                  value={this.state.post.text}
+                  value={post.text}
                   onChange={(e) => this.onChangeHandler(e)}
                 />
               </Form.Group>
@@ -148,7 +149,7 @@ class PostModal extends React.Component {
               ref={(fileInput) => (this.fileInput = fileInput)}
             />
             <span>
-              {this.state.imgSubmitStatus === "secondary"
+              {imgSubmitStatus === "secondary"
                 ? "Choose a file"
                 : "Good to go! Ready to submit"}
             </span>
@@ -156,10 +157,7 @@ class PostModal extends React.Component {
               value={{
                 size: "30px",
                 className: "mx-2",
-                color:
-                  this.state.imgSubmitStatus === "secondary"
-                    ? "#666"
-                    : "#28a745",
+                color: imgSubmitStatus === "secondary" ? "#666" : "#28a745",
               }}
             >
               <FaCamera onClick={() => this.fileInput.click()} />

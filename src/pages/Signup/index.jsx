@@ -50,6 +50,7 @@ export default class SignUp extends Component {
     this.setState({ hidden: !this.state.hidden });
   };
   render() {
+    const { hidden, user } = thi.state;
     return (
       <div className="signupDiv">
         <Container className="d-flex flex-column justify-content-center align-content-center">
@@ -70,7 +71,7 @@ export default class SignUp extends Component {
                   <Form.Control
                     required
                     id="username"
-                    value={this.state.user.username}
+                    value={user.username}
                     type="text"
                     size="sm"
                     placeholder="Email or Phone"
@@ -83,8 +84,8 @@ export default class SignUp extends Component {
                   <Form.Control
                     required
                     id="password"
-                    value={this.state.user.password}
-                    type={this.state.hidden ? "password" : "text"}
+                    value={user.password}
+                    type={hidden ? "password" : "text"}
                     size="sm"
                     placeholder="Password"
                     onKeyDown={(e) => this.handleLogin(e)}

@@ -101,6 +101,7 @@ class EditPost extends React.Component {
     this.setState({ content: this.props.post });
   };
   render() {
+    const { showModal, imgSubmitStatus, content } = this.state;
     return (
       <>
         <div
@@ -117,7 +118,7 @@ class EditPost extends React.Component {
           </IconContext.Provider>
         </div>
         <Modal
-          show={this.state.showModal}
+          show={showModal}
           onHide={() => this.setState({ showModal: false })}
         >
           <Modal.Header closeButton>
@@ -145,7 +146,7 @@ class EditPost extends React.Component {
                   as="textarea"
                   id="text"
                   rows={3}
-                  value={this.state.content.text}
+                  value={content.text}
                   onChange={(e) => this.onChangeHandler(e)}
                 />
               </Form.Group>
@@ -160,10 +161,10 @@ class EditPost extends React.Component {
               ref={(fileInput) => (this.fileInput = fileInput)}
             />
             <Button
-              variant={this.state.imgSubmitStatus}
+              variant={imgSubmitStatus}
               onClick={() => this.fileInput.click()}
             >
-              {this.state.imgSubmitStatus === "secondary"
+              {imgSubmitStatus === "secondary"
                 ? "Choose an image"
                 : "Ready to Upload"}
             </Button>

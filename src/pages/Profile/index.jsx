@@ -9,6 +9,7 @@ import {
   Dropdown,
   DropdownButton,
 } from "react-bootstrap";
+import { FadeLoader } from "react-spinners";
 import Bio from "../../components/BioCard";
 import Experience from "../../components/Experience";
 import Feature from "../../components/Featured";
@@ -55,32 +56,25 @@ class Body extends React.Component {
         });
       });
   };
-  componentDidMount = async () => {
+  componentDidMount = () => {
     this.props.match.params.id &&
       this.searchProfile(this.props.match.params.id);
   };
-  componentDidUpdate = (prevProps) => {
-    if (prevProps.match.params.id !== this.props.match.params.id) {
-      this.searchProfile(this.props.match.params.id);
-    }
-  };
+  // componentDidUpdate = (prevProps) => {
+  //   if (prevProps.match.params.id !== this.props.match.params.id) {
+  //     this.searchProfile(this.props.match.params.id);
+  //   }
+  // };
   render() {
+    const { err, loading, profile, errMsg } = this.state;
     return (
       <div className="bgBody">
         <div className="mainBody">
-          {this.state.err && (
-            <Alert variant="danger">{this.state.errMsg}</Alert>
-          )}
-          {this.state.loading && this.state.err !== true ? (
-            <div
-              style={{ position: "relative", top: "8vh", left: "25vw" }}
-              className="lds-facebook"
-            >
-              <div></div>
-              <div></div>
-              <div></div>
-            </div>
-          ) : Object.keys(this.state.profile).length !== 0 ? (
+          {err && <Alert variant="danger">{errMsg}</Alert>}
+
+          {loading && err === true ? (
+            <FadeLoader loading={loading} size={60} />
+          ) : Object.keys(profile).length !== 0 ? (
             <Row className="rowm">
               {/*<Col lg={3}></Col> */}
               <Col md={8} style={{ marginTop: "10vh" }}>
@@ -96,7 +90,7 @@ class Body extends React.Component {
                     <div className="d-flex justify-content-between">
                       <div style={{ marginTop: "-130px" }}>
                         <img
-                          src={this.state.profile.image}
+                          src={profile.image}
                           alt="placeholder"
                           height="160px"
                           width="160px"
@@ -113,10 +107,7 @@ class Body extends React.Component {
                       <Row>
                         <Col xs={12} lg={6}>
                           <h3 className="usrnTxt">
-                            {this.state.profile.name +
-                              " " +
-                              this.state.profile.surname +
-                              " "}
+                            {profile.name + " " + profile.surname + " "}
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               viewBox="0 0 21 21"
@@ -136,10 +127,8 @@ class Body extends React.Component {
                               </g>
                             </svg>
                           </h3>
-                          <div className="roletext">
-                            {this.state.profile.title}
-                          </div>
-                          <h6 className="areaTxt">{this.state.profile.area}</h6>
+                          <div className="roletext">{profile.title}</div>
+                          <h6 className="areaTxt">{profile.area}</h6>
                         </Col>
                         <Col lg={6}>
                           <div className="btnBox">
@@ -166,7 +155,7 @@ class Body extends React.Component {
                               </DropdownButton>
                               <button className="btnMore">More...</button>
                               <EditPage
-                                profile={this.state.profile}
+                                profile={profile}
                                 refetch={() =>
                                   this.searchProfile(this.props.match.params.id)
                                 }
@@ -180,15 +169,15 @@ class Body extends React.Component {
                   </Card.Body>
                 </Card>
                 <Bio
-                  bio={this.state.profile.bio}
-                  profile={this.state.profile}
+                  bio={profile.bio}
+                  profile={profile}
                   refetch={() => this.searchProfile(this.props.match.params.id)}
                 />
                 <Route path="/user/me">
                   {" "}
                   <Feature />{" "}
                 </Route>
-                <Experience profile={this.state.profile} />
+                <Experience profile={profile} />
               </Col>
               <Col
                 md={4}

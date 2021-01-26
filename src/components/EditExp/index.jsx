@@ -121,6 +121,7 @@ class Edit extends React.Component {
     }
   };
   render() {
+    const { experience, imgSubmitStatus } = this.state;
     return (
       <Modal
         show={this.props.show}
@@ -139,7 +140,7 @@ class Edit extends React.Component {
               <Form.Control
                 required
                 id="role"
-                value={this.state.experience.role}
+                value={experience.role}
                 type="text"
                 size="sm"
                 placeholder="Role"
@@ -151,7 +152,7 @@ class Edit extends React.Component {
               <Form.Control
                 required
                 id="company"
-                value={this.state.experience.company}
+                value={experience.company}
                 type="text"
                 size="sm"
                 placeholder="Company"
@@ -165,7 +166,7 @@ class Edit extends React.Component {
                   <Form.Control
                     required
                     id="startDate"
-                    value={this.state.experience.startDate}
+                    value={experience.startDate}
                     type="date"
                     size="sm"
                     placeholder="Headline"
@@ -177,7 +178,7 @@ class Edit extends React.Component {
                 <Form.Group>
                   <Form.Label>End date (empty if current) </Form.Label>
                   <Form.Control
-                    value={this.state.experience.endDate}
+                    value={experience.endDate}
                     id="endDate"
                     type="date"
                     size="sm"
@@ -191,7 +192,7 @@ class Edit extends React.Component {
               <Form.Label>Description * </Form.Label>
               <Form.Control
                 required
-                value={this.state.experience.description}
+                value={experience.description}
                 id="description"
                 as="textarea"
                 size="sm"
@@ -203,7 +204,7 @@ class Edit extends React.Component {
               <Form.Label>Area * </Form.Label>
               <Form.Control
                 required
-                value={this.state.experience.area}
+                value={experience.area}
                 id="area"
                 type="text"
                 size="sm"
@@ -238,10 +239,10 @@ class Edit extends React.Component {
           />
           <Button
             className="rounded-pill py-1"
-            variant={this.state.imgSubmitStatus}
+            variant={imgSubmitStatus}
             onClick={() => this.fileInput.click()}
           >
-            {this.state.imgSubmitStatus === "secondary"
+            {imgSubmitStatus === "secondary"
               ? "Choose an image"
               : "Ready to Upload"}
           </Button>

@@ -8,6 +8,7 @@ import {
   Card,
   Alert,
 } from "react-bootstrap";
+import { FadeLoader } from "react-spinners";
 import { BiLike, BiCommentDetail, BiShare, BiSend } from "react-icons/bi";
 import EditPost from "../../components/EditPost";
 import PostModal from "../../components/PostModal";
@@ -72,28 +73,21 @@ export default class Home extends Component {
     this.fetchMe();
   }
   render() {
+    const { err, loading, posts, me, errMsg } = this.state;
     return (
       <div className="homeDiv">
-        <Container className="HomeCont">
-          {this.state.err && (
-            <Alert variant="danger">{this.state.errMsg}</Alert>
-          )}
-          {this.state.loading && this.state.err !== true ? (
-            <div
-              style={{ position: "relative", top: "8vh", left: "25vw" }}
-              className="lds-facebook"
-            ></div>
-          ) : Object.keys(this.state.posts).length !== 0 ? (
+        <Container className="HomeCont justify-content-center d-flex">
+          {err && <Alert variant="danger">{errMsg}</Alert>}
+          {loading && err !== true ? (
+            <FadeLoader loading={loading} size={60} />
+          ) : Object.keys(posts).length !== 0 ? (
             <Row>
-              <Col className="d-none d-lg-block" lg={3}>
-                <RSidebar me={this.state.me} />
+              <Col className="d-none d-lg-block" md={3}>
+                <RSidebar me={me} />
               </Col>
               <Col lg={6} md={9}>
-                <PostModal
-                  refetch={() => this.fetchPost()}
-                  me={this.state.me}
-                />
-                {this.state.posts.map((post) => (
+                <PostModal refetch={() => this.fetchPost()} me={me} />
+                {posts.map((post) => (
                   <Card className="w-100 my-4" key={`feed${post._id}`}>
                     <Card.Header className="d-flex justify-content-between px-3">
                       <div>

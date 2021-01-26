@@ -47,6 +47,7 @@ class Login extends Component {
     this.setState({ hidden: !this.state.hidden });
   };
   render() {
+    const { user } = this.state;
     return (
       <div className="loginDiv">
         <Container>
@@ -79,7 +80,7 @@ class Login extends Component {
                   <Form.Control
                     required
                     id="username"
-                    value={this.state.user.username}
+                    value={user.username}
                     type="text"
                     size="lg"
                     placeholder="Email or Phone"
@@ -91,7 +92,7 @@ class Login extends Component {
                   <Form.Control
                     required
                     id="password"
-                    value={this.state.user.password}
+                    value={user.password}
                     type={this.state.hidden ? "password" : "text"}
                     size="lg"
                     placeholder="Password"

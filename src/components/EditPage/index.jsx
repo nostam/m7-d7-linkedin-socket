@@ -35,7 +35,7 @@ class EditPage extends React.Component {
   onChangeHandler = (e) => {
     this.setState({
       profile: {
-        ...this.state.profile,
+        ...profile,
         [e.target.id]: e.currentTarget.value,
       },
     });
@@ -46,7 +46,7 @@ class EditPage extends React.Component {
     try {
       const response = await fetch(url, {
         method: "PUT",
-        body: JSON.stringify(this.state.profile),
+        body: JSON.stringify(profile),
         headers: {
           "Content-Type": "application/json",
           Authorization: "Bearer " + localStorage.getItem("token"),
@@ -64,8 +64,7 @@ class EditPage extends React.Component {
     }
   };
   handleCloseModal = async () => {
-    (await JSON.stringify(this.props.profile)) !==
-    JSON.stringify(this.state.profile)
+    (await JSON.stringify(this.props.profile)) !== JSON.stringify(profile)
       ? this.setState({ confirmDialog: true })
       : this.setState({ showModal: false });
   };
@@ -81,7 +80,7 @@ class EditPage extends React.Component {
     fd.append("profile", this.state.selectedFile);
     try {
       const response = await fetch(
-        `https://striveschool-api.herokuapp.com/api/profile/${this.state.profile._id}/picture`,
+        `https://striveschool-api.herokuapp.com/api/profile/${profile._id}/picture`,
         {
           method: "POST",
           headers: { Authorization: "Bearer " + localStorage.getItem("token") },
@@ -98,6 +97,7 @@ class EditPage extends React.Component {
     }
   };
   render() {
+    const { showModal, profile } = this.state;
     return (
       <>
         <div
@@ -116,7 +116,7 @@ class EditPage extends React.Component {
         </div>
         <Modal
           className="editProfileModal"
-          show={this.state.showModal}
+          show={showModal}
           onHide={() => this.setState({ showModal: false })}
         >
           <Modal.Header>
@@ -132,11 +132,7 @@ class EditPage extends React.Component {
             </IconContext.Provider>
           </Modal.Header>
           <Modal.Body>
-            <Image
-              src={this.state.profile.image}
-              roundedCircle
-              className="editImage"
-            />
+            <Image src={profile.image} roundedCircle className="editImage" />
             {/* <input type="file" onChange={this.fileSelectHandler}></input>
             <button onClick={this.fileUploadHandler}>Upload Image</button> */}
             <Form>
@@ -146,7 +142,7 @@ class EditPage extends React.Component {
                     <Form.Label>First Name*</Form.Label>
                     <Form.Control
                       type="text"
-                      value={this.state.profile.name}
+                      value={profile.name}
                       id="name"
                       size="sm"
                       onChange={(e) => this.onChangeHandler(e)}
@@ -158,7 +154,7 @@ class EditPage extends React.Component {
                     <Form.Label>Last Name*</Form.Label>
                     <Form.Control
                       type="text"
-                      value={this.state.profile.surname}
+                      value={profile.surname}
                       id="surname"
                       size="sm"
                       onChange={(e) => this.onChangeHandler(e)}
@@ -172,7 +168,7 @@ class EditPage extends React.Component {
                 <Form.Control
                   as="textarea"
                   rows={2}
-                  value={this.state.profile.bio}
+                  value={profile.bio}
                   id="bio"
                   size="sm"
                   onChange={(e) => this.onChangeHandler(e)}
@@ -182,7 +178,7 @@ class EditPage extends React.Component {
                 <Form.Label>Current Position</Form.Label>
                 <Form.Control
                   type="text"
-                  value={this.state.profile.title}
+                  value={profile.title}
                   id="title"
                   size="sm"
                   onChange={(e) => this.onChangeHandler(e)}
@@ -193,7 +189,7 @@ class EditPage extends React.Component {
                 <Form.Label>Country/Region</Form.Label>
                 <Form.Control
                   type="text"
-                  value={this.state.profile.area}
+                  value={profile.area}
                   id="area"
                   size="sm"
                   onChange={(e) => this.onChangeHandler(e)}
