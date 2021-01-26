@@ -16,12 +16,14 @@ export default class Home extends Component {
     errMsg: "",
     loading: true,
     links: {},
+    morePosts: true,
   };
-  getPosts = async (params = "/posts?limit=5") => {
+  getPosts = async (params = "/posts?limit=15") => {
     try {
       const res = await fetch(`${process.env.REACT_APP_API_URL}${params}`);
       if (res.ok) {
         let data = await res.json();
+        console.log(data);
         this.setState({
           posts:
             this.state.posts.length === 0
@@ -30,6 +32,7 @@ export default class Home extends Component {
           loading: false,
           links: data.links,
         });
+        if (data.posts.length <= 15) this.setState({ morePosts: false });
       }
     } catch (error) {
       console.log(error);
@@ -58,7 +61,7 @@ export default class Home extends Component {
     this.getUser();
   }
   render() {
-    const { err, loading, posts, me, errMsg, links } = this.state;
+    const { err, loading, posts, me, errMsg, links, morePosts } = this.state;
     return (
       <div className="homeDiv">
         {err && (
@@ -79,13 +82,15 @@ export default class Home extends Component {
                 {posts.map((post) => (
                   <FeedCard key={post._id} post={post} />
                 ))}
-                <Button
-                  variant="outline-secondary"
-                  onClick={() => this.getPosts(links.next)}
-                  className="w-100"
-                >
-                  Next
-                </Button>
+                {morePosts && (
+                  <Button
+                    variant="outline-secondary"
+                    onClick={() => this.getPosts(links.next)}
+                    className="w-100"
+                  >
+                    Next
+                  </Button>
+                )}
               </Col>
               <Col className="d-none d-md-block" md={3}>
                 <Sidebar />
