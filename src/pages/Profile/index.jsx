@@ -29,7 +29,7 @@ class Body extends React.Component {
     loading: true,
   };
   searchProfile = (id) => {
-    fetch("https://striveschool-api.herokuapp.com/api/profile/" + id, {
+    fetch("http://localhost:4002/profiles/600ea6c630ffa163f4412d62" , {
       method: "GET",
       headers: new Headers({
         Authorization: "Bearer " + localStorage.getItem("token"),
@@ -157,7 +157,7 @@ class Body extends React.Component {
                               <EditPage
                                 profile={profile}
                                 refetch={() =>
-                                  this.searchProfile(this.props.match.params.id)
+                                  this.searchProfile("600ea6c630ffa163f4412d62")
                                 }
                                 color="#0A66CE"
                               />
