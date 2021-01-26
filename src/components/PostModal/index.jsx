@@ -40,10 +40,9 @@ class PostModal extends React.Component {
     fd.append("post", this.state.selectedFile);
     try {
       const response = await fetch(
-        `https://striveschool-api.herokuapp.com/api/posts/${postId}`,
+        `${process.env.REACT_APP_API_URL}/posts/${postId}`,
         {
           method: "POST",
-          headers: { Authorization: "Bearer " + localStorage.getItem("token") },
           body: fd,
         }
       );
@@ -57,21 +56,21 @@ class PostModal extends React.Component {
       console.log(error);
     }
   };
-  post = async () => {
+  submitData = async () => {
     try {
-      const response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/posts",
-        {
-          method: "POST",
-          body: JSON.stringify(this.state.post),
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: "Bearer " + localStorage.getItem("token"),
-          },
-        }
-      );
-      if (response.ok) {
-        const data = await response.json();
+      const payload = {
+        ...this.state.post,
+        username: "admin",
+      };
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/posts`, {
+        method: "POST",
+        body: JSON.stringify(payload),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (res.ok) {
+        const data = await res.json();
         console.log(data);
         this.fileUploadHandler(data._id);
         // this.setState({ showModal: false }, () => this.props.refetch());
@@ -86,13 +85,13 @@ class PostModal extends React.Component {
     const { imgSubmitStatus, post } = this.state;
     return (
       <>
-        <Card className="bg-white p-4">
+        <Card className="bg-white px-4 py-2">
           <Button
             className="postButton"
             variant="outline-dark"
             onClick={() => this.setState({ showModal: true })}
           >
-            <BiPencil /> Start a Post
+            <BiPencil size="20" /> Start a Post
           </Button>
         </Card>
         <Modal
@@ -173,7 +172,7 @@ class PostModal extends React.Component {
               <FaStickyNote />
               <FaPenSquare />
             </IconContext.Provider>
-            <Button rounded-pill variant="primary" onClick={() => this.post()}>
+            <Button variant="primary" onClick={() => this.submitData()}>
               Post
             </Button>
           </Modal.Footer>
