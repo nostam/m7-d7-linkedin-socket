@@ -114,7 +114,9 @@ class Login extends Component {
                   </Button>
                 </Col>
               </Form>
-              <a className="forgetPwd">Forget your password?</a>
+              <a className="forgetPwd" href="/">
+                Forget your password?
+              </a>
             </div>
             {this.props.dontShowLogo ? (
               ""

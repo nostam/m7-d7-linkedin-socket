@@ -95,8 +95,9 @@ export default class SignUp extends Component {
               </Form>
               <span>
                 By clicking Agree & Join, you agree to the LinkedIn
-                <a>User Agreement</a>, <a>Privacy Policy</a>, and
-                <a>Cookie Policy</a>.
+                <a href="/">User Agreement</a>, <a href="/">Privacy Policy</a>,
+                and
+                <a href="/">Cookie Policy</a>.
               </span>
               <Col className="signupCol px-0">
                 {/* <Button className="signupBtn" onClick={() => this.submitData()}> */}
