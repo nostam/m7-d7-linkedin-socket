@@ -50,7 +50,7 @@ export default class SignUp extends Component {
     this.setState({ hidden: !this.state.hidden });
   };
   render() {
-    const { hidden, user } = thi.state;
+    const { hidden, user } = this.state;
     return (
       <div className="signupDiv">
         <Container className="d-flex flex-column justify-content-center align-content-center">
