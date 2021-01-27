@@ -1,18 +1,19 @@
 import React from "react";
 import { Button, Col, Row, Modal, Image, Form } from "react-bootstrap";
-import { BiDotsHorizontalRounded } from "react-icons/bi";
-import { IconContext } from "react-icons";
 import "../PostModal/styles.css";
 
 class EditPost extends React.Component {
   state = {
-    showModal: false,
-    content: [],
+    content: { text: "" },
     post: {},
     selectedFile: null,
     imgSubmitStatus: "secondary",
   };
-
+  url = `${process.env.REACT_APP_API_URL}/posts/`;
+  headers = {
+    Authorization: "Bearer " + localStorage.getItem("token"),
+    "Content-Type": "application/json",
+  };
   onChangeHandler = (e) => {
     this.setState({
       content: {
@@ -21,53 +22,40 @@ class EditPost extends React.Component {
       },
     });
   };
-
-  Edit = async () => {
+  submitData = async (str) => {
+    const url =
+      str === "POST" ? `${this.url}` : `${this.url}${this.props.post._id}`;
+    const payload = JSON.stringify({
+      ...this.state.content,
+      username: this.props.me.username,
+    });
     try {
-      const response = await fetch(
-        `${process.env.REACT_APP_API_URL}/posts/${this.props.post._id}`,
-        {
-          method: "PUT",
-          body: JSON.stringify(this.state.content),
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: "Bearer " + localStorage.getItem("token"),
-          },
-        }
-      );
+      console.log(payload, str);
+      const response = await fetch(url, {
+        method: str,
+        headers: this.headers,
+        body: payload,
+      });
       if (response.ok) {
-        this.state.selectedFile !== null
-          ? this.fileUploadHandler()
-          : this.setState({ showModal: false }, () => this.props.refetch());
-      } else {
-        this.setState({ showModal: false });
+        if (this.state.selectedFile !== null) {
+          this.fileUploadHandler();
+        } else {
+          this.props.toggle();
+          this.props.refetch();
+        }
       }
     } catch (e) {
       console.log(e);
     }
   };
-
-  Delete = async () => {
-    try {
-      const response = await fetch(
-        `${process.env.REACT_APP_API_URL}/posts/${this.props.post._id}`,
-        {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: "Bearer " + localStorage.getItem("token"),
-          },
-        }
-      );
-      if (response.ok) {
-        this.setState({ showModal: false });
-        this.props.refetch();
-      } else {
-        this.setState({ showModal: false });
-      }
-    } catch (e) {
-      console.log(e);
-    }
+  actionBtn = (str) => {
+    //TODO actionBtn is a redundant proxy, it can be replace directly with submitData
+    str !== "DELETE"
+      ? this.submitData(this.isNewPost() ? "POST" : "PUT")
+      : this.submitData("DELETE");
+  };
+  isNewPost = () => {
+    return this.props.post === undefined ? true : false;
   };
   fileSelectHandler = (event) => {
     this.setState({
@@ -98,55 +86,43 @@ class EditPost extends React.Component {
     }
   };
   componentDidMount = () => {
+    if (this.props.post === undefined) this.setState({ content: { text: "" } });
     this.setState({ content: this.props.post });
   };
   render() {
-    const { showModal, imgSubmitStatus, content } = this.state;
+    const { imgSubmitStatus, content } = this.state;
     return (
       <>
-        <div
-          onClick={() => this.setState({ showModal: true })}
-          className="JumbBiPencilDiv"
-        >
-          <IconContext.Provider
-            value={{
-              size: "24",
-              className: "JumbBiPencil",
-            }}
-          >
-            <BiDotsHorizontalRounded />
-          </IconContext.Provider>
-        </div>
-        <Modal
-          show={showModal}
-          onHide={() => this.setState({ showModal: false })}
-        >
+        <Modal show={this.props.show} onHide={this.props.toggle}>
           <Modal.Header closeButton>
-            <Modal.Title>Edit a Post</Modal.Title>
+            <Modal.Title>
+              {this.isNewPost() ? "Add a new post" : "Edit a Post"}
+            </Modal.Title>
           </Modal.Header>
-
           <Modal.Body>
-            <Row>
-              <Col>
-                <Image
-                  src={this.props.post.user.image}
-                  roundedCircle
-                  className="postModalImg"
-                />
-                <strong className="ml-5">
-                  {this.props.post.user.name +
-                    " " +
-                    this.props.post.user.surname}
-                </strong>
-              </Col>
-            </Row>
+            {Object.keys(this.props.me).length > 0 && (
+              <Row>
+                <Col>
+                  <Image
+                    src={this.props.me.image}
+                    roundedCircle
+                    className="postModalImg"
+                  />
+                  <strong className="ml-5">
+                    {this.props.me.name + " " + this.props.me.surname}
+                  </strong>
+                </Col>
+              </Row>
+            )}
             <Form className="mt-2">
               <Form.Group>
                 <Form.Control
                   as="textarea"
                   id="text"
                   rows={3}
-                  value={content.text}
+                  value={
+                    this.props.post !== undefined ? content.text : undefined
+                  }
                   onChange={(e) => this.onChangeHandler(e)}
                 />
               </Form.Group>
@@ -154,6 +130,15 @@ class EditPost extends React.Component {
           </Modal.Body>
 
           <Modal.Footer>
+            {!this.isNewPost() && (
+              <Button
+                className="mr-auto"
+                variant="danger"
+                onClick={() => this.actionBtn("DELETE")}
+              >
+                Delete Post
+              </Button>
+            )}
             <input
               style={{ display: "none" }}
               type="file"
@@ -168,11 +153,11 @@ class EditPost extends React.Component {
                 ? "Choose an image"
                 : "Ready to Upload"}
             </Button>
-            <Button variant="danger" onClick={() => this.Delete()}>
-              Delete
-            </Button>
-            <Button variant="primary" onClick={() => this.Edit()}>
-              Save Changes
+            <Button
+              variant="primary"
+              onClick={() => this.actionBtn(this.isNewPost() ? "PUT" : "POST")}
+            >
+              {this.isNewPost() ? "Submit" : "Save Changes"}
             </Button>
           </Modal.Footer>
         </Modal>

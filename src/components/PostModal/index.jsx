@@ -1,14 +1,13 @@
 import React from "react";
 import { Button, Col, Row, Modal, Image, Form, Card } from "react-bootstrap";
-import { FaCamera, FaVideo, FaStickyNote, FaPenSquare } from "react-icons/fa";
-import { BiPencil } from "react-icons/bi";
+import { MdInsertPhoto, MdVideocam, MdEventNote } from "react-icons/md";
+import { RiArticleLine, RiBallPenFill } from "react-icons/ri";
 import { IconContext } from "react-icons";
 import { withRouter } from "react-router-dom";
 import "./styles.css";
 
 class PostModal extends React.Component {
   state = {
-    showModal: false,
     me: {},
     selectedFile: null,
     imgSubmitStatus: "secondary",
@@ -16,7 +15,6 @@ class PostModal extends React.Component {
       text: "",
     },
   };
-
   addHashtag = () => {
     this.setState({ post: { text: this.state.post.text + " #" } });
   };
@@ -82,26 +80,48 @@ class PostModal extends React.Component {
     }
   };
   render() {
-    const { imgSubmitStatus, post } = this.state;
+    const { imgSubmitStatus, post, showModal } = this.state;
     return (
       <>
-        <Card className="bg-white px-4 py-2">
+        <Card className="pt-3 px-3 pb-0">
           <Button
-            className="postButton"
-            variant="outline-dark"
-            onClick={() => this.setState({ showModal: true })}
+            className="postButton align-items-center d-flex"
+            variant="outline-secondary"
+            onClick={() => this.props.toggle()}
           >
-            <BiPencil size="20" /> Start a Post
+            <RiBallPenFill size="16" />
+            <p>Start a Post</p>
           </Button>
+          <Row className="my-3 justify-content-around align-items-center d-flex">
+            <IconContext.Provider
+              value={{
+                size: "24",
+              }}
+            >
+              <Row className="align-items-center d-flex">
+                <MdInsertPhoto color="#70b5f9" />
+                <p className="postBtnText">Photo</p>
+              </Row>
+              <Row className="align-items-center d-flex">
+                <MdVideocam color="#7fc15e" />
+                <p className="postBtnText">Video</p>
+              </Row>
+              <Row className="align-items-center d-flex">
+                <MdEventNote color="#e7a33e" />
+                <p className="postBtnText">Event</p>
+              </Row>
+              <Row className="align-items-center d-flex">
+                <RiArticleLine color="#f5987e" />
+                <p className="postBtnText">Write Article</p>
+              </Row>
+            </IconContext.Provider>
+          </Row>
         </Card>
-        <Modal
-          show={this.state.showModal}
-          onHide={() => this.setState({ showModal: false })}
-        >
+
+        {/* <Modal show={this.props.show} onHide={this.props.toggle}>
           <Modal.Header closeButton>
             <Modal.Title>Create a Post</Modal.Title>
           </Modal.Header>
-
           <Modal.Body>
             <Row>
               <Col>
@@ -152,31 +172,12 @@ class PostModal extends React.Component {
                 ? "Choose a file"
                 : "Good to go! Ready to submit"}
             </span>
-            <IconContext.Provider
-              value={{
-                size: "30px",
-                className: "mx-2",
-                color: imgSubmitStatus === "secondary" ? "#666" : "#28a745",
-              }}
-            >
-              <FaCamera onClick={() => this.fileInput.click()} />
-            </IconContext.Provider>
-            <IconContext.Provider
-              value={{
-                size: "30px",
-                className: "mx-2",
-                color: "#666",
-              }}
-            >
-              <FaVideo />
-              <FaStickyNote />
-              <FaPenSquare />
-            </IconContext.Provider>
+
             <Button variant="primary" onClick={() => this.submitData()}>
               Post
             </Button>
           </Modal.Footer>
-        </Modal>
+        </Modal> */}
       </>
     );
   }

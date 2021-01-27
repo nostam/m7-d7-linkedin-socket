@@ -61,11 +61,11 @@ class Body extends React.Component {
     this.props.match.params.id &&
       this.searchProfile(this.props.match.params.id);
   };
-  // componentDidUpdate = (prevProps) => {
-  //   if (prevProps.match.params.id !== this.props.match.params.id) {
-  //     this.searchProfile(this.props.match.params.id);
-  //   }
-  // };
+  componentDidUpdate = (prevProps) => {
+    if (prevProps.match.params.id !== this.props.match.params.id) {
+      this.searchProfile(this.props.match.params.id);
+    }
+  };
   render() {
     const { err, loading, profile, errMsg } = this.state;
     return (
@@ -77,7 +77,6 @@ class Body extends React.Component {
             <FadeLoader loading={loading} size={60} />
           ) : Object.keys(profile).length !== 0 ? (
             <Row className="rowm">
-              {/*<Col lg={3}></Col> */}
               <Col md={8} style={{ marginTop: "10vh" }}>
                 <Card className="cardProf">
                   <Card.Img

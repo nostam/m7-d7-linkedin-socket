@@ -80,14 +80,14 @@ class Edit extends React.Component {
   };
   componentDidUpdate(prevProps) {
     if (prevProps.expId !== this.props.expId) {
-      if (this.edit()) {
+      if (this.isNewExp()) {
         this.fetchExp();
       } else {
         this.setState({ experience: { empty: true } });
       }
     }
   }
-  edit = () => {
+  isNewExp = () => {
     return this.props.expId !== null ? true : false;
   };
   fileSelectHandler = (event) => {
@@ -102,7 +102,7 @@ class Edit extends React.Component {
     fd.append("image", this.state.selectedFile);
     try {
       const response = await fetch(
-       ` http://localhost:4002/experiences/${this.props.profile.username}/exp/${this.props.expId}/upload`,
+        ` http://localhost:4002/experiences/${this.props.profile.username}/exp/${this.props.expId}/upload`,
         {
           method: "POST",
           headers: { Authorization: "Bearer " + localStorage.getItem("token") },
@@ -131,7 +131,9 @@ class Edit extends React.Component {
         onHide={this.props.toggle}
       >
         <Modal.Header closeButton>
-          <Modal.Title>{this.edit() ? "Edit" : "Add"} Experience</Modal.Title>
+          <Modal.Title>
+            {this.isNewExp() ? "Edit" : "Add"} Experience
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
@@ -215,7 +217,7 @@ class Edit extends React.Component {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          {this.edit() && (
+          {this.isNewExp() && (
             <Button
               className="rounded-pill py-1 mr-auto"
               variant="danger"
@@ -249,9 +251,9 @@ class Edit extends React.Component {
           <Button
             className="rounded-pill py-1"
             variant="primary"
-            onClick={() => this.actionBtn(this.edit() ? "PUT" : "POST")}
+            onClick={() => this.actionBtn(this.isNewExp() ? "PUT" : "POST")}
           >
-            {this.edit() ? "Save Changes" : "Submit"}
+            {this.isNewExp() ? "Save Changes" : "Submit"}
           </Button>
         </Modal.Footer>
       </Modal>

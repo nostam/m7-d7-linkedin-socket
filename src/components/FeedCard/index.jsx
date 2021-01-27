@@ -1,7 +1,13 @@
 import React, { Component } from "react";
 import { Button, Image, Card } from "react-bootstrap";
-import EditPost from "../../components/EditPost";
-import { BiLike, BiCommentDetail, BiShare, BiSend } from "react-icons/bi";
+import {
+  BiLike,
+  BiCommentDetail,
+  BiShare,
+  BiSend,
+  BiDotsHorizontalRounded,
+} from "react-icons/bi";
+import { IconContext } from "react-icons";
 export default class FeedCard extends Component {
   render() {
     const { post } = this.props;
@@ -17,23 +23,33 @@ export default class FeedCard extends Component {
               />
               {post.user.name + " " + post.user.surname}
             </div>
-            <EditPost post={post} refetch={() => this.getPosts()} />
+            {/* TODO if user = me */}
+            <div onClick={this.props.toggle} className="JumbBiPencilDiv">
+              <IconContext.Provider
+                value={{
+                  size: "24",
+                  className: "JumbBiPencil",
+                }}
+              >
+                <BiDotsHorizontalRounded />
+              </IconContext.Provider>
+            </div>
           </Card.Header>
           {post.image && (
             <Card.Img src={post.image} alt="PostImage" className="postImage" />
           )}
           <Card.Text className="p-3">{post.text}</Card.Text>
-          <Card.Footer className="HomeModal bg-white">
-            <Button variant="outline-dark mx-1">
+          <Card.Footer className="HomeModal bg-white justify-content-around">
+            <Button variant="none">
               <BiLike /> Like
             </Button>
-            <Button variant="outline-dark mx-1">
+            <Button variant="none">
               <BiCommentDetail /> Comment
             </Button>
-            <Button variant="outline-dark mx-1">
+            <Button variant="none">
               <BiShare /> Share
             </Button>
-            <Button variant="outline-dark mx-1">
+            <Button variant="none">
               <BiSend /> Send
             </Button>
           </Card.Footer>
