@@ -21,7 +21,10 @@ export default class Home extends Component {
     showModal: false,
     post: {},
   };
-  getPosts = async (reload = false, params = "/posts?limit=5") => {
+  getPosts = async (
+    reload = false,
+    params = "/posts?limit=5&sort=-createdAt"
+  ) => {
     try {
       const res = await fetch(`${process.env.REACT_APP_API_URL}${params}`);
       if (res.ok) {
