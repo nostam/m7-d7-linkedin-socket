@@ -106,7 +106,6 @@ class Experience extends React.Component {
               <div id="expTitle" className="info">
                 Experience
               </div>
-
               <Route path="/user/me">
                 <Button variant="white" onClick={() => this.toggleModal()}>
                   <IconContext.Provider
@@ -119,9 +118,17 @@ class Experience extends React.Component {
                     <BsPlus />
                   </IconContext.Provider>
                 </Button>
+                <Edit
+                  show={this.state.showModal}
+                  userId={this.props.profile._id}
+                  expId={this.state.selectedId}
+                  toggle={() => this.toggleModal()}
+                  refetch={() => this.searchExp()}
+                  color="#0A66CE"
+                  profile={this.props.profile}
+                />
               </Route>
             </Row>
-            {/* <Edit /> */}
             <DragDropContext onDragEnd={this.onDragEnd}>
               <Droppable droppableId="droppable">
                 {(provided, snapshot) => (
@@ -222,18 +229,6 @@ class Experience extends React.Component {
             </DragDropContext>
           </Card.Body>
         </Card>
-        <Route path="/user/me">
-          {" "}
-          <Edit
-            show={this.state.showModal}
-            userId={this.props.profile._id}
-            expId={this.state.selectedId}
-            toggle={() => this.toggleModal()}
-            refetch={() => this.searchExp()}
-            color="#0A66CE"
-            profile= {this.props.profile}
-          />
-        </Route>
       </>
     );
   }

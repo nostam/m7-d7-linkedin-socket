@@ -5,6 +5,8 @@ import { FadeLoader } from "react-spinners";
 import PostModal from "../../components/PostModal";
 import RSidebar from "../../components/RSidebar";
 import Sidebar from "../../components/Sidebar";
+import EditPost from "../../components/EditPost";
+import uniqid from "uniqid";
 import "./styles.css";
 export default class Home extends Component {
   state = {
@@ -12,11 +14,12 @@ export default class Home extends Component {
     me: {},
     showAlert: null,
     err: false,
-    errType: null,
     errMsg: "",
     loading: true,
     links: {},
     morePosts: true,
+    showModal: false,
+    post: {},
   };
   getPosts = async (params = "/posts?limit=5") => {
     try {
@@ -38,7 +41,6 @@ export default class Home extends Component {
       this.setState({
         loading: false,
         err: true,
-        errType: "danger",
         errMsg: error.messasge,
       });
     }
@@ -49,7 +51,7 @@ export default class Home extends Component {
         `${process.env.REACT_APP_API_URL}/profiles/600ec552cde6445148228b53`
       );
       const user = await res.json();
-      console.log(user);
+      console.log("login user", user);
       this.setState({ me: user });
     } catch (error) {
       console.log(error);
@@ -59,8 +61,24 @@ export default class Home extends Component {
     this.getPosts();
     this.getUser();
   }
+  toggleModal = (data) => {
+    console.log("toggle data", data);
+    if (data === undefined) this.setState({ post: {} });
+    this.setState({ showModal: !this.state.showModal });
+    this.setState({ post: data });
+  };
   render() {
-    const { err, loading, posts, me, errMsg, links, morePosts } = this.state;
+    const {
+      err,
+      loading,
+      posts,
+      me,
+      errMsg,
+      links,
+      morePosts,
+      showModal,
+      post,
+    } = this.state;
     return (
       <div className="homeDiv">
         {err && (
@@ -77,9 +95,17 @@ export default class Home extends Component {
                 <RSidebar me={me} />
               </Col>
               <Col lg={6} md={9}>
-                <PostModal refetch={() => this.getPosts()} me={me} />
+                <PostModal
+                  me={me}
+                  refetch={() => this.getPosts()}
+                  toggle={() => this.toggleModal()}
+                />
                 {posts.map((post) => (
-                  <FeedCard key={post._id} post={post} />
+                  <FeedCard
+                    key={uniqid()}
+                    post={post}
+                    toggle={() => this.toggleModal(post)}
+                  />
                 ))}
                 {morePosts && (
                   <Button
@@ -97,6 +123,15 @@ export default class Home extends Component {
             </Row>
           )}
         </Container>
+        {showModal && (
+          <EditPost
+            me={me}
+            show={showModal}
+            post={post}
+            toggle={() => this.toggleModal()}
+            refetch={() => this.getPosts()}
+          />
+        )}
       </div>
     );
   }
