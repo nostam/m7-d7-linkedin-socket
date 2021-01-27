@@ -18,12 +18,11 @@ export default class Home extends Component {
     links: {},
     morePosts: true,
   };
-  getPosts = async (params = "/posts?limit=15") => {
+  getPosts = async (params = "/posts?limit=5") => {
     try {
       const res = await fetch(`${process.env.REACT_APP_API_URL}${params}`);
       if (res.ok) {
         let data = await res.json();
-        console.log(data);
         this.setState({
           posts:
             this.state.posts.length === 0
@@ -32,7 +31,7 @@ export default class Home extends Component {
           loading: false,
           links: data.links,
         });
-        if (data.posts.length <= 15) this.setState({ morePosts: false });
+        if (data.posts.length < 5) this.setState({ morePosts: false });
       }
     } catch (error) {
       console.log(error);
@@ -88,7 +87,7 @@ export default class Home extends Component {
                     onClick={() => this.getPosts(links.next)}
                     className="w-100"
                   >
-                    Next
+                    More
                   </Button>
                 )}
               </Col>

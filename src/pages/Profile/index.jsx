@@ -27,13 +27,16 @@ class Body extends React.Component {
     loading: true,
   };
   searchProfile = (id) => {
-    fetch("http://localhost:4002/profiles/600ea6c630ffa163f4412d62" , {
-      method: "GET",
-      headers: new Headers({
-        Authorization: "Bearer " + localStorage.getItem("token"),
-        ContentType: "application/json",
-      }),
-    })
+    fetch(
+      `${process.env.REACT_APP_API_URL}/profiles/600ea6c630ffa163f4412d62`,
+      {
+        method: "GET",
+        headers: new Headers({
+          Authorization: "Bearer " + localStorage.getItem("token"),
+          ContentType: "application/json",
+        }),
+      }
+    )
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -172,8 +175,7 @@ class Body extends React.Component {
                   refetch={() => this.searchProfile(this.props.match.params.id)}
                 />
                 <Route path="/user/me">
-                  {" "}
-                  <Feature />{" "}
+                  <Feature />
                 </Route>
                 <Experience profile={profile} />
               </Col>
