@@ -25,7 +25,7 @@ class EditPost extends React.Component {
   Edit = async () => {
     try {
       const response = await fetch(
-        `https://striveschool-api.herokuapp.com/api/posts/${this.props.post._id}`,
+        `${process.env.REACT_APP_API_URL}/posts/${this.props.post._id}`,
         {
           method: "PUT",
           body: JSON.stringify(this.state.content),
