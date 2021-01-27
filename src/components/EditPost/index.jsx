@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Col, Row, Modal, Image, Form } from "react-bootstrap";
+import PostByInfo from "../../components/PostByInfo";
 import "../PostModal/styles.css";
 
 class EditPost extends React.Component {
@@ -23,15 +24,13 @@ class EditPost extends React.Component {
     });
   };
   submitData = async (str) => {
-    const url =
-      str === "POST" ? `${this.url}` : `${this.url}${this.props.post._id}`;
     const payload = JSON.stringify({
       ...this.state.content,
       username: this.props.me.username,
     });
     try {
       console.log(payload, str);
-      const response = await fetch(url, {
+      const response = await fetch(`${this.url}${this.props.post._id}`, {
         method: str,
         headers: this.headers,
         body: payload,
@@ -45,17 +44,9 @@ class EditPost extends React.Component {
         }
       }
     } catch (e) {
+      this.setState({ err: true, errMsg: e.message });
       console.log(e);
     }
-  };
-  actionBtn = (str) => {
-    //TODO actionBtn is a redundant proxy, it can be replace directly with submitData
-    str !== "DELETE"
-      ? this.submitData(this.isNewPost() ? "POST" : "PUT")
-      : this.submitData("DELETE");
-  };
-  isNewPost = () => {
-    return this.props.post === undefined ? true : false;
   };
   fileSelectHandler = (event) => {
     this.setState({
@@ -68,7 +59,7 @@ class EditPost extends React.Component {
     const fd = new FormData();
     fd.append("post", this.state.selectedFile);
     try {
-      const response = await fetch(
+      const res = await fetch(
         `${process.env.REACT_APP_API_URL}/posts/${this.props.post._id}`,
         {
           method: "POST",
@@ -76,10 +67,14 @@ class EditPost extends React.Component {
           body: fd,
         }
       );
-      if (response.ok) {
+      if (res.ok) {
         this.setState({ showModal: false }, () => this.props.refetch());
       } else {
-        this.setState({ showModal: false });
+        this.setState({
+          showModal: false,
+          errMsg: await res.json().message,
+          err: true,
+        });
       }
     } catch (error) {
       console.log(error);
@@ -95,24 +90,11 @@ class EditPost extends React.Component {
       <>
         <Modal show={this.props.show} onHide={this.props.toggle}>
           <Modal.Header closeButton>
-            <Modal.Title>
-              {this.isNewPost() ? "Add a new post" : "Edit a Post"}
-            </Modal.Title>
+            <Modal.Title>Edit</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             {Object.keys(this.props.me).length > 0 && (
-              <Row>
-                <Col>
-                  <Image
-                    src={this.props.me.image}
-                    roundedCircle
-                    className="postModalImg"
-                  />
-                  <strong className="ml-5">
-                    {this.props.me.name + " " + this.props.me.surname}
-                  </strong>
-                </Col>
-              </Row>
+              <PostByInfo me={this.props.me} />
             )}
             <Form className="mt-2">
               <Form.Group>
@@ -130,15 +112,13 @@ class EditPost extends React.Component {
           </Modal.Body>
 
           <Modal.Footer>
-            {!this.isNewPost() && (
-              <Button
-                className="mr-auto"
-                variant="danger"
-                onClick={() => this.actionBtn("DELETE")}
-              >
-                Delete Post
-              </Button>
-            )}
+            <Button
+              className="mr-auto"
+              variant="danger"
+              onClick={() => this.submitData("DELETE")}
+            >
+              Delete Post
+            </Button>
             <input
               style={{ display: "none" }}
               type="file"
@@ -153,11 +133,9 @@ class EditPost extends React.Component {
                 ? "Choose an image"
                 : "Ready to Upload"}
             </Button>
-            <Button
-              variant="primary"
-              onClick={() => this.actionBtn(this.isNewPost() ? "PUT" : "POST")}
-            >
-              {this.isNewPost() ? "Submit" : "Save Changes"}
+            <Button variant="primary" onClick={() => this.submitData("PUT")}>
+              {" "}
+              "Save Changes"
             </Button>
           </Modal.Footer>
         </Modal>

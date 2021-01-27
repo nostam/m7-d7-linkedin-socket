@@ -31,3 +31,11 @@
 .wlcmP {
   padding-top: 30px;
 }
+.sortBySeperator {
+  display: flex;
+  flex-direction: row-reverse;
+  font-size: 13px;
+  font-weight: bold;
+  color: grey;
+  padding: 1rem 2rem 0 0;
+}

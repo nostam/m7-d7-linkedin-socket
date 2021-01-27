@@ -4,10 +4,12 @@ import { MdInsertPhoto, MdVideocam, MdEventNote } from "react-icons/md";
 import { RiArticleLine, RiBallPenFill } from "react-icons/ri";
 import { IconContext } from "react-icons";
 import { withRouter } from "react-router-dom";
+import PostByInfo from "../../components/PostByInfo";
 import "./styles.css";
 
 class PostModal extends React.Component {
   state = {
+    showModal: false,
     me: {},
     selectedFile: null,
     imgSubmitStatus: "secondary",
@@ -71,13 +73,16 @@ class PostModal extends React.Component {
         const data = await res.json();
         console.log(data);
         this.fileUploadHandler(data._id);
-        // this.setState({ showModal: false }, () => this.props.refetch());
+        this.setState({ showModal: false }, () => this.props.refetch());
       } else {
         this.setState({ showModal: false });
       }
     } catch (e) {
       console.log(e);
     }
+  };
+  toggleModal = () => {
+    this.setState({ showModal: !this.state.showModal });
   };
   render() {
     const { imgSubmitStatus, post, showModal } = this.state;
@@ -87,7 +92,7 @@ class PostModal extends React.Component {
           <Button
             className="postButton align-items-center d-flex"
             variant="outline-secondary"
-            onClick={() => this.props.toggle()}
+            onClick={() => this.toggleModal()}
           >
             <RiBallPenFill size="16" />
             <p>Start a Post</p>
@@ -118,28 +123,19 @@ class PostModal extends React.Component {
           </Row>
         </Card>
 
-        {/* <Modal show={this.props.show} onHide={this.props.toggle}>
+        <Modal show={showModal} onHide={() => this.toggleModal()}>
           <Modal.Header closeButton>
             <Modal.Title>Create a Post</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Row>
-              <Col>
-                <Image
-                  src={this.props.me.image}
-                  roundedCircle
-                  className="postModalImg"
-                />
-                <strong className="ml-5">
-                  {this.props.me.name + " " + this.props.me.surname}
-                </strong>
-              </Col>
-            </Row>
+            <PostByInfo me={this.props.me} />
             <Form className="mt-2">
               <Form.Group>
                 <Form.Control
                   as="textarea"
                   id="text"
+                  placeholder="What do you want to talk about?"
+                  className="border-0"
                   rows={3}
                   value={post.text}
                   onChange={(e) => this.onChangeHandler(e)}
@@ -155,29 +151,34 @@ class PostModal extends React.Component {
                 >
                   Add hashtag
                 </Button>
-                <p className="ml-3 mt-2">Help the right people see your post</p>
               </Col>
             </Row>
           </Modal.Body>
-
-          <Modal.Footer>
+          <Modal.Footer className="justify-content-between">
             <input
               style={{ display: "none" }}
               type="file"
               onChange={this.fileSelectHandler}
               ref={(fileInput) => (this.fileInput = fileInput)}
             />
-            <span>
-              {imgSubmitStatus === "secondary"
-                ? "Choose a file"
-                : "Good to go! Ready to submit"}
-            </span>
-
-            <Button variant="primary" onClick={() => this.submitData()}>
+            <IconContext.Provider
+              value={{
+                size: "30px",
+                className: "mx-2",
+                color: imgSubmitStatus === "secondary" ? "#666" : "#28a745",
+              }}
+            >
+              <MdVideocam onClick={() => this.fileInput.click()} />
+            </IconContext.Provider>
+            <Button
+              variant="primary"
+              className="rounded-pill"
+              onClick={() => this.submitData()}
+            >
               Post
             </Button>
           </Modal.Footer>
-        </Modal> */}
+        </Modal>
       </>
     );
   }
