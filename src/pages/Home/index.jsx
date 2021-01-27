@@ -21,14 +21,17 @@ export default class Home extends Component {
     showModal: false,
     post: {},
   };
-  getPosts = async (params = "/posts?limit=5") => {
+  getPosts = async (
+    reload = false,
+    params = "/posts?limit=5&sort=-createdAt"
+  ) => {
     try {
       const res = await fetch(`${process.env.REACT_APP_API_URL}${params}`);
       if (res.ok) {
         let data = await res.json();
         this.setState({
           posts:
-            this.state.posts.length === 0
+            reload || this.state.posts.length === 0
               ? data.posts
               : [...this.state.posts, ...data.posts],
           loading: false,
@@ -95,11 +98,8 @@ export default class Home extends Component {
                 <RSidebar me={me} />
               </Col>
               <Col lg={6} md={9}>
-                <PostModal
-                  me={me}
-                  refetch={() => this.getPosts()}
-                  toggle={() => this.toggleModal()}
-                />
+                <PostModal me={me} refetch={() => this.getPosts(true)} />
+                <Row className="sortBySeperator">Sort by recent</Row>
                 {posts.map((post) => (
                   <FeedCard
                     key={uniqid()}
@@ -110,7 +110,7 @@ export default class Home extends Component {
                 {morePosts && (
                   <Button
                     variant="outline-secondary"
-                    onClick={() => this.getPosts(links.next)}
+                    onClick={() => this.getPosts(false, links.next)}
                     className="w-100"
                   >
                     More
@@ -129,7 +129,7 @@ export default class Home extends Component {
             show={showModal}
             post={post}
             toggle={() => this.toggleModal()}
-            refetch={() => this.getPosts()}
+            refetch={() => this.getPosts(true)}
           />
         )}
       </div>

@@ -8,6 +8,7 @@ import {
   BiDotsHorizontalRounded,
 } from "react-icons/bi";
 import { IconContext } from "react-icons";
+import "./styles.css";
 export default class FeedCard extends Component {
   render() {
     const { post } = this.props;
