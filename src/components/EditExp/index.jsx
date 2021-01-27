@@ -10,7 +10,7 @@ class Edit extends React.Component {
     selectedFile: null,
     imgSubmitStatus: "secondary",
   };
-  url = `http://localhost:4002/experiences/${this.props.profile.username}`;
+  url = `${process.env.REACT_APP_API_URL}/experiences/${this.props.profile.username}`;
   headers = {
     Authorization: "Bearer " + localStorage.getItem("token"),
     "Content-Type": "application/json",
@@ -18,13 +18,10 @@ class Edit extends React.Component {
   fetchExp = async () => {
     try {
       if (this.props.expId !== null) {
-        const response = await fetch(
-          `http://localhost:4002/experiences/${this.props.profile.username}`,
-          {
-            method: "GET",
-            headers: this.headers,
-          }
-        );
+        const response = await fetch(this.url, {
+          method: "GET",
+          headers: this.headers,
+        });
         const data = await response.json();
         if (response.ok) {
           this.setState({ experience: data });
@@ -102,7 +99,8 @@ class Edit extends React.Component {
     fd.append("image", this.state.selectedFile);
     try {
       const response = await fetch(
-        ` http://localhost:4002/experiences/${this.props.profile.username}/exp/${this.props.expId}/upload`,
+        //TODO prepare for userid username
+        `${process.env.REACT_APP_API_URL}/experiences/${this.props.profile.username}/exp/${this.props.expId}/upload`,
         {
           method: "POST",
           headers: { Authorization: "Bearer " + localStorage.getItem("token") },
