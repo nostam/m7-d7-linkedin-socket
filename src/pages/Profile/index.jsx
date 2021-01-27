@@ -12,7 +12,7 @@ import Bio from "../../components/BioCard";
 import Experience from "../../components/Experience";
 import Feature from "../../components/Featured";
 import Sidebar from "../../components/Sidebar";
-import EditPage from "../../components/EditPage";
+import EditProfile from "../../components/EditProfile";
 import "./styles.css";
 import { BiPencil } from "react-icons/bi";
 import { IconContext } from "react-icons";
@@ -154,7 +154,7 @@ class Body extends React.Component {
                                 </Dropdown.Item>
                               </DropdownButton>
                               <button className="btnMore">More...</button>
-                              <EditPage
+                              <EditProfile
                                 profile={profile}
                                 refetch={() =>
                                   this.searchProfile("600ea6c630ffa163f4412d62")
