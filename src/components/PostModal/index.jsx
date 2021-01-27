@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Col, Row, Modal, Image, Form, Card } from "react-bootstrap";
+import { Button, Col, Row, Modal, Form, Card } from "react-bootstrap";
 import { MdInsertPhoto, MdVideocam, MdEventNote } from "react-icons/md";
 import { RiArticleLine, RiBallPenFill } from "react-icons/ri";
 import { IconContext } from "react-icons";
