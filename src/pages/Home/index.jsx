@@ -1,19 +1,12 @@
 import React, { Component } from "react";
-import {
-  Container,
-  Button,
-  Image,
-  Row,
-  Col,
-  Card,
-  Alert,
-} from "react-bootstrap";
+import { Container, Row, Col, Alert, Button } from "react-bootstrap";
+import FeedCard from "../../components/FeedCard";
 import { FadeLoader } from "react-spinners";
-import { BiLike, BiCommentDetail, BiShare, BiSend } from "react-icons/bi";
-import EditPost from "../../components/EditPost";
 import PostModal from "../../components/PostModal";
 import RSidebar from "../../components/RSidebar";
 import Sidebar from "../../components/Sidebar";
+import EditPost from "../../components/EditPost";
+import uniqid from "uniqid";
 import "./styles.css";
 export default class Home extends Component {
   state = {
@@ -21,122 +14,124 @@ export default class Home extends Component {
     me: {},
     showAlert: null,
     err: false,
-    errType: null,
     errMsg: "",
     loading: true,
+    links: {},
+    morePosts: true,
+    showModal: false,
+    post: {},
   };
-  fetchPost = async () => {
-    console.log("fetchPost");
+  getPosts = async (
+    reload = false,
+    params = "/posts?limit=5&sort=-createdAt"
+  ) => {
     try {
-      const response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/posts/",
-        {
-          headers: {
-            Authorization: "Bearer " + localStorage.getItem("token"),
-          },
-        }
-      );
-      if (response.ok) {
-        let postResponse = await response.json();
-        postResponse = postResponse.reverse().slice(0, 50);
-        this.setState({ posts: postResponse, loading: false });
+      const res = await fetch(`${process.env.REACT_APP_API_URL}${params}`);
+      if (res.ok) {
+        let data = await res.json();
+        this.setState({
+          posts:
+            reload || this.state.posts.length === 0
+              ? data.posts
+              : [...this.state.posts, ...data.posts],
+          loading: false,
+          links: data.links,
+        });
+        if (data.posts.length < 5) this.setState({ morePosts: false });
       }
     } catch (error) {
       console.log(error);
       this.setState({
         loading: false,
         err: true,
-        errType: "danger",
         errMsg: error.messasge,
       });
     }
   };
-  fetchMe = async () => {
+  getUser = async () => {
     try {
-      const meFetch = await fetch(
-        "https://striveschool-api.herokuapp.com/api/profile/me",
-        {
-          headers: {
-            Authorization: "Bearer " + localStorage.getItem("token"),
-          },
-        }
+      const res = await fetch(
+        `${process.env.REACT_APP_API_URL}/profiles/600ec552cde6445148228b53`
       );
-      const meResponse = await meFetch.json();
-      console.log(meResponse);
-      this.setState({ me: meResponse });
+      const user = await res.json();
+      console.log("login user", user);
+      this.setState({ me: user });
     } catch (error) {
       console.log(error);
     }
   };
   componentDidMount() {
-    this.fetchPost();
-    this.fetchMe();
+    this.getPosts();
+    this.getUser();
   }
+  toggleModal = (data) => {
+    console.log("toggle data", data);
+    if (data === undefined) this.setState({ post: {} });
+    this.setState({ showModal: !this.state.showModal });
+    this.setState({ post: data });
+  };
   render() {
-    const { err, loading, posts, me, errMsg } = this.state;
+    const {
+      err,
+      loading,
+      posts,
+      me,
+      errMsg,
+      links,
+      morePosts,
+      showModal,
+      post,
+    } = this.state;
     return (
       <div className="homeDiv">
+        {err && (
+          <Alert variant="danger" className="HomeCont">
+            {errMsg}
+          </Alert>
+        )}
         <Container className="HomeCont justify-content-center d-flex">
-          {err && <Alert variant="danger">{errMsg}</Alert>}
           {loading && err !== true ? (
             <FadeLoader loading={loading} size={60} />
-          ) : Object.keys(posts).length !== 0 ? (
+          ) : (
             <Row>
               <Col className="d-none d-lg-block" md={3}>
                 <RSidebar me={me} />
               </Col>
               <Col lg={6} md={9}>
-                <PostModal refetch={() => this.fetchPost()} me={me} />
+                <PostModal me={me} refetch={() => this.getPosts(true)} />
+                <Row className="sortBySeperator">Sort by recent</Row>
                 {posts.map((post) => (
-                  <Card className="w-100 my-4" key={`feed${post._id}`}>
-                    <Card.Header className="d-flex justify-content-between px-3">
-                      <div>
-                        <Image
-                          src={post.user.image}
-                          className="postModalImg mr-3"
-                          roundedCircle
-                        />
-                        {post.user.name + " " + post.user.surname}
-                      </div>
-                      <EditPost post={post} refetch={() => this.fetchPost()} />
-                    </Card.Header>
-                    {post.image && (
-                      <Card.Img
-                        src={post.image}
-                        alt="PostImage"
-                        className="postImage"
-                      />
-                    )}
-                    <Card.Text className="p-3">{post.text}</Card.Text>
-                    <Card.Footer className="HomeModal bg-white">
-                      <Button variant="outline-dark mx-1">
-                        <BiLike /> Like
-                      </Button>
-                      <Button variant="outline-dark mx-1">
-                        <BiCommentDetail /> Comment
-                      </Button>
-                      <Button variant="outline-dark mx-1">
-                        <BiShare /> Share
-                      </Button>
-                      <Button variant="outline-dark mx-1">
-                        <BiSend /> Send
-                      </Button>
-                    </Card.Footer>
-                  </Card>
+                  <FeedCard
+                    key={uniqid()}
+                    post={post}
+                    toggle={() => this.toggleModal(post)}
+                  />
                 ))}
+                {morePosts && (
+                  <Button
+                    variant="outline-secondary"
+                    onClick={() => this.getPosts(false, links.next)}
+                    className="w-100"
+                  >
+                    More
+                  </Button>
+                )}
               </Col>
               <Col className="d-none d-md-block" md={3}>
                 <Sidebar />
               </Col>
             </Row>
-          ) : (
-            this.setState({
-              err: true,
-              errType: "warning",
-              errMsg: "We have encounter a problem, the profile is empty",
-            })
           )}
         </Container>
+        {showModal && (
+          <EditPost
+            me={me}
+            show={showModal}
+            post={post}
+            toggle={() => this.toggleModal()}
+            refetch={() => this.getPosts(true)}
+          />
+        )}
       </div>
     );
   }

@@ -1,9 +1,10 @@
 import React from "react";
-import { Button, Col, Row, Modal, Image, Form, Card } from "react-bootstrap";
-import { FaCamera, FaVideo, FaStickyNote, FaPenSquare } from "react-icons/fa";
-import { BiPencil } from "react-icons/bi";
+import { Button, Col, Row, Modal, Form, Card } from "react-bootstrap";
+import { MdInsertPhoto, MdVideocam, MdEventNote } from "react-icons/md";
+import { RiArticleLine, RiBallPenFill } from "react-icons/ri";
 import { IconContext } from "react-icons";
 import { withRouter } from "react-router-dom";
+import PostByInfo from "../../components/PostByInfo";
 import "./styles.css";
 
 class PostModal extends React.Component {
@@ -16,7 +17,6 @@ class PostModal extends React.Component {
       text: "",
     },
   };
-
   addHashtag = () => {
     this.setState({ post: { text: this.state.post.text + " #" } });
   };
@@ -40,10 +40,9 @@ class PostModal extends React.Component {
     fd.append("post", this.state.selectedFile);
     try {
       const response = await fetch(
-        `https://striveschool-api.herokuapp.com/api/posts/${postId}`,
+        `${process.env.REACT_APP_API_URL}/posts/${postId}`,
         {
           method: "POST",
-          headers: { Authorization: "Bearer " + localStorage.getItem("token") },
           body: fd,
         }
       );
@@ -57,24 +56,24 @@ class PostModal extends React.Component {
       console.log(error);
     }
   };
-  post = async () => {
+  submitData = async () => {
     try {
-      const response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/posts",
-        {
-          method: "POST",
-          body: JSON.stringify(this.state.post),
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: "Bearer " + localStorage.getItem("token"),
-          },
-        }
-      );
-      if (response.ok) {
-        const data = await response.json();
+      const payload = {
+        ...this.state.post,
+        username: "admin",
+      };
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/posts`, {
+        method: "POST",
+        body: JSON.stringify(payload),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (res.ok) {
+        const data = await res.json();
         console.log(data);
         this.fileUploadHandler(data._id);
-        // this.setState({ showModal: false }, () => this.props.refetch());
+        this.setState({ showModal: false }, () => this.props.refetch());
       } else {
         this.setState({ showModal: false });
       }
@@ -82,45 +81,61 @@ class PostModal extends React.Component {
       console.log(e);
     }
   };
+  toggleModal = () => {
+    this.setState({ showModal: !this.state.showModal });
+  };
   render() {
-    const { imgSubmitStatus, post } = this.state;
+    const { imgSubmitStatus, post, showModal } = this.state;
     return (
       <>
-        <Card className="bg-white p-4">
+        <Card className="pt-3 px-3 pb-0">
           <Button
-            className="postButton"
-            variant="outline-dark"
-            onClick={() => this.setState({ showModal: true })}
+            className="postButton align-items-center d-flex"
+            variant="outline-secondary"
+            onClick={() => this.toggleModal()}
           >
-            <BiPencil /> Start a Post
+            <RiBallPenFill size="16" />
+            <p>Start a Post</p>
           </Button>
+          <Row className="my-3 justify-content-around align-items-center d-flex">
+            <IconContext.Provider
+              value={{
+                size: "24",
+              }}
+            >
+              <Row className="align-items-center d-flex">
+                <MdInsertPhoto color="#70b5f9" />
+                <p className="postBtnText">Photo</p>
+              </Row>
+              <Row className="align-items-center d-flex">
+                <MdVideocam color="#7fc15e" />
+                <p className="postBtnText">Video</p>
+              </Row>
+              <Row className="align-items-center d-flex">
+                <MdEventNote color="#e7a33e" />
+                <p className="postBtnText">Event</p>
+              </Row>
+              <Row className="align-items-center d-flex">
+                <RiArticleLine color="#f5987e" />
+                <p className="postBtnText">Write Article</p>
+              </Row>
+            </IconContext.Provider>
+          </Row>
         </Card>
-        <Modal
-          show={this.state.showModal}
-          onHide={() => this.setState({ showModal: false })}
-        >
+
+        <Modal show={showModal} onHide={() => this.toggleModal()}>
           <Modal.Header closeButton>
             <Modal.Title>Create a Post</Modal.Title>
           </Modal.Header>
-
           <Modal.Body>
-            <Row>
-              <Col>
-                <Image
-                  src={this.props.me.image}
-                  roundedCircle
-                  className="postModalImg"
-                />
-                <strong className="ml-5">
-                  {this.props.me.name + " " + this.props.me.surname}
-                </strong>
-              </Col>
-            </Row>
+            <PostByInfo me={this.props.me} />
             <Form className="mt-2">
               <Form.Group>
                 <Form.Control
                   as="textarea"
                   id="text"
+                  placeholder="What do you want to talk about?"
+                  className="border-0"
                   rows={3}
                   value={post.text}
                   onChange={(e) => this.onChangeHandler(e)}
@@ -136,23 +151,16 @@ class PostModal extends React.Component {
                 >
                   Add hashtag
                 </Button>
-                <p className="ml-3 mt-2">Help the right people see your post</p>
               </Col>
             </Row>
           </Modal.Body>
-
-          <Modal.Footer>
+          <Modal.Footer className="justify-content-between">
             <input
               style={{ display: "none" }}
               type="file"
               onChange={this.fileSelectHandler}
               ref={(fileInput) => (this.fileInput = fileInput)}
             />
-            <span>
-              {imgSubmitStatus === "secondary"
-                ? "Choose a file"
-                : "Good to go! Ready to submit"}
-            </span>
             <IconContext.Provider
               value={{
                 size: "30px",
@@ -160,20 +168,13 @@ class PostModal extends React.Component {
                 color: imgSubmitStatus === "secondary" ? "#666" : "#28a745",
               }}
             >
-              <FaCamera onClick={() => this.fileInput.click()} />
+              <MdVideocam onClick={() => this.fileInput.click()} />
             </IconContext.Provider>
-            <IconContext.Provider
-              value={{
-                size: "30px",
-                className: "mx-2",
-                color: "#666",
-              }}
+            <Button
+              variant="primary"
+              className="rounded-pill"
+              onClick={() => this.submitData()}
             >
-              <FaVideo />
-              <FaStickyNote />
-              <FaPenSquare />
-            </IconContext.Provider>
-            <Button rounded-pill variant="primary" onClick={() => this.post()}>
               Post
             </Button>
           </Modal.Footer>

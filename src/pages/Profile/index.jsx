@@ -1,9 +1,7 @@
 import React from "react";
 import {
   Col,
-  Container,
   Row,
-  Spinner,
   Alert,
   Card,
   Dropdown,
@@ -14,7 +12,7 @@ import Bio from "../../components/BioCard";
 import Experience from "../../components/Experience";
 import Feature from "../../components/Featured";
 import Sidebar from "../../components/Sidebar";
-import EditPage from "../../components/EditPage";
+import EditProfile from "../../components/EditProfile";
 import "./styles.css";
 import { BiPencil } from "react-icons/bi";
 import { IconContext } from "react-icons";
@@ -27,79 +25,51 @@ class Body extends React.Component {
     errType: null,
     errMsg: "",
     loading: true,
-    myquery:this.props.query
+    myquery: this.props.query,
   };
   searchProfile = (id) => {
-      const me = "600ea6c630ffa163f4412d62"
-      if(this.props.match.params.id===me || this.props.location.pathname==="/user/me"){
-        fetch(`http://nostam-api.herokuapp.com/profiles/${me}` , {
-          method: "GET",
-          headers: new Headers({
-            Authorization: "Bearer " + localStorage.getItem("token"),
-            ContentType: "application/json",
-          }),
-        })
-          .then((response) => {
-            if (response.ok) {
-              return response.json();
-            }
-          })
-          .then((info) => {
-            let profile = { ...info };
-            console.log(profile);
-            this.setState({ profile: profile, loading: false });
-          })
-          .catch((error) => {
-            console.log(error);
-            this.setState({
-              loading: false,
-              err: true,
-              errType: "danger",
-              errMsg: error.messasge,
-            });
-          });
-      }else{
-        fetch(`http://nostam-api.herokuapp.com/profiles/${this.props.match.params.id}` , {
-          method: "GET",
-          headers: new Headers({
-            Authorization: "Bearer " + localStorage.getItem("token"),
-            ContentType: "application/json",
-          }),
-        })
-          .then((response) => {
-            if (response.ok) {
-              return response.json();
-            }
-          })
-          .then((info) => {
-            let profile = { ...info };
-            console.log(profile);
-            this.setState({ profile: profile, loading: false });
-          })
-          .catch((error) => {
-            console.log(error);
-            this.setState({
-              loading: false,
-              err: true,
-              errType: "danger",
-              errMsg: error.messasge,
-            });
-          });
-      }
-    };
-  
-
-    
-   
-    componentDidMount = () => {
-      this.props.match.params.id &&
-        this.searchProfile();
-    };
-    componentDidUpdate = (prevProps) => {
-      if (prevProps.match.params.id !== this.props.match.params.id) {
-        this.searchProfile();
-      }
-    };
+    const me = "600ea6c630ffa163f4412d62";
+    let userId = null;
+    this.props.match.params.id === me ||
+    this.props.location.pathname === "/user/me"
+      ? (userid = me)
+      : (userid = id);
+    fetch(`${process.env.REACT_APP_API_URL}/profiles/${userId}`, {
+      method: "GET",
+      headers: new Headers({
+        Authorization: "Bearer " + localStorage.getItem("token"),
+        ContentType: "application/json",
+      }),
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+      })
+      .then((info) => {
+        let profile = { ...info };
+        console.log(profile);
+        this.setState({ profile: profile, loading: false });
+      })
+      .catch((error) => {
+        console.log(error);
+        this.setState({
+          loading: false,
+          err: true,
+          errType: "danger",
+          errMsg: error.messasge,
+        });
+      });
+  };
+  componentDidMount = () => {
+    this.props.match.params.id &&
+      this.searchProfile(this.props.match.params.id);
+  };
+  componentDidUpdate = (prevProps) => {
+    if (prevProps.match.params.id !== this.props.match.params.id) {
+      this.searchProfile(this.props.match.params.id);
+    }
+  };
   render() {
     const { err, loading, profile, errMsg } = this.state;
     return (
@@ -111,7 +81,6 @@ class Body extends React.Component {
             <FadeLoader loading={loading} size={60} />
           ) : profile.length !== 0 ? (
             <Row className="rowm">
-              {/*<Col lg={3}></Col> */}
               <Col md={8} style={{ marginTop: "10vh" }}>
                 <Card className="cardProf">
                   <Card.Img
@@ -189,7 +158,7 @@ class Body extends React.Component {
                                 </Dropdown.Item>
                               </DropdownButton>
                               <button className="btnMore">More...</button>
-                              <EditPage
+                              <EditProfile
                                 profile={profile}
                                 refetch={() =>
                                   this.searchProfile("600ea6c630ffa163f4412d62")
@@ -209,8 +178,7 @@ class Body extends React.Component {
                   refetch={() => this.searchProfile("600ea6c630ffa163f4412d62")}
                 />
                 <Route path="/user/me">
-                  {" "}
-                  <Feature />{" "}
+                  <Feature />
                 </Route>
                 <Experience profile={profile} />
               </Col>

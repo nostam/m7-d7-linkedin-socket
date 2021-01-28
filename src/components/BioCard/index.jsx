@@ -1,7 +1,7 @@
 import React from "react";
 import "../../App.css";
-import { Card, Col, Row } from "react-bootstrap";
-import EditPage from "../EditPage";
+import { Card, Row } from "react-bootstrap";
+import EditProfile from "../EditProfile";
 import "../../pages/Profile/styles.css";
 import { Route } from "react-router-dom";
 
@@ -18,7 +18,7 @@ class Bio extends React.Component {
 
             <Route path="/user/me">
               {" "}
-              <EditPage
+              <EditProfile
                 profile={this.props.profile}
                 refetch={this.props.refetch}
                 color="#0A66CE"

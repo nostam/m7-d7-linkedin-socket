@@ -1,6 +1,6 @@
 import React from "react";
 // import { useState } from "react";
-import { Button, Modal, Form, Row, Col, ThemeProvider } from "react-bootstrap";
+import { Button, Modal, Form, Row, Col } from "react-bootstrap";
 import "../../App.css";
 import "../../pages/Profile/styles.css";
 class Edit extends React.Component {
@@ -10,7 +10,7 @@ class Edit extends React.Component {
     selectedFile: null,
     imgSubmitStatus: "secondary",
   };
-  url = `nostam-api.herokuapp.com/experiences/${this.props.profile.username}`;
+  url = `${process.env.REACT_APP_API_URL}/experiences/${this.props.profile.username}`;
   headers = {
     Authorization: "Bearer " + localStorage.getItem("token"),
     "Content-Type": "application/json",
@@ -18,13 +18,10 @@ class Edit extends React.Component {
   fetchExp = async () => {
     try {
       if (this.props.expId !== null) {
-        const response = await fetch(
-          `nostam-api.herokuapp.com/experiences/${this.props.profile.username}`,
-          {
-            method: "GET",
-            headers: this.headers,
-          }
-        );
+        const response = await fetch(this.url, {
+          method: "GET",
+          headers: this.headers,
+        });
         const data = await response.json();
         if (response.ok) {
           this.setState({ experience: data });
@@ -80,14 +77,14 @@ class Edit extends React.Component {
   };
   componentDidUpdate(prevProps) {
     if (prevProps.expId !== this.props.expId) {
-      if (this.edit()) {
+      if (this.isNewExp()) {
         this.fetchExp();
       } else {
         this.setState({ experience: { empty: true } });
       }
     }
   }
-  edit = () => {
+  isNewExp = () => {
     return this.props.expId !== null ? true : false;
   };
   fileSelectHandler = (event) => {
@@ -102,7 +99,8 @@ class Edit extends React.Component {
     fd.append("image", this.state.selectedFile);
     try {
       const response = await fetch(
-       `nostam-api.herokuapp.com/experiences/${this.props.profile.username}/exp/${this.props.expId}/upload`,
+        //TODO prepare for userid username
+        `${process.env.REACT_APP_API_URL}/experiences/${this.props.profile.username}/exp/${this.props.expId}/upload`,
         {
           method: "POST",
           headers: { Authorization: "Bearer " + localStorage.getItem("token") },
@@ -131,7 +129,9 @@ class Edit extends React.Component {
         onHide={this.props.toggle}
       >
         <Modal.Header closeButton>
-          <Modal.Title>{this.edit() ? "Edit" : "Add"} Experience</Modal.Title>
+          <Modal.Title>
+            {this.isNewExp() ? "Edit" : "Add"} Experience
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
@@ -215,7 +215,7 @@ class Edit extends React.Component {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          {this.edit() && (
+          {this.isNewExp() && (
             <Button
               className="rounded-pill py-1 mr-auto"
               variant="danger"
@@ -249,9 +249,9 @@ class Edit extends React.Component {
           <Button
             className="rounded-pill py-1"
             variant="primary"
-            onClick={() => this.actionBtn(this.edit() ? "PUT" : "POST")}
+            onClick={() => this.actionBtn(this.isNewExp() ? "PUT" : "POST")}
           >
-            {this.edit() ? "Save Changes" : "Submit"}
+            {this.isNewExp() ? "Save Changes" : "Submit"}
           </Button>
         </Modal.Footer>
       </Modal>
