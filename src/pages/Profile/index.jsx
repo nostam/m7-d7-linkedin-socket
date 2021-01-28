@@ -75,7 +75,6 @@ class Body extends React.Component {
       <div className="bgBody">
         <div className="mainBody">
           {err && <Alert variant="danger">{errMsg}</Alert>}
-
           {loading && err === true ? (
             <FadeLoader loading={loading} size={60} />
           ) : profile.length !== 0 ? (

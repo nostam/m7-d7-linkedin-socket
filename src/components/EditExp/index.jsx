@@ -19,10 +19,13 @@ class Edit extends React.Component {
     try {
       console.log("expid", this.props.expId);
       if (this.props.expId !== null) {
-        const response = await fetch(this.url, {
-          method: "GET",
-          headers: this.headers,
-        });
+        const response = await fetch(
+          `${this.url}/${this.props.profile.username}/experiences/${this.props.expId}`,
+          {
+            method: "GET",
+            headers: this.headers,
+          }
+        );
         const data = await response.json();
         if (response.ok) {
           this.setState({ experience: data });
