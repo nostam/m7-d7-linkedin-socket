@@ -17,7 +17,6 @@ class Bio extends React.Component {
             <div className="info">About</div>
 
             <Route path="/user/me">
-              {" "}
               <EditProfile
                 profile={this.props.profile}
                 refetch={this.props.refetch}
