@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Image, Card } from "react-bootstrap";
+import { Button, Image, Card, Col, Row } from "react-bootstrap";
 import {
   BiLike,
   BiCommentDetail,
@@ -8,22 +8,31 @@ import {
   BiDotsHorizontalRounded,
 } from "react-icons/bi";
 import { IconContext } from "react-icons";
+import moment from "moment";
 import "./styles.css";
 export default class FeedCard extends Component {
   render() {
     const { post } = this.props;
     return (
       <div>
-        <Card className="w-100 my-4" key={`feed${post._id}`}>
+        <Card className="w-100 my-2 feedCard" key={`feed${post._id}`}>
           <Card.Header className="d-flex justify-content-between px-3">
-            <div>
+            <Row className="ml-1">
               <Image
                 src={post.user.image}
-                className="postModalImg mr-3"
+                className="feedcardAvatar mr-3 align-self-center"
                 roundedCircle
               />
-              {post.user.name + " " + post.user.surname}
-            </div>
+              <Col className="">
+                <Row className="mb-0 feedcardName">
+                  {post.user.name + " " + post.user.surname}
+                </Row>
+                <Row className="mb-0 feedcardInfo">{post.user.title}</Row>
+                <Row className="mb-0 feedcardInfo">
+                  {moment(post.createdAt).fromNow()}
+                </Row>
+              </Col>
+            </Row>
             {/* TODO if user = me */}
             <div onClick={this.props.toggle} className="JumbBiPencilDiv">
               <IconContext.Provider
@@ -37,10 +46,14 @@ export default class FeedCard extends Component {
             </div>
           </Card.Header>
           {post.image && (
-            <Card.Img src={post.image} alt="PostImage" className="postImage" />
+            <Card.Img
+              src={post.image}
+              alt="PostImage"
+              className="feedcardImg"
+            />
           )}
           <Card.Text className="p-3">{post.text}</Card.Text>
-          <Card.Footer className="HomeModal bg-white justify-content-around">
+          <Card.Footer className="cardFooter bg-white justify-content-around">
             <Button variant="none">
               <BiLike /> Like
             </Button>

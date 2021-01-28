@@ -88,7 +88,7 @@ class PostModal extends React.Component {
     const { imgSubmitStatus, post, showModal } = this.state;
     return (
       <>
-        <Card className="pt-3 px-3 pb-0">
+        <Card className="pt-3 px-3 pb-0 mb-2">
           <Button
             className="postButton align-items-center d-flex"
             variant="outline-secondary"
