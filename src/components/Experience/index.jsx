@@ -133,95 +133,96 @@ class Experience extends React.Component {
               <Droppable droppableId="droppable">
                 {(provided, snapshot) => (
                   <div {...provided.droppableProps} ref={provided.innerRef}>
-                    {experiences.map((experience, index) => (
-                      <Draggable
-                        key={experience._id}
-                        draggableId={experience._id}
-                        index={index}
-                      >
-                        {(provided, snapshot) => (
-                          <div
-                            ref={provided.innerRef}
-                            {...provided.draggableProps}
-                            {...provided.dragHandleProps}
-                          >
-                            <Row noGutters>
-                              <div style={{ width: "48px" }}>
-                                <img
-                                  src={
-                                    experience.image ? experience.image : Job
-                                  }
-                                  alt=""
-                                  style={{ width: "48px" }}
-                                />
-                              </div>
-                              <Col>
-                                <ul
-                                  id={experience._id}
-                                  key={`exp${index}`}
-                                  className="exp"
-                                >
-                                  <Route path="/user/me">
-                                    <Button
-                                      variant="white"
-                                      className="editBtnExp"
-                                      onClick={() =>
-                                        this.toggleModal(experience)
-                                      }
-                                    >
-                                      <IconContext.Provider
-                                        value={{
-                                          size: "24px",
-                                          className: "expIcons",
-                                          color: "#0A66CE",
-                                        }}
+                    {experiences.length > 0 &&
+                      experiences.map((experience, index) => (
+                        <Draggable
+                          key={experience._id}
+                          draggableId={experience._id}
+                          index={index}
+                        >
+                          {(provided, snapshot) => (
+                            <div
+                              ref={provided.innerRef}
+                              {...provided.draggableProps}
+                              {...provided.dragHandleProps}
+                            >
+                              <Row noGutters>
+                                <div style={{ width: "48px" }}>
+                                  <img
+                                    src={
+                                      experience.image ? experience.image : Job
+                                    }
+                                    alt=""
+                                    style={{ width: "48px" }}
+                                  />
+                                </div>
+                                <Col>
+                                  <ul
+                                    id={experience._id}
+                                    key={`exp${index}`}
+                                    className="exp"
+                                  >
+                                    <Route path="/user/me">
+                                      <Button
+                                        variant="white"
+                                        className="editBtnExp"
+                                        onClick={() =>
+                                          this.toggleModal(experience)
+                                        }
                                       >
-                                        <BiPencil />
-                                      </IconContext.Provider>
-                                    </Button>
-                                  </Route>
-                                  <li className="expEntries">
-                                    <div className="roleExp">
-                                      {experience.role}
-                                    </div>
-                                  </li>
-                                  <li className="expEntries">
-                                    <div className="workplaceExp">
-                                      {experience.company}
-                                    </div>
-                                  </li>
-                                  <li className="expEntries">
-                                    <div className="timeExp">
-                                      {moment(experience.startDate).format(
-                                        "MM/YYYY"
-                                      )}{" "}
-                                      -{" "}
-                                      {experience.endDate
-                                        ? moment(experience.endDate).format(
-                                            "MM/YYYY"
-                                          )
-                                        : "Current"}
-                                    </div>
-                                    <div className="timeExp"></div>
-                                  </li>
+                                        <IconContext.Provider
+                                          value={{
+                                            size: "24px",
+                                            className: "expIcons",
+                                            color: "#0A66CE",
+                                          }}
+                                        >
+                                          <BiPencil />
+                                        </IconContext.Provider>
+                                      </Button>
+                                    </Route>
+                                    <li className="expEntries">
+                                      <div className="roleExp">
+                                        {experience.role}
+                                      </div>
+                                    </li>
+                                    <li className="expEntries">
+                                      <div className="workplaceExp">
+                                        {experience.company}
+                                      </div>
+                                    </li>
+                                    <li className="expEntries">
+                                      <div className="timeExp">
+                                        {moment(experience.startDate).format(
+                                          "MM/YYYY"
+                                        )}{" "}
+                                        -{" "}
+                                        {experience.endDate
+                                          ? moment(experience.endDate).format(
+                                              "MM/YYYY"
+                                            )
+                                          : "Current"}
+                                      </div>
+                                      <div className="timeExp"></div>
+                                    </li>
 
-                                  <li className="expEntries">
-                                    <div className="cityExp">
-                                      {experience.area}
-                                    </div>
-                                  </li>
-                                  <li className="expEntries">
-                                    <div className="descExp">
-                                      {experience.description}
-                                    </div>
-                                  </li>
-                                </ul>
-                              </Col>
-                            </Row>
-                          </div>
-                        )}
-                      </Draggable>
-                    ))}
+                                    <li className="expEntries">
+                                      <div className="cityExp">
+                                        {experience.area}
+                                      </div>
+                                    </li>
+                                    <li className="expEntries">
+                                      <div className="descExp">
+                                        {experience.description}
+                                      </div>
+                                    </li>
+                                  </ul>
+                                </Col>
+                              </Row>
+                            </div>
+                          )}
+                        </Draggable>
+                      ))}
                     {provided.placeholder}
                   </div>
                 )}
