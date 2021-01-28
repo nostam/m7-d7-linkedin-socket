@@ -50,12 +50,15 @@ export default class Home extends Component {
   };
   getUser = async () => {
     try {
-      const res = await fetch(
-        `${process.env.REACT_APP_API_URL}/profiles/600ec552cde6445148228b53`
-      );
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/profiles/me`, {
+        headers: {
+          Authorization: "Basic " + localStorage.getItem("token"),
+        },
+      });
       const user = await res.json();
       console.log("login user", user);
       this.setState({ me: user });
+      localStorage.setItem("id", user._id);
     } catch (error) {
       console.log(error);
     }

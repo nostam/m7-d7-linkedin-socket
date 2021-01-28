@@ -13,6 +13,7 @@ class RSidebar extends React.Component {
   render() {
     return (
       <>
+        {console.log("me side", this.props)}
         <Card
           style={{ borderTopRightRadius: "8px", borderTopLeftRadius: "8px" }}
         >
@@ -40,7 +41,7 @@ class RSidebar extends React.Component {
                     marginTop: "50px",
                     marginLeft: "65px",
                   }}
-                ></img>
+                />
               </div>
             </div>
 

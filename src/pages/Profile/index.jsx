@@ -28,16 +28,15 @@ class Body extends React.Component {
     myquery: this.props.query,
   };
   searchProfile = (id) => {
-    const me = "600ea6c630ffa163f4412d62";
-    let userId = null;
-    this.props.match.params.id === me ||
+    let userId = "";
+    this.props.match.params.id === "me" ||
     this.props.location.pathname === "/user/me"
-      ? (userid = me)
-      : (userid = id);
+      ? (userId = localStorage.getItem("id"))
+      : (userId = id);
     fetch(`${process.env.REACT_APP_API_URL}/profiles/${userId}`, {
       method: "GET",
       headers: new Headers({
-        Authorization: "Bearer " + localStorage.getItem("token"),
+        // Authorization: "Basic " + localStorage.getItem("token"),
         ContentType: "application/json",
       }),
     })
@@ -180,7 +179,7 @@ class Body extends React.Component {
                 <Route path="/user/me">
                   <Feature />
                 </Route>
-                <Experience profile={profile} />
+                {/* <Experience profile={profile} /> */}
               </Col>
               <Col
                 md={4}

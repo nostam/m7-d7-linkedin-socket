@@ -5,10 +5,10 @@ import FooterLogo from "../../assets/footer_logo.svg";
 import "./styles.css";
 class Login extends Component {
   state = {
-    user: [],
+    user: { username: "", password: "" },
     hidden: true,
   };
-  url = "https://striveschool-api.herokuapp.com/api/account/register";
+  url = `${process.env.REACT_APP_API_URL}/profiles/login`;
   submitData = async (e) => {
     e.preventDefault();
     try {
@@ -35,7 +35,7 @@ class Login extends Component {
   };
   handleLogin = (e) => {
     if (e.keyCode === 13) {
-      this.props.submitData(this.state.user);
+      this.submitData(this.state.user);
     } else {
       this.setState({
         user: { ...this.state.user, [e.target.id]: e.currentTarget.value },
@@ -75,7 +75,7 @@ class Login extends Component {
                   <span>Stay updated on your professional world</span>
                 )}
               </div>
-              <Form onSubmit={this.submitData}>
+              <Form onSubmit={() => this.submitData()}>
                 <Form.Group>
                   <Form.Control
                     required
@@ -109,7 +109,11 @@ class Login extends Component {
                   </Badge>
                 </Form.Group>
                 <Col className="loginCol">
-                  <Button type="submit" className="loginBtn">
+                  <Button
+                    type="submit"
+                    className="loginBtn"
+                    onClick={this.submitData}
+                  >
                     Sign in
                   </Button>
                 </Col>

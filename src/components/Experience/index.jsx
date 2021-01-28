@@ -66,7 +66,7 @@ class Experience extends React.Component {
       {
         method: "GET",
         headers: new Headers({
-          Authorization: "Bearer " + localStorage.getItem("token"),
+          Authorization: "Basic " + localStorage.getItem("token"),
           ContentType: "application/json",
         }),
       }

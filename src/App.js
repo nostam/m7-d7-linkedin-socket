@@ -20,7 +20,7 @@ class App extends React.Component {
     return (
       <Router>
         <Route
-          path={["/", "/user/:id", "/home"]}
+          path={["/user/:id", "/home"]}
           render={() => (
             <AppNavBar
               query={this.state.query}
@@ -29,7 +29,7 @@ class App extends React.Component {
           )}
         />
         <Route
-          path={"/"}
+          path={"/home"}
           exact
           render={(props) => <Home title="Homepage" {...props} />}
         />
@@ -44,10 +44,10 @@ class App extends React.Component {
             />
           )}
         />
-        {/* <Route path={"/"} exact render={() => <Welcome />} />
+        <Route path={"/"} exact render={() => <Welcome />} />
         <Route path={"/login"} render={() => <Login />} />
-        <Route path={"/signup"} render={() => <SignUp />} /> */}
-        <Route path={["/", "/user/:id", "/home"]} component={Footer} />
+        <Route path={"/signup"} render={() => <SignUp />} />
+        <Route path={["/user/:id", "/home"]} component={Footer} />
       </Router>
     );
   }

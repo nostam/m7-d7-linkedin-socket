@@ -11,10 +11,10 @@ class Sidebar extends Component {
     selected: "me",
   };
   componentDidMount = () => {
-    fetch("https://striveschool-api.herokuapp.com/api/profile", {
+    fetch(`${process.env.REACT_APP_API_URL}/profiles`, {
       method: "GET",
       headers: new Headers({
-        Authorization: "Bearer " + localStorage.getItem("token"),
+        Authorization: "Basic " + localStorage.getItem("token"),
         ContentType: "application/json",
       }),
     })

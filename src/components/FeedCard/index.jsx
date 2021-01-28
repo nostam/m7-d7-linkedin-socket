@@ -53,18 +53,19 @@ export default class FeedCard extends Component {
             />
           )}
           <Card.Text className="p-3">{post.text}</Card.Text>
-          <Card.Footer className="cardFooter bg-white justify-content-around">
+          <Card.Footer className="cardFooter bg-white">
             <Button variant="none">
-              <BiLike /> Like
+              <BiLike size="24" style={{ transform: "scaleX(-1)" }} /> Like
             </Button>
             <Button variant="none">
-              <BiCommentDetail /> Comment
+              <BiCommentDetail size="24" style={{ transform: "scaleX(-1)" }} />{" "}
+              Comment
             </Button>
             <Button variant="none">
-              <BiShare /> Share
+              <BiShare size="24" style={{ transform: "scaleX(-1)" }} /> Share
             </Button>
             <Button variant="none">
-              <BiSend /> Send
+              <BiSend size="24" /> Send
             </Button>
           </Card.Footer>
         </Card>
