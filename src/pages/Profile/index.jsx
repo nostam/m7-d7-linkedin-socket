@@ -32,8 +32,8 @@ class Body extends React.Component {
     let userId = null;
     this.props.match.params.id === me ||
     this.props.location.pathname === "/user/me"
-      ? (userid = me)
-      : (userid = id);
+      ? (userId = me)
+      : (userId = id);
     fetch(`${process.env.REACT_APP_API_URL}/profiles/${userId}`, {
       method: "GET",
       headers: new Headers({
