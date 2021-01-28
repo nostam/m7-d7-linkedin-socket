@@ -62,7 +62,7 @@ class Experience extends React.Component {
   };
   searchExp = async () => {
     await fetch(
-      `http://localhost:4002/experiences/${this.props.profile.username}`,
+      `nostam-api.herokuapp.com/${this.props.profile.username}`,
       {
         method: "GET",
         headers: new Headers({

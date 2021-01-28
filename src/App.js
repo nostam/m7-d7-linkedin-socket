@@ -36,11 +36,11 @@ class App extends React.Component {
         <Route
           path={"/user/:id"}
           exact
-          render={(props) => <Profile {...props} />}
+          render={(props) => <Profile {...props} query={this.state.searchQuery} searchHandler={this.searchHandler}/>}
         />
-        <Route path={"/"} exact render={() => <Welcome />} />
+        {/* <Route path={"/"} exact render={() => <Welcome />} />
         <Route path={"/login"} render={() => <Login />} />
-        <Route path={"/signup"} render={() => <SignUp />} />
+        <Route path={"/signup"} render={() => <SignUp />} /> */}
         <Route path={["/user/:id", "/home"]} component={Footer} />
       </Router>
     );

@@ -16,7 +16,7 @@ class EditPage extends React.Component {
   fetchMe = async () => {
     try {
       const pFetch = await fetch(
-        "http://localhost:4002/profiles/600ea6c630ffa163f4412d62",
+        "nostam-api.herokuapp.com/profiles/600ea6c630ffa163f4412d62",
         {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("token"),
@@ -42,7 +42,7 @@ class EditPage extends React.Component {
   };
 
   editPage = async () => {
-    const url = "http://localhost:4002/profiles/600ea6c630ffa163f4412d62";
+    const url = "nostam-api.herokuapp.com/profiles/600ea6c630ffa163f4412d62";
     try {
       const response = await fetch(url, {
         method: "PUT",
@@ -81,7 +81,7 @@ class EditPage extends React.Component {
     fd.append("image", this.state.selectedFile);
     try {
       const response = await fetch(
-        "http://localhost:4002/profiles/600ea6c630ffa163f4412d62/img_upld",
+        "nostam-api.herokuapp.com/profiles/600ea6c630ffa163f4412d62/img_upld",
         {
           method: "POST",
           headers: { Authorization: "Bearer " + localStorage.getItem("token") },

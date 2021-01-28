@@ -10,7 +10,7 @@ class Edit extends React.Component {
     selectedFile: null,
     imgSubmitStatus: "secondary",
   };
-  url = `http://localhost:4002/experiences/${this.props.profile.username}`;
+  url = `nostam-api.herokuapp.com/experiences/${this.props.profile.username}`;
   headers = {
     Authorization: "Bearer " + localStorage.getItem("token"),
     "Content-Type": "application/json",
@@ -19,7 +19,7 @@ class Edit extends React.Component {
     try {
       if (this.props.expId !== null) {
         const response = await fetch(
-          `http://localhost:4002/experiences/${this.props.profile.username}`,
+          `nostam-api.herokuapp.com/experiences/${this.props.profile.username}`,
           {
             method: "GET",
             headers: this.headers,
@@ -102,7 +102,7 @@ class Edit extends React.Component {
     fd.append("image", this.state.selectedFile);
     try {
       const response = await fetch(
-       ` http://localhost:4002/experiences/${this.props.profile.username}/exp/${this.props.expId}/upload`,
+       `nostam-api.herokuapp.com/experiences/${this.props.profile.username}/exp/${this.props.expId}/upload`,
         {
           method: "POST",
           headers: { Authorization: "Bearer " + localStorage.getItem("token") },

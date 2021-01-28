@@ -27,44 +27,79 @@ class Body extends React.Component {
     errType: null,
     errMsg: "",
     loading: true,
+    myquery:this.props.query
   };
   searchProfile = (id) => {
-    fetch("http://localhost:4002/profiles/600ea6c630ffa163f4412d62" , {
-      method: "GET",
-      headers: new Headers({
-        Authorization: "Bearer " + localStorage.getItem("token"),
-        ContentType: "application/json",
-      }),
-    })
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        }
-      })
-      .then((info) => {
-        let profile = { ...info };
-        console.log(profile);
-        this.setState({ profile: profile, loading: false });
-      })
-      .catch((error) => {
-        console.log(error);
-        this.setState({
-          loading: false,
-          err: true,
-          errType: "danger",
-          errMsg: error.messasge,
-        });
-      });
-  };
-  componentDidMount = () => {
-    this.props.match.params.id &&
-      this.searchProfile(this.props.match.params.id);
-  };
-  // componentDidUpdate = (prevProps) => {
-  //   if (prevProps.match.params.id !== this.props.match.params.id) {
-  //     this.searchProfile(this.props.match.params.id);
-  //   }
-  // };
+      const me = "600ea6c630ffa163f4412d62"
+      if(this.props.match.params.id===me || this.props.location.pathname==="/user/me"){
+        fetch(`http://nostam-api.herokuapp.com/profiles/${me}` , {
+          method: "GET",
+          headers: new Headers({
+            Authorization: "Bearer " + localStorage.getItem("token"),
+            ContentType: "application/json",
+          }),
+        })
+          .then((response) => {
+            if (response.ok) {
+              return response.json();
+            }
+          })
+          .then((info) => {
+            let profile = { ...info };
+            console.log(profile);
+            this.setState({ profile: profile, loading: false });
+          })
+          .catch((error) => {
+            console.log(error);
+            this.setState({
+              loading: false,
+              err: true,
+              errType: "danger",
+              errMsg: error.messasge,
+            });
+          });
+      }else{
+        fetch(`http://nostam-api.herokuapp.com/profiles/${this.props.match.params.id}` , {
+          method: "GET",
+          headers: new Headers({
+            Authorization: "Bearer " + localStorage.getItem("token"),
+            ContentType: "application/json",
+          }),
+        })
+          .then((response) => {
+            if (response.ok) {
+              return response.json();
+            }
+          })
+          .then((info) => {
+            let profile = { ...info };
+            console.log(profile);
+            this.setState({ profile: profile, loading: false });
+          })
+          .catch((error) => {
+            console.log(error);
+            this.setState({
+              loading: false,
+              err: true,
+              errType: "danger",
+              errMsg: error.messasge,
+            });
+          });
+      }
+    };
+  
+
+    
+   
+    componentDidMount = () => {
+      this.props.match.params.id &&
+        this.searchProfile();
+    };
+    componentDidUpdate = (prevProps) => {
+      if (prevProps.match.params.id !== this.props.match.params.id) {
+        this.searchProfile();
+      }
+    };
   render() {
     const { err, loading, profile, errMsg } = this.state;
     return (
@@ -74,7 +109,7 @@ class Body extends React.Component {
 
           {loading && err === true ? (
             <FadeLoader loading={loading} size={60} />
-          ) : Object.keys(profile).length !== 0 ? (
+          ) : profile.length !== 0 ? (
             <Row className="rowm">
               {/*<Col lg={3}></Col> */}
               <Col md={8} style={{ marginTop: "10vh" }}>
@@ -171,7 +206,7 @@ class Body extends React.Component {
                 <Bio
                   bio={profile.bio}
                   profile={profile}
-                  refetch={() => this.searchProfile(this.props.match.params.id)}
+                  refetch={() => this.searchProfile("600ea6c630ffa163f4412d62")}
                 />
                 <Route path="/user/me">
                   {" "}
