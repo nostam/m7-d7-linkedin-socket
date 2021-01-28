@@ -1,4 +1,28 @@
-.postModalImg {
+.feedcardAvatar {
   width: 48px;
   height: 48px;
+}
+.feedcardName {
+  font-size: 14px;
+}
+.feedcardInfo {
+  font-size: 12px;
+  color: grey;
+}
+.feedcardInfo,
+.feedcardName {
+  font-weight: bold;
+}
+.feedcardImg {
+  border-radius: 0 !important;
+}
+.feedCard {
+  border: 1px solid #dbdad7 !important;
+  border-top-left-radius: 0.8rem !important;
+  border-top-right-radius: 0.8rem !important;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05) !important;
+}
+.cardFooter {
+  border-bottom-left-radius: 0.8rem !important;
+  border-bottom-right-radius: 0.8rem !important;
 }

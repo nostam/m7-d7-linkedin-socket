@@ -99,7 +99,10 @@ export default class Home extends Component {
               </Col>
               <Col lg={6} md={9}>
                 <PostModal me={me} refetch={() => this.getPosts(true)} />
-                <Row className="sortBySeperator">Sort by recent</Row>
+                <Row className="sortBySeperator">
+                  <hr className="hLine" />
+                  Sort by recent
+                </Row>
                 {posts.map((post) => (
                   <FeedCard
                     key={uniqid()}
