@@ -34,8 +34,9 @@ class Login extends Component {
     });
   };
   handleLogin = (e) => {
+    e.preventDefault();
     if (e.keyCode === 13) {
-      this.submitData(this.state.user);
+      this.submitData(e);
     } else {
       this.setState({
         user: { ...this.state.user, [e.target.id]: e.currentTarget.value },
@@ -75,7 +76,7 @@ class Login extends Component {
                   <span>Stay updated on your professional world</span>
                 )}
               </div>
-              <Form onSubmit={() => this.submitData()}>
+              <Form onSubmit={(e) => this.submitData(e)}>
                 <Form.Group>
                   <Form.Control
                     required
@@ -112,7 +113,7 @@ class Login extends Component {
                   <Button
                     type="submit"
                     className="loginBtn"
-                    onClick={this.submitData}
+                    onClick={(e) => this.submitData(e)}
                   >
                     Sign in
                   </Button>

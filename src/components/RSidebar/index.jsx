@@ -8,6 +8,7 @@ class RSidebar extends React.Component {
   };
   logout = () => {
     localStorage.setItem("token", "");
+    localStorage.setItem("id", "");
     this.props.history.push("/");
   };
   render() {
