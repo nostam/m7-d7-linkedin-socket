@@ -30,7 +30,7 @@ class AppNavBar extends React.Component {
       fetch(`http://localhost:4002/profiles?name=${query}`, {
         method: "GET",
         headers: new Headers({
-          Authorization: "Bearer " + localStorage.getItem("token"),
+          Authorization: "Basic " + localStorage.getItem("token"),
           ContentType: "application/json",
         }),
       })

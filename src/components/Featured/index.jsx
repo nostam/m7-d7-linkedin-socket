@@ -2,7 +2,6 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Card } from "react-bootstrap";
 import feat1 from "../../assets/2.png";
-import feat2 from "../../assets/homepage.html.png";
 import feat3 from "../../assets/3.png";
 
 class Feature extends React.Component {
@@ -34,15 +33,6 @@ class Feature extends React.Component {
           >
             <img
               src={feat3}
-              alt=""
-              style={{
-                height: "185px",
-                objectFit: "cover",
-                paddingRight: "1rem",
-              }}
-            />
-            <img
-              src={feat2}
               alt=""
               style={{
                 height: "185px",

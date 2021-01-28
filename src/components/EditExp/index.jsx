@@ -103,7 +103,7 @@ class Edit extends React.Component {
         `${process.env.REACT_APP_API_URL}/experiences/${this.props.profile.username}/exp/${this.props.expId}/upload`,
         {
           method: "POST",
-          headers: { Authorization: "Bearer " + localStorage.getItem("token") },
+          headers: { Authorization: "Basic " + localStorage.getItem("token") },
           body: fd,
         }
       );
