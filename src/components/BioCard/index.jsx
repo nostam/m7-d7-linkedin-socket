@@ -8,10 +8,7 @@ import { Route } from "react-router-dom";
 class Bio extends React.Component {
   render() {
     return (
-      <Card
-        className="bio cardProf"
-        style={{ borderRadius: ".5vw", marginTop: ".8vw" }}
-      >
+      <Card className="cardProf">
         <Card.Body>
           <Row className="d-flex justify-content-between ml-1">
             <div className="info">About</div>
@@ -24,7 +21,6 @@ class Bio extends React.Component {
               />
             </Route>
           </Row>
-
           <div className="infobody">{this.props.bio}</div>
         </Card.Body>
       </Card>

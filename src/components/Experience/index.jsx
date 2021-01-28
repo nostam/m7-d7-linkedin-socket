@@ -99,7 +99,7 @@ class Experience extends React.Component {
     const { experiences } = this.state;
     return (
       <>
-        <Card className="bio cardProf mt-2">
+        <Card className="cardProf">
           <Card.Body>
             <Row className="d-flex justify-content-between ml-1">
               <div id="expTitle" className="info">
@@ -140,7 +140,7 @@ class Experience extends React.Component {
                             >
                               <Row
                                 noGutters
-                                className="justify-content-between"
+                                className="justify-content-between ml-2"
                               >
                                 <div className="expRow">
                                   <img

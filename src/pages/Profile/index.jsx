@@ -6,6 +6,8 @@ import {
   Card,
   Dropdown,
   DropdownButton,
+  Container,
+  Button,
 } from "react-bootstrap";
 import { FadeLoader } from "react-spinners";
 import Bio from "../../components/BioCard";
@@ -14,8 +16,7 @@ import Feature from "../../components/Featured";
 import Sidebar from "../../components/Sidebar";
 import EditProfile from "../../components/EditProfile";
 import "./styles.css";
-import { BiPencil } from "react-icons/bi";
-import { IconContext } from "react-icons";
+import { BiPencil, BiDotsHorizontalRounded } from "react-icons/bi";
 import { Route } from "react-router-dom";
 class Body extends React.Component {
   state = {
@@ -73,14 +74,14 @@ class Body extends React.Component {
     const { err, loading, profile, errMsg } = this.state;
     return (
       <div className="bgBody">
-        <div className="mainBody">
+        <Container className="mainBody">
           {err && <Alert variant="danger">{errMsg}</Alert>}
           {loading && err === true ? (
             <FadeLoader loading={loading} size={60} />
           ) : profile.length !== 0 ? (
-            <Row className="rowm">
-              <Col md={8} style={{ marginTop: "10vh" }}>
-                <Card className="cardProf">
+            <Row>
+              <Col lg={9}>
+                <Card className="cardProf mt-0">
                   <Card.Img
                     className="cardImg"
                     variant="top"
@@ -104,70 +105,70 @@ class Body extends React.Component {
                         ></img>
                       </div>
                     </div>
-
-                    <Card.Text>
-                      <Row>
-                        <Col xs={12} lg={6}>
-                          <h3 className="usrnTxt">
-                            {profile.name + " " + profile.surname + " "}
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 21 21"
-                              data-supported-dps="21x21"
-                              fill="currentColor"
-                              className="mercado-match"
-                              width="21"
-                              height="21"
-                              focusable="false"
-                              style={{ color: "#C37D16" }}
+                    <Row>
+                      <Col lg={6} className="pl-4">
+                        <div className="usrnTxt">
+                          {profile.name + " " + profile.surname}
+                        </div>
+                        <div className="roletext">{profile.title}</div>
+                        <div className="areaTxt">{profile.area}</div>
+                        <Route path="/user/me">
+                          <Row className="mx-0">
+                            <DropdownButton
+                              className="d-none d-lg-block"
+                              id="dropdown-basic-button"
+                              size="sm"
+                              title="Add profile section"
                             >
-                              <g>
-                                <path
-                                  class="background-mercado"
-                                  d="M19.5 0h-18A1.5 1.5 0 000 1.5v18A1.5 1.5 0 001.5 21h18a1.5 1.5 0 001.5-1.5v-18A1.5 1.5 0 0019.5 0zM6 18H3V8h3zM4.5 6.25a1.75 1.75 0 110-3.5 1.75 1.75 0 110 3.5zM18 18h-3v-5.09c0-1.62-.74-2.44-1.84-2.44A2.31 2.31 0 0011 13v5H8V8h3v1.39a4.06 4.06 0 013.3-1.63c1.77 0 3.66.93 3.66 4z"
-                                ></path>
-                              </g>
-                            </svg>
-                          </h3>
-                          <div className="roletext">{profile.title}</div>
-                          <h6 className="areaTxt">{profile.area}</h6>
-                        </Col>
-                        <Col lg={6}>
-                          <div className="btnBox">
-                            <Route path="/user/me">
-                              {" "}
-                              <DropdownButton
-                                className="d-none d-lg-block"
-                                id="dropdown-basic-button"
-                                size="sm"
-                                title="Add profile section"
-                              >
-                                <Dropdown.Item>Intro</Dropdown.Item>
-                                <Dropdown.Item>About</Dropdown.Item>
-                                <Dropdown.Item>Featured</Dropdown.Item>
-                                <Dropdown.Item>Background</Dropdown.Item>
-                                <Dropdown.Item>Skills</Dropdown.Item>
-                                <Dropdown.Item>Accomplishments</Dropdown.Item>
-                                <Dropdown.Item>
-                                  Additional information
-                                </Dropdown.Item>
-                                <Dropdown.Item>
-                                  Supported languages
-                                </Dropdown.Item>
-                              </DropdownButton>
-                              <button className="btnMore">More...</button>
-                              <EditProfile
-                                profile={profile}
-                                refetch={() =>
-                                  this.searchProfile(this.props.match.params.id)
-                                }
-                                color="#0A66CE"
-                              />
-                            </Route>
-                          </div>
-                        </Col>
-                      </Row>
-                    </Card.Text>
+                              <Dropdown.Item>Intro</Dropdown.Item>
+                              <Dropdown.Item>About</Dropdown.Item>
+                              <Dropdown.Item>Featured</Dropdown.Item>
+                              <Dropdown.Item>Background</Dropdown.Item>
+                              <Dropdown.Item>Skills</Dropdown.Item>
+                              <Dropdown.Item>Accomplishments</Dropdown.Item>
+                              <Dropdown.Item>
+                                Additional information
+                              </Dropdown.Item>
+                              <Dropdown.Item>Supported languages</Dropdown.Item>
+                            </DropdownButton>
+                            <Button
+                              variant="outline-dark"
+                              className="rounded-pill profileBtn mx-2"
+                            >
+                              More...
+                            </Button>
+                          </Row>
+                        </Route>
+                      </Col>
+                      <Col lg={6} className="">
+                        <Row className="flex-row-reverse">
+                          <Route path="/user/me">
+                            <EditProfile
+                              profile={profile}
+                              refetch={() =>
+                                this.searchProfile(this.props.match.params.id)
+                              }
+                              color="#0A66CE"
+                            />
+                          </Route>
+                          <Route path={new RegExp("[^/user/me]")}>
+                            <BiDotsHorizontalRounded
+                              size="36"
+                              className="mr-2"
+                            />
+                            <Button
+                              className="rounded-pill profileBtn mr-2"
+                              variant="outline-dark"
+                            >
+                              Meessage
+                            </Button>
+                            <Button className="rounded-pill profileBtn mr-2">
+                              Connect
+                            </Button>
+                          </Route>
+                        </Row>
+                      </Col>
+                    </Row>
                   </Card.Body>
                 </Card>
                 <Bio
@@ -180,11 +181,7 @@ class Body extends React.Component {
                 </Route>
                 <Experience profile={profile} />
               </Col>
-              <Col
-                md={4}
-                style={{ marginTop: "10vh" }}
-                className="d-none d-md-block"
-              >
+              <Col lg={3} className="d-none d-lg-block">
                 <Sidebar />
               </Col>
             </Row>
@@ -195,7 +192,7 @@ class Body extends React.Component {
               errMsg: "We have encounter a problem, the profile is empty",
             })
           )}
-        </div>
+        </Container>
       </div>
     );
   }
