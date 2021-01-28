@@ -25,18 +25,22 @@ class Body extends React.Component {
     errType: null,
     errMsg: "",
     loading: true,
+    myquery: this.props.query,
   };
   searchProfile = (id) => {
-    fetch(
-      `${process.env.REACT_APP_API_URL}/profiles/600ea6c630ffa163f4412d62`,
-      {
-        method: "GET",
-        headers: new Headers({
-          Authorization: "Bearer " + localStorage.getItem("token"),
-          ContentType: "application/json",
-        }),
-      }
-    )
+    const me = "600ea6c630ffa163f4412d62";
+    let userId = null;
+    this.props.match.params.id === me ||
+    this.props.location.pathname === "/user/me"
+      ? (userid = me)
+      : (userid = id);
+    fetch(`${process.env.REACT_APP_API_URL}/profiles/${userId}`, {
+      method: "GET",
+      headers: new Headers({
+        Authorization: "Bearer " + localStorage.getItem("token"),
+        ContentType: "application/json",
+      }),
+    })
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -75,7 +79,7 @@ class Body extends React.Component {
 
           {loading && err === true ? (
             <FadeLoader loading={loading} size={60} />
-          ) : Object.keys(profile).length !== 0 ? (
+          ) : profile.length !== 0 ? (
             <Row className="rowm">
               <Col md={8} style={{ marginTop: "10vh" }}>
                 <Card className="cardProf">
@@ -171,7 +175,7 @@ class Body extends React.Component {
                 <Bio
                   bio={profile.bio}
                   profile={profile}
-                  refetch={() => this.searchProfile(this.props.match.params.id)}
+                  refetch={() => this.searchProfile("600ea6c630ffa163f4412d62")}
                 />
                 <Route path="/user/me">
                   <Feature />
