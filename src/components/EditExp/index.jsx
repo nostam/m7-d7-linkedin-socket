@@ -69,7 +69,7 @@ class Edit extends React.Component {
   };
   actionBtn = (str) => {
     str !== "DELETE"
-      ? this.submitData(this.edit() ? "PUT" : "POST")
+      ? this.submitData(this.isNewExp() ? "PUT" : "POST")
       : this.submitData("DELETE");
   };
   componentDidMount = () => {
