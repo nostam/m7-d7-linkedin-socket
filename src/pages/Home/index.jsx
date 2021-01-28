@@ -92,7 +92,7 @@ export default class Home extends Component {
             {errMsg}
           </Alert>
         )}
-        <Container className="HomeCont justify-content-center d-flex">
+        <Container className="HomeCont justify-content-center d-flex w-100">
           {loading && err !== true ? (
             <FadeLoader loading={loading} size={60} />
           ) : (
