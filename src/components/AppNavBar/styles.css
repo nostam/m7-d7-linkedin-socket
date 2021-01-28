@@ -34,8 +34,7 @@
   display: flex !important;
   justify-content: center;
   align-items: center;
-  margin-right: 1rem;
-  margin-left: 1rem;
+  margin: 0;
   height: 52px;
   padding-top: 0 !important;
   padding-bottom: 0 !important;
@@ -67,6 +66,8 @@
   .navCol,
   .navLinkCol {
     width: 44px;
+    margin-right: 1rem;
+    margin-left: 1rem;
   }
 }
 
