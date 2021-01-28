@@ -34,7 +34,8 @@
   display: flex !important;
   justify-content: center;
   align-items: center;
-  margin: 0;
+  margin-right: 1rem;
+  margin-left: 1rem;
   height: 52px;
   padding-top: 0 !important;
   padding-bottom: 0 !important;
