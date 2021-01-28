@@ -60,7 +60,7 @@ class PostModal extends React.Component {
     try {
       const payload = {
         ...this.state.post,
-        username: "admin",
+        username: this.props.me.username,
       };
       const res = await fetch(`${process.env.REACT_APP_API_URL}/posts`, {
         method: "POST",

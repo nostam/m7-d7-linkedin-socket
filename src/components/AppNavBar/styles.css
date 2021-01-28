@@ -66,6 +66,8 @@
   .navCol,
   .navLinkCol {
     width: 44px;
+    margin-right: 1rem;
+    margin-left: 1rem;
   }
 }
 

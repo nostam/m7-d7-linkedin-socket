@@ -160,7 +160,7 @@ class Body extends React.Component {
                               <EditProfile
                                 profile={profile}
                                 refetch={() =>
-                                  this.searchProfile("600ea6c630ffa163f4412d62")
+                                  this.searchProfile(this.props.match.params.id)
                                 }
                                 color="#0A66CE"
                               />
@@ -174,7 +174,7 @@ class Body extends React.Component {
                 <Bio
                   bio={profile.bio}
                   profile={profile}
-                  refetch={() => this.searchProfile("600ea6c630ffa163f4412d62")}
+                  refetch={() => this.searchProfile(this.props.match.params.id)}
                 />
                 <Route path="/user/me">
                   <Feature />

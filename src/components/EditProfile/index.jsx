@@ -16,10 +16,10 @@ class EditProfile extends React.Component {
   fetchMe = async () => {
     try {
       const pFetch = await fetch(
-        `${process.env.REACT_APP_API_URL}/profiles/600ea6c630ffa163f4412d62`,
+        `${process.env.REACT_APP_API_URL}/profiles/me`,
         {
           headers: {
-            Authorization: "Bearer " + localStorage.getItem("token"),
+            Authorization: "Basic " + localStorage.getItem("token"),
           },
         }
       );
@@ -43,7 +43,7 @@ class EditProfile extends React.Component {
 
   editPage = async () => {
     //TODO prepare for userid
-    const url = `${process.env.REACT_APP_API_URL}/profiles/600ea6c630ffa163f4412d62`;
+    const url = `${process.env.REACT_APP_API_URL}/profiles/${this.state.profile._id}`;
     try {
       const response = await fetch(url, {
         method: "PUT",
@@ -83,7 +83,7 @@ class EditProfile extends React.Component {
     try {
       const response = await fetch(
         //TODO prepare for userid
-        `${process.env.REACT_APP_API_URL}/profiles/600ea6c630ffa163f4412d62/img_upld`,
+        `${process.env.REACT_APP_API_URL}/profiles/${this.state.profile._id}/img_upld`,
         {
           method: "POST",
           headers: { Authorization: "Bearer " + localStorage.getItem("token") },
