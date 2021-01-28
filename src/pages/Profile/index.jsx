@@ -31,7 +31,11 @@ class Body extends React.Component {
     let userId = "";
     this.props.match.params.id === "me" ||
     this.props.location.pathname === "/user/me"
+<<<<<<< HEAD
       ? (userId = localStorage.getItem("id"))
+=======
+      ? (userId = me)
+>>>>>>> 9225a1c5e05a32a434ba8ac3b9dea08460605d55
       : (userId = id);
     fetch(`${process.env.REACT_APP_API_URL}/profiles/${userId}`, {
       method: "GET",
