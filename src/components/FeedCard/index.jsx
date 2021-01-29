@@ -21,19 +21,18 @@ export default class FeedCard extends Component {
   state = { showComment: false, payload: {} };
 
   //TODO callbacks
-  commentRequest = async (method, data, commentId) => {
+  commentRequest = async (method, id) => {
     try {
-      const url = `${process.env.REACT_APP_API_URL}/comments/${this.props.me._id}`;
-      const res = await fetch(
-        `${url}${method === "DELETE" ? "/" + commentId : ""}`,
-        {
-          method: method,
-          headers: { "Content-Type": "application/json" },
-          body: method === "DELETE" ? "" : data,
-        }
-      );
+      const url = `${process.env.REACT_APP_API_URL}/comments/${this.props.post._id}/${this.props.me._id}`;
+      const delUrl = `${process.env.REACT_APP_API_URL}/comments/${id}`;
+      const res = await fetch(method === "POST" ? url : delUrl, {
+        method: method,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(this.state.payload),
+      });
       if (res.ok) {
         console.log("ok");
+        this.props.refetch();
       }
     } catch (error) {
       console.log(error);
@@ -50,8 +49,10 @@ export default class FeedCard extends Component {
         [e.currentTarget.name]: e.currentTarget.value,
       },
     });
-    if (e.keyCode === 13) {
-      this.props.commentRequest("POST", this.state.payload);
+    console.log(this.state, e.key);
+    if (e.keyCode === 13 || e.key === "Enter") {
+      console.log("enter");
+      this.commentRequest("POST");
     }
   };
   render() {

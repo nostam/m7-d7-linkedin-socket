@@ -113,7 +113,7 @@ export default class Home extends Component {
                     key={uniqid()}
                     post={post}
                     toggle={() => this.toggleModal(post)}
-                    commentRequest={() => this.commentRequest()}
+                    refetch={() => this.getPosts()}
                   />
                 ))}
                 {morePosts && (
