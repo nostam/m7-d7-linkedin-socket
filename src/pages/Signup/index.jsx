@@ -8,7 +8,7 @@ export default class SignUp extends Component {
     user: {},
     hidden: true,
   };
-  url = "http://localhost:3005/profiles";
+  url = `${process.env.REACT_APP_API_URL}/profiles`;
   header = {
     ContentType: "application/json",
   };

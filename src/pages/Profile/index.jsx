@@ -115,7 +115,7 @@ class Body extends React.Component {
                         <Route path="/user/me">
                           <Row className="mx-0">
                             <DropdownButton
-                              className="d-block"
+                              className="flex"
                               id="dropdown-basic-button"
                               size="sm"
                               title="Add profile section"

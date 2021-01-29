@@ -11,7 +11,7 @@ import "./styles.css";
 export default class Home extends Component {
   state = {
     posts: [],
-    me: {},
+    me: this.props.me,
     showAlert: null,
     err: false,
     errMsg: "",
@@ -48,24 +48,24 @@ export default class Home extends Component {
       });
     }
   };
-  getUser = async () => {
-    try {
-      const res = await fetch(`${process.env.REACT_APP_API_URL}/profiles/me`, {
-        headers: {
-          Authorization: "Basic " + localStorage.getItem("token"),
-        },
-      });
-      const user = await res.json();
-      console.log("login user", user);
-      this.setState({ me: user });
-      localStorage.setItem("id", user._id);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // getUser = async () => {
+  //   try {
+  //     const res = await fetch(`${process.env.REACT_APP_API_URL}/profiles/me`, {
+  //       headers: {
+  //         Authorization: "Basic " + localStorage.getItem("token"),
+  //       },
+  //     });
+  //     const user = await res.json();
+  //     console.log("login user", user);
+  //     this.setState({ me: user });
+  //     localStorage.setItem("id", user._id);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
   componentDidMount() {
     this.getPosts();
-    this.getUser();
+    // this.getUser();
   }
   toggleModal = (data) => {
     console.log("toggle data", data);
@@ -78,7 +78,6 @@ export default class Home extends Component {
       err,
       loading,
       posts,
-      me,
       errMsg,
       links,
       morePosts,
@@ -98,19 +97,25 @@ export default class Home extends Component {
           ) : (
             <Row>
               <Col className="d-none d-lg-block" md={3}>
-                <RSidebar me={me} />
+                <RSidebar me={this.props.me} />
               </Col>
               <Col lg={6} md={9}>
-                <PostModal me={me} refetch={() => this.getPosts(true)} />
+                <PostModal
+                  me={this.props.me}
+                  refetch={() => this.getPosts(true)}
+                />
                 <Row className="sortBySeperator">
                   <hr className="hLine" />
                   <span>Sort by recent</span>
                 </Row>
                 {posts.map((post) => (
                   <FeedCard
+                    meAvatar={this.props.me.image}
+                    meId={this.props.me._id}
                     key={uniqid()}
                     post={post}
                     toggle={() => this.toggleModal(post)}
+                    refetch={() => this.getPosts(true)}
                   />
                 ))}
                 {morePosts && (
@@ -131,7 +136,7 @@ export default class Home extends Component {
         </Container>
         {showModal && (
           <EditPost
-            me={me}
+            me={this.props.me}
             show={showModal}
             post={post}
             toggle={() => this.toggleModal()}

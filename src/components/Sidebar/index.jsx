@@ -26,7 +26,7 @@ class Sidebar extends Component {
   render() {
     return (
       <>
-        <div className="usersDiv">
+        <div className="usersDiv w-100">
           <p className="divTitle">Add to your feed</p>
           {this.state.users &&
             this.state.users.slice(0, 6).map((user, index) => (
@@ -34,10 +34,10 @@ class Sidebar extends Component {
                 <Link to={`/user/${user._id}`}>
                   <Row className="flex-nowrap">
                     <img className="userimg" src={user.image} alt="user"></img>
-                    <div>
-                      <h6 className="sugUsers" id={`suggestUsers${index}name`}>
+                    <div className="userText">
+                      <p className="sugUsers" id={`suggestUsers${index}name`}>
                         {user.name}
-                      </h6>
+                      </p>
                       <small className="ranking">{user.bio}</small>
                       <p className="usersp">{user.title}</p>
                     </div>
@@ -64,28 +64,28 @@ class Sidebar extends Component {
           <h6 className="lrn-h6">LEARNING</h6>
           <h5 className="lrn-h5">Add new skills with these courses</h5>
           <div className="row no-gutters">
-            <div className="col-md-6">
+            <div className="col-lg-6 row-md">
               <img className="vid-img" alt="" src={vid1}></img>
             </div>
-            <div className="col-md-6">
+            <div className="col-lg-6 row-md">
               <h4 className="vid-txt">
                 Building Angular and ASP.NET Core Applications
               </h4>
               <small className="vid-sml">3,895</small>
             </div>
-            <div className="col-md-6">
+            <div className="col-lg-6 row-md">
               <img className="vid-img" alt="" src={vid2}></img>
             </div>
-            <div className="col-md-6">
+            <div className="col-lg-6 row-md">
               <h4 className="vid-txt">
                 Building Angular and ASP.NET Core Applications
               </h4>
               <small className="vid-sml">4,985</small>
             </div>
-            <div className="col-md-6">
+            <div className="col-lg-6 row-md">
               <img className="vid-img" alt="" src={vid3}></img>
             </div>
-            <div className="col-md-6">
+            <div className="col-lg-6 row-md">
               <h4 className="vid-txt">
                 Building Angular and ASP.NET Core Applications
               </h4>

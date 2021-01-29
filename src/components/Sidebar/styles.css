@@ -137,3 +137,12 @@ small {
   height: 14px;
   width: 14px;
 }
+.userText,
+.sugUsers,
+.ranking,
+.usersp {
+  width: auto;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}

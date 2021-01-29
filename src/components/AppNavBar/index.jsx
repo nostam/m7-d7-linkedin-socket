@@ -1,5 +1,14 @@
 import React from "react";
-import { Form, FormControl, Navbar, Nav, InputGroup } from "react-bootstrap";
+import {
+  Form,
+  FormControl,
+  Navbar,
+  Nav,
+  InputGroup,
+  DropdownButton,
+  Dropdown,
+  Button,
+} from "react-bootstrap";
 import { withRouter, Link } from "react-router-dom";
 import { IconContext } from "react-icons";
 import SearchResult from "../SearchResult";
@@ -13,13 +22,17 @@ import {
 import { BsPeopleFill, BsGrid3X3Gap, BsCollectionPlay } from "react-icons/bs";
 import { GiHandBag } from "react-icons/gi";
 import { RiMessage2Fill } from "react-icons/ri";
+import AppNavDropDown from "../AppNavDropdown";
 import "./styles.css";
 class AppNavBar extends React.Component {
   state = {
     query: null,
     profiles: [],
+    showNavDropDown: false,
   };
-
+  toggleNavDropdown = () => {
+    this.setState({ showNavDropDown: !this.state.showNavDropDown });
+  };
   handleSearchProfiles = (e) => {
     let currentId = e.currentTarget.id;
     this.setState({ profiles: [] });
@@ -27,7 +40,7 @@ class AppNavBar extends React.Component {
     if (e.currentTarget.value.length > 0) {
       // }else{
       this.setState({ query }, console.log(this.state));
-      fetch(`http://localhost:4002/profiles?name=${query}`, {
+      fetch(`${process.env.REACT_APP_API_URL}/profiles?name=${query}`, {
         method: "GET",
         headers: new Headers({
           Authorization: "Basic " + localStorage.getItem("token"),
@@ -50,10 +63,14 @@ class AppNavBar extends React.Component {
     }
   };
   render() {
-    const { query, profiles } = this.state;
+    const { query, profiles, showNavDropDown } = this.state;
     return (
       <>
-        <Navbar bg="white" variant="light" className="py-0 fixed-top">
+        <Navbar
+          bg="white"
+          variant="light"
+          className="py-0 fixed-top position-relative"
+        >
           <div className="navbarContent">
             <Navbar.Brand
               as={Link}
@@ -124,7 +141,9 @@ class AppNavBar extends React.Component {
                 to="/user/me"
               >
                 <FaUserCircle className="navIcon" />
-                <span className="navIconText">Me</span>
+                <div onClick={() => this.toggleNavDropdown()}>
+                  <span className="navIconText">Me ▼</span>
+                </div>
               </Nav.Link>
               <div className="vl"></div>
               <Nav.Link className="navLinkCol flex-column">
@@ -138,6 +157,7 @@ class AppNavBar extends React.Component {
             </div>
           </div>
         </Navbar>
+        {showNavDropDown && <AppNavDropDown me={this.props.me} />}
         {query !== 0 && <SearchResult profile={profiles} />}
       </>
     );
