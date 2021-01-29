@@ -9,35 +9,32 @@ import {
   FormControl,
 } from "react-bootstrap";
 import {
-  
   BiLike,
   BiCommentDetail,
   BiShare,
   BiSend,
   BiDotsHorizontalRounded,
 } from "react-icons/bi";
-import {
-  AiFillLike,
-} from "react-icons/ai"
+import { AiFillLike } from "react-icons/ai";
 import moment from "moment";
 import "./styles.css";
 export default class FeedCard extends Component {
   state = {
-     showComment: false, 
-     payload: {},
-    liked:false,
-   };
+    showComment: false,
+    payload: {},
+    liked: false,
+  };
 
   //TODO callbacks
   commentRequest = async (method, id) => {
     try {
-      console.log(this.props.meId,"allo")
+      console.log(this.props.meId, "allo");
       const url = `${process.env.REACT_APP_API_URL}/comments/${this.props.post._id}/${this.props.meId}`;
       const delUrl = `${process.env.REACT_APP_API_URL}/comments/${id}`;
       const res = await fetch(method === "POST" ? url : delUrl, {
         method: method,
         headers: { "Content-Type": "application/json" },
-        
+        body: JSON.stringify(this.state.payload),
       });
       if (res.ok) {
         console.log("ok");
@@ -47,27 +44,26 @@ export default class FeedCard extends Component {
       console.log(error);
     }
   };
-  handleLikes =async (method,id) =>{
-    try{
-      if(method==="POST"){
-        const likeMe = true
-        this.setState({liked:likeMe})
+  handleLikes = async (method, id) => {
+    try {
+      if (method === "POST") {
+        const likeMe = true;
+        this.setState({ liked: likeMe });
       }
-    const liked =`${process.env.REACT_APP_API_URL}/posts/${this.props.post._id}/${this.props.meId}/like` 
-    const dislike = `${process.env.REACT_APP_API_URL}/posts/${this.props.post._id}/${id}`
-    const res = await fetch(method === "POST" ? liked : dislike, {
-      method: method,
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(this.state.payload),
-    });
-    if (res.ok) {
-      console.log("ok");
-      this.props.refetch();
+      const liked = `${process.env.REACT_APP_API_URL}/posts/${this.props.post._id}/${this.props.meId}/like`;
+      const dislike = `${process.env.REACT_APP_API_URL}/posts/${this.props.post._id}/${id}`;
+      const res = await fetch(method === "POST" ? liked : dislike, {
+        method: method,
+        headers: { "Content-Type": "application/json" },
+      });
+      if (res.ok) {
+        console.log("ok");
+        this.props.refetch(true);
+      }
+    } catch (error) {
+      console.log(error);
     }
-  } catch (error) {
-    console.log(error);
-  }
-  }
+  };
   handleComment = () => {
     this.setState({ showComment: !this.state.showComment });
   };
@@ -124,15 +120,19 @@ export default class FeedCard extends Component {
           <Card.Footer className="cardFooter bg-white">
             <Row>
               {this.state.liked ? (
-                <Button variant="none" onClick={()=>this.handleLikes("POST")}>
-                <AiFillLike size="24" style={{ transform: "scaleX(-1)" }} /> Like
-              </Button>
-              ):(
-              <Button variant="none" onClick={()=>this.handleLikes("DELETE",)}>
-                <BiLike size="24" style={{ transform: "scaleX(-1)" }} /> Like
-              </Button>
+                <Button variant="none" onClick={() => this.handleLikes("POST")}>
+                  <AiFillLike size="24" style={{ transform: "scaleX(-1)" }} />{" "}
+                  Like
+                </Button>
+              ) : (
+                <Button
+                  variant="none"
+                  onClick={() => this.handleLikes("DELETE")}
+                >
+                  <BiLike size="24" style={{ transform: "scaleX(-1)" }} /> Like
+                </Button>
               )}
-              
+
               <Button variant="none" onClick={() => this.handleComment()}>
                 <BiCommentDetail
                   size="24"
@@ -143,7 +143,10 @@ export default class FeedCard extends Component {
               <Button variant="none">
                 <BiShare size="24" style={{ transform: "scaleX(-1)" }} /> Share
               </Button>
-              <Button variant="none" onClick={()=>this.commentRequest("POST",post._id)}>
+              <Button
+                variant="none"
+                onClick={() => this.commentRequest("POST", post._id)}
+              >
                 <BiSend size="24" /> Send
               </Button>
             </Row>
