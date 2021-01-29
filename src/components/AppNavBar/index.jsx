@@ -27,7 +27,7 @@ class AppNavBar extends React.Component {
     if (e.currentTarget.value.length > 0) {
       // }else{
       this.setState({ query }, console.log(this.state));
-      fetch(`http://localhost:4002/profiles?name=${query}`, {
+      fetch(`${process.env.REACT_APP_API_URL}/profiles?name=${query}`, {
         method: "GET",
         headers: new Headers({
           Authorization: "Basic " + localStorage.getItem("token"),

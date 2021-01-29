@@ -26,7 +26,7 @@ class Sidebar extends Component {
   render() {
     return (
       <>
-        <div className="usersDiv">
+        <div className="usersDiv w-100">
           <p className="divTitle">Add to your feed</p>
           {this.state.users &&
             this.state.users.slice(0, 6).map((user, index) => (
@@ -34,10 +34,10 @@ class Sidebar extends Component {
                 <Link to={`/user/${user._id}`}>
                   <Row className="flex-nowrap">
                     <img className="userimg" src={user.image} alt="user"></img>
-                    <div>
-                      <h6 className="sugUsers" id={`suggestUsers${index}name`}>
+                    <div className="userText">
+                      <p className="sugUsers" id={`suggestUsers${index}name`}>
                         {user.name}
-                      </h6>
+                      </p>
                       <small className="ranking">{user.bio}</small>
                       <p className="usersp">{user.title}</p>
                     </div>

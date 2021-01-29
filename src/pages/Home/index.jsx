@@ -97,7 +97,7 @@ export default class Home extends Component {
             <FadeLoader loading={loading} size={60} />
           ) : (
             <Row>
-              <Col className="d-none d-lg-block" md={3}>
+              <Col className="d-none d-lg-block" lg={3}>
                 <RSidebar me={me} />
               </Col>
               <Col lg={6} md={9}>
