@@ -28,8 +28,12 @@
   padding: 4px 1rem !important;
   margin: 0 !important ;
 }
+/* .commentDiv {
+  padding: 4px 1rem;
+} */
 .commentAvatar {
   width: 40px;
   height: 40px;
   border-radius: 20px;
+  margin: 0 1rem;
 }

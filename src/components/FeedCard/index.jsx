@@ -1,5 +1,13 @@
 import React, { Component } from "react";
-import { Button, Image, Card, Col, Row } from "react-bootstrap";
+import {
+  Button,
+  Image,
+  Card,
+  Col,
+  Row,
+  InputGroup,
+  FormControl,
+} from "react-bootstrap";
 import {
   BiLike,
   BiCommentDetail,
@@ -10,13 +18,13 @@ import {
 import moment from "moment";
 import "./styles.css";
 export default class FeedCard extends Component {
-  state = { showComment: false };
+  state = { showComment: false, content: "" };
   handleComment = () => {
-    this.setState({ showComment: true });
+    this.setState({ showComment: !this.state.showComment });
   };
   render() {
     const { post } = this.props;
-    const { showComment } = this.state;
+    const { showComment, content } = this.state;
     return (
       <div>
         <Card className="w-100 my-2 feedCard" key={`feed${post._id}`}>
@@ -70,19 +78,27 @@ export default class FeedCard extends Component {
               </Button>
             </Row>
             {showComment && (
-              <>
-                <Row>
+              <div className="commentDiv">
+                <Row className="flex-nowrap">
                   <img src={this.props.meAvatar} className="commentAvatar" />
-                  input comment here
+                  <InputGroup className="mb-3 mr-3">
+                    <FormControl
+                      placeholder="Add a comment..."
+                      aria-label="Add a comment"
+                      aria-describedby="basic-addon1"
+                      name="content"
+                      value={content}
+                    />
+                  </InputGroup>
                 </Row>
-                {post.comments.length > 0 && (
-                  <Row>
-                    {post.comments.map((comment, index) => {
-                      <p>{comment._id}comments text</p>;
-                    })}
-                  </Row>
-                )}
-              </>
+
+                <Row>
+                  {post.comments[0].content.toString()}
+                  {post.comments.map((comment) => {
+                    <div key={comment._id}>{comment.content}text</div>;
+                  })}
+                </Row>
+              </div>
             )}
           </Card.Footer>
         </Card>
