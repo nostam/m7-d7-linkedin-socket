@@ -9,8 +9,28 @@
 .navCss{
    margin:0;
    padding: 0;
+   
 }
 a.navCss.nav-link{
     padding: 0;
     color: black;
+}
+.list-group-item {
+    position: relative;
+    display: block;
+    padding: .75rem 1.25rem;
+    background-color: #fff;
+    border: 0 !important;
+}
+b{
+    margin-left: 10px;
+    margin-right: 12px;
+    width: 50%;
+    
+}
+img{
+    margin-bottom: 5px;
+}
+p{
+    display: inline;
 }

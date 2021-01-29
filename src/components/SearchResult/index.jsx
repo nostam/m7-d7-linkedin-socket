@@ -12,17 +12,20 @@ class SearchResult extends React.Component{
            
             <ListGroup  className="results">
            
-            {this.props.profile.length !== 0 && this.props.profile.map((result)=>{
+            {this.props.profile.length !== 0 && this.props.profile.slice(0,4).map((result)=>{
                 return  <Nav.Link
                 className="navCss"
                 as={Link}
                 to={`/user/${result._id}`}
               >  <ListGroup.Item><img src={result.image}  alt="placeholder"
-                margin-left="10px"
+                
                 height="40px"
-                width="40px" style={{ objectFit: "cover", borderRadius: "50%"}}></img> <b>{result.name} {result.surname}</b></ListGroup.Item>
+                width="40px" style={{ objectFit: "cover", borderRadius: "50%"}}></img>
+                 <b>{result.name} {result.surname}</b>
+                 <p>{result.title}</p>
+                 </ListGroup.Item>
                 </Nav.Link> 
-                        // <ListGroup.Item>{result.surname}</ListGroup.Item>
+                        // <<Nav.Link>{result.surname} </Nav.Link> 
             })}
             </ListGroup>
             {/* <div>
