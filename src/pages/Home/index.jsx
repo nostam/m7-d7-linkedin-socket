@@ -111,9 +111,12 @@ export default class Home extends Component {
                 </Row>
                 {posts.map((post) => (
                   <FeedCard
+                    meAvatar={me.image}
+                    meId={me._id}
                     key={uniqid()}
                     post={post}
                     toggle={() => this.toggleModal(post)}
+                    refetch={() => this.getPosts()}
                   />
                 ))}
                 {morePosts && (

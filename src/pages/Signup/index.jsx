@@ -8,7 +8,7 @@ export default class SignUp extends Component {
     user: [],
     hidden: true,
   };
-  url = "https://striveschool-api.herokuapp.com/api/account/register";
+  url = `${process.env.REACT_APP_API_URL}/profiles`;
   header = {
     ContentType: "application/json",
   };
