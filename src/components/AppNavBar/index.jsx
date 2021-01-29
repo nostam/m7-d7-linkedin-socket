@@ -36,7 +36,7 @@ class AppNavBar extends React.Component {
     if (e.currentTarget.value.length > 0) {
       // }else{
       this.setState({ query }, console.log(this.state));
-      fetch(`http://localhost:4002/profiles?name=${query}`, {
+      fetch(`${process.env.REACT_APP_API_URL}/profiles?name=${query}`, {
         method: "GET",
         headers: new Headers({
           Authorization: "Basic " + localStorage.getItem("token"),
@@ -145,7 +145,6 @@ class AppNavBar extends React.Component {
                     {this.props.me.name} {this.props.me.surname}
                   </b>
                 </div>
-               
 
                 <Nav.Link
                   className="navLinkCol flex-column"
@@ -157,26 +156,84 @@ class AppNavBar extends React.Component {
                     View profile
                   </Button>{" "}
                 </Nav.Link>
-                <hr style={{margin:'0px'}}/>
-               <b style={{paddingLeft:'8px ', margin:'0px 2px 0px 0px' }}>Account</b>
-               <p style={{paddingLeft:'8px',margin:'0px 130px 0px 0px',color:'#788fa5' }}>Upgrade my plane</p>
-               <p style={{paddingLeft:'8px',margin:'0px 2px 0px 0px',color:'#788fa5' }}>Settings and privacy</p>
-               <p style={{paddingLeft:'8px' ,margin:'0px 2px 0px 0px',color:'#788fa5'}}>Help</p>
-               <p style={{paddingLeft:'8px',margin:'0px 2px 0px 0px',color:'#788fa5' }}>Language</p>
-               <hr />
-               <b style={{paddingLeft:'8px ', margin:'0px 2px 0px 0px' }}>Manage</b>
-               <p style={{paddingLeft:'8px' ,margin:'0px 2px 0px 0px',color:'#788fa5'}}>Posts & Activity</p>
-               <p style={{paddingLeft:'8px',margin:'0px 2px 0px 0px',color:'#788fa5' }}>Job Posting Account</p>
-               <hr style={{margin:'0px'}}/>
-               <Nav.Link
+                <hr style={{ margin: "0px" }} />
+                <b style={{ paddingLeft: "8px ", margin: "0px 2px 0px 0px" }}>
+                  Account
+                </b>
+                <p
+                  style={{
+                    paddingLeft: "8px",
+                    margin: "0px 130px 0px 0px",
+                    color: "#788fa5",
+                  }}
+                >
+                  Upgrade my plane
+                </p>
+                <p
+                  style={{
+                    paddingLeft: "8px",
+                    margin: "0px 2px 0px 0px",
+                    color: "#788fa5",
+                  }}
+                >
+                  Settings and privacy
+                </p>
+                <p
+                  style={{
+                    paddingLeft: "8px",
+                    margin: "0px 2px 0px 0px",
+                    color: "#788fa5",
+                  }}
+                >
+                  Help
+                </p>
+                <p
+                  style={{
+                    paddingLeft: "8px",
+                    margin: "0px 2px 0px 0px",
+                    color: "#788fa5",
+                  }}
+                >
+                  Language
+                </p>
+                <hr />
+                <b style={{ paddingLeft: "8px ", margin: "0px 2px 0px 0px" }}>
+                  Manage
+                </b>
+                <p
+                  style={{
+                    paddingLeft: "8px",
+                    margin: "0px 2px 0px 0px",
+                    color: "#788fa5",
+                  }}
+                >
+                  Posts & Activity
+                </p>
+                <p
+                  style={{
+                    paddingLeft: "8px",
+                    margin: "0px 2px 0px 0px",
+                    color: "#788fa5",
+                  }}
+                >
+                  Job Posting Account
+                </p>
+                <hr style={{ margin: "0px" }} />
+                <Nav.Link
                   className="navLinkCol flex-column"
                   as={Link}
                   to="/login"
                 >
-                  <p style={{paddingLeft:'29px' ,margin:'0px 2px 0px 0px',color:'#788fa5'}}>Sing Out</p>
-                  
+                  <p
+                    style={{
+                      paddingLeft: "29px",
+                      margin: "0px 2px 0px 0px",
+                      color: "#788fa5",
+                    }}
+                  >
+                    Sing Out
+                  </p>
                 </Nav.Link>
-             
               </DropdownButton>
               <Nav.Link
                 className="navLinkCol flex-column"
