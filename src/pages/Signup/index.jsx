@@ -98,19 +98,6 @@ export default class SignUp extends Component {
                   </Row>
                 </Form.Group>
                 <Form.Group>
-                  <Form.Label>Username</Form.Label>
-                  <Form.Control
-                    required
-                    id="username"
-                    value={user.username}
-                    type="text"
-                    size="sm"
-                    placeholder="Email or Phone"
-                    onKeyDown={(e) => this.handleLogin(e)}
-                    onChange={(e) => this.onChangeHandler(e)}
-                  />
-                </Form.Group>
-                <Form.Group>
                   <Form.Label>Email</Form.Label>
                   <Form.Control
                     required
@@ -119,6 +106,19 @@ export default class SignUp extends Component {
                     type="text"
                     size="sm"
                     placeholder="Your Email"
+                    onKeyDown={(e) => this.handleLogin(e)}
+                    onChange={(e) => this.onChangeHandler(e)}
+                  />
+                </Form.Group>
+                <Form.Group>
+                  <Form.Label>Username</Form.Label>
+                  <Form.Control
+                    required
+                    id="username"
+                    value={user.username}
+                    type="text"
+                    size="sm"
+                    placeholder="Email or Phone"
                     onKeyDown={(e) => this.handleLogin(e)}
                     onChange={(e) => this.onChangeHandler(e)}
                   />
