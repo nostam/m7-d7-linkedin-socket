@@ -145,6 +145,7 @@ class AppNavBar extends React.Component {
                     {this.props.me.name} {this.props.me.surname}
                   </b>
                 </div>
+               
 
                 <Nav.Link
                   className="navLinkCol flex-column"
@@ -156,8 +157,26 @@ class AppNavBar extends React.Component {
                     View profile
                   </Button>{" "}
                 </Nav.Link>
-                <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                <hr style={{margin:'0px'}}/>
+               <b style={{paddingLeft:'8px ', margin:'0px 2px 0px 0px' }}>Account</b>
+               <p style={{paddingLeft:'8px',margin:'0px 130px 0px 0px',color:'#788fa5' }}>Upgrade my plane</p>
+               <p style={{paddingLeft:'8px',margin:'0px 2px 0px 0px',color:'#788fa5' }}>Settings and privacy</p>
+               <p style={{paddingLeft:'8px' ,margin:'0px 2px 0px 0px',color:'#788fa5'}}>Help</p>
+               <p style={{paddingLeft:'8px',margin:'0px 2px 0px 0px',color:'#788fa5' }}>Language</p>
+               <hr />
+               <b style={{paddingLeft:'8px ', margin:'0px 2px 0px 0px' }}>Manage</b>
+               <p style={{paddingLeft:'8px' ,margin:'0px 2px 0px 0px',color:'#788fa5'}}>Posts & Activity</p>
+               <p style={{paddingLeft:'8px',margin:'0px 2px 0px 0px',color:'#788fa5' }}>Job Posting Account</p>
+               <hr style={{margin:'0px'}}/>
+               <Nav.Link
+                  className="navLinkCol flex-column"
+                  as={Link}
+                  to="/login"
+                >
+                  <p style={{paddingLeft:'29px' ,margin:'0px 2px 0px 0px',color:'#788fa5'}}>Sing Out</p>
+                  
+                </Nav.Link>
+             
               </DropdownButton>
               <Nav.Link
                 className="navLinkCol flex-column"

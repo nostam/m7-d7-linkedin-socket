@@ -126,12 +126,12 @@
 .noHover:hover{
   color: white !important;
 }
-button{
+button.noHover{
     margin-left: 75px !important;
     width: 140px !important;
     padding: 0 !important;
 }
-button:hover{
+button.noHover:hover{
   color: white !important;
 }
 .imgDropdown{
@@ -140,4 +140,5 @@ button:hover{
 DropdownButton div img {
   margin-left: 20px !important;
 }
+
 

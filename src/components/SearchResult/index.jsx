@@ -20,9 +20,9 @@ class SearchResult extends React.Component{
               >  <ListGroup.Item><img src={result.image}  alt="placeholder"
                 
                 height="40px"
-                width="40px" style={{ objectFit: "cover", borderRadius: "50%"}}></img>
+                width="40px" style={{ objectFit: "cover", borderRadius: "50%",marginLeft:"5px"}}></img>
                  <b>{result.name} {result.surname}</b>
-                 <p>{result.title}</p>
+                 <p  style={{display: 'inline'}}>{result.title}</p>
                  </ListGroup.Item>
                 </Nav.Link> 
                         // <<Nav.Link>{result.surname} </Nav.Link> 
