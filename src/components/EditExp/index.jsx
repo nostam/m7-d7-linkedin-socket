@@ -44,14 +44,13 @@ class Edit extends React.Component {
     });
   };
   submitData = async (str) => {
-    console.log(this.props.profile.username);
     const url =
       str === "POST"
         ? `${this.url}/${this.props.profile.username}`
-        : `${this.url}/${this.props.profile.username}/${this.props.profile._id}`;
+        : `${this.url}/${this.props.profile.username}/experiences/${this.props.expId}`; //TODO careful when merging into profile route
     const payload = JSON.stringify(this.state.experience);
     try {
-      console.log(payload, str);
+      console.log(payload, str, url);
       const response = await fetch(url, {
         method: str,
         headers: this.headers,
