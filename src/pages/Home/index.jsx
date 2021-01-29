@@ -101,7 +101,10 @@ export default class Home extends Component {
                 <RSidebar me={this.props.me} />
               </Col>
               <Col lg={6} md={9}>
-                <PostModal me={me} refetch={() => this.getPosts(true)} />
+                <PostModal
+                  me={this.props.me}
+                  refetch={() => this.getPosts(true)}
+                />
                 <Row className="sortBySeperator">
                   <hr className="hLine" />
                   <span>Sort by recent</span>
@@ -131,7 +134,7 @@ export default class Home extends Component {
         </Container>
         {showModal && (
           <EditPost
-            me={me}
+            me={this.props.me}
             show={showModal}
             post={post}
             toggle={() => this.toggleModal()}
