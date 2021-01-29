@@ -11,11 +11,32 @@ import Welcome from "./pages/Welcome";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 class App extends React.Component {
-  state = { searchQuery: "" };
+  state = {
+    searchQuery: "",
+    me: {},
+  };
   searchHandler = (e) => {
     e.preventDefault();
     this.setState({ query: e.target.value });
   };
+  getUser = async () => {
+    try {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/profiles/me`, {
+        headers: {
+          Authorization: "Basic " + localStorage.getItem("token"),
+        },
+      });
+      const user = await res.json();
+      console.log("login user", user);
+      this.setState({ me: user });
+      localStorage.setItem("id", user._id);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  componentDidMount() {
+    this.getUser();
+  }
   render() {
     return (
       <Router>
@@ -24,6 +45,7 @@ class App extends React.Component {
           render={() => (
             <AppNavBar
               query={this.state.query}
+              me={this.state.me}
               searchHandler={this.searchHandler}
             />
           )}
@@ -31,7 +53,9 @@ class App extends React.Component {
         <Route
           path={"/home"}
           exact
-          render={(props) => <Home title="Homepage" {...props} />}
+          render={(props) => (
+            <Home title="Homepage" {...props} me={this.state.me} />
+          )}
         />
         <Route
           path={"/user/:id"}

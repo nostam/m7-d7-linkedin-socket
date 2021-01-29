@@ -52,11 +52,15 @@
   display: block;
 }
 .navIconText {
-  font-size: 10px;
+  font-size: 12px;
   color: grey;
   overflow: hidden;
   white-space: nowrap;
   display: none;
+  font-weight: 600;
+}
+.navIconText:hover {
+  text-decoration: underline;
 }
 @media screen and (max-width: 1024) {
   .navbarContent {
@@ -87,4 +91,25 @@
 .vl {
   border-left: 1px solid #eee;
   height: 52px;
+}
+/* .btn-primary {
+  color: #fff;
+  background-color: #fff !important;
+  border-color: #fff !important;
+}
+.btn-primary:hover {
+  color: #fff;
+  background-color: #fff !important;
+  border-color: #fff !important;
+}
+.btn-primary.focus, .btn-primary:focus {
+  color: #fff;
+  background-color: #fff !important;
+  border-color: #fff !important;
+  box-shadow:0 !important;
+} */
+
+.navPosition {
+  position: relative;
+  margin-top: 22px;
 }

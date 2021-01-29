@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Col, Row, Modal, Image, Form } from "react-bootstrap";
+import { Button, Modal, Form } from "react-bootstrap";
 import PostByInfo from "../../components/PostByInfo";
 import "../PostModal/styles.css";
 
@@ -68,10 +68,10 @@ class EditPost extends React.Component {
         }
       );
       if (res.ok) {
-        this.setState({ showModal: false }, () => this.props.refetch());
+        this.props.toggle();
+        this.props.refetch();
       } else {
         this.setState({
-          showModal: false,
           errMsg: await res.json().message,
           err: true,
         });
