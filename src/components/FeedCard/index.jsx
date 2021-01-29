@@ -7,12 +7,16 @@ import {
   BiSend,
   BiDotsHorizontalRounded,
 } from "react-icons/bi";
-import { IconContext } from "react-icons";
 import moment from "moment";
 import "./styles.css";
 export default class FeedCard extends Component {
+  state = { showComment: false };
+  handleComment = () => {
+    this.setState({ showComment: true });
+  };
   render() {
     const { post } = this.props;
+    const { showComment } = this.state;
     return (
       <div>
         <Card className="w-100 my-2 feedCard" key={`feed${post._id}`}>
@@ -34,15 +38,8 @@ export default class FeedCard extends Component {
               </Col>
             </Row>
             {/* TODO if user = me */}
-            <div onClick={this.props.toggle} className="JumbBiPencilDiv">
-              <IconContext.Provider
-                value={{
-                  size: "24",
-                  className: "JumbBiPencil",
-                }}
-              >
-                <BiDotsHorizontalRounded />
-              </IconContext.Provider>
+            <div onClick={this.props.toggle} className="feedcardEditDotsDiv">
+              <BiDotsHorizontalRounded className="feedcardEditDots" size="24" />
             </div>
           </Card.Header>
           {post.image && (
@@ -54,19 +51,39 @@ export default class FeedCard extends Component {
           )}
           <Card.Text className="p-3">{post.text}</Card.Text>
           <Card.Footer className="cardFooter bg-white">
-            <Button variant="none">
-              <BiLike size="24" style={{ transform: "scaleX(-1)" }} /> Like
-            </Button>
-            <Button variant="none">
-              <BiCommentDetail size="24" style={{ transform: "scaleX(-1)" }} />{" "}
-              Comment
-            </Button>
-            <Button variant="none">
-              <BiShare size="24" style={{ transform: "scaleX(-1)" }} /> Share
-            </Button>
-            <Button variant="none">
-              <BiSend size="24" /> Send
-            </Button>
+            <Row>
+              <Button variant="none">
+                <BiLike size="24" style={{ transform: "scaleX(-1)" }} /> Like
+              </Button>
+              <Button variant="none" onClick={() => this.handleComment()}>
+                <BiCommentDetail
+                  size="24"
+                  style={{ transform: "scaleX(-1)" }}
+                />
+                Comment
+              </Button>
+              <Button variant="none">
+                <BiShare size="24" style={{ transform: "scaleX(-1)" }} /> Share
+              </Button>
+              <Button variant="none">
+                <BiSend size="24" /> Send
+              </Button>
+            </Row>
+            {showComment && (
+              <>
+                <Row>
+                  <img src={this.props.meAvatar} className="commentAvatar" />
+                  input comment here
+                </Row>
+                {post.comments.length > 0 && (
+                  <Row>
+                    {post.comments.map((comment, index) => {
+                      <p>{comment._id}comments text</p>;
+                    })}
+                  </Row>
+                )}
+              </>
+            )}
           </Card.Footer>
         </Card>
       </div>

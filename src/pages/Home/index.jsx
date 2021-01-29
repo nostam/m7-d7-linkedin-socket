@@ -21,6 +21,25 @@ export default class Home extends Component {
     showModal: false,
     post: {},
   };
+  //TODO callbacks
+  commentRequest = async (method, data, commentId) => {
+    try {
+      const url = `${process.env.REACT_APP_API_URL}/comments`;
+      const res = await fetch(
+        `${url}${method === "DELETE" ? "/" + commentId : ""}`,
+        {
+          method: method,
+          headers: { "Content-Type": "application/json" },
+          body: method === "DELETE" ? "" : data,
+        }
+      );
+      if (res.ok) {
+        console.log("ok");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   getPosts = async (
     reload = false,
     params = "/posts?limit=5&sort=-createdAt"
@@ -108,9 +127,11 @@ export default class Home extends Component {
                 </Row>
                 {posts.map((post) => (
                   <FeedCard
+                    meAvatar={me.image}
                     key={uniqid()}
                     post={post}
                     toggle={() => this.toggleModal(post)}
+                    commentRequest={() => this.commentRequest()}
                   />
                 ))}
                 {morePosts && (

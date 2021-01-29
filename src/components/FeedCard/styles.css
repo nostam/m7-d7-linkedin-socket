@@ -25,6 +25,11 @@
 .cardFooter {
   border-bottom-left-radius: 0.8rem !important;
   border-bottom-right-radius: 0.8rem !important;
-  padding: 0.5rem !important;
+  padding: 4px 1rem !important;
   margin: 0 !important ;
+}
+.commentAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
 }
