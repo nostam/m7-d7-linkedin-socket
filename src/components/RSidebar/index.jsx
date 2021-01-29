@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, ListGroup, ListGroupItem } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
-
+import "./styles.css";
 class RSidebar extends React.Component {
   state = {
     Me: [],
@@ -14,7 +14,6 @@ class RSidebar extends React.Component {
   render() {
     return (
       <>
-        {console.log("me side", this.props)}
         <Card
           style={{ borderTopRightRadius: "8px", borderTopLeftRadius: "8px" }}
         >
@@ -27,42 +26,39 @@ class RSidebar extends React.Component {
           />
           <Card.Body>
             <div>
-              <div style={{ marginTop: "-130px" }}>
+              <div style={{ position: "relative" }}>
                 <img
                   src={this.props.me.image}
                   alt="placeholder"
-                  height="120px"
-                  width="120px"
-                  style={{
-                    borderRadius: "50%",
-                    border: "4px solid white",
-                    objectFit: "cover",
-                    width: "80px",
-                    height: "80px",
-                    marginTop: "50px",
-                    marginLeft: "65px",
-                  }}
+                  className="homeSideAvatar"
                 />
               </div>
             </div>
 
             <Card.Text className="crdTxtH wlcmP">
               Welcome
-              {" " + this.props.me.name + "!"}
-              <Card.Link>Add sessines</Card.Link>
+              {" " + this.props.me.name + "!"} <br />
+              <Card.Link>Add a bio</Card.Link>
             </Card.Text>
           </Card.Body>
           <ListGroup className="list-group-flush">
-            <ListGroupItem action>
-              ⠀⠀⠀Connections <h6>⠀⠀⠀Grow your network</h6>
+            <ListGroupItem
+              action
+              style={{ fontSize: "12px", fontWeight: "600" }}
+            >
+              Connections
+              <br />
+              Grow your network
             </ListGroupItem>
-            <ListGroupItem action>
+            <ListGroupItem
+              action
+              style={{ fontSize: "12px", fontWeight: "600" }}
+            >
               <svg
                 style={{ paddingRight: "10px" }}
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 data-supported-dps="24x24"
-                className="mercado-match"
                 width="29"
                 height="29"
                 focusable="false"
@@ -78,7 +74,10 @@ class RSidebar extends React.Component {
               </svg>
               See all Premium Features
             </ListGroupItem>
-            <ListGroupItem action>
+            <ListGroupItem
+              action
+              style={{ fontSize: "12px", fontWeight: "600" }}
+            >
               <svg
                 style={{ paddingRight: "10px" }}
                 xmlns="http://www.w3.org/2000/svg"

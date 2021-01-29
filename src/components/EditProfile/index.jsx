@@ -86,7 +86,7 @@ class EditProfile extends React.Component {
         `${process.env.REACT_APP_API_URL}/profiles/${this.state.profile._id}/img_upld`,
         {
           method: "POST",
-          headers: { Authorization: "Bearer " + localStorage.getItem("token") },
+          headers: { Authorization: "Basic " + localStorage.getItem("token") },
           body: fd,
         }
       );

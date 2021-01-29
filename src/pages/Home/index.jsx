@@ -104,7 +104,7 @@ export default class Home extends Component {
                 <PostModal me={me} refetch={() => this.getPosts(true)} />
                 <Row className="sortBySeperator">
                   <hr className="hLine" />
-                  Sort by recent
+                  <span>Sort by recent</span>
                 </Row>
                 {posts.map((post) => (
                   <FeedCard

@@ -1,37 +1,45 @@
-.expEntries {
-  list-style-type: none;
+.expRow {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
 }
-
+.exp {
+  display: flex;
+  flex-direction: column;
+}
+.expImg {
+  width: 48px;
+  height: 48px;
+}
 .exp:hover {
   text-decoration: underline;
 }
 .editBtnExp {
   position: absolute;
   left: 94%;
-  margin-top: -0.5vw;
 }
-
-.roleExp {
-  font-weight: bold;
-  font-size: 0.95rem;
+.expIcons {
+  font-size: 24px;
+  color: #0a66ce;
 }
-
-.workplaceExp {
+.workplaceExp,
+.roleExp,
+.timeExp,
+.cityExp,
+.descExp {
+  list-style-type: none;
   font-size: 0.9rem;
 }
 
 .timeExp,
 .cityExp {
-  font-size: 0.9rem;
   color: grey;
 }
-
-.descExp {
-  padding-top: 0.2vw;
-  font-size: 0.9rem;
+.roleExp {
+  font-size: 1rem;
+  font-weight: bold;
 }
-
-.bio .cardProf {
+.cardProf {
   border-radius: 8px;
   margin-top: 32px !important;
 }

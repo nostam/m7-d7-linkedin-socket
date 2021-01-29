@@ -10,18 +10,22 @@ class Edit extends React.Component {
     selectedFile: null,
     imgSubmitStatus: "secondary",
   };
-  url = `${process.env.REACT_APP_API_URL}/experiences/${this.props.profile.username}`;
+  url = `${process.env.REACT_APP_API_URL}/experiences`;
   headers = {
-    Authorization: "Bearer " + localStorage.getItem("token"),
+    Authorization: "Basic " + localStorage.getItem("token"),
     "Content-Type": "application/json",
   };
   fetchExp = async () => {
     try {
+      console.log("expid", this.props.expId);
       if (this.props.expId !== null) {
-        const response = await fetch(this.url, {
-          method: "GET",
-          headers: this.headers,
-        });
+        const response = await fetch(
+          `${this.url}/${this.props.profile.username}/experiences/${this.props.expId}`,
+          {
+            method: "GET",
+            headers: this.headers,
+          }
+        );
         const data = await response.json();
         if (response.ok) {
           this.setState({ experience: data });
@@ -40,10 +44,11 @@ class Edit extends React.Component {
     });
   };
   submitData = async (str) => {
+    console.log(this.props.profile.username);
     const url =
       str === "POST"
-        ? `${this.url}/exp`
-        : `${this.url}/exp/${this.props.expId}`;
+        ? `${this.url}/${this.props.profile.username}`
+        : `${this.url}/${this.props.profile.username}/${this.props.profile._id}`;
     const payload = JSON.stringify(this.state.experience);
     try {
       console.log(payload, str);
@@ -69,7 +74,7 @@ class Edit extends React.Component {
   };
   actionBtn = (str) => {
     str !== "DELETE"
-      ? this.submitData(this.edit() ? "PUT" : "POST")
+      ? this.submitData(this.isNewExp() ? "PUT" : "POST")
       : this.submitData("DELETE");
   };
   componentDidMount = () => {
@@ -100,10 +105,10 @@ class Edit extends React.Component {
     try {
       const response = await fetch(
         //TODO prepare for userid username
-        `${process.env.REACT_APP_API_URL}/experiences/${this.props.profile.username}/exp/${this.props.expId}/upload`,
+        `${this.url}/${this.props.profile.username}/experiences/${this.props.expId}/upload`,
         {
           method: "POST",
-          headers: { Authorization: "Bearer " + localStorage.getItem("token") },
+          headers: { Authorization: "Basic " + localStorage.getItem("token") },
           body: fd,
         }
       );

@@ -26,29 +26,20 @@ class Sidebar extends Component {
   render() {
     return (
       <>
-        <div className="ad-div">
-          <img
-            className="ad"
-            src="https://static-exp1.licdn.com/scds/common/u/images/promo/ads/li_evergreen_jobs_ad_300x250_v1.jpg"
-            alt="Advertise on LinkedIn"
-            border={0}
-          />
-        </div>
         <div className="usersDiv">
-          <p className="divTitle">People also viewed</p>
+          <p className="divTitle">Add to your feed</p>
           {this.state.users &&
             this.state.users.slice(0, 6).map((user, index) => (
               <div className="userdiv2" key={`suggestUsers${index}`}>
                 <Link to={`/user/${user._id}`}>
-                  <Row>
+                  <Row className="flex-nowrap">
                     <img className="userimg" src={user.image} alt="user"></img>
                     <div>
                       <h6 className="sugUsers" id={`suggestUsers${index}name`}>
                         {user.name}
                       </h6>
-                      <small className="ranking">• 2nd</small>
+                      <small className="ranking">{user.bio}</small>
                       <p className="usersp">{user.title}</p>
-                      <hr className="hrside" />
                     </div>
                   </Row>
                 </Link>
@@ -57,14 +48,10 @@ class Sidebar extends Component {
         </div>
         <div className="lrn-div">
           <svg
-            style={{ color: "#0A66C2" }}
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 14 14"
             data-supported-dps="14x14"
-            fill="currentColor"
             className="mercado-match"
-            width="14"
-            height="14"
             focusable="false"
           >
             <g>
@@ -77,28 +64,28 @@ class Sidebar extends Component {
           <h6 className="lrn-h6">LEARNING</h6>
           <h5 className="lrn-h5">Add new skills with these courses</h5>
           <div className="row no-gutters">
-            <div className="col-md-4">
+            <div className="col-md-6">
               <img className="vid-img" alt="" src={vid1}></img>
             </div>
-            <div className="col-md-8">
+            <div className="col-md-6">
               <h4 className="vid-txt">
                 Building Angular and ASP.NET Core Applications
               </h4>
               <small className="vid-sml">3,895</small>
             </div>
-            <div className="col-md-4">
+            <div className="col-md-6">
               <img className="vid-img" alt="" src={vid2}></img>
             </div>
-            <div className="col-md-8">
+            <div className="col-md-6">
               <h4 className="vid-txt">
                 Building Angular and ASP.NET Core Applications
               </h4>
               <small className="vid-sml">4,985</small>
             </div>
-            <div className="col-md-4">
+            <div className="col-md-6">
               <img className="vid-img" alt="" src={vid3}></img>
             </div>
-            <div className="col-md-8">
+            <div className="col-md-6">
               <h4 className="vid-txt">
                 Building Angular and ASP.NET Core Applications
               </h4>
@@ -106,14 +93,14 @@ class Sidebar extends Component {
             </div>
           </div>
         </div>
-        <div className="ad-div">
+        {/* <div className="ad-div">
           <img
             className="ad"
             src="https://static-exp1.licdn.com/scds/common/u/images/promo/ads/li_evergreen_jobs_ad_300x250_v1.jpg"
             alt="Advertise on LinkedIn"
             border={0}
           />
-        </div>
+        </div> */}
       </>
     );
   }
