@@ -18,13 +18,45 @@ import {
 import moment from "moment";
 import "./styles.css";
 export default class FeedCard extends Component {
-  state = { showComment: false, content: "" };
+  state = { showComment: false, payload: {} };
+
+  //TODO callbacks
+  commentRequest = async (method, data, commentId) => {
+    try {
+      const url = `${process.env.REACT_APP_API_URL}/comments/${this.props.me._id}`;
+      const res = await fetch(
+        `${url}${method === "DELETE" ? "/" + commentId : ""}`,
+        {
+          method: method,
+          headers: { "Content-Type": "application/json" },
+          body: method === "DELETE" ? "" : data,
+        }
+      );
+      if (res.ok) {
+        console.log("ok");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   handleComment = () => {
     this.setState({ showComment: !this.state.showComment });
   };
+  handleCommentInput = (e) => {
+    e.preventDefault();
+    this.setState({
+      payload: {
+        ...this.state.payload,
+        [e.currentTarget.name]: e.currentTarget.value,
+      },
+    });
+    if (e.keyCode === 13) {
+      this.props.commentRequest("POST", this.state.payload);
+    }
+  };
   render() {
     const { post } = this.props;
-    const { showComment, content } = this.state;
+    const { showComment, payload } = this.state;
     return (
       <div>
         <Card className="w-100 my-2 feedCard" key={`feed${post._id}`}>
@@ -80,24 +112,47 @@ export default class FeedCard extends Component {
             {showComment && (
               <div className="commentDiv">
                 <Row className="flex-nowrap">
-                  <img src={this.props.meAvatar} className="commentAvatar" />
+                  <img
+                    src={this.props.meAvatar}
+                    alt=""
+                    className="commentAvatar"
+                  />
                   <InputGroup className="mb-3 mr-3">
                     <FormControl
                       placeholder="Add a comment..."
                       aria-label="Add a comment"
                       aria-describedby="basic-addon1"
                       name="content"
-                      value={content}
+                      value={payload.content}
+                      onChange={(e) => this.handleCommentInput(e)}
                     />
                   </InputGroup>
                 </Row>
-
-                <Row>
-                  {post.comments[0].content.toString()}
-                  {post.comments.map((comment) => {
-                    <div key={comment._id}>{comment.content}text</div>;
-                  })}
-                </Row>
+                <Col>
+                  {post.comments.map((comment) => (
+                    <Row key={comment._id} className="flex-nowrap my-2">
+                      <img
+                        src={comment.user.image}
+                        alt=""
+                        className="commentAvatar"
+                      />
+                      <Col style={{ backgroundColor: "#ddd" }}>
+                        <strong>{`${comment.user.name} ${comment.user.surname}`}</strong>
+                        <p>{comment.content}</p>
+                      </Col>
+                      {this.props.meId === comment.user._id && (
+                        <Button
+                          variant="outline-danger"
+                          onClick={() =>
+                            this.props.commentRequest("DELETE", "", comment._id)
+                          }
+                        >
+                          Delete
+                        </Button>
+                      )}
+                    </Row>
+                  ))}
+                </Col>
               </div>
             )}
           </Card.Footer>
