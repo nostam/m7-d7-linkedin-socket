@@ -43,7 +43,7 @@
 .sugUsers {
   margin: 0;
   color: black;
-  font-weight: bold;
+  font-weight: 700;
   font-size: 14px;
 }
 .sugUsers:hover {
