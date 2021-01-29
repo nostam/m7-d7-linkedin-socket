@@ -107,7 +107,7 @@ class Experience extends React.Component {
               </div>
               <Route path="/user/me">
                 <BsPlus
-                  className="expIcons"
+                  className="expIcons mr-3"
                   onClick={() => this.toggleModal()}
                 />
                 <Edit
