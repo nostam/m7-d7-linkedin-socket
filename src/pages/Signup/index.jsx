@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Row, Col, Form, Button, Container } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import FooterLogo from "../../assets/footer_logo.svg";
 import "./styles.css";
-export default class SignUp extends Component {
+class SignUp extends Component {
   state = {
     user: {},
     hidden: true,
@@ -18,15 +18,10 @@ export default class SignUp extends Component {
       let response = await fetch(this.url, {
         method: "POST",
         body: JSON.stringify(payload),
-        headers: this.header,
+        headers: { "Content-Type": "application/json" },
       });
-
-      console.log(payload);
       if (response.ok) {
-        const data = await response.json();
-        console.log("lol");
-        console.log("response", data);
-        this.props.history.location.pathname.push("/login");
+        this.props.history.push("/");
       }
     } catch (error) {
       console.log(error);
@@ -162,3 +157,5 @@ export default class SignUp extends Component {
     );
   }
 }
+
+export default withRouter(SignUp);
