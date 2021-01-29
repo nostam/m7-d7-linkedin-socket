@@ -22,13 +22,17 @@ import {
 import { BsPeopleFill, BsGrid3X3Gap, BsCollectionPlay } from "react-icons/bs";
 import { GiHandBag } from "react-icons/gi";
 import { RiMessage2Fill } from "react-icons/ri";
+import AppNavDropDown from "../AppNavDropdown";
 import "./styles.css";
 class AppNavBar extends React.Component {
   state = {
     query: null,
     profiles: [],
+    showNavDropDown: false,
   };
-
+  toggleNavDropdown = () => {
+    this.setState({ showNavDropDown: !this.state.showNavDropDown });
+  };
   handleSearchProfiles = (e) => {
     let currentId = e.currentTarget.id;
     this.setState({ profiles: [] });
@@ -59,10 +63,14 @@ class AppNavBar extends React.Component {
     }
   };
   render() {
-    const { query, profiles } = this.state;
+    const { query, profiles, showNavDropDown } = this.state;
     return (
       <>
-        <Navbar bg="white" variant="light" className="py-0 fixed-top">
+        <Navbar
+          bg="white"
+          variant="light"
+          className="py-0 fixed-top position-relative"
+        >
           <div className="navbarContent">
             <Navbar.Brand
               as={Link}
@@ -127,121 +135,15 @@ class AppNavBar extends React.Component {
                 <FaBell className="navIcon" />
                 <span className="navIconText">Notifications</span>
               </Nav.Link>
-              <DropdownButton id="dropdown-basic-button" title="me">
-                <div>
-                  <img
-                    src={this.props.me.image}
-                    className="imgDropdown"
-                    alt="placeholder"
-                    height="40px"
-                    width="40px"
-                    style={{
-                      objectFit: "cover",
-                      borderRadius: "50%",
-                      marginLeft: " 10px",
-                    }}
-                  ></img>
-                  <b>
-                    {this.props.me.name} {this.props.me.surname}
-                  </b>
-                </div>
-
-                <Nav.Link
-                  className="navLinkCol flex-column"
-                  as={Link}
-                  to="/user/me"
-                >
-                  {" "}
-                  <Button variant="outline-primary" className="noHover">
-                    View profile
-                  </Button>{" "}
-                </Nav.Link>
-                <hr style={{ margin: "0px" }} />
-                <b style={{ paddingLeft: "8px ", margin: "0px 2px 0px 0px" }}>
-                  Account
-                </b>
-                <p
-                  style={{
-                    paddingLeft: "8px",
-                    margin: "0px 130px 0px 0px",
-                    color: "#788fa5",
-                  }}
-                >
-                  Upgrade my plane
-                </p>
-                <p
-                  style={{
-                    paddingLeft: "8px",
-                    margin: "0px 2px 0px 0px",
-                    color: "#788fa5",
-                  }}
-                >
-                  Settings and privacy
-                </p>
-                <p
-                  style={{
-                    paddingLeft: "8px",
-                    margin: "0px 2px 0px 0px",
-                    color: "#788fa5",
-                  }}
-                >
-                  Help
-                </p>
-                <p
-                  style={{
-                    paddingLeft: "8px",
-                    margin: "0px 2px 0px 0px",
-                    color: "#788fa5",
-                  }}
-                >
-                  Language
-                </p>
-                <hr />
-                <b style={{ paddingLeft: "8px ", margin: "0px 2px 0px 0px" }}>
-                  Manage
-                </b>
-                <p
-                  style={{
-                    paddingLeft: "8px",
-                    margin: "0px 2px 0px 0px",
-                    color: "#788fa5",
-                  }}
-                >
-                  Posts & Activity
-                </p>
-                <p
-                  style={{
-                    paddingLeft: "8px",
-                    margin: "0px 2px 0px 0px",
-                    color: "#788fa5",
-                  }}
-                >
-                  Job Posting Account
-                </p>
-                <hr style={{ margin: "0px" }} />
-                <Nav.Link
-                  className="navLinkCol flex-column"
-                  as={Link}
-                  to="/login"
-                >
-                  <p
-                    style={{
-                      paddingLeft: "29px",
-                      margin: "0px 2px 0px 0px",
-                      color: "#788fa5",
-                    }}
-                  >
-                    Sing Out
-                  </p>
-                </Nav.Link>
-              </DropdownButton>
               <Nav.Link
                 className="navLinkCol flex-column"
                 as={Link}
                 to="/user/me"
               >
                 <FaUserCircle className="navIcon" />
-                <span className="navIconText">Me</span>
+                <div onClick={() => this.toggleNavDropdown()}>
+                  <span className="navIconText">Me ▼</span>
+                </div>
               </Nav.Link>
               <div className="vl"></div>
               <Nav.Link className="navLinkCol flex-column">
@@ -255,6 +157,7 @@ class AppNavBar extends React.Component {
             </div>
           </div>
         </Navbar>
+        {showNavDropDown && <AppNavDropDown me={this.props.me} />}
         {query !== 0 && <SearchResult profile={profiles} />}
       </>
     );
