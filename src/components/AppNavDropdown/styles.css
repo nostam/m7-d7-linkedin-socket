@@ -1,0 +1,48 @@
+/*this is conflict with other dropdown element */
+/* .dropdown,
+.dropleft,
+.dropright,
+.dropup {
+  position: absolute !important;
+} */
+
+/* #dropdown-basic-button {
+  margin-right: 189px !important;
+  margin-top: 15px !important;
+
+  opacity: 0;
+
+  width: 22px !important;
+} */
+/* DropdownButton div img {
+  margin-left: 20px !important;
+} */
+
+.AppNavDropdownMenu {
+  display: block;
+  position: absolute;
+  top: 60px;
+  /* left: 0; */
+  right: 0;
+  transform: translateX(-175%);
+  background-color: white;
+  min-width: 300px;
+  max-width: 300px;
+  min-height: 200px;
+  z-index: 100;
+  border-radius: 1rem;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1rem 0;
+}
+.AppNavDropdownAvatar {
+  height: 40px;
+  width: 40px;
+  object-fit: "cover";
+  border-radius: 20px;
+  margin-left: 1rem;
+}
+.navDropdownBtn {
+  width: 90%;
+  margin: auto;
+  text-overflow: hidden;
+}
