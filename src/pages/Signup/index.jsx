@@ -5,26 +5,27 @@ import FooterLogo from "../../assets/footer_logo.svg";
 import "./styles.css";
 export default class SignUp extends Component {
   state = {
-    user: [],
+    user: {},
     hidden: true,
   };
-  url = "https://striveschool-api.herokuapp.com/api/account/register";
+  url = "http://localhost:3005/profiles";
   header = {
     ContentType: "application/json",
   };
   submitData = async () => {
     try {
       let payload = this.state.user;
-      // payload.password = btoa(payload.password);
-      // payload.username = btoa(payload.username);
       let response = await fetch(this.url, {
         method: "POST",
         body: JSON.stringify(payload),
         header: this.header,
       });
+
+      console.log(payload);
       if (response.ok) {
-        console.log(response);
-        console.log("response", await response.json());
+        const data = await response.json()
+        console.log("lol")
+        console.log("response", data);
         this.props.history.details.push("/login");
       }
     } catch (error) {
@@ -67,6 +68,36 @@ export default class SignUp extends Component {
             <div className="bg-white d-flex flex-column ">
               <Form>
                 <Form.Group>
+                  <Row>
+                    <Col>
+                      <Form.Label>Name</Form.Label>
+                      <Form.Control
+                        required
+                        id="name"
+                        value={user.name}
+                        type="text"
+                        size="sm"
+                        placeholder="Your name"
+                        onKeyDown={(e) => this.handleLogin(e)}
+                        onChange={(e) => this.onChangeHandler(e)}
+                      />
+                    </Col>
+                    <Col>
+                      <Form.Label>Lastname</Form.Label>
+                      <Form.Control
+                        required
+                        id="surname"
+                        value={user.surname}
+                        type="text"
+                        size="sm"
+                        placeholder="Your Lastname"
+                        onKeyDown={(e) => this.handleLogin(e)}
+                        onChange={(e) => this.onChangeHandler(e)}
+                      />
+                    </Col>
+                  </Row>
+                </Form.Group>
+                <Form.Group>
                   <Form.Label>Username</Form.Label>
                   <Form.Control
                     required
@@ -75,6 +106,19 @@ export default class SignUp extends Component {
                     type="text"
                     size="sm"
                     placeholder="Email or Phone"
+                    onKeyDown={(e) => this.handleLogin(e)}
+                    onChange={(e) => this.onChangeHandler(e)}
+                  />
+                </Form.Group>
+                <Form.Group>
+                  <Form.Label>Email</Form.Label>
+                  <Form.Control
+                    required
+                    id="email"
+                    value={user.email}
+                    type="text"
+                    size="sm"
+                    placeholder="Your Email"
                     onKeyDown={(e) => this.handleLogin(e)}
                     onChange={(e) => this.onChangeHandler(e)}
                   />
@@ -100,8 +144,7 @@ export default class SignUp extends Component {
                 <a href="/">Cookie Policy</a>.
               </span>
               <Col className="signupCol px-0">
-                {/* <Button className="signupBtn" onClick={() => this.submitData()}> */}
-                <Button className="signupBtn">Agree & Join</Button>
+                <Button className="signupBtn" onClick={() => this.submitData()}>Agree & Join</Button>
               </Col>
             </div>
             <Row className="d-flex justify-content-around mt-4 mx-auto ">
