@@ -27,7 +27,9 @@ export default class Welcome extends Component {
               </Navbar.Brand>
               <button className="jnbtn">Join with resume</button>
               <p>|</p>
-              <button className="jnbtn1">Join now</button>
+              <Link to="/signup">
+                <button className="jnbtn1">Join now</button>
+              </Link>
               <Link to="/login">
                 <button className="btnSign">Sign in</button>
               </Link>

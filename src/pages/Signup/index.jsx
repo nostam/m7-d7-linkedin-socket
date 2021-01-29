@@ -10,7 +10,7 @@ export default class SignUp extends Component {
   };
   url = `${process.env.REACT_APP_API_URL}/profiles`;
   header = {
-    ContentType: "application/json",
+    "Content-Type": "application/json",
   };
   submitData = async () => {
     try {
@@ -18,15 +18,15 @@ export default class SignUp extends Component {
       let response = await fetch(this.url, {
         method: "POST",
         body: JSON.stringify(payload),
-        header: this.header,
+        headers: this.header,
       });
 
       console.log(payload);
       if (response.ok) {
-        const data = await response.json()
-        console.log("lol")
+        const data = await response.json();
+        console.log("lol");
         console.log("response", data);
-        this.props.history.details.push("/login");
+        this.props.history.location.pathname.push("/login");
       }
     } catch (error) {
       console.log(error);
@@ -144,7 +144,9 @@ export default class SignUp extends Component {
                 <a href="/">Cookie Policy</a>.
               </span>
               <Col className="signupCol px-0">
-                <Button className="signupBtn" onClick={() => this.submitData()}>Agree & Join</Button>
+                <Button className="signupBtn" onClick={() => this.submitData()}>
+                  Agree & Join
+                </Button>
               </Col>
             </div>
             <Row className="d-flex justify-content-around mt-4 mx-auto ">
