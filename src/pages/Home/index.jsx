@@ -11,7 +11,7 @@ import "./styles.css";
 export default class Home extends Component {
   state = {
     posts: [],
-    me:this.props.me,
+    me: this.props.me,
     showAlert: null,
     err: false,
     errMsg: "",
@@ -98,7 +98,7 @@ export default class Home extends Component {
           ) : (
             <Row>
               <Col className="d-none d-lg-block" md={3}>
-                <RSidebar me={me} />
+                <RSidebar me={this.props.me} />
               </Col>
               <Col lg={6} md={9}>
                 <PostModal me={me} refetch={() => this.getPosts(true)} />

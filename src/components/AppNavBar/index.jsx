@@ -1,5 +1,14 @@
 import React from "react";
-import { Form, FormControl, Navbar, Nav, InputGroup,DropdownButton,Dropdown ,Button} from "react-bootstrap";
+import {
+  Form,
+  FormControl,
+  Navbar,
+  Nav,
+  InputGroup,
+  DropdownButton,
+  Dropdown,
+  Button,
+} from "react-bootstrap";
 import { withRouter, Link } from "react-router-dom";
 import { IconContext } from "react-icons";
 import SearchResult from "../SearchResult";
@@ -19,7 +28,7 @@ class AppNavBar extends React.Component {
     query: null,
     profiles: [],
   };
- 
+
   handleSearchProfiles = (e) => {
     let currentId = e.currentTarget.id;
     this.setState({ profiles: [] });
@@ -119,20 +128,37 @@ class AppNavBar extends React.Component {
                 <span className="navIconText">Notifications</span>
               </Nav.Link>
               <DropdownButton id="dropdown-basic-button" title="me">
-                <div><img src="https://picsum.photos/40" className="imgDropdown" alt="placeholder"
-                height="40px"
-                width="40px" style={{ objectFit: "cover", borderRadius: "50%",marginLeft:" 10px"}}></img>
-                <b>{this.props.me.name} {this.props.me.surname}</b>
+                <div>
+                  <img
+                    src={this.props.me.image}
+                    className="imgDropdown"
+                    alt="placeholder"
+                    height="40px"
+                    width="40px"
+                    style={{
+                      objectFit: "cover",
+                      borderRadius: "50%",
+                      marginLeft: " 10px",
+                    }}
+                  ></img>
+                  <b>
+                    {this.props.me.name} {this.props.me.surname}
+                  </b>
                 </div>
-              
-                 <Nav.Link
-                className="navLinkCol flex-column"
-                as={Link}
-                to="/user/me"
-              > <Button variant="outline-primary" className="noHover">View profile</Button>{' '}</Nav.Link>
-            <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-            <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-          </DropdownButton>
+
+                <Nav.Link
+                  className="navLinkCol flex-column"
+                  as={Link}
+                  to="/user/me"
+                >
+                  {" "}
+                  <Button variant="outline-primary" className="noHover">
+                    View profile
+                  </Button>{" "}
+                </Nav.Link>
+                <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+                <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+              </DropdownButton>
               <Nav.Link
                 className="navLinkCol flex-column"
                 as={Link}

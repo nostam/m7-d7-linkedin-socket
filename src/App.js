@@ -11,9 +11,9 @@ import Welcome from "./pages/Welcome";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 class App extends React.Component {
-  state = { 
-    searchQuery: "" ,
-    me:[],
+  state = {
+    searchQuery: "",
+    me: {},
   };
   searchHandler = (e) => {
     e.preventDefault();
@@ -45,7 +45,7 @@ class App extends React.Component {
           render={() => (
             <AppNavBar
               query={this.state.query}
-              me = {this.state.me}
+              me={this.state.me}
               searchHandler={this.searchHandler}
             />
           )}
@@ -53,7 +53,9 @@ class App extends React.Component {
         <Route
           path={"/home"}
           exact
-          render={(props) => <Home title="Homepage" {...props} me={this.state.me}/>}
+          render={(props) => (
+            <Home title="Homepage" {...props} me={this.state.me} />
+          )}
         />
         <Route
           path={"/user/:id"}
