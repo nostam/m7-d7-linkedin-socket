@@ -11,7 +11,7 @@ import "./styles.css";
 export default class Home extends Component {
   state = {
     posts: [],
-    me: {},
+    me:this.props.me,
     showAlert: null,
     err: false,
     errMsg: "",
@@ -48,24 +48,24 @@ export default class Home extends Component {
       });
     }
   };
-  getUser = async () => {
-    try {
-      const res = await fetch(`${process.env.REACT_APP_API_URL}/profiles/me`, {
-        headers: {
-          Authorization: "Basic " + localStorage.getItem("token"),
-        },
-      });
-      const user = await res.json();
-      console.log("login user", user);
-      this.setState({ me: user });
-      localStorage.setItem("id", user._id);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // getUser = async () => {
+  //   try {
+  //     const res = await fetch(`${process.env.REACT_APP_API_URL}/profiles/me`, {
+  //       headers: {
+  //         Authorization: "Basic " + localStorage.getItem("token"),
+  //       },
+  //     });
+  //     const user = await res.json();
+  //     console.log("login user", user);
+  //     this.setState({ me: user });
+  //     localStorage.setItem("id", user._id);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
   componentDidMount() {
     this.getPosts();
-    this.getUser();
+    // this.getUser();
   }
   toggleModal = (data) => {
     console.log("toggle data", data);
