@@ -35,9 +35,12 @@ export default class Message extends Component {
       this.setState({ list: [...new Set(otherUsers)] });
     });
     this.socket.on("chatmessage", (msg) => {
-      this.setState({ history: this.state.history.concat(msg) });
+      this.setState({ messages: this.state.messages.concat(msg) });
     });
     this.socket.on("bmsg", (msg) => console.log("bmsg", msg));
+  }
+  componentWillUnmount() {
+    this.socket.disconnect();
   }
   getChatHistory = async () => {
     try {
@@ -47,6 +50,7 @@ export default class Message extends Component {
       if (res.ok) {
         const data = await res.json();
         this.setState({ history: data });
+        console.log("history", data);
         if (this.state.history.length === 0) {
           const user = { username: this.props.me.username };
           this.socket.emit("setUsername", user);
@@ -76,25 +80,26 @@ export default class Message extends Component {
 
   selectOpp = (e) => {
     e.preventDefault();
-    this.setState({
-      opponent:
-        e.target.textContext === this.state.opponent
-          ? null
-          : e.target.textContent,
-    });
-    //TODO
+    console.log(e.target.innerText);
     if (isNaN(this.state.opponent)) {
-      const filterd = this.state.messages.filter(
+      const filterd = this.state.history.filter(
         (msg) => msg.from === this.state.opponent
       );
-      this.setState({ history: filterd });
+      console.log("msg", filterd);
+      this.setState({ messages: filterd });
     } else {
-      this.setState({ history: [] });
+      this.setState({ messages: [] });
     }
+    e.target.innerText === this.state.opponent
+      ? this.setState({
+          opponent: null,
+          messages: [],
+        })
+      : this.setState({ opponent: e.target.innerText });
   };
 
   render() {
-    const { message, list, history, opponent } = this.state;
+    const { message, list, messages, opponent } = this.state;
     return (
       <div>
         <Container className="BodyContainer justify-content-center d-flex w-100">
@@ -121,12 +126,16 @@ export default class Message extends Component {
                   <strong>Private Chat </strong>
                   <div>user info here</div>
                   <Col id="messages">
-                    {history.length > 0 &&
-                      history
-                        .slice(history.length - 5, history.length - 1)
+                    {messages.length > 0 &&
+                      messages
+                        .slice(messages.length - 5, messages.length - 1)
                         .map((msg, i) => (
                           <Row key={i}>
-                            <Col>
+                            <Col
+                              className={
+                                msg.from === opponent ? "msg" : "msg ownMsg"
+                              }
+                            >
                               <strong>{msg.from}</strong> @
                               {new Date(msg.createdAt).toISOString()} <br />
                               {msg.text}
