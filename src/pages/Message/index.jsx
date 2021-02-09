@@ -80,22 +80,16 @@ export default class Message extends Component {
 
   selectOpp = (e) => {
     e.preventDefault();
-    console.log(e.target.innerText);
-    if (isNaN(this.state.opponent)) {
-      const filterd = this.state.history.filter(
-        (msg) => msg.from === this.state.opponent
-      );
-      console.log("msg", filterd);
-      this.setState({ messages: filterd });
-    } else {
-      this.setState({ messages: [] });
-    }
-    e.target.innerText === this.state.opponent
+    const opponent = e.target.innerText;
+    opponent === this.state.opponent
       ? this.setState({
           opponent: null,
           messages: [],
         })
-      : this.setState({ opponent: e.target.innerText });
+      : this.setState({
+          opponent: opponent,
+          messages: this.state.history.filter((msg) => msg.from === opponent),
+        });
   };
 
   render() {
