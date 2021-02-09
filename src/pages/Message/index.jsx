@@ -83,14 +83,14 @@ export default class Message extends Component {
           : e.target.textContent,
     });
     //TODO
-    // if (isNaN(this.state.opponent)) {
-    //   const filterd = this.state.message.filter(
-    //     (msg) => msg.from === this.state.opponent
-    //   );
-    //   this.setState({ history: filterd });
-    // } else {
-    //   this.setState({ history: [] });
-    // }
+    if (isNaN(this.state.opponent)) {
+      const filterd = this.state.messages.filter(
+        (msg) => msg.from === this.state.opponent
+      );
+      this.setState({ history: filterd });
+    } else {
+      this.setState({ history: [] });
+    }
   };
 
   render() {
