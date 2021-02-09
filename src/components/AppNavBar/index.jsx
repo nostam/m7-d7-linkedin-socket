@@ -1,14 +1,5 @@
 import React from "react";
-import {
-  Form,
-  FormControl,
-  Navbar,
-  Nav,
-  InputGroup,
-  DropdownButton,
-  Dropdown,
-  Button,
-} from "react-bootstrap";
+import { Form, FormControl, Navbar, Nav, InputGroup } from "react-bootstrap";
 import { withRouter, Link } from "react-router-dom";
 import { IconContext } from "react-icons";
 import SearchResult from "../SearchResult";
@@ -34,7 +25,7 @@ class AppNavBar extends React.Component {
     this.setState({ showNavDropDown: !this.state.showNavDropDown });
   };
   handleSearchProfiles = (e) => {
-    let currentId = e.currentTarget.id;
+    // let currentId = e.currentTarget.id;
     this.setState({ profiles: [] });
     let query = e.currentTarget.value;
     if (e.currentTarget.value.length > 0) {
@@ -129,7 +120,7 @@ class AppNavBar extends React.Component {
               </Nav.Link>
               <Nav.Link
                 as={Link}
-                to="/messsage"
+                to="/message"
                 className="navLinkCol flex-column"
               >
                 <RiMessage2Fill className="navIcon" />
