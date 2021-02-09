@@ -25,9 +25,8 @@ export default class Message extends Component {
     const connOpt = {
       transports: ["websocket"],
     };
-    const user = { username: this.props.me.username };
+
     this.getChatHistory();
-    if (this.history.length === 0) this.socket.emit("setUsername", user);
     this.socket = io("https://striveschool-api.herokuapp.com", connOpt);
     this.socket.on("list", (users) => {
       const otherUsers = users.filter(
@@ -48,6 +47,10 @@ export default class Message extends Component {
       if (res.ok) {
         const data = await res.json();
         this.setState({ history: data });
+        if (this.state.history.length === 0) {
+          const user = { username: this.props.me.username };
+          this.socket.emit("setUsername", user);
+        }
       }
     } catch (error) {
       console.log(error);
