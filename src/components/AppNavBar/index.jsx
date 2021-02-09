@@ -127,7 +127,11 @@ class AppNavBar extends React.Component {
                 <GiHandBag className="navIcon" />
                 <span className="navIconText">Jobs</span>
               </Nav.Link>
-              <Nav.Link className="navLinkCol flex-column">
+              <Nav.Link
+                as={Link}
+                to="/messsage"
+                className="navLinkCol flex-column"
+              >
                 <RiMessage2Fill className="navIcon" />
                 <span className="navIconText">Messaging</span>
               </Nav.Link>
