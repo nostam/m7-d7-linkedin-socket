@@ -37,7 +37,7 @@ export default class Message extends Component {
     });
     this.socket.on("chatmessage", (msg) => {
       console.log(msg);
-      this.setState({ messages: this.state.messages.concat(msg) });
+      this.setState({ history: this.state.history.concat(msg) });
     });
     this.socket.on("bmsg", (msg) => console.log("bmsg", msg));
   }
