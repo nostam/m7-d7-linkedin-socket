@@ -27,8 +27,8 @@ export default class Message extends Component {
     };
     const user = { username: this.props.me.username };
     this.getChatHistory();
+    if (this.history.length === 0) this.socket.emit("setUsername", user);
     this.socket = io("https://striveschool-api.herokuapp.com", connOpt);
-    this.socket.emit("setUsername", user);
     this.socket.on("list", (users) => {
       const otherUsers = users.filter(
         (user) => user !== this.props.me.username
@@ -36,7 +36,7 @@ export default class Message extends Component {
       this.setState({ list: [...new Set(otherUsers)] });
     });
     this.socket.on("chatmessage", (msg) => {
-      this.setState({ messages: this.state.message.concat(msg) });
+      this.setState({ history: this.state.history.concat(msg) });
     });
     this.socket.on("bmsg", (msg) => console.log("bmsg", msg));
   }
@@ -80,14 +80,14 @@ export default class Message extends Component {
           : e.target.textContent,
     });
     //TODO
-    if (isNaN(this.state.opponent)) {
-      const filterd = this.state.message.filter(
-        (msg) => msg.from !== this.state.opponent
-      );
-      this.setState({ history: filterd });
-    } else {
-      this.setState({ history: [] });
-    }
+    // if (isNaN(this.state.opponent)) {
+    //   const filterd = this.state.message.filter(
+    //     (msg) => msg.from === this.state.opponent
+    //   );
+    //   this.setState({ history: filterd });
+    // } else {
+    //   this.setState({ history: [] });
+    // }
   };
 
   render() {
