@@ -36,8 +36,7 @@ export default class Message extends Component {
       this.setState({ list: [...new Set(otherUsers)] });
     });
     this.socket.on("chatmessage", (msg) => {
-      console.log(msg);
-      this.setState({ history: this.state.history.concat(msg) });
+      this.setState({ messages: this.state.message.concat(msg) });
     });
     this.socket.on("bmsg", (msg) => console.log("bmsg", msg));
   }
@@ -80,9 +79,15 @@ export default class Message extends Component {
           ? null
           : e.target.textContent,
     });
-    //TODO filter msg on select
-    // isNaN(this.state.opponent) ?
-    // this.state.history.filter(msg => {}) :
+    //TODO
+    if (isNaN(this.state.opponent)) {
+      const filterd = this.state.message.filter(
+        (msg) => msg.from !== this.state.opponent
+      );
+      this.setState({ history: filterd });
+    } else {
+      this.setState({ history: [] });
+    }
   };
 
   render() {
