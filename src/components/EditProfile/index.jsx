@@ -15,16 +15,18 @@ class EditProfile extends React.Component {
   };
   fetchMe = async () => {
     try {
-      const pFetch = await fetch(
-        `${process.env.REACT_APP_API_URL}/profiles/me`,
-        {
-          headers: {
-            Authorization: "Basic " + localStorage.getItem("token"),
-          },
-        }
-      );
-      const pResponse = await pFetch.json();
-      this.setState({ profile: pResponse });
+      const token = JSON.stringify(localStorage.getItem("token"));
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/profiles/me`, {
+        headers: {
+          Authorization: "Basic " + token,
+        },
+      });
+      if (res.ok) {
+        const pResponse = await res.json();
+        this.setState({ profile: pResponse });
+      } else {
+        throw new Error(res.body);
+      }
     } catch (error) {
       console.log(error);
     }

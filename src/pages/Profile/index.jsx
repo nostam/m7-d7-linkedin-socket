@@ -16,7 +16,7 @@ import Feature from "../../components/Featured";
 import Sidebar from "../../components/Sidebar";
 import EditProfile from "../../components/EditProfile";
 import "./styles.css";
-import { BiPencil, BiDotsHorizontalRounded } from "react-icons/bi";
+import { BiDotsHorizontalRounded } from "react-icons/bi";
 import { Route } from "react-router-dom";
 class Body extends React.Component {
   state = {
@@ -34,12 +34,13 @@ class Body extends React.Component {
     this.props.location.pathname === "/user/me"
       ? (userId = localStorage.getItem("id"))
       : (userId = id);
+    console.log("me", userId);
     fetch(`${process.env.REACT_APP_API_URL}/profiles/${userId}`, {
       method: "GET",
-      headers: new Headers({
+      headers: {
         // Authorization: "Basic " + localStorage.getItem("token"),
         ContentType: "application/json",
-      }),
+      },
     })
       .then((response) => {
         if (response.ok) {

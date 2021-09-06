@@ -50,13 +50,13 @@ export default class Home extends Component {
   };
   // getUser = async () => {
   //   try {
+  //     const token = JSON.parse(localStorage.getItem("token"));
   //     const res = await fetch(`${process.env.REACT_APP_API_URL}/profiles/me`, {
   //       headers: {
-  //         Authorization: "Basic " + localStorage.getItem("token"),
+  //         Authorization: "Basic " + token,
   //       },
   //     });
   //     const user = await res.json();
-  //     console.log("login user", user);
   //     this.setState({ me: user });
   //     localStorage.setItem("id", user._id);
   //   } catch (error) {
@@ -74,16 +74,8 @@ export default class Home extends Component {
     this.setState({ post: data });
   };
   render() {
-    const {
-      err,
-      loading,
-      posts,
-      errMsg,
-      links,
-      morePosts,
-      showModal,
-      post,
-    } = this.state;
+    const { err, loading, posts, errMsg, links, morePosts, showModal, post } =
+      this.state;
     return (
       <div className="homeDiv">
         {err && (

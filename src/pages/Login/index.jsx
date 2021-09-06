@@ -20,8 +20,8 @@ class Login extends Component {
         },
       });
       if (res.ok) {
-        const { access_token } = await res.json();
-        localStorage.setItem("token", access_token);
+        const { accessToken, refreshToken } = await res.json();
+        localStorage.setItem("token", accessToken);
         this.props.history.push("/home");
       } else {
         const { message } = await res.json();
