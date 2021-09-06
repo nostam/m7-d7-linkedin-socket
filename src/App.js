@@ -28,7 +28,7 @@ class App extends React.Component {
         },
       });
       const user = await res.json();
-      console.log("login user", user);
+      // console.log("login user", user);
       this.setState({ me: user });
       localStorage.setItem("id", user._id);
     } catch (error) {

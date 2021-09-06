@@ -29,7 +29,6 @@ class AppNavBar extends React.Component {
     this.setState({ profiles: [] });
     let query = e.currentTarget.value;
     if (e.currentTarget.value.length > 0) {
-      // }else{
       this.setState({ query }, console.log(this.state));
       fetch(`${process.env.REACT_APP_API_URL}/profiles?name=${query}`, {
         method: "GET",
