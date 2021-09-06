@@ -15,7 +15,7 @@ class EditProfile extends React.Component {
   };
   fetchMe = async () => {
     try {
-      const token = JSON.stringify(localStorage.getItem("token"));
+      const token = localStorage.getItem("token");
       const res = await fetch(`${process.env.REACT_APP_API_URL}/profiles/me`, {
         headers: {
           Authorization: "Basic " + token,
